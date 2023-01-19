@@ -1,14 +1,17 @@
-import Carousel from "./components/carousel";
+// import Carousel from "./components/carousel";
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
+import Routes from "./routes/routes";
+
 //ACÁ IMPORTAS ROUTES
 
 function App() {
 	return (
 		<>
-			<Navbar />
-			<Carousel />
-			<Footer />
+			{/* <Navbar /> */}
+			<Routes />
+			{/* <Carousel /> */}
+					{/* <Footer /> */}
 		</>
 	);
 }
