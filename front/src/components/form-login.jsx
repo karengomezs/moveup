@@ -1,29 +1,45 @@
+import { useState } from "react";
+
 export default function FormLogin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <form className="">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log(email, password);
+      }}
+    >
       <h2 className="text-center">Welcome to Booking App</h2>
 
-      <div class="mb-3">
-        <label for="formGroupExampleInput" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="formGroupExampleInput" className="form-label">
           Email address
         </label>
-
         <input
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          value={email}
           type="email"
-          class="form-control"
+          className="form-control"
           id="formGroupExampleInput"
-          placeholder="Example input placeholder"
+          placeholder="Example: mariam@gmail.com"
         />
       </div>
-      <div class="mb-3">
-        <label for="formGroupExampleInput2" class="form-label">
+      <div className="mb-3">
+        <label htmlFor="formGroupExampleInput2" className="form-label">
           Password
         </label>
         <input
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          value={password}
           type="password"
-          class="form-control"
+          className="form-control"
           id="formGroupExampleInput2"
-          placeholder="Another input placeholder"
         />
       </div>
 
