@@ -1,83 +1,68 @@
 import React from "react";
+import logo from "../images/logo1.png";
 
 export default function Navbar() {
 	return (
-		<nav className="navbar navbar-expand-lg bg-body-tertiary">
+		<nav className="navbar navbar-expand-md bg-body-tertiary">
 			<div className="container-fluid">
-				<a className="navbar-brand" href="/">
-					Navbar
+				<a className="navbar-brand grid" href="/">
+					<img src={logo} className="img-fluid" alt="logo"/>
+					<span className="align-bottom m-3 d-none d-lg-inline">
+						Sientete como en tu hogar
+					</span>
 				</a>
 				<button
-					className="navbar-toggler"
+					className="navbar-toggler border border-0 shadow-none"
 					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent"
+					data-bs-toggle="modal"
+					data-bs-target="#navbarMenu"
+					aria-controls="navbarMenu"
 					aria-expanded="false"
 					aria-label="Toggle navigation"
 				>
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div className="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
-						<li className="nav-item">
-							<a className="nav-link active" aria-current="page" href="/">
-								Home
-							</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="/">
-								Link
-							</a>
-						</li>
-						<li className="nav-item dropdown">
-							<a
-								className="nav-link dropdown-toggle"
-								href="/"
-								role="button"
-								data-bs-toggle="dropdown"
-								aria-expanded="false"
-							>
-								Dropdown
-							</a>
-							<ul className="dropdown-menu">
-								<li>
-									<a className="dropdown-item" href="/">
-										Action
-									</a>
-								</li>
-								<li>
-									<a className="dropdown-item" href="/">
-										Another action
-									</a>
-								</li>
-								<li>
-									<hr className="dropdown-divider" />
-								</li>
-								<li>
-									<a className="dropdown-item" href="/">
-										Something else here
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link disabled" href="/">
-								Disabled
-							</a>
-						</li>
-					</ul>
-					<form className="d-flex" role="search">
-						<input
-							className="form-control me-2"
-							type="search"
-							placeholder="Search"
-							aria-label="Search"
-						/>
-						<button className="btn btn-outline-success" type="submit">
-							Search
-						</button>
-					</form>
+				<div
+					className="collapse navbar-collapse grid gap-4 justify-content-end"
+					id="navbarSupportedContent"
+				>
+					<button className="btn btn-outline-success px-4" type="submit">
+						Crear cuenta
+					</button>
+					<button className="btn btn-outline-success px-4" type="submit">
+						Iniciar Sesion
+					</button>
+				</div>
+				<div
+					className="modal fade"
+					id="navbarMenu"
+					tabindex="-1"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true"
+				>
+					<div className="modal-dialog modal-fullscreen">
+						<div className="modal-content">
+							<div className="modal-header  h-50 bg-secondary justify-content-start align-items-start ">
+								<button
+									type="button"
+									className="btn-close m-0"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								/>
+							</div>
+							<div className="modal-body d-flex flex-column justify-content-start align-items-end">
+								<button className="btn " type="submit">
+									Crear cuenta
+								</button>
+								<button className="btn " type="submit">
+									Iniciar Sesion
+								</button>
+							</div>
+							<div className="modal-footer">
+								<span>Social Media</span>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</nav>
