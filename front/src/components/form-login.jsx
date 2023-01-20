@@ -1,17 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { loginApi } from "../api/login";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-
         const response = await loginApi(email, password);
-        //console.log(response);
+        if (response?.token) {
+          navigate("/");
+        }
       }}
     >
       <h2 className="text-center">Welcome to Booking App</h2>
