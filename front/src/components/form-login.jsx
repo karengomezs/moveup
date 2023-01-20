@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
+import loginContext from "../context/login-context";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const loginState = useContext(loginContext);
 
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
         const response = await loginApi(email, password);
+
         if (response?.token) {
+          loginState.setUser(response.user);
           navigate("/");
         }
       }}

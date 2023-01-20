@@ -16,8 +16,8 @@ function fakeResponse(user, password) {
     const fakeUser = {
         user: {
             id: 1,
-            name: "user",
-            lastName: "fake",
+            name: "karen",
+            lastName: "g",
         },
         token: "ksks",
     }
