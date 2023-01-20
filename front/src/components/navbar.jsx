@@ -1,16 +1,19 @@
 import React from "react";
 import logo from "../images/logo1.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
 	return (
 		<nav className="navbar navbar-expand-md bg-body-tertiary">
 			<div className="container-fluid">
-				<a className="navbar-brand grid" href="/">
-					<img src={logo} className="img-fluid" alt="logo"/>
-					<span className="align-bottom m-3 d-none d-lg-inline">
-						Sientete como en tu hogar
-					</span>
-				</a>
+				<Link to="/" className="text-decoration-none">
+					<a className="navbar-brand grid" href="/">
+						<img src={logo} className="img-fluid" alt="logo" />
+						<span className="align-bottom m-3 d-none d-lg-inline fst-italic">
+							Sientete como en tu hogar
+						</span>
+					</a>
+				</Link>
 				<button
 					className="navbar-toggler border border-0 shadow-none"
 					type="button"
@@ -29,9 +32,12 @@ export default function Navbar() {
 					<button className="btn btn-outline-success px-4" type="submit">
 						Crear cuenta
 					</button>
-					<button className="btn btn-outline-success px-4" type="submit">
-						Iniciar Sesion
-					</button>
+
+					<Link to="/login">
+						<button className="btn btn-outline-success px-4" type="submit">
+							Iniciar Sesion
+						</button>
+					</Link>
 				</div>
 				<div
 					className="modal fade"
@@ -54,9 +60,11 @@ export default function Navbar() {
 								<button className="btn " type="submit">
 									Crear cuenta
 								</button>
-								<button className="btn " type="submit">
-									Iniciar Sesion
-								</button>
+								<Link to="/login">
+									<button className="btn" type="submit">
+										Iniciar Sesion
+									</button>
+								</Link>
 							</div>
 							<div className="modal-footer">
 								<span>Social Media</span>
