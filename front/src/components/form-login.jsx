@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
-import loginContext from "../context/login-context";
+import userContext from "../context/user-context";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const loginState = useContext(loginContext);
+  const userState = useContext(userContext);
 
   return (
     <form
@@ -16,7 +16,7 @@ export default function FormLogin() {
         const response = await loginApi(email, password);
 
         if (response?.token) {
-          loginState.setUser(response.user);
+          userState.setUser(response.user);
           navigate("/");
         }
       }}
