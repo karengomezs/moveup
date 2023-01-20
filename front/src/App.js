@@ -1,22 +1,20 @@
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
-import { Route, Routes } from "react-router-dom";
-import Detalle from "./routes/detalle";
-import Main from "./routes/main"
+import Routes from "./routes/routes";
+import { LoginProvider } from "./context/login-context";
+
 
 //ACÁ IMPORTAS ROUTES
 
 function App() {
 	return (
-		<>
+		<LoginProvider>
 			<Navbar />
-			<Routes>
-				<Route path="/" element={<Main/>}></Route>
-				<Route path="detalle" element={<Detalle />}></Route>
-			</Routes>
+			<Routes />
 			<Footer />
-		</>
-	);
+		</LoginProvider>
+	)
+
 }
 
 export default App;
