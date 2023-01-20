@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { loginApi } from "../api/login";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
@@ -6,9 +7,11 @@ export default function FormLogin() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        console.log(email, password);
+
+        const response = await loginApi(email, password);
+        //console.log(response);
       }}
     >
       <h2 className="text-center">Welcome to Booking App</h2>
