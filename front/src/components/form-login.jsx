@@ -56,6 +56,9 @@ export default function FormLogin() {
       <button type="submit" className="btn btn-primary mx-auto d-block ">
         Sign In
       </button>
+      <p className="text-center">
+        ¿Don´t you have an account? <a href="/signup">Sign Up</a>
+      </p>
     </form>
   );
 }

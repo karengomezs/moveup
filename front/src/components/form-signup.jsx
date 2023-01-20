@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { signApi } from "../api/sign";
+import userContext from "../context/user-context";
 
 export default function FormSignup() {
   const [name, setName] = useState("");
@@ -6,6 +9,8 @@ export default function FormSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+  const userState = useContext(userContext);
 
   return (
     <form
@@ -13,17 +18,19 @@ export default function FormSignup() {
         e.preventDefault();
 
         if (password === confirmPassword) {
-          console.log(name, lastName, email, password, confirmPassword);
+          // console.log(name, lastName, email, password, confirmPassword);
         } else {
           console.log("las contraseñas no son iguales");
         }
 
-        // e.preventDefault();
-        // const response = await loginApi(email, password);
-        // if (response?.token) {
-        //   loginState.setUser(response.user);
-        //   navigate("/");
-        // }
+        const response = await signApi(name, lastName, email, password);
+        // console.log(response);
+        if (response?.token) {
+          userState.setUser(response.user);
+          // console.log(userState.user);
+          console.log("cuenta creada");
+          navigate("/");
+        }
       }}
     >
       <h2 className="text-center">Welcome to Booking App</h2>
@@ -104,9 +111,12 @@ export default function FormSignup() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary mx-auto d-block ">
+      <button type="submit" className="btn btn-primary mx-auto d-block mb-3">
         Sign Up
       </button>
+      <p className="text-center">
+        ¿Do you have an account? <a href="/login">Log In</a>
+      </p>
     </form>
   );
 }
