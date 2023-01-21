@@ -28,7 +28,6 @@ export default function Navbar() {
 					id="navbarSupportedContent"
 				>
 					<button className="btn btn-outline-success px-4">Crear cuenta</button>
-
 					<Link to="/login">
 						<button className="btn btn-outline-success px-4">
 							Iniciar Sesion
@@ -38,7 +37,7 @@ export default function Navbar() {
 				<div
 					className="modal fade"
 					id="navbarMenu"
-					tabindex="-1"
+					tabIndex="-1"
 					aria-labelledby="exampleModalLabel"
 					aria-hidden="true"
 				>

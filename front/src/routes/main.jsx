@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "../components/carousel";
+import Categorias from "../components/categorias";
 import loginContext from "../context/login-context";
 import { useContext } from "react";
 
@@ -9,7 +9,7 @@ export default function Main() {
   return (
     <>
       {loginState.user && <h1>Hola! {loginState?.user?.name}</h1>}
-      <Carousel />
+      <Categorias />
     </>
   );
 }
