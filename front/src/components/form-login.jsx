@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
 import userContext from "../context/user-context";
@@ -57,7 +57,7 @@ export default function FormLogin() {
         Sign In
       </button>
       <p className="text-center">
-        ¿Don´t you have an account? <a href="/signup">Sign Up</a>
+        ¿Don´t you have an account? <Link to="/signup"> Sign Up</Link>
       </p>
     </form>
   );

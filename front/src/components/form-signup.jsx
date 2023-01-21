@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import { signApi } from "../api/sign";
+import { useNavigate, Link } from "react-router-dom";
 import userContext from "../context/user-context";
+import { signApi } from "../api/sign";
+// const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 export default function FormSignup() {
   const [name, setName] = useState("");
@@ -19,17 +20,16 @@ export default function FormSignup() {
 
         if (password === confirmPassword) {
           // console.log(name, lastName, email, password, confirmPassword);
+          const response = await signApi(name, lastName, email, password);
+          // console.log(response);
+          if (response?.token) {
+            userState.setUser(response.user);
+            // console.log(userState.user);
+            // console.log("cuenta creada");
+            navigate("/");
+          }
         } else {
           console.log("las contraseñas no son iguales");
-        }
-
-        const response = await signApi(name, lastName, email, password);
-        // console.log(response);
-        if (response?.token) {
-          userState.setUser(response.user);
-          // console.log(userState.user);
-          console.log("cuenta creada");
-          navigate("/");
         }
       }}
     >
@@ -115,7 +115,7 @@ export default function FormSignup() {
         Sign Up
       </button>
       <p className="text-center">
-        ¿Do you have an account? <a href="/login">Log In</a>
+        ¿Do you have an account?<Link to="/login"> Log In</Link>
       </p>
     </form>
   );

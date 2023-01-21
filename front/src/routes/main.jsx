@@ -9,6 +9,7 @@ export default function Main() {
   return (
     <>
       {userState.user && <h1>Hola! {userState?.user?.name}</h1>}
+
       <Carousel />
     </>
   );
