@@ -19,13 +19,10 @@ export default function FormSignup() {
         e.preventDefault();
 
         if (password === confirmPassword) {
-          // console.log(name, lastName, email, password, confirmPassword);
           const response = await signApi(name, lastName, email, password);
-          // console.log(response);
           if (response?.token) {
             userState.setUser(response.user);
-            // console.log(userState.user);
-            // console.log("cuenta creada");
+
             navigate("/");
           }
         } else {
@@ -35,16 +32,16 @@ export default function FormSignup() {
     >
       <h2 className="text-center">Welcome to Booking App</h2>
 
-      {/* agregado nuevo por mi */}
       <div className="row">
         <div className="col mb-3">
-          <label htmlFor="formGroupExampleInput" className="form-label">
+          <label htmlFor="name" className="form-label">
             First Name
           </label>
           <input
             onChange={(e) => {
               setName(e.target.value);
             }}
+            id="name"
             value={name}
             type="text"
             className="form-control"
@@ -52,13 +49,14 @@ export default function FormSignup() {
           />
         </div>
         <div className="col mb-3">
-          <label htmlFor="formGroupExampleInput" className="form-label">
+          <label htmlFor="last-name" className="form-label">
             Last Name
           </label>
           <input
             onChange={(e) => {
               setLastName(e.target.value);
             }}
+            id="last-name"
             value={lastName}
             type="text"
             className="form-control"
@@ -68,7 +66,7 @@ export default function FormSignup() {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput" className="form-label">
+        <label htmlFor="email" className="form-label">
           Email address
         </label>
         <input
@@ -78,12 +76,12 @@ export default function FormSignup() {
           value={email}
           type="email"
           className="form-control"
-          id="formGroupExampleInput"
+          id="email"
           placeholder="Example: mariam@gmail.com"
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput2" className="form-label">
+        <label htmlFor="password" className="form-label">
           Password
         </label>
         <input
@@ -93,11 +91,11 @@ export default function FormSignup() {
           value={password}
           type="password"
           className="form-control"
-          id="formGroupExampleInput2"
+          id="password"
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput2" className="form-label">
+        <label htmlFor="confirm-pass" className="form-label">
           Confirm Password
         </label>
         <input
@@ -107,7 +105,7 @@ export default function FormSignup() {
           value={confirmPassword}
           type="password"
           className="form-control"
-          id="formGroupExampleInput2"
+          id="cofirm-pass"
         />
       </div>
 

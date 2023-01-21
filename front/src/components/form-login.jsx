@@ -24,7 +24,7 @@ export default function FormLogin() {
       <h2 className="text-center">Welcome to Booking App</h2>
 
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput" className="form-label">
+        <label htmlFor="email" className="form-label">
           Email address
         </label>
         <input
@@ -34,12 +34,12 @@ export default function FormLogin() {
           value={email}
           type="email"
           className="form-control"
-          id="formGroupExampleInput"
+          id="email"
           placeholder="Example: mariam@gmail.com"
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput2" className="form-label">
+        <label htmlFor="password" className="form-label">
           Password
         </label>
         <input
@@ -49,7 +49,7 @@ export default function FormLogin() {
           value={password}
           type="password"
           className="form-control"
-          id="formGroupExampleInput2"
+          id="password"
         />
       </div>
 

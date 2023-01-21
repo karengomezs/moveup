@@ -20,8 +20,5 @@ function fakeResponse(name, lastName, email, password) {
 
     return Promise.resolve(fakeUser)
 
-    // new Promise((resolve) => {
-    //     resolve(fakeUser)
-    // })
 }
 
