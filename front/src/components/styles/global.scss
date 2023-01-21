@@ -1,31 +1,39 @@
+/* Typigrafia */
+
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 body {
 	--bs-body-font-family: "Quicksand";
 }
 
-$color-button: #bf4080;
+/* Colores */
 
-.button-sass {
-	color: $color-button;
-}
+
 
 /* Tarjetas */
 
 .cards {
 	display: grid;
 	grid-auto-flow: dense;
-	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
 	gap: 1rem;
 }
 
+
+
 .card-border {
-	box-shadow: .5rem .5rem 1rem gray;
-	border-radius: 1rem;
+	box-shadow: 0.5rem 0.5rem 1rem gray;
+	border-radius: .5rem;
 }
 
 .cards-image {
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 	width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+	.cards {
+		grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
+	}
 }
