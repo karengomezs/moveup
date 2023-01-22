@@ -27,7 +27,9 @@ export default function Navbar() {
 					className="collapse navbar-collapse grid gap-4 justify-content-end"
 					id="navbarSupportedContent"
 				>
-					<button className="btn btn-outline-success px-4">Crear cuenta</button>
+					<button className="btn navButton px-4">
+						Crear cuenta
+					</button>
 					<Link to="/login">
 						<button className="btn btn-outline-success px-4">
 							Iniciar Sesion

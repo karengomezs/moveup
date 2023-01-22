@@ -1,3 +1,5 @@
+@import "../../../node_modules//bootstrap/scss/bootstrap";
+
 /* Typigrafia */
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
@@ -8,7 +10,16 @@ body {
 
 /* Colores */
 
+$orange: #F0572D;
 
+.navButton {
+	color: $orange;
+	border: 1px solid $orange
+}
+
+.navButton:hover{
+	background-color: $orange
+}
 
 /* Tarjetas */
 
@@ -18,8 +29,6 @@ body {
 	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
 	gap: 1rem;
 }
-
-
 
 .card-border {
 	box-shadow: 0.5rem 0.5rem 1rem gray;
