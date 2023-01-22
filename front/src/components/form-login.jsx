@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
-import loginContext from "../context/login-context";
+import userContext from "../context/user-context";
 
 export default function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const loginState = useContext(loginContext);
+  const userState = useContext(userContext);
 
   return (
     <form
@@ -16,7 +16,7 @@ export default function FormLogin() {
         const response = await loginApi(email, password);
 
         if (response?.token) {
-          loginState.setUser(response.user);
+          userState.setUser(response.user);
           navigate("/");
         }
       }}
@@ -24,7 +24,7 @@ export default function FormLogin() {
       <h2 className="text-center">Welcome to Booking App</h2>
 
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput" className="form-label">
+        <label htmlFor="email" className="form-label">
           Email address
         </label>
         <input
@@ -34,12 +34,12 @@ export default function FormLogin() {
           value={email}
           type="email"
           className="form-control"
-          id="formGroupExampleInput"
+          id="email"
           placeholder="Example: mariam@gmail.com"
         />
       </div>
       <div className="mb-3">
-        <label htmlFor="formGroupExampleInput2" className="form-label">
+        <label htmlFor="password" className="form-label">
           Password
         </label>
         <input
@@ -49,13 +49,16 @@ export default function FormLogin() {
           value={password}
           type="password"
           className="form-control"
-          id="formGroupExampleInput2"
+          id="password"
         />
       </div>
 
       <button type="submit" className="btn btn-primary mx-auto d-block ">
         Sign In
       </button>
+      <p className="text-center">
+        ¿Don´t you have an account? <Link to="/signup"> Sign Up</Link>
+      </p>
     </form>
   );
 }

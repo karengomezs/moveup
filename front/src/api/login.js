@@ -19,7 +19,7 @@ function fakeResponse(user, password) {
             name: "karen",
             lastName: "g",
         },
-        token: "ksks",
+        token: "ksks"
     }
 
     return new Promise((resolve, reject) => {
