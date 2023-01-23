@@ -1,14 +1,14 @@
 import React from "react";
 import Categorias from "../components/categorias";
-import loginContext from "../context/login-context";
+import userContext from "../context/user-context";
 import { useContext } from "react";
 
 export default function Main() {
-  const userState = useContext(userContext);
+	const userState = useContext(userContext);
 
-  return (
+	return (
 		<div className="vh-100">
-			{loginState.user && <h1>Hola! {loginState?.user?.name}</h1>}
+			{userState.user && <h1>Hola! {userState?.user?.name}</h1>}
 			<Categorias />
 		</div>
 	);
