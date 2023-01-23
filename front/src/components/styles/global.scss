@@ -1,5 +1,73 @@
+@import "../../../node_modules//bootstrap/scss/bootstrap";
+
+/* Scroll */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Typigrafia */
+
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 body {
 	--bs-body-font-family: "Quicksand";
+}
+
+/* Colores */
+
+$orange: #f0572d;
+
+.navButton {
+	color: $orange;
+	background-color: white;
+	border: 1px solid $orange;
+	border-radius: 0.5rem;
+}
+
+.navButton:hover {
+	background-color: $orange;
+	color: aliceblue;
+}
+
+/* Tarjetas */
+
+.cards {
+	display: grid;
+	grid-auto-flow: dense;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	gap: 1rem;
+}
+
+.cards-border {
+	box-shadow: 0.5rem 0.5rem 1rem gray;
+	border-radius: 0.5rem;
+}
+
+.cards-image {
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
+	width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+	.cards {
+		grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
+	}
+}
+
+/* footer */
+
+.bg-footer {
+	background-color: $orange;
+}
+
+/* Modal */
+
+.bg-modal {
+	background-color: $orange;
+}
+
+hr {
+	border: 1px solid black;
 }

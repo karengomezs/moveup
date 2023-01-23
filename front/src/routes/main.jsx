@@ -1,16 +1,15 @@
 import React from "react";
-import Carousel from "../components/carousel";
-import userContext from "../context/user-context";
+import Categorias from "../components/categorias";
+import loginContext from "../context/login-context";
 import { useContext } from "react";
 
 export default function Main() {
   const userState = useContext(userContext);
 
   return (
-    <>
-      {userState.user && <h1>Hola! {userState?.user?.name}</h1>}
-
-      <Carousel />
-    </>
-  );
+		<div className="vh-100">
+			{loginState.user && <h1>Hola! {loginState?.user?.name}</h1>}
+			<Categorias />
+		</div>
+	);
 }
