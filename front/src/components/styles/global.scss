@@ -1,5 +1,11 @@
 @import "../../../node_modules//bootstrap/scss/bootstrap";
 
+/* Scroll */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
 /* Typigrafia */
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
@@ -10,15 +16,18 @@ body {
 
 /* Colores */
 
-$orange: #F0572D;
+$orange: #f0572d;
 
 .navButton {
 	color: $orange;
-	border: 1px solid $orange
+	background-color: white;
+	border: 1px solid $orange;
+	border-radius: 0.5rem;
 }
 
-.navButton:hover{
-	background-color: $orange
+.navButton:hover {
+	background-color: $orange;
+	color: aliceblue;
 }
 
 /* Tarjetas */
@@ -26,13 +35,13 @@ $orange: #F0572D;
 .cards {
 	display: grid;
 	grid-auto-flow: dense;
-	grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
 	gap: 1rem;
 }
 
-.card-border {
+.cards-border {
 	box-shadow: 0.5rem 0.5rem 1rem gray;
-	border-radius: .5rem;
+	border-radius: 0.5rem;
 }
 
 .cards-image {
@@ -45,4 +54,20 @@ $orange: #F0572D;
 	.cards {
 		grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
 	}
+}
+
+/* footer */
+
+.bg-footer {
+	background-color: $orange;
+}
+
+/* Modal */
+
+.bg-modal {
+	background-color: $orange;
+}
+
+hr {
+	border: 1px solid black;
 }

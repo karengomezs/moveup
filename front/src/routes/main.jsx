@@ -7,9 +7,9 @@ export default function Main() {
   const loginState = useContext(loginContext);
 
   return (
-    <>
-      {loginState.user && <h1>Hola! {loginState?.user?.name}</h1>}
-      <Categorias />
-    </>
-  );
+		<div className="vh-100">
+			{loginState.user && <h1>Hola! {loginState?.user?.name}</h1>}
+			<Categorias />
+		</div>
+	);
 }

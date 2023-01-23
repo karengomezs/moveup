@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../images/logo1.png";
 import { Link } from "react-router-dom";
+import Footer from "../components/footer";
 
 export default function Navbar() {
 	return (
@@ -27,13 +28,9 @@ export default function Navbar() {
 					className="collapse navbar-collapse grid gap-4 justify-content-end"
 					id="navbarSupportedContent"
 				>
-					<button className="btn navButton px-4">
-						Crear cuenta
-					</button>
+					<button className="navButton px-5 py-2">Crear cuenta</button>
 					<Link to="/login">
-						<button className="btn btn-outline-success px-4">
-							Iniciar Sesion
-						</button>
+						<button className="navButton px-5 py-2">Iniciar Sesion</button>
 					</Link>
 				</div>
 				<div
@@ -45,7 +42,7 @@ export default function Navbar() {
 				>
 					<div className="modal-dialog modal-fullscreen">
 						<div className="modal-content">
-							<div className="modal-header h-25 bg-secondary justify-content-start align-items-start ">
+							<div className="modal-header h-25 bg-modal justify-content-start align-items-start ">
 								<svg
 									data-bs-dismiss="modal"
 									xmlns="http://www.w3.org/2000/svg"
@@ -60,6 +57,9 @@ export default function Navbar() {
 							</div>
 							<div className="modal-body d-flex flex-column justify-content-start align-items-end">
 								<button className="btn ">Crear cuenta</button>
+								<div className="container p-0 text-black">
+									<hr className="border border-dark " />
+								</div>
 								<Link to="/login">
 									<button
 										className="btn border border-0 shadow-none"
@@ -69,9 +69,7 @@ export default function Navbar() {
 									</button>
 								</Link>
 							</div>
-							<div className="modal-footer">
-								<span>Social Media</span>
-							</div>
+							<Footer />
 						</div>
 					</div>
 				</div>
