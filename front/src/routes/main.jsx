@@ -4,7 +4,7 @@ import loginContext from "../context/login-context";
 import { useContext } from "react";
 
 export default function Main() {
-  const loginState = useContext(loginContext);
+  const userState = useContext(userContext);
 
   return (
 		<div className="vh-100">
