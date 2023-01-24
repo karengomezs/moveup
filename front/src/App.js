@@ -1,7 +1,6 @@
 import Footer from "./components/footer";
 import Navbar from "./components/navbar";
 import Routes from "./routes/routes";
-import Searcher from "./components/searcher";
 import { UserProvider } from "./context/user-context";
 
 
@@ -12,8 +11,7 @@ import { UserProvider } from "./context/user-context";
 function App() {
 	return (
 		<UserProvider>
-			<Navbar />
-			<Searcher/>
+			<Navbar />	
 			<Routes />
 			<Footer />
 		</UserProvider>

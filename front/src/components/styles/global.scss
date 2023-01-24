@@ -9,7 +9,7 @@
 /* Typigrafia */
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
 body {
 	--bs-body-font-family: "Quicksand";
@@ -18,7 +18,9 @@ body {
 /* Colores */
 
 $orange: #f0572d;
-
+$color_secondary: #31363F;
+$color_terceary: #191B1D;
+$color_fourteary: #DFE4EA;
 
 .navButton {
 	color: $orange;
@@ -75,9 +77,25 @@ hr {
 }
 
 .searcher{
-	background-color: $orange;
+	padding: 2%;
+	background-color: $color_secondary;
 	height: 161px;
+	h1{
+
+		font-family: Roboto;
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 42px;
+		letter-spacing: 0em;
+		text-align: center;
+		color: aliceblue;
+	}
 	button{
-		width: auto;
+		height: 40px;
+		width: 206px;
+		left: 0px;
+		top: 0px;
+		border-radius: 5px;
+
 	}
 }
