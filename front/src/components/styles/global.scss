@@ -3,7 +3,7 @@
 /* Scroll */
 
 ::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 
 /* Typigrafia */
@@ -70,4 +70,27 @@ $orange: #f0572d;
 
 hr {
 	border: 1px solid black;
+}
+
+/* Listado */
+
+.anchoLista {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+	// max-width: 540px;
+	gap: 1rem;
+}
+
+/* bg-button listado */
+
+.bg-button {
+	color: $orange;
+	background-color: white;
+	border: 1px solid $orange;
+	border-radius: 0.5rem;
+}
+
+.bg-button:hover {
+	background-color: $orange;
+	color: aliceblue;
 }
