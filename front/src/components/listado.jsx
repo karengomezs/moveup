@@ -10,7 +10,7 @@ const listado = [
 		ubicacion: "Laureles, Medellin, CO",
 		descripcion:
 			"Hotel con todos los servicios incluidos, zonas humedas y bar-restaurante con platos a la carta",
-		img: "https://picsum.photos/200/300",
+		img: "https://picsum.photos/200/400",
 	},
 	{
 		id: 2,
@@ -19,7 +19,7 @@ const listado = [
 		ubicacion: "Vía San Geronimo - Medellín Km 15",
 		descripcion:
 			"Perfecto para un descanso y dias soleados incluye el desayuno y servicio a la habitación",
-		img: "https://picsum.photos/199/300",
+		img: "https://picsum.photos/199/400",
 	},
 	{
 		id: 3,
@@ -27,7 +27,7 @@ const listado = [
 		nombre: "Apartaestudio en Laureles",
 		ubicacion: "Calle 35 # 76-114 Laureles- Estado",
 		descripcion: "Comodo y central",
-		img: "https://picsum.photos/201/300",
+		img: "https://picsum.photos/201/400",
 	},
 	{
 		id: 4,
@@ -35,7 +35,7 @@ const listado = [
 		nombre: "Habitacion con wifi y baño privado",
 		ubicacion: "Carrera 39D #47Sur9",
 		descripcion: "AirB&B en Envigado",
-		img: "https://picsum.photos/200/299",
+		img: "https://picsum.photos/200/399",
 	},
 	{
 		id: 5,
@@ -44,7 +44,7 @@ const listado = [
 		ubicacion: "Carrera 23 # 36ASur27. Envigado, Antioquia",
 		descripcion:
 			"Dormitorios cálidos, algunos con balcón y vistas rurales, en pintoresco hotel con restaurante y una granja.",
-		img: "https://picsum.photos/200/301",
+		img: "https://picsum.photos/200/401",
 	},
 	{
 		id: 6,
@@ -52,7 +52,7 @@ const listado = [
 		nombre: "Manantial",
 		ubicacion: "Carrera 50 #87-29, San Fernando, Itagüi, Antioquia",
 		descripcion: "Excelente precio y servicio",
-		img: "https://picsum.photos/199/299",
+		img: "https://picsum.photos/199/399",
 	},
 	{
 		id: 7,
@@ -60,7 +60,7 @@ const listado = [
 		nombre: "Apartamento Amoblado",
 		ubicacion: "Barrio Provenza Calle 8av #39-151",
 		descripcion: "Cerca de la zona rosa",
-		img: "https://picsum.photos/201/301",
+		img: "https://picsum.photos/201/401",
 	},
 	{
 		id: 8,
@@ -69,7 +69,7 @@ const listado = [
 		ubicacion: "Calle 10 #41-21, El Poblado, Medellín, Antioquia",
 		descripcion:
 			"Este hotel sencillo se encuentra a 3 minutos a pie del parque Lleras y su vida nocturna.",
-		img: "https://picsum.photos/199/301",
+		img: "https://picsum.photos/199/401",
 	},
 ];
 
@@ -93,8 +93,10 @@ export default function Listado() {
 									<div className="d-flex justify-content-between">
 										<div className="mb-2">
 											<div className="d-flex align-items-end">
-												<h6 className="m-0 pe-1">{itemListado.categoria}</h6>
-												<div >
+												<h6 className="m-0 pe-1 text-muted">
+													{itemListado.categoria}
+												</h6>
+												<div className=" color-estrellas">
 													<svg
 														xmlns="http://www.w3.org/2000/svg"
 														width="16"
@@ -164,7 +166,7 @@ export default function Listado() {
 											<p className="text-nowrap">Muy bueno</p>
 										</div>
 									</div>
-									<div className="d-flex">
+									<div className="d-flex justify-content-around">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											width="24"
@@ -175,7 +177,12 @@ export default function Listado() {
 										>
 											<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
 										</svg>
-										<p className="card-text">{itemListado.ubicacion}</p>
+										<div className="d-flex justify-content-between">
+											<p className="card-text">{itemListado.ubicacion}</p>&nbsp;
+											<a className="color-estrellas text-nowrap" href="/">
+												MOSTRAR UBICACIÓN
+											</a>
+										</div>
 									</div>
 									<p className="card-text">{itemListado.descripcion}</p>
 									<div className="d-grid align-items-end">
