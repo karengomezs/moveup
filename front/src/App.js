@@ -8,9 +8,11 @@ import { UserProvider } from "./context/user-context";
 function App() {
 	return (
 		<UserProvider>
-			<Navbar />
-			<Routes />
-			<Footer />
+			<div className="min-vh-100 d-flex flex-column">
+				<Navbar />
+				<Routes />
+				<Footer />
+			</div>
 		</UserProvider>
 	);
 }
