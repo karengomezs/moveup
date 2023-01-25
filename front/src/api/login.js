@@ -23,7 +23,7 @@ function fakeResponse(user, password) {
     }
 
     return new Promise((resolve, reject) => {
-        if (user === "admin@gmail.com" && password === "123") {
+        if (user === "admin@gmail.com" && password === "123456") {
             resolve(fakeUser)
         }
         else {
