@@ -9,6 +9,7 @@
 /* Typigrafia */
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
 body {
 	--bs-body-font-family: "Quicksand";
@@ -17,6 +18,9 @@ body {
 /* Colores */
 
 $orange: #f0572d;
+$color_secondary: #31363F;
+$color_terceary: #191B1D;
+$color_fourteary: #DFE4EA;
 
 .navButton {
 	color: $orange;
@@ -97,4 +101,72 @@ hr {
 
 .color-estrellas {
 	color: $orange;
+}
+
+
+//COMPONENTE SEARCHER
+.searcher{
+	padding: 2%;
+	background-color: $color_secondary;
+	height: 161px;
+
+	.gps_icon{
+		//por establecer
+	}
+	
+	.calendar_icon{
+		//por establecer
+	}
+
+	h1{
+
+		font-family: Roboto;
+		font-size: 36px;
+		font-weight: 700;
+		line-height: 42px;
+		letter-spacing: 0em;
+		text-align: center;
+		color: aliceblue;
+	}
+	input{
+		height: 40px;
+
+		//styleName: text 1;
+		font-family: Roboto;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 16px;
+		letter-spacing: 0em;
+		text-align: left;
+	}
+	button{
+		height: 40px;
+		width: 206px;
+		left: 0px;
+		top: 0px;
+		border-radius: 5px;
+
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		text-align: center;
+
+		
+
+		left: 0%;
+		right: 0%;
+		top: 0%;
+		bottom: 0%;
+
+		/* B -DB COLOR PRINCIPAL */
+
+		background: $orange;
+
+		/* botton sombra */
+
+		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+		border-radius: 5px;
+	}
 }
