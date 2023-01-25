@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import userContext from "../context/user-context";
 import { signApi } from "../api/sign";
-// const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 export default function FormSignup() {
   const [name, setName] = useState("");
@@ -10,19 +10,39 @@ export default function FormSignup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
   const navigate = useNavigate();
   const userState = useContext(userContext);
+
+  /*
+  El campo de email sea un email válido
+Que la contraseña tenga más de 6 caracteres.
+Que las contraseñas coincidan
+
+Botón Crear Cuenta: Al dar click que funcione la validación. Para esto almacenar un correo electrónico y 
+contraseña de prueba en un objeto y comparar con estos datos los datos ingresados.
+
+Credenciales inválidas: Si falla la validación el formulario debe indicar 
+“Por favor vuelva a intentarlo, sus credenciales son inválidas”.
+
+Credenciales válidas: Se simulará que el usuario está logueado. Desaparecerá el formulario de login 
+volveremos a la Home inicial pero en el header a la derecha, en vez de ver los botones de inicio de sesión y registro veremos: Hola [nombre_de_usuario], un link de cerrar sesión y un avatar circular con las iniciales del usuario.
+  */
 
   return (
     <form
       onSubmit={async (e) => {
         e.preventDefault();
+        const nameLength = name.length > 4;
+        const passwordLength = password.length > 5;
+        const emailValid = emailRegex.test(email);
+        const isSamePassword = password === confirmPassword;
 
-        if (password === confirmPassword) {
+        if (isSamePassword && nameLength && passwordLength && emailValid) {
           const response = await signApi(name, lastName, email, password);
+
           if (response?.token) {
             userState.setUser(response.user);
-
             navigate("/");
           }
         } else {
