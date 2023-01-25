@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import userContext from "../context/user-context";
 import { signApi } from "../api/sign";
+// eslint-disable-next-line
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 export default function FormSignup() {
@@ -11,20 +12,15 @@ export default function FormSignup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [confirmPasswordError, setConfirmPasswordError] = useState(false);
+
   const navigate = useNavigate();
   const userState = useContext(userContext);
 
   /*
-  El campo de email sea un email válido
-Que la contraseña tenga más de 6 caracteres.
-Que las contraseñas coincidan
-
-Botón Crear Cuenta: Al dar click que funcione la validación. Para esto almacenar un correo electrónico y 
-contraseña de prueba en un objeto y comparar con estos datos los datos ingresados.
-
-Credenciales inválidas: Si falla la validación el formulario debe indicar 
-“Por favor vuelva a intentarlo, sus credenciales son inválidas”.
-
 Credenciales válidas: Se simulará que el usuario está logueado. Desaparecerá el formulario de login 
 volveremos a la Home inicial pero en el header a la derecha, en vez de ver los botones de inicio de sesión y registro veremos: Hola [nombre_de_usuario], un link de cerrar sesión y un avatar circular con las iniciales del usuario.
   */
@@ -46,31 +42,39 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
             navigate("/");
           }
         } else {
-          console.log("las contraseñas no son iguales");
+          setNameError(!nameLength);
+          setEmailError(!emailValid);
+          setPasswordError(!passwordLength);
+          setConfirmPasswordError(!isSamePassword);
         }
       }}
     >
-      <h2 className="text-center">Welcome to Booking App</h2>
+      <h2 className="text-center">Crear Cuenta</h2>
 
       <div className="row">
         <div className="col mb-3">
           <label htmlFor="name" className="form-label">
-            First Name
+            Nombre
           </label>
           <input
             onChange={(e) => {
               setName(e.target.value);
+              setNameError(false);
             }}
             id="name"
             value={name}
             type="text"
-            className="form-control"
+            className={`form-control ${nameError ? "is-invalid" : ""}`}
             placeholder="Example: Mariam"
           />
+
+          <div className="invalid-feedback">
+            Por favor ingrese más de 4 caracteres
+          </div>
         </div>
         <div className="col mb-3">
           <label htmlFor="last-name" className="form-label">
-            Last Name
+            Apellido
           </label>
           <input
             onChange={(e) => {
@@ -87,53 +91,63 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
 
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
-          Email address
+          Correo electrónico
         </label>
         <input
           onChange={(e) => {
             setEmail(e.target.value);
+            setEmailError(false);
           }}
           value={email}
           type="email"
-          className="form-control"
+          className={`form-control ${emailError ? "is-invalid" : ""}`}
           id="email"
           placeholder="Example: mariam@gmail.com"
         />
+        <div className="invalid-feedback">
+          Por favor ingrese un correo válido
+        </div>
       </div>
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
-          Password
+          Contraseña
         </label>
         <input
           onChange={(e) => {
             setPassword(e.target.value);
+            setPasswordError(false);
           }}
           value={password}
           type="password"
-          className="form-control"
+          className={`form-control ${passwordError ? "is-invalid" : ""}`}
           id="password"
         />
+        <div className="invalid-feedback">
+          Por favor ingrese más de 5 caracteres
+        </div>
       </div>
       <div className="mb-3">
         <label htmlFor="confirm-pass" className="form-label">
-          Confirm Password
+          Confirmar contraseña
         </label>
         <input
           onChange={(e) => {
             setConfirmPassword(e.target.value);
+            setConfirmPasswordError(false);
           }}
           value={confirmPassword}
           type="password"
-          className="form-control"
+          className={`form-control ${confirmPasswordError ? "is-invalid" : ""}`}
           id="cofirm-pass"
         />
+        <div className="invalid-feedback">Las contraseñas no coinciden</div>
       </div>
 
       <button type="submit" className="btn btn-primary mx-auto d-block mb-3">
-        Sign Up
+        Crear Cuenta
       </button>
       <p className="text-center">
-        ¿Do you have an account?<Link to="/login"> Log In</Link>
+        ¿Ya tienes una cuenta?<Link to="/login"> Iniciar Sesión</Link>
       </p>
     </form>
   );

@@ -6,6 +6,7 @@ import userContext from "../context/user-context";
 export default function FormLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const userState = useContext(userContext);
 
@@ -13,23 +14,29 @@ export default function FormLogin() {
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-        const response = await loginApi(email, password);
 
-        if (response?.token) {
-          userState.setUser(response.user);
-          navigate("/");
+        try {
+          const response = await loginApi(email, password);
+          if (response?.token) {
+            userState.setUser(response.user);
+
+            navigate("/");
+          }
+        } catch (error) {
+          setError(error.message);
         }
       }}
     >
-      <h2 className="text-center">Welcome to Booking App</h2>
+      <h2 className="text-center">Iniciar Sesión</h2>
 
       <div className="mb-3">
         <label htmlFor="email" className="form-label">
-          Email address
+          Correo electrónico
         </label>
         <input
           onChange={(e) => {
             setEmail(e.target.value);
+            setError("");
           }}
           value={email}
           type="email"
@@ -40,11 +47,12 @@ export default function FormLogin() {
       </div>
       <div className="mb-3">
         <label htmlFor="password" className="form-label">
-          Password
+          Contraseña
         </label>
         <input
           onChange={(e) => {
             setPassword(e.target.value);
+            setError("");
           }}
           value={password}
           type="password"
@@ -53,12 +61,18 @@ export default function FormLogin() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary mx-auto d-block ">
-        Sign In
+      <button type="submit" className="btn btn-primary mx-auto d-block mb-3">
+        Ingresar
       </button>
       <p className="text-center">
-        ¿Don´t you have an account? <Link to="/signup"> Sign Up</Link>
+        ¿Aún no tienes cuenta? <Link to="/signup"> Registrate</Link>
       </p>
+
+      {error.length > 0 && (
+        <div class="alert alert-danger" role="alert">
+          {error}
+        </div>
+      )}
     </form>
   );
 }

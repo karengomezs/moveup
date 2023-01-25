@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../images/logo1.png";
 import { Link } from "react-router-dom";
-import Footer from "../components/footer";
+import Footer from "./footer";
+import Avatar from "./avatar";
+import UserContext from "../context/user-context";
 
 export default function Navbar() {
+  const userState = useContext(UserContext);
+
   return (
     <nav className="navbar navbar-expand-md bg-body-tertiary">
       <div className="container-fluid">
@@ -28,12 +32,38 @@ export default function Navbar() {
           className="collapse navbar-collapse grid gap-4 justify-content-end"
           id="navbarSupportedContent"
         >
-          <Link to="signup">
-            <button className="navButton px-5 py-2">Crear cuenta</button>
-          </Link>
-          <Link to="/login">
-            <button className="navButton px-5 py-2">Iniciar Sesion</button>
-          </Link>
+          {!userState.user && (
+            <>
+              <Link to="signup">
+                <button className="navButton px-5 py-2">Crear cuenta</button>
+              </Link>
+              <Link to="/login">
+                <button className="navButton px-5 py-2">Iniciar Sesion</button>
+              </Link>
+            </>
+          )}
+          {userState.user && (
+            <div className="container d-flex justify-content-end gap-4">
+              <div className="d-flex column align-items-center">
+                <Avatar
+                  nameProp={userState.user.name}
+                  lastNameProp={userState.user.lastName}
+                />
+              </div>
+              <div className="text-center">
+                <h5>Hola {userState?.user?.name}</h5>
+                <button
+                  onClick={() => {
+                    userState.logOut();
+                  }}
+                  type="button"
+                  className="btn btn-light"
+                >
+                  Cerrar Sesión
+                </button>
+              </div>
+            </div>
+          )}
         </div>
         <div
           className="modal fade"
