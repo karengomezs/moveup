@@ -10,9 +10,10 @@ export default function Main() {
 
 	return (
 		<>
-		<Searcher/>
+		
 		<div className="vh-100">
 			{userState.user && <h1>Hola! {userState?.user?.name}</h1>}
+			<Searcher/>
 			<Categorias />
 		</div>		
 		</>
