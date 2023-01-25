@@ -79,8 +79,8 @@ export default function Listado() {
       <p className="fs-4 fw-bold">Recomendaciones</p>
       <div className="anchoLista">
         {listado.map((itemListado) => (
-          <div className="card mb-3 anchoLista">
-            <div key={itemListado.id} className="row g-0 shadow">
+          <div key={itemListado.id} className="card mb-3 anchoLista">
+            <div className="row g-0 shadow">
               <div className="col-3">
                 <img
                   src={itemListado.img}
