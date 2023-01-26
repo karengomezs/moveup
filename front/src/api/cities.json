@@ -1,0 +1,19 @@
+{
+    "cities":[
+{
+    "id":1,
+    "name":"Medellin"
+},
+{
+    "id":2,
+    "name":"Cali"
+},
+{
+    "id":3,
+    "name":"Bogotá"
+},
+{
+    "id":4,
+    "name":"Barranquilla"
+}
+]}
