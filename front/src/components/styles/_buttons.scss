@@ -9,3 +9,15 @@
     --bs-btn-disabled-color: var(--primary);
     --bs-btn-disabled-border-color: var(--primary);
 }
+
+.btn-primary {
+    --bs-btn-bg: var(--primary);
+    --bs-btn-border-color: var(--primary);
+    --bs-btn-hover-bg: var(--primary-dark);
+    --bs-btn-hover-border-color: var(--primary-dark);
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-bg: var(--primary-dark);
+    --bs-btn-active-border-color: var(--primary-dark);
+    --bs-btn-disabled-bg: var(--primary);
+    --bs-btn-disabled-border-color: var(--primary);
+}
