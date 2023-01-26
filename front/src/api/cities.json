@@ -1,19 +1,24 @@
+
 {
     "cities":[
 {
     "id":1,
-    "name":"Medellin"
+    "city":"Medellin",
+    "country": "Colombia"
 },
 {
     "id":2,
-    "name":"Cali"
+    "city":"Cali",
+    "country": "Colombia"
 },
 {
     "id":3,
-    "name":"Bogotá"
+    "city":"Bogotá",
+    "country": "Colombia"
 },
 {
     "id":4,
-    "name":"Barranquilla"
+    "city":"Barranquilla",
+    "country": "Colombia"
+}]
 }
-]}
