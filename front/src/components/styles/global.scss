@@ -1,4 +1,8 @@
-@import "../../../node_modules//bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "./colors";
+@import "./buttons";
+@import "./text";
+@import "./background";
 
 /* Scroll */
 
@@ -12,28 +16,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
+
 body {
 	--bs-body-font-family: "Quicksand";
+	--bs-link-color: var(--primary);
+	--bs-link-hover-color: var(--primary-dark);
+	--bs-primary-rgb: rgba(240, 87, 45, 1);
 }
 
-/* Colores */
 
+/* Colores */
 $orange: #f0572d;
 $color_secondary: #31363F;
 $color_terceary: #191B1D;
 $color_fourteary: #DFE4EA;
-
-.navButton {
-	color: $orange;
-	background-color: white;
-	border: 1px solid $orange;
-	border-radius: 0.5rem;
-}
-
-.navButton:hover {
-	background-color: $orange;
-	color: aliceblue;
-}
 
 /* Tarjetas */
 
@@ -61,12 +57,6 @@ $color_fourteary: #DFE4EA;
 	}
 }
 
-/* footer */
-
-.bg-footer {
-	background-color: $orange;
-}
-
 /* Modal */
 
 .bg-modal {
@@ -86,40 +76,21 @@ hr {
 	gap: 1rem;
 }
 
-/* bg-button listado */
-
-.bg-button {
-	color: $orange;
-	background-color: white;
-	border: 1px solid $orange;
-	border-radius: 0.5rem;
-}
-
-.bg-button:hover {
-	background-color: $orange;
-	color: aliceblue;
-}
-
-.color-estrellas {
-	color: $orange;
-}
-
-
 //COMPONENTE SEARCHER
-.searcher{
+.searcher {
 	padding: 2%;
 	background-color: $color_secondary;
 	height: 161px;
 
-	.gps_icon{
-		//por establecer
-	}
-	
-	.calendar_icon{
+	.gps_icon {
 		//por establecer
 	}
 
-	h1{
+	.calendar_icon {
+		//por establecer
+	}
+
+	h1 {
 
 		font-family: Roboto;
 		font-size: 36px;
@@ -129,7 +100,8 @@ hr {
 		text-align: center;
 		color: aliceblue;
 	}
-	input{
+
+	input {
 		height: 40px;
 
 		//styleName: text 1;
@@ -140,7 +112,8 @@ hr {
 		letter-spacing: 0em;
 		text-align: left;
 	}
-	button{
+
+	button {
 		height: 40px;
 		width: 206px;
 		left: 0px;
@@ -155,33 +128,33 @@ hr {
 		text-align: center;
 
 
-/* Listado */
+		/* Listado */
 
-.anchoLista {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-	// max-width: 540px;
-	gap: 1rem;
-}
+		.anchoLista {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+			// max-width: 540px;
+			gap: 1rem;
+		}
 
-/* bg-button listado */
+		/* bg-button listado */
 
-.bg-button {
-	color: $orange;
-	background-color: white;
-	border: 1px solid $orange;
-	border-radius: 0.5rem;
-}
+		.bg-button {
+			color: $orange;
+			background-color: white;
+			border: 1px solid $orange;
+			border-radius: 0.5rem;
+		}
 
-.bg-button:hover {
-	background-color: $orange;
-	color: aliceblue;
-}
+		.bg-button:hover {
+			background-color: $orange;
+			color: aliceblue;
+		}
 
-.color-estrellas {
-	color: $orange;
-}
-		
+		.color-estrellas {
+			color: $orange;
+		}
+
 
 
 		left: 0%;

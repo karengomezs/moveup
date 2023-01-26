@@ -61,7 +61,10 @@ export default function FormLogin() {
         />
       </div>
 
-      <button type="submit" className="btn btn-primary mx-auto d-block mb-3">
+      <button
+        type="submit"
+        className="btn btn-outline-primary mx-auto d-block mb-3"
+      >
         Ingresar
       </button>
       <p className="text-center">

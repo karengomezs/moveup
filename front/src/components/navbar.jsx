@@ -34,10 +34,14 @@ export default function Navbar() {
           {!userState.user && (
             <>
               <Link to="signup">
-                <button className="navButton px-5 py-2">Crear cuenta</button>
+                <button className="btn btn-outline-primary px-5 py-2">
+                  Crear cuenta
+                </button>
               </Link>
               <Link to="/login">
-                <button className="navButton px-5 py-2">Iniciar Sesion</button>
+                <button className="btn btn-outline-primary px-5 py-2">
+                  Iniciar Sesion
+                </button>
               </Link>
             </>
           )}

@@ -143,7 +143,10 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
         <div className="invalid-feedback">Las contraseñas no coinciden</div>
       </div>
 
-      <button type="submit" className="btn btn-primary mx-auto d-block mb-3">
+      <button
+        type="submit"
+        className="btn btn-outline-primary mx-auto d-block mb-3"
+      >
         Crear Cuenta
       </button>
       <p className="text-center">
