@@ -4,6 +4,7 @@ import userContext from "../context/user-context";
 import { signApi } from "../api/sign";
 // eslint-disable-next-line
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const nameRegex = /\s/;
 
 export default function FormSignup() {
   const [name, setName] = useState("");
@@ -30,11 +31,18 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
       onSubmit={async (e) => {
         e.preventDefault();
         const nameLength = name.length > 4;
+        const hasWhiteSpace = nameRegex.test(name);
         const passwordLength = password.length > 5;
         const emailValid = emailRegex.test(email);
         const isSamePassword = password === confirmPassword;
 
-        if (isSamePassword && nameLength && passwordLength && emailValid) {
+        if (
+          isSamePassword &&
+          nameLength &&
+          !hasWhiteSpace &&
+          passwordLength &&
+          emailValid
+        ) {
           const response = await signApi(name, lastName, email, password);
 
           if (response?.token) {
@@ -42,7 +50,7 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
             navigate("/");
           }
         } else {
-          setNameError(!nameLength);
+          setNameError(!nameLength || hasWhiteSpace);
           setEmailError(!emailValid);
           setPasswordError(!passwordLength);
           setConfirmPasswordError(!isSamePassword);
@@ -69,7 +77,7 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
           />
 
           <div className="invalid-feedback">
-            Por favor ingrese más de 4 caracteres
+            Por favor ingrese más de 4 caracteres, no agregue espacios en blanco
           </div>
         </div>
         <div className="col mb-3">
