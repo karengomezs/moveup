@@ -30,7 +30,7 @@ export default function Categorias() {
 	];
 
 	return (
-		<div className="container px-3">
+		<div className="container pt-5">
 			<p className="fs-4 fw-bold">Buscar por tipo de alojamiento</p>
 			<div className="cards">
 				{categorias.map((categoria) => (
