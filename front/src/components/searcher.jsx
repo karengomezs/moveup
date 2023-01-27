@@ -8,9 +8,9 @@ export default function Searcher() {
 					<h1 className="fs-2 fw-bold text-light">Lorem Ipsum</h1>
 				</div>
 				<form>
-					<div className="container text-center">
+					<div className="container d-flex justify-content-center">
 						<div className="row justify-content-center input-group">
-							<div className="col col-sm-12 col-md-5 p-2">
+							<div className="col-sm-12 col-md-5 p-2">
 								<div className="input-group">
 									<select className="form-select border border-0 shadow-none">
 										<option value="" selected>
@@ -23,7 +23,7 @@ export default function Searcher() {
 									</select>
 								</div>
 							</div>
-							<div className="col col-sm-12 col-md-5 p-2">
+							<div className="col-sm-12 col-md-5 p-2">
 								<div className="input-group">
 									<input
 										type="date"
