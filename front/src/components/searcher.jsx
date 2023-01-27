@@ -1,49 +1,55 @@
 import React from "react";
 
 export default function Searcher() {
-    return (
-        <>
-        <div class="container text-center p-3 mb-2 bg-primary-subtle text-emphasis-primary">
-        {/*espacio del titulo */}
-            <div class="row justify-content-md-center">
-                <div class="col">
-                    <h1>ESPACIO DEL TITULO</h1>
-                </div>
-            </div>
-        {/*espacio del parágrafo */}
-            <div class="row justify-content-md-center">
-                <div class="col">
-                    <p>Espacio para el Parágrafo</p>
-                </div> 
-            </div>
-        {/*comienzo del formulario */}
-            <form onClick={'Submit'}>
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mb-3">
-                        <select class="form-select" id="inputGroupSelect02">
-                            <option selected>Choose...</option>
-                            <option value="1">Bogotá</option>
-                            <option value="2">Medellín</option>
-                            <option value="3">Barranquilla</option>
-                        </select>
-                    <label class="input-group-text" for="inputGroupSelect02">Ciudad</label>
-                </div>
-            </div>
-                <div class="col-md-2">
-                <div class="input-group">
-                    <span class="input-group-text">Calendario</span>
-                    <input type="date" aria-label="going" class="form-control"/>
-                    <input type="date" aria-label="return" class="form-control"/>
-                </div>
-                </div>
-                <div class="col col-lg-2">
-                <input class="btn btn-primary" type="submit" value="Submit"/>
-                </div>
-            </div>
-            </form>
-        {/*fin del formulario */}
-        </div>
-        </>
-    )
+	return (
+		<>
+			<div className="bg-buscador py-5">
+				<div className="d-flex justify-content-center">
+					<h1 className="fs-2 fw-bold text-light">Lorem Ipsum</h1>
+				</div>
+				<form>
+					<div className="container text-center">
+						<div className="row justify-content-center input-group">
+							<div className="col col-sm-12 col-lg-5 p-2">
+								<div className="input-group">
+									<select className="form-select border border-0 shadow-none">
+										<option value="" selected>
+											¿A donde vamos ir?
+										</option>
+										<option value="1">Medellin</option>
+										<option value="2">Barranquilla</option>
+										<option value="3">Bogota</option>
+										<option value="4">Cali</option>
+									</select>
+								</div>
+							</div>
+							<div className="col col-sm-12 col-lg-5 p-2">
+								<div className="input-group">
+									<input
+										type="date"
+										aria-label="checkIn"
+										className="form-control border border-0 shadow-none"
+										placeholder="Check in"
+									/>
+									<input
+										type="date"
+										aria-label="checkOut"
+										className="form-control border border-0 shadow-none"
+										placeholder="Check out"
+									/>
+								</div>
+							</div>
+							<div className="col p-2">
+								<div className="d-grid">
+									<button type="submit" className="btn boton-busqueda">
+										Buscar
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</>
+	);
 }
