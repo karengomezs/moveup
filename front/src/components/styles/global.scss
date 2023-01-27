@@ -75,6 +75,11 @@ hr {
 	// max-width: 540px;
 	gap: 1rem;
 }
+@media screen and (max-width: 540px) {
+	.anchoLista {
+		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	}
+}
 
 /* bg-button listado */
 
