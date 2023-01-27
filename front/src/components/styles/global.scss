@@ -1,4 +1,8 @@
-@import "../../../node_modules//bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "./colors";
+@import "./buttons";
+@import "./text";
+@import "./background";
 
 /* Scroll */
 
@@ -12,28 +16,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 
+
 body {
 	--bs-body-font-family: "Quicksand";
+	--bs-link-color: var(--primary);
+	--bs-link-hover-color: var(--primary-dark);
+	--bs-primary-rgb: rgba(240, 87, 45, 1);
 }
 
-/* Colores */
 
+/* Colores */
 $orange: #f0572d;
 $color_secondary: #31363f;
 $color_terceary: #191b1d;
 $color_fourteary: #dfe4ea;
-
-.navButton {
-	color: $orange;
-	background-color: white;
-	border: 1px solid $orange;
-	border-radius: 0.5rem;
-}
-
-.navButton:hover {
-	background-color: $orange;
-	color: aliceblue;
-}
 
 /* Tarjetas */
 
@@ -59,12 +55,6 @@ $color_fourteary: #dfe4ea;
 	.cards {
 		grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
 	}
-}
-
-/* footer */
-
-.bg-footer {
-	background-color: $orange;
 }
 
 /* Modal */

@@ -79,8 +79,8 @@ export default function Listado() {
       <p className="fs-4 fw-bold">Recomendaciones</p>
       <div className="anchoLista">
         {listado.map((itemListado) => (
-          <div className="card mb-3 anchoLista">
-            <div key={itemListado.id} className="row g-0 shadow">
+          <div key={itemListado.id} className="card mb-3 anchoLista">
+            <div className="row g-0 shadow">
               <div className="col-3">
                 <img
                   src={itemListado.img}
@@ -96,7 +96,7 @@ export default function Listado() {
                         <h6 className="m-0 pe-1 text-muted">
                           {itemListado.categoria}
                         </h6>
-                        <div className=" color-estrellas">
+                        <div className="text-primary">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -179,16 +179,14 @@ export default function Listado() {
                     </svg>
                     <div className="d-flex justify-content-between">
                       <p className="card-text">{itemListado.ubicacion}</p>&nbsp;
-                      <a className="color-estrellas text-nowrap" href="/">
+                      <a className="text-nowrap" href="/">
                         MOSTRAR UBICACIÓN
                       </a>
                     </div>
                   </div>
                   <p className="card-text">{itemListado.descripcion}</p>
                   <div className="d-grid align-items-end">
-                    <button className="btn shadow-none bg-button">
-                      ver mas
-                    </button>
+                    <button className="btn btn-outline-primary">ver mas</button>
                   </div>
                 </div>
               </div>
