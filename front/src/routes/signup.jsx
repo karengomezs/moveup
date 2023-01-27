@@ -1,9 +1,9 @@
-import FormLogin from "../components/form-login";
+import FormSignup from "../components/form-signup";
 
-export default function Login() {
+export default function Signup() {
   return (
     <div className="container flex-grow-1 d-flex flex-column justify-content-center align-items-center">
-      <FormLogin />
+      <FormSignup />
     </div>
   );
 }
