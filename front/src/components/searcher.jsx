@@ -1,35 +1,18 @@
 
-import React, { useState, useEffect } from "react";
-import { helperHttp } from "../api/helperHttp";
+import React  from "react";
 /*importe de iconos Font Awesome */
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 // import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 
 
-//se declara formulario vacio como inicializacion fake para que cargue el state con estos valores por default
-const initialForm = {
-  "id":null,
-  "city":""
-}
-
-
 export default function Searcher() {
   
-
-  //se declaran useStates
-  const [form,setForm] = useState(initialForm)
-  
-  //captura de cambios
-  const handleChange = (e) => {}
-  const handleSubmit = (e) => {}
-  //inicializamos la base de datos
-  const [cities, setCities] = useState([]);
   
   return (
     <>
       <div className="searcher">
-      <form onSubmit={handleSubmit}>
+      <form>
         <div className="container text-center">
           <div className="row">
             <div className="col-sm-12">
@@ -38,21 +21,26 @@ export default function Searcher() {
           </div>
           <div className="row justify-content-md-center input-group">
             <div className="col-sm-4">
-            
             <div class="input-group">
                 {/* <span class="input-group-text"><i class="bi bi-geo-alt"></i></span> */}
-                <input type="text" aria-label={form.city} class="form-control" placeholder="¿A donde vamos ir?" onChange={handleChange}/>
+                <select class="form-select">
+                  <option selected> ¿A donde vamos ir? </option>
+                  <option value="1">Medellin</option>
+                  <option value="2">Barranquilla</option>
+                  <option value="3">Bogota</option>
+                  <option value="4">Cali</option>
+                </select>
               </div>
             </div>
             <div className="col-sm-4">
               <div class="input-group">
                 {/* {<span class="input-group-text">{<FontAwesomeIcon icon={faCalendar} className="calendar_icon"/>}</span>} */}
-                <input type="date" aria-label="First name" class="form-control" placeholder="Check in" onChange={handleChange}/>
-                <input type="date" aria-label="Last name" class="form-control" placeholder="Check out" onChange={handleChange}/>
+                <input type="date" aria-label="checkIn" class="form-control" placeholder="Check in"/>
+                <input type="date" aria-label="checkOut" class="form-control" placeholder="Check out"/>
               </div>
             </div>
             <div className="col-sm-2">
-              <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Buscar</button>
+              <button type="submit" className="btn btn-primary">Buscar</button>
             </div>
           </div>
         </div>
@@ -62,22 +50,3 @@ export default function Searcher() {
   );
 
 }
-
-
-//==================================================
-//funcion CRUD
-const searcherApi = () =>{
-  //POR ESTABLECER CONEXION CON API Y GENERAR PETICIONES
-
-  //invocamos el helper para las peticiones
-  const api = helperHttp();
-  //declaramos el endpoint
-  const url = "localhost:5000/cities"
-
-
-  return(
-    null
-  );   
-}
-
-//
