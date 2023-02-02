@@ -1,51 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { ContextGlobal } from "../context/context.global";
 
 export default function Categorias() {
-	const categorias = [
-		{
-			id: 1,
-			nombre: "Hoteles",
-			cantidad: 45965,
-			image: "https://picsum.photos/200/198",
-		},
+	const { detalles } = useContext(ContextGlobal);
 
-		{
-			id: 2,
-			nombre: "Hostales",
-			cantidad: 9865,
-			image: "https://picsum.photos/200/200",
-		},
-		{
-			id: 3,
-			nombre: "Apartamentos",
-			cantidad: 18783,
-			image: "https://picsum.photos/200/199",
-		},
-		{
-			id: 4,
-			nombre: "Bed & Breakfast",
-			cantidad: 3992,
-			image: "https://picsum.photos/200/201",
-		},
-	];
+	console.log(detalles);
+
+	const grupoCategorias = detalles.reduce((allCategorias, detalles) => {
+		return Array.from(new Set([...allCategorias, detalles.categoria]));
+	}, []);
+
+	console.log(grupoCategorias);
+
+	const indiceCategorias = grupoCategorias.map((categoria) => ({ categoria }));
 
 	return (
 		<div className="container pt-5">
 			<p className="fs-4 fw-bold">Buscar por tipo de alojamiento</p>
 			<div className="cards">
-				{categorias.map((categoria) => (
-					<div key={categoria.id} className="cards-border">
+				{indiceCategorias.map((detalle, i) => (
+					<div key={i} className="cards-border">
 						<div className="d-flex justify-content-center w-100">
 							<img
 								className="cards-image"
-								src={categoria.image}
-								alt={categoria.nombre}
+								src={detalle.img}
+								alt={detalle.nombre}
 							/>
 						</div>
 						<div>
-							<h5 className="fw-bolder pt-2 px-3">{categoria.nombre}</h5>
+							<h5 className="fw-bolder pt-2 px-3">{detalle.categoria}</h5>
 							<p className="px-3">
-								{categoria.cantidad} <span>hoteles</span>
+								{detalle.cantidad} <span>hoteles</span>
 							</p>
 						</div>
 					</div>

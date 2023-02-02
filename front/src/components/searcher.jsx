@@ -13,7 +13,7 @@ export default function Searcher() {
 							<div className="col-sm-12 col-md-5 p-2">
 								<div className="input-group">
 									<select className="form-select border border-0 shadow-none">
-										<option value="" selected>
+										<option value="" defaultValue>
 											¿A donde vamos ir?
 										</option>
 										<option value="1">Medellin</option>

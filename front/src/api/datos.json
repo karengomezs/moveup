@@ -1,0 +1,98 @@
+[
+	{
+		"id": 1,
+		"producto": "natacion",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/200/400"
+	},
+	{
+		"id": 2,
+		"producto": "aerobicos",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/199/400"
+	},
+	{
+		"id": 3,
+		"producto": "artes marciales",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/201/400"
+	},
+	{
+		"id": 4,
+		"producto": "natacion",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/200/399"
+	},
+	{
+		"id": 5,
+		"producto": "aerobicos",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/200/401"
+	},
+	{
+		"id": 6,
+		"producto": "artes marciales",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/199/399"
+	},
+	{
+		"id": 7,
+		"producto": "yoga",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/201/401"
+	},
+	{
+		"id": 8,
+		"producto": "yoga",
+		"calificacion": "si canlificacion",
+		"nombreClase": "renderizar LP",
+		"ubicacionClase": "renderizar LP",
+		"descripcionClase": "(pequeña) renderizar LP",
+		"profesorDisponible": "renderizar LP",
+		"fechasDisponibles": "detalles",
+		"horariosDisponibles": "detalles",
+		"img": "https://picsum.photos/199/401"
+	}
+]
