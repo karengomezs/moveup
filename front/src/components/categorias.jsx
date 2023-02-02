@@ -30,7 +30,7 @@ export default function Categorias() {
 
   return (
     <div className="container pt-5">
-      <p className="fs-4 fw-bold">Buscar por tipo de alojamiento</p>
+      <p className="fs-4 fw-bold">Buscar por tipo de clase</p>
       <div className="cards">{eachCategory}</div>
     </div>
   );
