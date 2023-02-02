@@ -33,6 +33,8 @@ const producto = [
     ubicacionClase: "Jardin CO",
     descripcionClase: "camina por las montañas de Jardín con un grupo",
     profesorDisponible: "Camila",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/199/400",
   },
   {
@@ -44,6 +46,8 @@ const producto = [
     descripcionClase:
       "arte y deporte de origen oriental en el que se aprende defensa personal",
     profesorDisponible: "Joshua",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/201/400",
   },
   {
@@ -54,6 +58,8 @@ const producto = [
     ubicacionClase: "Armenia CO",
     descripcionClase: "Baila al ritmo de la música mientras te pones saludable",
     profesorDisponible: "Angélica",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/200/399",
   },
   {
@@ -64,6 +70,8 @@ const producto = [
     ubicacionClase: "Amazonas CO",
     descripcionClase: "Navega en el río Amazonas con tu compañero favorito",
     profesorDisponible: "Oscar",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/200/401",
   },
   {
@@ -75,6 +83,8 @@ const producto = [
     descripcionClase:
       "Realiza actividades de cardio para estar en forma y alerta",
     profesorDisponible: "Jairo",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/199/399",
   },
   {
@@ -86,6 +96,8 @@ const producto = [
     descripcionClase:
       "Recorrido en montaña y pendientes retadoras, es para ti?",
     profesorDisponible: "Chimuelo",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/201/401",
   },
   {
@@ -96,6 +108,8 @@ const producto = [
     ubicacionClase: "Cali CO",
     descripcionClase: "Deporte de combate y sistema de defensa personal",
     profesorDisponible: "Hank",
+    // fechasDisponibles: detalles,
+    // horariosDisponibles: detalles,
     img: "https://picsum.photos/199/401",
   },
 ];
