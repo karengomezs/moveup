@@ -1,20 +1,20 @@
 import React, { useEffect, useState, useContext } from "react";
 import { getCategories } from "../api/categories";
 
-import { ContextGlobal } from "../context/context.global";
+// import { ContextGlobal } from "../context/context.global";
 
 export default function Categorias() {
-  const { detalles } = useContext(ContextGlobal);
+  // const { detalles } = useContext(ContextGlobal);
 
-  console.log(detalles);
+  // console.log(detalles);
 
-  const grupoCategorias = detalles.reduce((allCategorias, detalles) => {
-    return Array.from(new Set([...allCategorias, detalles.categoria]));
-  }, []);
+  // const grupoCategorias = detalles.reduce((allCategorias, detalles) => {
+  //   return Array.from(new Set([...allCategorias, detalles.categoria]));
+  // }, []);
 
-  console.log(grupoCategorias);
+  // console.log(grupoCategorias);
 
-  const indiceCategorias = grupoCategorias.map((categoria) => ({ categoria }));
+  // const indiceCategorias = grupoCategorias.map((categoria) => ({ categoria }));
 
   const [data, setData] = useState([]);
 

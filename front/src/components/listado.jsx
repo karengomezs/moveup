@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { getClasses } from "../api/products";
 
 // producto={
 // 	calificación: (de 1 a 5) renderizar LP
@@ -115,6 +116,14 @@ const producto = [
 ];
 
 export default function Listado() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    getCategories().then((data) => {
+      setData(data);
+    });
+  }, []);
+
   return (
     <div className="container py-5">
       <p className="fs-4 fw-bold">Recomendaciones</p>
