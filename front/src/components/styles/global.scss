@@ -75,6 +75,7 @@ hr {
 	// max-width: 540px;
 	gap: 1rem;
 }
+
 @media screen and (max-width: 540px) {
 	.anchoLista {
 		grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -101,17 +102,17 @@ hr {
 
 /* buscador*/
 
-.bg-buscador{
+.bg-buscador {
 	background-color: $color_secondary;
 }
 
-.boton-busqueda{
+.boton-busqueda {
 	color: aliceblue;
 	background-color: $orange;
 }
 
-.boton-busqueda:hover{
-		background-color: aliceblue;
+.boton-busqueda:hover {
+	background-color: aliceblue;
 }
 
 // //COMPONENTE SEARCHER
@@ -189,3 +190,7 @@ hr {
 // 		}
 // 	}
 // }
+
+.object-fit-cover {
+	object-fit: cover;
+}
