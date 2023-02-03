@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import datos from "../api/datos";
 
-export default function Listado() {
+export default function List() {
   const navigate = useNavigate();
 
   const classes = datos.map((eachClass) => {
