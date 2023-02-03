@@ -1,14 +1,21 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ContextGlobal } from "../context/context.global";
+import { getClass } from "../api/products";
+// import { ContextGlobal } from "../context/context.global";
 
 export default function Details() {
-	const params = useParams();
-	const paramsID = JSON.parse(params.id);
-	const detalleProducto = useContext(ContextGlobal);
+  const { id } = useParams();
 
-	const objetoProductos = [...detalleProducto.producto];
-	const productoDetalle = objetoProductos[paramsID - 1];
-
-	return <h2>{productoDetalle?.name || "Cargando..."}</h2>;
+  const [data, setData] = useState();
+  useEffect(() => {
+    getClass(id).then((data) => {
+      //   console.log(data);
+      setData(data);
+    });
+    // getCategories().then((data) => {
+    //   setData(data);
+    // });
+  }, []);
+  console.log(data);
+  return <h2>hola</h2>;
 }

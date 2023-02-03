@@ -11,7 +11,7 @@ export default function Routes() {
       <Router>
         <Route path="/" element={<Main />}></Route>
         <Route
-          path="detalle/:id"
+          path="details/:id"
           element={
             <ProtectedRoute>
               <Details />

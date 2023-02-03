@@ -1,133 +1,11 @@
-import React, { useEffect, useState, useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-
-import { getClasses } from "../api/products";
-
-// producto={
-// 	calificación: (de 1 a 5) renderizar LP
-// 	categoria: renderizar LP
-// 	nombreClase: renderizar LP
-// 	ubicacionClase: renderizar LP
-// 	descripcionClase:(pequeña) renderizar LP
-// 	profesorDisponible: renderizar LP
-// 	fechasDisponibles: detalles
-// 	horariosDisponibles: detalles
-// 	}
-
-const producto = [
-  {
-    id: 1,
-    calificación: 4,
-    categoria: "Acuáticos",
-    nombreClase: "Surf",
-    ubicacionClase: "Cartagena CO",
-    descripcionClase:
-      "Deporte que se realiza en el mar con ayuda de una tabla y un profesor",
-    profesorDisponible: "Jairo",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/200/400",
-  },
-  {
-    id: 2,
-    calificación: 4,
-    categoria: "Treckking",
-    nombreClase: "Caminata Escalera",
-    ubicacionClase: "Jardin CO",
-    descripcionClase: "Camina por las montañas de Jardín con un grupo",
-    profesorDisponible: "Camila",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/199/400",
-  },
-  {
-    id: 3,
-    calificación: 5,
-    categoria: "Artes Marciales",
-    nombreClase: "Tekondo",
-    ubicacionClase: "Medellín CO",
-    descripcionClase:
-      "Arte y deporte de origen oriental en el que se aprende defensa personal",
-    profesorDisponible: "Joshua",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/201/400",
-  },
-  {
-    id: 4,
-    calificación: 4,
-    categoria: "Aeróbicos",
-    nombreClase: "Rumba",
-    ubicacionClase: "Armenia CO",
-    descripcionClase: "Baila al ritmo de la música mientras te pones saludable",
-    profesorDisponible: "Angélica",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/200/399",
-  },
-  {
-    id: 5,
-    calificación: 5,
-    categoria: "Acuáticos",
-    nombreClase: "Remo",
-    ubicacionClase: "Amazonas CO",
-    descripcionClase: "Navega en el río Amazonas con tu compañero favorito",
-    profesorDisponible: "Oscar",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/200/401",
-  },
-  {
-    id: 6,
-    calificación: 4,
-    categoria: "Aeróbicos",
-    nombreClase: "GAP",
-    ubicacionClase: "Cartagena CO",
-    descripcionClase:
-      "Realiza actividades de cardio para estar en forma y alerta",
-    profesorDisponible: "Jairo",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/199/399",
-  },
-  {
-    id: 7,
-    calificación: 5,
-    categoria: "Trekking",
-    nombreClase: "Rumbo a la sierra nevada",
-    ubicacionClase: "Santa Martha CO",
-    descripcionClase:
-      "Recorrido en montaña y pendientes retadoras, es para ti?",
-    profesorDisponible: "Chimuelo",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/201/401",
-  },
-  {
-    id: 8,
-    calificación: 5,
-    categoria: "Artes Marciales",
-    nombreClase: "Yuyitsu",
-    ubicacionClase: "Cali CO",
-    descripcionClase: "Deporte de combate y sistema de defensa personal",
-    profesorDisponible: "Hank",
-    // fechasDisponibles: detalles,
-    // horariosDisponibles: detalles,
-    img: "https://picsum.photos/199/401",
-  },
-];
+import datos from "../api/datos";
 
 export default function Listado() {
   const navigate = useNavigate();
-  // const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   getCategories().then((data) => {
-  //     setData(data);
-  //   });
-  // }, []);
-
-  const eachClass = producto.map((eachClass) => {
+  const classes = datos.map((eachClass) => {
     return (
       <div key={eachClass.id} className="card mb-3 anchoLista">
         <div className="row g-0 shadow">
@@ -174,7 +52,7 @@ export default function Listado() {
                 <button
                   className="btn btn-outline-primary"
                   onClick={() => {
-                    navigate("/detalle/:id");
+                    navigate(`/details/${eachClass.id}`);
                   }}
                 >
                   ver mas
@@ -190,7 +68,7 @@ export default function Listado() {
   return (
     <div className="container py-5">
       <p className="fs-4 fw-bold">Recomendaciones</p>
-      <div className="anchoLista">{eachClass}</div>
+      <div className="anchoLista">{classes}</div>
     </div>
   );
 }

@@ -1,13 +1,20 @@
-export const host = "http://localhost:8080/api"
-export const apiUrl = `${host}/entrenador`
+import allProducts from "./datos.json";
+export const host = "http://localhost:8080/api";
+export const apiUrl = `${host}/product`;
 
-export async function getClasses() {
+export async function getClass(id) {
+  const url = `${apiUrl}/${id}`;
+  try {
+    // const response = await fetch(url)
+    // console.log({ id, allProducts });
+    // const data = await response.json()
 
-    try {
-        const response = await fetch(apiUrl)
-        const data = await response.json()
-        return data
-    } catch (error) {
-        console.log(error);
-    }
+    const obj = allProducts.find((product) => {
+      return product.id === parseInt(id);
+    });
+
+    return Promise.resolve(obj);
+  } catch (error) {
+    console.log(error);
+  }
 }
