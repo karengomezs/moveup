@@ -3,10 +3,9 @@ export const host = "http://localhost:8080/api";
 export const apiUrl = `${host}/product`;
 
 export async function getClass(id) {
-  const url = `${apiUrl}/${id}`;
+  // const url = `${apiUrl}/${id}`;
   try {
     // const response = await fetch(url)
-    // console.log({ id, allProducts });
     // const data = await response.json()
 
     const obj = allProducts.find((product) => {
