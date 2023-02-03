@@ -1,4 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { getClasses } from "../api/products";
 
 // producto={
@@ -116,6 +118,7 @@ const producto = [
 ];
 
 export default function Listado() {
+  const navigate = useNavigate();
   // const [data, setData] = useState([]);
 
   // useEffect(() => {
@@ -168,7 +171,14 @@ export default function Listado() {
               </div>
               <p className="card-text">{eachClass.descripcionClase}</p>
               <div className="d-grid align-items-end">
-                <button className="btn btn-outline-primary">ver mas</button>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={() => {
+                    navigate("/detalle/:id");
+                  }}
+                >
+                  ver mas
+                </button>
               </div>
             </div>
           </div>
