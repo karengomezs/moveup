@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getCategories } from "../api/categories";
 
-export default function Categorias() {
+export default function Categories() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
