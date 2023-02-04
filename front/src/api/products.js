@@ -17,3 +17,22 @@ export async function getClass(id) {
     console.log(error);
   }
 }
+
+// localhost:8080/api/products?city="medellin"&date="20/08/2020"
+export async function getClasses(city, date) {
+  // const url = `${apiUrl}/products?city=${city}&date=${date}`;
+  try {
+    // const response = await fetch(url)
+    // const data = await response.json()
+    console.log(city, date);
+    const results = allProducts.filter((product) => {
+      if (!city) {
+        return product;
+      }
+      return product.ubicacionClase === city;
+    });
+    return Promise.resolve(results);
+  } catch (error) {
+    console.log(error);
+  }
+}

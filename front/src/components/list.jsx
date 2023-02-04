@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import datos from "../api/datos";
 
-export default function Listado() {
+export default function List({ data }) {
   const navigate = useNavigate();
 
-  const classes = datos.map((eachClass) => {
+  const classes = data.map((eachClass) => {
     return (
       <div key={eachClass.id} className="card mb-3 anchoLista">
         <div className="row g-0 shadow">
           <div className="col-3">
-            <img src={eachClass.img} className="img-fluid rounded-start" />
+            <img
+              alt=""
+              src={eachClass.img}
+              className="img-fluid rounded-start"
+            />
           </div>
           <div className="col-9">
             <div className="card-body h-100 d-flex flex-column justify-content-between">
