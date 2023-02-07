@@ -4,6 +4,7 @@ export const apiUrl = `${host}/product`;
 
 export async function getClass(id) {
   // const url = `${apiUrl}/${id}`;
+
   try {
     // const response = await fetch(url)
     // const data = await response.json()
@@ -19,6 +20,7 @@ export async function getClass(id) {
 }
 
 // localhost:8080/api/products?city="medellin"&date="20/08/2020"
+
 export async function getClasses(city, date) {
   // const url = `${apiUrl}/products?city=${city}&date=${date}`;
   try {

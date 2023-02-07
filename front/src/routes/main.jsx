@@ -16,8 +16,8 @@ export default function Main() {
   return (
     <div className="min-vh-100">
       <Searcher
-        onSearch={(city, date) => {
-          getClasses(city, date).then((data) => {
+        onSearch={(a, b) => {
+          getClasses(a, b).then((data) => {
             setData(data);
           });
         }}
