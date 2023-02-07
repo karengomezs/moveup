@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getCategories } from "../api/categories";
 
-export default function Categorias() {
+export default function Categories() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getCategories().then((data) => {
+      console.log(data);
       setData(data);
     });
   }, []);
@@ -17,12 +18,12 @@ export default function Categorias() {
           <img
             className="cards-image object-fit-cover"
             src={category.url}
-            alt={category.nombre}
+            alt={category.nombreCategorias}
           />
         </div>
         <div>
-          <h5 className="fw-bolder pt-2 px-3">{category.nombre}</h5>
-          <p className="px-3">{category.descripcion}</p>
+          <h5 className="fw-bolder pt-2 px-3">{category.nombreCategorias}</h5>
+          <p className="px-3">{category.descripcionCategorias}</p>
         </div>
       </div>
     );

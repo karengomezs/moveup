@@ -1,29 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Searcher() {
+export default function Searcher({ onSearch }) {
+  const [city, setCity] = useState("");
+  const [date, setDate] = useState("01/06/2024");
   return (
     <>
       <div className="bg-buscador py-5">
         <div className="d-flex justify-content-center">
           <h1 className="fs-2 fw-bold text-light">Lorem Ipsum</h1>
         </div>
-        <form>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSearch(city, date);
+          }}
+        >
           <div className="container d-flex justify-content-center">
             <div className="row justify-content-center input-group">
               <div className="col-sm-12 col-md-5 p-2">
                 <div className="input-group">
                   <select
-                    onChange={() => {}}
-                    value={"0"}
+                    onChange={(e) => {
+                      setCity(e.target.value);
+                    }}
                     className="form-select border border-0 shadow-none"
+                    value={city}
                   >
-                    <option disabled value="0">
+                    <option disabled value="">
                       ¿A donde vamos ir?
                     </option>
-                    <option value="1">Medellin</option>
-                    <option value="2">Barranquilla</option>
-                    <option value="3">Bogota</option>
-                    <option value="4">Cali</option>
+                    <option value="Medellín CO">Medellin</option>
+                    <option value="Armenia CO">Armenia</option>
+                    <option value="Cartagena CO">Cartagena</option>
+                    <option value="Jardin CO">Jardín</option>
+                    <option value="Amazonas CO">Amazonas</option>
+                    <option value="Santa Martha CO">Santa Martha</option>
+                    <option value="Cali CO">Cali</option>
                   </select>
                 </div>
               </div>
