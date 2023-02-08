@@ -75,13 +75,13 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/{nombre}")
+    @GetMapping("/buscar/{nombre}")
     public ResponseEntity<List<Producto>> getByCity(@PathVariable String nombre){
-        Optional<List<Producto>> productList = productoService.getByCiudad(nombre);
-        if(productList.isEmpty()){
+        List<Producto> productoList=productoService.getByCiudad(nombre);
+        if(productoList.isEmpty()){
             return ResponseEntity.noContent().build();
         } else {
-            return ResponseEntity.ok(productoService.getAll());
+            return ResponseEntity.ok(productoService.getByCiudad(nombre));
         }
     }
 }

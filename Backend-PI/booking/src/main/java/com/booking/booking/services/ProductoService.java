@@ -5,6 +5,7 @@ import com.booking.booking.repositories.ProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,8 +29,15 @@ public class ProductoService {
 
     public void delete (Long id){ productosRepository.deleteById(id);}
 
-    public Optional<List<Producto>> getByCiudad(String nombre){
-        return productosRepository.findByCiudad(nombre);
+    public List<Producto> getByCiudad(String nombre){
+        List<Producto> productoList=productosRepository.findAll();
+        List<Producto> resp=new ArrayList<>();
+        for (Producto producto: productoList) {
+            if (producto.getCiudad().getNombreCiudad().equalsIgnoreCase(nombre)){
+                resp.add(producto);
+            }
+        }
+        return resp;
     }
 
 
