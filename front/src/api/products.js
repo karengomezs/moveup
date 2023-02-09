@@ -1,38 +1,25 @@
-import allProducts from "./datos.json";
-export const host = "http://localhost:8080/api";
-export const apiUrl = `${host}/product`;
+import { host } from "../constants";
+export const apiUrl = `${host}/producto`;
 
 export async function getClass(id) {
-  // const url = `${apiUrl}/${id}`;
+  const url = `${apiUrl}/${id}`;
 
   try {
-    // const response = await fetch(url)
-    // const data = await response.json()
-
-    const obj = allProducts.find((product) => {
-      return product.id === parseInt(id);
-    });
-
-    return Promise.resolve(obj);
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
 }
 
-// localhost:8080/api/products?city="medellin"&date="20/08/2020"
-export async function getClasses(city, date) {
-  // const url = `${apiUrl}/products?city=${city}&date=${date}`;
+export async function getClasses(city = "", date = "") {
+  const validParams = city.length > 0 && date.length > 0;
+  const url = validParams ? `${apiUrl}?ciudad=${city}&fecha=${date}` : apiUrl;
   try {
-    // const response = await fetch(url)
-    // const data = await response.json()
-    console.log(city, date);
-    const results = allProducts.filter((product) => {
-      if (!city) {
-        return product;
-      }
-      return product.ubicacionClase === city;
-    });
-    return Promise.resolve(results);
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.log(error);
   }
