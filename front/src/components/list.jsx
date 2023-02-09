@@ -70,7 +70,7 @@ export default function List({ data }) {
 
   return (
     <div className="container py-5">
-      <p className="fs-4 fw-bold">Recomendaciones</p>
+      <p className="fs-4 fw-bold">Clases</p>
       <div className="anchoLista">{classes}</div>
     </div>
   );

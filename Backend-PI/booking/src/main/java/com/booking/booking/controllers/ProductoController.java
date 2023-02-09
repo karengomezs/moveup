@@ -15,12 +15,8 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:3000")
 
 public class ProductoController {
-    private ProductoService productoService;
     @Autowired
-
-    public ProductoController(ProductoService productoService) {
-        this.productoService = productoService;
-    }
+    private ProductoService productoService;
 
     @GetMapping
     public ResponseEntity<List<Producto>> getAll(){
@@ -35,11 +31,12 @@ public class ProductoController {
     @GetMapping(params = {"ciudad", "fecha"})
     public ResponseEntity<List<Producto>> getAll(@RequestParam(required = false) String ciudad, @RequestParam(required = false) String fecha){
         List<Producto> productoList=productoService.getByCiudad(ciudad);
+
         if(productoList.isEmpty()){
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(productoService.getByCiudad(ciudad));
         }
+
+        return ResponseEntity.ok(productoList);
     }
 
     @GetMapping("/{id}")

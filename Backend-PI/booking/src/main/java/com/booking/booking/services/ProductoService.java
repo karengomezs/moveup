@@ -1,5 +1,6 @@
 package com.booking.booking.services;
 
+import com.booking.booking.entities.Categoria;
 import com.booking.booking.entities.Producto;
 import com.booking.booking.repositories.ProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,16 +30,8 @@ public class ProductoService {
 
     public void delete (Long id){ productosRepository.deleteById(id);}
 
-    public List<Producto> getByCiudad(String nombre){
-        List<Producto> productoList=productosRepository.findAll();
-        List<Producto> resp=new ArrayList<>();
-        for (Producto producto: productoList) {
-            if (producto.getCiudad().getNombreCiudad().equalsIgnoreCase(nombre)){
-                resp.add(producto);
-            }
-        }
-        return resp;
+    public List<Producto> getByCiudad(String ciudad){
+        List<Producto> productoList=productosRepository.findByUbicaciónClase(ciudad);
+        return productoList;
     }
-
-
 }
