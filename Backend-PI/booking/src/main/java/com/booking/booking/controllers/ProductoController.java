@@ -32,6 +32,16 @@ public class ProductoController {
         }
     }
 
+    @GetMapping(params = {"ciudad", "fecha"})
+    public ResponseEntity<List<Producto>> getAll(@RequestParam(required = false) String ciudad, @RequestParam(required = false) String fecha){
+        List<Producto> productoList=productoService.getByCiudad(ciudad);
+        if(productoList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(productoService.getByCiudad(ciudad));
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getOne(@PathVariable Long id){
         Optional<Producto> product = productoService.getOne(id);
@@ -75,13 +85,4 @@ public class ProductoController {
         }
     }
 
-    @GetMapping("/buscar/{nombre}")
-    public ResponseEntity<List<Producto>> getByCity(@PathVariable String nombre){
-        List<Producto> productoList=productoService.getByCiudad(nombre);
-        if(productoList.isEmpty()){
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(productoService.getByCiudad(nombre));
-        }
-    }
 }

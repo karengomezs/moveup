@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function List({ data }) {
   const navigate = useNavigate();
 
-  const classes = data.map((eachClass) => {
+  const classes = data?.map((eachClass) => {
     return (
       <div key={eachClass.id} className="card mb-3 anchoLista">
         <div className="row g-0 shadow">
           <div className="col-3">
             <img
               alt=""
-              src={eachClass.img}
-              className="img-fluid rounded-start"
+              src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJhbGV6YSUyMHBhaXNhamV8ZW58MHx8MHx8&w=1000&q=80"
+              className="img-fluid rounded-start "
             />
           </div>
           <div className="col-9">
@@ -44,7 +44,7 @@ export default function List({ data }) {
               <div className="d-flex justify-content-around">
                 <i className="bi bi-geo-alt-fill fs-3" />
                 <div className="d-flex justify-content-between">
-                  <p className="card-text">{eachClass.ubicacionClase}</p>&nbsp;
+                  <p className="card-text me-2">{eachClass.ubicaciónClase}:</p>
                   <a className="text-nowrap" href="/">
                     Mostrar ubicación
                   </a>

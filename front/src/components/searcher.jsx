@@ -1,8 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { geCities } from "../api/city";
 
 export default function Searcher({ onSearch }) {
+  const [dataCities, setDataCities] = useState([]);
   const [city, setCity] = useState("");
-  const [date, setDate] = useState("01/06/2024");
+  const [date] = useState("01/06/2024");
+
+  useEffect(() => {
+    geCities().then((data) => {
+      setDataCities(data);
+    });
+  }, []);
+
+  const cities = dataCities?.map((city) => {
+    return (
+      <option key={city.id} value={city.nombreCiudad}>
+        {city.nombreCiudad}
+      </option>
+    );
+  });
+
   return (
     <>
       <div className="bg-buscador py-5">
@@ -29,13 +46,7 @@ export default function Searcher({ onSearch }) {
                     <option disabled value="">
                       ¿A donde vamos ir?
                     </option>
-                    <option value="Medellín CO">Medellin</option>
-                    <option value="Armenia CO">Armenia</option>
-                    <option value="Cartagena CO">Cartagena</option>
-                    <option value="Jardin CO">Jardín</option>
-                    <option value="Amazonas CO">Amazonas</option>
-                    <option value="Santa Martha CO">Santa Martha</option>
-                    <option value="Cali CO">Cali</option>
+                    {cities}
                   </select>
                 </div>
               </div>
