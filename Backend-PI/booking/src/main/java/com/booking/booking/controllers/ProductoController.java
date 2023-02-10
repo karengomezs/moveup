@@ -23,9 +23,9 @@ public class ProductoController {
         List<Producto> productList = productoService.getAll();
         if(productList.isEmpty()){
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(productoService.getAll());
         }
+
+        return ResponseEntity.ok(productList);
     }
 
     @GetMapping(params = {"ciudad", "fecha"})
@@ -37,6 +37,16 @@ public class ProductoController {
         }
 
         return ResponseEntity.ok(productoList);
+    }
+
+    @GetMapping("/recomendado")
+    public ResponseEntity<List<Producto>> getRecommended(){
+        List<Producto> productList = productoService.getRecomendados();
+        if(productList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(productList);
     }
 
     @GetMapping("/{id}")

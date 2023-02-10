@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import UserContext from "../context/user-context";
 
 export default function List({ data }) {
+  const userState = useContext(UserContext);
   const navigate = useNavigate();
 
   const classes = data?.map((eachClass) => {
@@ -70,7 +72,9 @@ export default function List({ data }) {
 
   return (
     <div className="container py-5">
-      <p className="fs-4 fw-bold">Clases</p>
+      <p className="fs-4 fw-bold">
+        {userState.user ? "Clases" : "Recomendados"}
+      </p>
       <div className="anchoLista">{classes}</div>
     </div>
   );

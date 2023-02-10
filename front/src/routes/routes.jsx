@@ -2,7 +2,7 @@ import Signup from "./signup";
 import Details from "./details";
 import Login from "./login";
 import Main from "./main";
-import ProtectedRoute from "../components/protected-route";
+// import ProtectedRoute from "../components/protected-route";
 import { Route, Routes as Router } from "react-router-dom";
 
 export default function Routes() {
@@ -13,9 +13,9 @@ export default function Routes() {
         <Route
           path="details/:id"
           element={
-            <ProtectedRoute>
-              <Details />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Details />
+            // </ProtectedRoute>
           }
         ></Route>
         <Route path="/login" element={<Login />}></Route>
