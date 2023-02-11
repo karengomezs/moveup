@@ -11,12 +11,14 @@ import java.util.List;
 public interface ProductosRepository extends JpaRepository<Producto, Long> {
     List<Producto> findByFechaDisponible(LocalDate fecha);
 
+    List<Producto> findProductoByCiudad_Id(String ciudadId);
+
+    List<Producto> findProductoByCiudad_IdAndFechaDisponible(String ciudadId, LocalDate fecha);
+
     List<Producto> findByEntrenador(String nombreEntrenador);
 
     @Query(value = "SELECT p FROM Producto p ORDER BY RAND()")
     List<Producto> findRandomProducto();
-
-    List<Producto> findProductoByCiudad_Id(String ciudadId);
 
     @Query(value="SELECT p FROM Producto p INNER JOIN Categoria c ON p.id = c.id WHERE c.id = ?1")
     List<Producto> findProductoByCategoria(String categoriaId);

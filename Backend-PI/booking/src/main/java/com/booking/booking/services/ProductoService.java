@@ -30,16 +30,24 @@ public class ProductoService {
 
     public void delete (Long id){ productosRepository.deleteById(id);}
 
-    public List<Producto> getByFecha(LocalDate fecha){
-        return productosRepository.findByFechaDisponible(fecha);
-    }
-
     public List<Producto> getByCategoria(String categoriaId){
         return productosRepository.findProductoByCategoria(categoriaId);
     }
 
-    public List<Producto> getByCiudad(String ciudadId){
-        return productosRepository.findProductoByCiudad_Id(ciudadId);
+    public List<Producto> getProductosFiltrados(String ciudadId, LocalDate fecha){
+        if(!ciudadId.isEmpty() && fecha != null){
+            return productosRepository.findProductoByCiudad_IdAndFechaDisponible(ciudadId, fecha);
+        }
+
+        if (!ciudadId.isEmpty()) {
+            return productosRepository.findProductoByCiudad_Id(ciudadId);
+        }
+
+        if (fecha != null) {
+            return productosRepository.findByFechaDisponible(fecha);
+        }
+
+        return List.of();
     }
 
     public List<Producto> getByEntrenador(String nombreEntrenador){
