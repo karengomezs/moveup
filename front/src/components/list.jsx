@@ -5,6 +5,7 @@ import UserContext from '../context/user-context';
 export default function List({ data }) {
   const userState = useContext(UserContext);
   const navigate = useNavigate();
+  const isEmpty = data.length === 0;
 
   const classes = data?.map((eachClass) => {
     return (
@@ -77,7 +78,9 @@ export default function List({ data }) {
       <p className="fs-4 fw-bold">
         {userState.user ? 'Clases' : 'Recomendados'}
       </p>
-      <div className="anchoLista">{classes}</div>
+      <div className="anchoLista">
+        {isEmpty ? 'No hay resultados, selecciona una ciudad o fecha' : classes}
+      </div>
     </div>
   );
 }

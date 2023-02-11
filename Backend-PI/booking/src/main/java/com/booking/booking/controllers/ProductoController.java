@@ -33,11 +33,6 @@ public class ProductoController {
     @GetMapping(params = {"ciudad", "fecha"})
     public ResponseEntity<List<Producto>> getAll(@RequestParam(required = false) String ciudad, @RequestParam(required = false) LocalDate fecha){
         List<Producto> productoList = productoService.getProductosFiltrados(ciudad, fecha);
-
-        if(productoList.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-
         return ResponseEntity.ok(productoList);
     }
 
