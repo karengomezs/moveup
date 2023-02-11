@@ -20,6 +20,8 @@ public class CategoriaService {
         this.categoriaRepository = categoriaRepository;
     }
 
+    public List<Categoria> saveAll(List<Categoria> categorias) {return categoriaRepository.saveAll(categorias); }
+
     public Categoria post(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }

@@ -1,8 +1,6 @@
 package com.booking.booking.controllers;
 
-import com.booking.booking.entities.Categoria;
 import com.booking.booking.entities.Ciudad;
-import com.booking.booking.services.CategoriaService;
 import com.booking.booking.services.CiudadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,6 +52,11 @@ public class CiudadController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/all")
+    public List<Ciudad> saveAll(@RequestBody List<Ciudad> ciudades){
+        return ciudadService.saveAll(ciudades);
     }
 
     @PutMapping

@@ -23,6 +23,8 @@ public class CiudadService {
 
     public Ciudad post (Ciudad ciudad){return ciudadRepository.save(ciudad);}
 
+    public List<Ciudad> saveAll(List<Ciudad> ciudades) {return ciudadRepository.saveAll(ciudades); }
+
     public List<Ciudad> getAll() {return ciudadRepository.findAll();}
 
     public Optional<Ciudad> getOne(Long id){return ciudadRepository.findById(id);}

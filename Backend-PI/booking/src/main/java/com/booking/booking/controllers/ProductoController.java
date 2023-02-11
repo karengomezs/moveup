@@ -1,7 +1,6 @@
 package com.booking.booking.controllers;
 
 import com.booking.booking.entities.Producto;
-import com.booking.booking.repositories.ProductosRepository;
 import com.booking.booking.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -106,6 +105,11 @@ public class ProductoController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/all")
+    public List<Producto> saveAll(@RequestBody List<Producto> productos){
+        return productoService.saveAll(productos);
     }
 
     @PutMapping
