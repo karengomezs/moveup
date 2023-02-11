@@ -24,7 +24,7 @@ import {
   CalendarDays,
 } from '@uselessdev/datepicker';
 
-const dateFormat = 'dd/MM/yyyy';
+const dateFormat = 'MM/dd/yyyy';
 
 export default function DatePicker({ dates, setDates }) {
   const [values, setValues] = useState({
@@ -55,7 +55,7 @@ export default function DatePicker({ dates, setDates }) {
 
   const match = (value) => value.match(/(\d{2})\/(\d{2})\/(\d{4})/);
 
-  const handleInputChange = (target) => {
+  const handleInputChange = ({ target }) => {
     setValues({
       ...values,
       [target.name]: target.value,
@@ -85,7 +85,7 @@ export default function DatePicker({ dates, setDates }) {
 
       return setDates({ ...dates, start: startDate });
     }
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.start]);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ export default function DatePicker({ dates, setDates }) {
       onClose();
       return setDates({ ...dates, end: endDate });
     }
-    //eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.end]);
 
   return (

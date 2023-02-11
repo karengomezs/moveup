@@ -5,7 +5,10 @@ import { geCities } from '../api/city';
 export default function Searcher({ onSearch }) {
   const [dataCities, setDataCities] = useState([]);
   const [city, setCity] = useState('');
-  const [date, setDates] = useState({});
+  const [dates, setDates] = useState({
+    start: '',
+    end: '',
+  });
 
   useEffect(() => {
     geCities().then((data) => {
@@ -30,7 +33,7 @@ export default function Searcher({ onSearch }) {
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            onSearch(city, date);
+            onSearch(city, dates);
           }}
         >
           <div className="container d-flex justify-content-center">
@@ -52,7 +55,7 @@ export default function Searcher({ onSearch }) {
                 </div>
               </div>
               <div className="col-sm-12 col-md-5 p-2">
-                <Calendar dates={date} setDates={setDates} />
+                <Calendar dates={dates} setDates={setDates} />
               </div>
               <div className="col p-2">
                 <div className="d-grid">
