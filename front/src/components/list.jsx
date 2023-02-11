@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import UserContext from "../context/user-context";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import UserContext from '../context/user-context';
 
 export default function List({ data }) {
   const userState = useContext(UserContext);
@@ -23,7 +23,7 @@ export default function List({ data }) {
                 <div className="mb-2">
                   <div className="d-flex align-items-end">
                     <h6 className="m-0 pe-1 text-muted">
-                      {"Categoría: "}
+                      {'Categoría: '}
                       {eachClass.categoria}
                     </h6>
                     {/* <div className="text-primary">
@@ -46,7 +46,9 @@ export default function List({ data }) {
               <div className="d-flex justify-content-around">
                 <i className="bi bi-geo-alt-fill fs-3" />
                 <div className="d-flex justify-content-between">
-                  <p className="card-text me-2">{eachClass.ubicaciónClase}:</p>
+                  <p className="card-text me-2">
+                    {eachClass.ciudad.nombreCiudad}:
+                  </p>
                   <a className="text-nowrap" href="/">
                     Mostrar ubicación
                   </a>
@@ -73,7 +75,7 @@ export default function List({ data }) {
   return (
     <div className="container py-5">
       <p className="fs-4 fw-bold">
-        {userState.user ? "Clases" : "Recomendados"}
+        {userState.user ? 'Clases' : 'Recomendados'}
       </p>
       <div className="anchoLista">{classes}</div>
     </div>

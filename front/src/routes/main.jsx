@@ -1,8 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { format, isValid } from 'date-fns';
 import Categories from '../components/categories';
 import List from '../components/list';
 import Searcher from '../components/searcher';
-import { getClasses, getRecomendados } from '../api/products';
+import {
+  getClasses,
+  getRecommended,
+  getFilteredClasses,
+} from '../api/products';
 import UserContext from '../context/user-context';
 
 export default function Main() {
@@ -17,7 +22,7 @@ export default function Main() {
         setData(data);
       });
     } else {
-      getRecomendados().then((data) => {
+      getRecommended().then((data) => {
         setData(data);
       });
     }
@@ -27,7 +32,15 @@ export default function Main() {
     <div className="min-vh-100">
       <Searcher
         onSearch={(city, date) => {
-          getClasses(city, date).then((data) => {
+          const formatDate = 'yyyy-MM-dd';
+
+          const start = isValid(date.start)
+            ? format(date.start, formatDate)
+            : '';
+
+          const end = isValid(date.end) ? format(date.end, formatDate) : '';
+
+          getFilteredClasses(city, { start, end }).then((data) => {
             setData(data);
           });
         }}

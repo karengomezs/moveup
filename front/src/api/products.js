@@ -1,4 +1,4 @@
-import { host } from "../constants";
+import { host } from '../constants';
 export const apiUrl = `${host}/producto`;
 
 export async function getClass(id) {
@@ -13,7 +13,7 @@ export async function getClass(id) {
   }
 }
 
-export async function getRecomendados() {
+export async function getRecommended() {
   const url = `${apiUrl}/recomendado`;
   try {
     const response = await fetch(url);
@@ -24,9 +24,26 @@ export async function getRecomendados() {
   }
 }
 
-export async function getClasses(city = "", date = "") {
-  const validParams = city.length > 0 && date.length > 0;
-  const url = validParams ? `${apiUrl}?ciudad=${city}&fecha=${date}` : apiUrl;
+export async function getClasses() {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getFilteredClasses(
+  ciudad = '',
+  date = { start: '', end: '' }
+) {
+  const params = new URLSearchParams({
+    ciudad,
+    fecha: date.start,
+  }).toString();
+
+  const url = `${apiUrl}?${params}`;
 
   try {
     const response = await fetch(url);

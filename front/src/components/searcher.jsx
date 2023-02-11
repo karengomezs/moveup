@@ -18,7 +18,7 @@ export default function Searcher({ onSearch }) {
 
   const cities = dataCities?.map((city) => {
     return (
-      <option key={city.id} value={city.nombreCiudad}>
+      <option key={city.id} value={city.id}>
         {city.nombreCiudad}
       </option>
     );
