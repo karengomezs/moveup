@@ -26,7 +26,7 @@ public class IntegrationCategoria {
 
     private void cargarDatos(){
         Categoria CategoriaAgregada=categoriaService
-                .post(new Categoria("Artes marciales","contacto","ajajdsjhd"));
+                .post(new Categoria("Artes marciales","Deportes de lucha","hjdabfjbdfjb"));
     }
 
     @Test

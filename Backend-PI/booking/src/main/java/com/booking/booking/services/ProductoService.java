@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,20 +31,41 @@ public class ProductoService {
 
     public void delete (Long id){ productosRepository.deleteById(id);}
 
-    public List<Producto> getByCiudad(String ciudad){
-        List<Producto> productoList = productosRepository.findByUbicaciónClase(ciudad);
-        return productoList;
+    public List<Producto> getByFecha(LocalDate fecha){
+        return productosRepository.findByfechaDisponible(fecha);
     }
 
-    public List<Producto> getRecomendados() {
-        String[] propiedades = {"descripcionClase", "ciudadId", "entrenadorId", "nombreClase", "fechaDisponible"};
-        int rand = getRandomNumber(0, propiedades.length - 1);
-        String propiedad = propiedades[rand];
+//    public List<Producto> getByCategoria(String nombreCategoria){
+//        List<Producto> productoList=productosRepository.findAll();
+//        List<Producto> resp=new ArrayList<>();
+//        for (Producto producto: productoList) {
+//            for (int i = 0; i < producto.getCategorias().size(); i++) {
+//                if (producto.getCategorias().stream()){
+//
+//                }
+//            }
+//        }
+//        return resp;
+//    }
 
-        return productosRepository.findAll(Sort.by(Sort.Direction.DESC, propiedad));
+    public List<Producto> getByCiudad(String nombre){
+        List<Producto> productoList=productosRepository.findAll();
+        List<Producto> resp=new ArrayList<>();
+        for (Producto producto: productoList) {
+            if (producto.getCiudad().getNombreCiudad().equalsIgnoreCase(nombre)){
+                resp.add(producto);
+            }
+        }
+        return resp;
     }
 
-    public int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
+    public List<Producto> getByEntrenador(String nombreEntrenador){
+        return productosRepository.findByEntrenador(nombreEntrenador);
     }
+
+    public List<Producto> getByRandom(){
+        return productosRepository.findRandomProducto();
+    }
+
+
 }

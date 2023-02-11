@@ -1,12 +1,14 @@
 package com.booking.booking.controllers;
 
 import com.booking.booking.entities.Producto;
+import com.booking.booking.repositories.ProductosRepository;
 import com.booking.booking.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +19,8 @@ import java.util.Optional;
 public class ProductoController {
     @Autowired
     private ProductoService productoService;
+    @Autowired
+    private ProductosRepository productosRepository;
 
     @GetMapping
     public ResponseEntity<List<Producto>> getAll(){
@@ -28,26 +32,56 @@ public class ProductoController {
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping(params = {"ciudad", "fecha"})
-    public ResponseEntity<List<Producto>> getAll(@RequestParam(required = false) String ciudad, @RequestParam(required = false) String fecha){
-        List<Producto> productoList=productoService.getByCiudad(ciudad);
-
-        if(productoList.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.ok(productoList);
-    }
-
     @GetMapping("/recomendado")
-    public ResponseEntity<List<Producto>> getRecommended(){
-        List<Producto> productList = productoService.getRecomendados();
+    public ResponseEntity<List<Producto>> getByRandom(){
+        List<Producto> productList = productoService.getByRandom();
         if(productList.isEmpty()){
             return ResponseEntity.noContent().build();
         }
 
         return ResponseEntity.ok(productList);
     }
+
+    @GetMapping("/buscar/{nombreCiudad}")
+    public ResponseEntity<List<Producto>> getByCity(@PathVariable String nombre){
+        List<Producto> productoList=productoService.getByCiudad(nombre);
+        if(productoList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(productoService.getByCiudad(nombre));
+        }
+    }
+
+    @GetMapping("/buscar/entrenador/{nombreEntrenador}")
+    public ResponseEntity<List<Producto>> getByNombreEntrenador(@PathVariable String nombreEntrenador){
+        List<Producto> productoList=productoService.getByEntrenador(nombreEntrenador);
+        if(productoList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(productosRepository.findByEntrenador(nombreEntrenador));
+        }
+    }
+
+    @GetMapping("/buscar/{fecha}")
+    public ResponseEntity<List<Producto>> getByFecha(LocalDate fecha){
+        List<Producto> productList=productoService.getByFecha(fecha);
+
+        if(productList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(productoService.getByFecha(fecha));
+    }
+
+
+//    @GetMapping("/categoria/{id}")
+//    public ResponseEntity<List<Producto>> getBycategoria(@PathVariable Long id){
+//        List<Producto> productoList = productoService.getByCategoria(id);
+//        if (productoList.isEmpty()){
+//            return ResponseEntity.noContent().build();
+//        } else {
+//            return ResponseEntity.ok(productoList);
+//        }
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getOne(@PathVariable Long id){

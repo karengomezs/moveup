@@ -31,8 +31,6 @@ public class Producto {
     @Column
     private Double calificación;
     @Column
-    private String ubicaciónClase;
-    @Column
     private LocalDate fechaDisponible;
     @Column
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -46,18 +44,18 @@ public class Producto {
     @ManyToOne
     private Ciudad ciudad;
 
-    @ManyToOne
-    private Entrenador entrenador;
+    @Column
+    private String entrenador;
 
     @ManyToMany(mappedBy = "productoSet")
     private Set<Categoria> categorias=new HashSet<>();
 
-    public Producto(Double calificación, String ubicaciónClase, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase) {
+    public Producto(Double calificación, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase, String entrenador) {
         this.calificación = calificación;
-        this.ubicaciónClase = ubicaciónClase;
         this.fechaDisponible = fechaDisponible;
         this.horarioDisponible = horarioDisponible;
         this.nombreClase = nombreClase;
         this.descripcionClase = descripcionClase;
+        this.entrenador = entrenador;
     }
 }

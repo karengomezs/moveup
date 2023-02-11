@@ -33,9 +33,6 @@ public class Ciudad {
     @JsonIgnore
     private Set<Producto> productos= new HashSet<>();
 
-    @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Set<Entrenador> entrenadors=new HashSet<>();
 
     public Ciudad(String nombreCiudad, String url) {
         this.nombreCiudad = nombreCiudad;
