@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useContext } from "react";
-import Categories from "../components/categories";
-import List from "../components/list";
-import Searcher from "../components/searcher";
-import { getClasses, getRecomendados } from "../api/products";
-import UserContext from "../context/user-context";
+import React, { useEffect, useState, useContext } from 'react';
+import Categories from '../components/categories';
+import List from '../components/list';
+import Searcher from '../components/searcher';
+import { getClasses, getRecomendados } from '../api/products';
+import UserContext from '../context/user-context';
 
 export default function Main() {
   const userState = useContext(UserContext);
@@ -26,8 +26,8 @@ export default function Main() {
   return (
     <div className="min-vh-100">
       <Searcher
-        onSearch={(a, b) => {
-          getClasses(a, b).then((data) => {
+        onSearch={(city, date) => {
+          getClasses(city, date).then((data) => {
             setData(data);
           });
         }}

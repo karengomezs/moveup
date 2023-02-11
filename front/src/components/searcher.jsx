@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { geCities } from "../api/city";
+import React, { useState, useEffect } from 'react';
+import Calendar from './calendar';
+import { geCities } from '../api/city';
 
 export default function Searcher({ onSearch }) {
   const [dataCities, setDataCities] = useState([]);
-  const [city, setCity] = useState("");
-  const [date] = useState("01/06/2024");
+  const [city, setCity] = useState('');
+  const [date, setDates] = useState({});
 
   useEffect(() => {
     geCities().then((data) => {
@@ -24,7 +25,7 @@ export default function Searcher({ onSearch }) {
     <>
       <div className="bg-buscador py-5">
         <div className="d-flex justify-content-center">
-          <h1 className="fs-2 fw-bold text-light">Lorem Ipsum</h1>
+          <h1 className="fs-2 fw-bold text-light">Busca tu clase</h1>
         </div>
         <form
           onSubmit={(e) => {
@@ -51,20 +52,7 @@ export default function Searcher({ onSearch }) {
                 </div>
               </div>
               <div className="col-sm-12 col-md-5 p-2">
-                <div className="input-group">
-                  <input
-                    type="date"
-                    aria-label="checkIn"
-                    className="form-control border border-0 shadow-none"
-                    placeholder="Check in"
-                  />
-                  <input
-                    type="date"
-                    aria-label="checkOut"
-                    className="form-control border border-0 shadow-none"
-                    placeholder="Check out"
-                  />
-                </div>
+                <Calendar dates={date} setDates={setDates} />
               </div>
               <div className="col p-2">
                 <div className="d-grid">
