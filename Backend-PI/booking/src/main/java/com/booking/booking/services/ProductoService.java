@@ -3,11 +3,9 @@ package com.booking.booking.services;
 import com.booking.booking.entities.Producto;
 import com.booking.booking.repositories.ProductosRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +15,6 @@ public class ProductoService {
 
     @Autowired
     public ProductoService(ProductosRepository productosRepository){
-
         this.productosRepository = productosRepository;
     }
 
@@ -32,24 +29,15 @@ public class ProductoService {
     public void delete (Long id){ productosRepository.deleteById(id);}
 
     public List<Producto> getByFecha(LocalDate fecha){
-        return productosRepository.findByfechaDisponible(fecha);
+        return productosRepository.findByFechaDisponible(fecha);
     }
 
-//    public List<Producto> getByCategoria(String nombreCategoria){
-//        List<Producto> productoList=productosRepository.findAll();
-//        List<Producto> resp=new ArrayList<>();
-//        for (Producto producto: productoList) {
-//            for (int i = 0; i < producto.getCategorias().size(); i++) {
-//                if (producto.getCategorias().stream()){
-//
-//                }
-//            }
-//        }
-//        return resp;
-//    }
+    public List<Producto> getByCategoria(String categoriaId){
+        return productosRepository.findProductoByCategoria(categoriaId);
+    }
 
     public List<Producto> getByCiudad(String ciudadId){
-        return productosRepository.findProductoByCiudad(ciudadId);
+        return productosRepository.findProductoByCiudad_Id(ciudadId);
     }
 
     public List<Producto> getByEntrenador(String nombreEntrenador){
@@ -59,5 +47,4 @@ public class ProductoService {
     public List<Producto> getByRandom(){
         return productosRepository.findRandomProducto();
     }
-
 }

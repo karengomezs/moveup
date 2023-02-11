@@ -28,7 +28,6 @@ public class Ciudad {
     @Column
     private String url;
 
-
     @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Producto> productos= new HashSet<>();

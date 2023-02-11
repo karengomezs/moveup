@@ -15,17 +15,12 @@ import java.util.Optional;
 @RequestMapping("/api/categorias")
 @CrossOrigin(origins = "http://localhost:3000")
 public class CategoriaController {
-
     private CategoriaService categoriaService;
 
     @Autowired
     public CategoriaController(CategoriaService categoriaService) {
         this.categoriaService = categoriaService;
     }
-
-
-
-
 
     @GetMapping
     public ResponseEntity<List<Categoria>> getAll(){

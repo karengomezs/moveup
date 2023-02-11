@@ -3,23 +3,21 @@ package com.booking.booking.repositories;
 import com.booking.booking.entities.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDate;
 import java.util.List;
 
 
 public interface ProductosRepository extends JpaRepository<Producto, Long> {
+    List<Producto> findByFechaDisponible(LocalDate fecha);
 
-    @Query("select p from Producto p where p.fechaDisponible = ?1")
-    List<Producto> findByfechaDisponible(LocalDate fecha);
-
-    @Query("select p from Producto p where p.entrenador = ?1")
     List<Producto> findByEntrenador(String nombreEntrenador);
 
     @Query(value = "SELECT p FROM Producto p ORDER BY RAND()")
     List<Producto> findRandomProducto();
 
-    @Query(value = "SELECT p FROM Producto p WHERE p.ciudad.id = ?1")
-    List<Producto> findProductoByCiudad(String ciudadId);
+    List<Producto> findProductoByCiudad_Id(String ciudadId);
+
+    @Query(value="SELECT p FROM Producto p INNER JOIN Categoria c ON p.id = c.id WHERE c.id = ?1")
+    List<Producto> findProductoByCategoria(String categoriaId);
 }

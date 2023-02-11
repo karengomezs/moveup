@@ -47,7 +47,7 @@ public class Producto {
     @Column
     private String entrenador;
 
-    @ManyToMany(mappedBy = "productoSet")
+    @ManyToMany(mappedBy = "productoSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Categoria> categorias=new HashSet<>();
 
     public Producto(Double calificación, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase, String entrenador) {

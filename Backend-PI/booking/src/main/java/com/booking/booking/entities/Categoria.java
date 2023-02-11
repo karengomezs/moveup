@@ -29,10 +29,7 @@ public class Categoria {
     @Column
     private String url;
 
-    @ManyToMany
-    @JoinTable(name = "productosXcategorias",
-            joinColumns = @JoinColumn(name = "categoria_id"),
-            inverseJoinColumns = @JoinColumn(name = "producto_id"))
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Producto> productoSet=new HashSet<>();
 
