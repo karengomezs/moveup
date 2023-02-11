@@ -19,12 +19,11 @@ import java.util.Optional;
 public class ProductoController {
     @Autowired
     private ProductoService productoService;
-    @Autowired
-    private ProductosRepository productosRepository;
 
     @GetMapping
     public ResponseEntity<List<Producto>> getAll(){
         List<Producto> productList = productoService.getAll();
+
         if(productList.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -35,6 +34,7 @@ public class ProductoController {
     @GetMapping("/recomendado")
     public ResponseEntity<List<Producto>> getByRandom(){
         List<Producto> productList = productoService.getByRandom();
+
         if(productList.isEmpty()){
             return ResponseEntity.noContent().build();
         }
@@ -42,24 +42,26 @@ public class ProductoController {
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping("/buscar/{nombreCiudad}")
-    public ResponseEntity<List<Producto>> getByCity(@PathVariable String nombre){
-        List<Producto> productoList=productoService.getByCiudad(nombre);
+    @GetMapping("/buscar/ciudad/{nombreCiudad}")
+    public ResponseEntity<List<Producto>> getByCity(@PathVariable String nombreCiudad){
+        List<Producto> productoList=productoService.getByCiudad(nombreCiudad);
+
         if(productoList.isEmpty()){
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(productoService.getByCiudad(nombre));
         }
+
+        return ResponseEntity.ok(productoList);
     }
 
     @GetMapping("/buscar/entrenador/{nombreEntrenador}")
     public ResponseEntity<List<Producto>> getByNombreEntrenador(@PathVariable String nombreEntrenador){
         List<Producto> productoList=productoService.getByEntrenador(nombreEntrenador);
+
         if(productoList.isEmpty()){
             return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.ok(productosRepository.findByEntrenador(nombreEntrenador));
         }
+
+        return ResponseEntity.ok(productoList);
     }
 
     @GetMapping("/buscar/{fecha}")
@@ -69,28 +71,20 @@ public class ProductoController {
         if(productList.isEmpty()){
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(productoService.getByFecha(fecha));
+
+        return ResponseEntity.ok(productList);
     }
 
-
-//    @GetMapping("/categoria/{id}")
-//    public ResponseEntity<List<Producto>> getBycategoria(@PathVariable Long id){
-//        List<Producto> productoList = productoService.getByCategoria(id);
-//        if (productoList.isEmpty()){
-//            return ResponseEntity.noContent().build();
-//        } else {
-//            return ResponseEntity.ok(productoList);
-//        }
-//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Producto> getOne(@PathVariable Long id){
         Optional<Producto> product = productoService.getOne(id);
+
         if (product.isPresent()){
             return ResponseEntity.ok(product.get());
-        } else {
-            return ResponseEntity.notFound().build();
         }
+
+        return ResponseEntity.notFound().build();
     }
 
     @PostMapping
@@ -99,20 +93,21 @@ public class ProductoController {
             productoService.post(producto);{
                 return ResponseEntity.status(201).body(producto);
             }
-        } else {
-            return ResponseEntity.notFound().build();
         }
+
+        return ResponseEntity.notFound().build();
     }
 
     @PutMapping
     public ResponseEntity<String> put(@RequestBody Producto producto){
         Optional<Producto> findProduct = productoService.getOne(producto.getId());
+
         if (findProduct.isPresent()){
             productoService.put(producto);
             return ResponseEntity.status(201).body("Updated the product with ID: "+producto.getId());
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("No product with ID: "+producto.getId()+" was found in the database."));
         }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("No product with ID: "+producto.getId()+" was found in the database."));
     }
 
     @DeleteMapping("/{id}")
@@ -125,5 +120,4 @@ public class ProductoController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body("No product with ID: "+id+" was found in the database.");
         }
     }
-
 }

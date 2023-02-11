@@ -48,15 +48,8 @@ public class ProductoService {
 //        return resp;
 //    }
 
-    public List<Producto> getByCiudad(String nombre){
-        List<Producto> productoList=productosRepository.findAll();
-        List<Producto> resp=new ArrayList<>();
-        for (Producto producto: productoList) {
-            if (producto.getCiudad().getNombreCiudad().equalsIgnoreCase(nombre)){
-                resp.add(producto);
-            }
-        }
-        return resp;
+    public List<Producto> getByCiudad(String ciudadId){
+        return productosRepository.findProductoByCiudad(ciudadId);
     }
 
     public List<Producto> getByEntrenador(String nombreEntrenador){
@@ -66,6 +59,5 @@ public class ProductoService {
     public List<Producto> getByRandom(){
         return productosRepository.findRandomProducto();
     }
-
 
 }
