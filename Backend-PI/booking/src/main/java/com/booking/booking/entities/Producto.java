@@ -24,7 +24,7 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
-    private Double calificación;
+    private Double calificacion;
     @Column
     private LocalDate fechaDisponible;
     @Column
@@ -45,8 +45,8 @@ public class Producto {
     @ManyToMany(mappedBy = "productoSet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Categoria> categorias=new HashSet<>();
 
-    public Producto(Double calificación, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase, String entrenador) {
-        this.calificación = calificación;
+    public Producto(Double calificacion, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase, String entrenador) {
+        this.calificacion = calificacion;
         this.fechaDisponible = fechaDisponible;
         this.horarioDisponible = horarioDisponible;
         this.nombreClase = nombreClase;
