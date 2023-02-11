@@ -1,4 +1,4 @@
-import { host } from '../constants';
+import { host } from "../constants";
 export const apiUrl = `${host}/producto`;
 
 export async function getClass(id) {
@@ -24,6 +24,18 @@ export async function getRecommended() {
   }
 }
 
+export async function getClassByCategory(id) {
+  const url = `${apiUrl}/buscar/categoria/${id}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getClasses() {
   try {
     const response = await fetch(apiUrl);
@@ -35,8 +47,8 @@ export async function getClasses() {
 }
 
 export async function getFilteredClasses(
-  ciudad = '',
-  date = { start: '', end: '' }
+  ciudad = "",
+  date = { start: "", end: "" }
 ) {
   const params = new URLSearchParams({
     ciudad,
