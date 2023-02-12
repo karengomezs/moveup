@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getCategories } from "../api/categories";
+import { getClassByCategory } from "../api/products";
 
-export default function Categories() {
+export default function Categories({ onClickCategory }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -12,7 +13,16 @@ export default function Categories() {
 
   const eachCategory = data.map((category) => {
     return (
-      <div key={category.id} className="cards-border d-flex flex-column">
+      <div
+        key={category.id}
+        className="cards-border d-flex flex-column"
+        onClick={() => {
+          getClassByCategory(category.id).then((data) => {
+            onClickCategory(data);
+            console.log(data);
+          });
+        }}
+      >
         <div className="d-flex justify-content-center w-100 flex-grow-1">
           <img
             className="cards-image object-fit-cover"
