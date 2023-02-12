@@ -7,7 +7,6 @@ import {
   getClasses,
   getRecommended,
   getFilteredClasses,
-  getClassByCategory,
 } from "../api/products";
 import UserContext from "../context/user-context";
 
