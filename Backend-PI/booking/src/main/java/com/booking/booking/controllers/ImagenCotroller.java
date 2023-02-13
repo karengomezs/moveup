@@ -46,7 +46,7 @@ public class ImagenCotroller {
 
     @PostMapping
     public ResponseEntity<Imagen> post(@RequestBody Imagen imagen){
-        if(imagen.getNombre() != null){
+        if(imagen.getUrl() != null){
             imagenService.post(imagen);{
                 return ResponseEntity.status(201).body(imagen);
             }

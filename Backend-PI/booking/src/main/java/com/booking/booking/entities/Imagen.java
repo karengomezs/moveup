@@ -1,6 +1,7 @@
 package com.booking.booking.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -30,8 +31,9 @@ public class Imagen {
     @Column
     private String descripcion;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "producto_id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Producto producto;
 
     public Imagen(String url, String nombre, String descripcion) {
