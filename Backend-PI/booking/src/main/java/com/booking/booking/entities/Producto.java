@@ -1,7 +1,9 @@
 package com.booking.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,20 +40,17 @@ public class Producto {
     @Column
     private String descripcionClase;
 
-    @ElementCollection
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ciudad_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne
     private Ciudad ciudad;
 
-    @OneToMany(mappedBy = "producto",fetch = FetchType.EAGER)
-    private Set<Imagen> imagenes = new HashSet<>();
+    @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Collection<Imagen> imagenes;
 
     @Column
     private String entrenador;
 
-    @ManyToMany(mappedBy = "productoSet", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    @JoinTable(name = "usuario_categoria", joinColumns = @JoinColumn(name = "producto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
+    @ManyToMany
+    @JoinTable(name = "productoxcategoria", joinColumns = @JoinColumn(name = "producto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private Set<Categoria> categorias=new HashSet<>();
 
     public Producto(Double calificacion, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase, String entrenador) {
@@ -61,4 +61,13 @@ public class Producto {
         this.descripcionClase = descripcionClase;
         this.entrenador = entrenador;
     }
+
+    public void setImagenes(Collection<Imagen> imagenes) {
+        this.imagenes = imagenes;
+        for (Imagen imagen:imagenes) {
+            imagen.setProducto(this);
+        }
+    }
+
+
 }

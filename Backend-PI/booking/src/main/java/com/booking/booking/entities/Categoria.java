@@ -1,12 +1,15 @@
 package com.booking.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,8 +32,9 @@ public class Categoria {
     @Column
     private String url;
 
-//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private Set<Producto> productoSet=new HashSet<>();
+    @ManyToMany(mappedBy = "categorias")
+    @JsonIgnore
+    private Set<Producto> productoSet=new HashSet<>();
 
     public Categoria(String nombreCategorias, String descripcionCategorias, String url) {
         this.nombreCategorias = nombreCategorias;

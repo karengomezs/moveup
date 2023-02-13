@@ -27,6 +27,7 @@ public class Ciudad {
     private String url;
 
     @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Collection<Producto> productos;
 
 
@@ -39,7 +40,7 @@ public class Ciudad {
         this.productos = productos;
         for (Producto producto:productos) {
             producto.setCiudad(this);
-        }   
+        }
     }
 }
 

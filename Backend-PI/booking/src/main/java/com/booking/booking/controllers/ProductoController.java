@@ -82,11 +82,12 @@ public class ProductoController {
 
     @PostMapping
     public ResponseEntity<Producto> post(@RequestBody Producto producto){
-        if(producto.getNombreClase() != null && producto.getNombreClase() != null){
+        if(producto.getNombreClase() != null && producto.getEntrenador() != null  && producto.getFechaDisponible() != null){
             productoService.post(producto);{
                 return ResponseEntity.status(201).body(producto);
             }
         }
+
         return ResponseEntity.notFound().build();
     }
 
