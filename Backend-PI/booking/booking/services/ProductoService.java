@@ -20,7 +20,9 @@ public class ProductoService {
 
     public List<Producto> saveAll(List<Producto> productos) {return productosRepository.saveAll(productos); }
 
-    public Producto post (Producto producto){return productosRepository.save(producto);}
+    public Producto post (Producto producto){
+        return productosRepository.save(producto);
+    }
 
     public List<Producto> getAll() {return productosRepository.findAll(); }
 

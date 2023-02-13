@@ -7,10 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -19,8 +16,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Table(name = "ciudades")
 public class Ciudad {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
     private String nombreCiudad;
@@ -28,14 +26,21 @@ public class Ciudad {
     @Column
     private String url;
 
-    @OneToMany(mappedBy = "ciudad",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Producto> productos= new HashSet<>();
+    private Collection<Producto> productos;
 
 
     public Ciudad(String nombreCiudad, String url) {
         this.nombreCiudad = nombreCiudad;
         this.url = url;
+    }
+
+    public void Ciudad(Collection<Producto> productos) {
+        this.productos = productos;
+        for (Producto producto:productos) {
+            producto.setCiudad(this);
+        }
     }
 }
 
