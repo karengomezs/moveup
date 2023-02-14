@@ -1,45 +1,7 @@
 .container {
+  flex: 3;
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto;
-  grid-gap: 12px;
-  height: 100%;
-  width: auto;
-
-  .first {
-    cursor: pointer;
-    grid-row: 1 / 3;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .item {
-    cursor: pointer;
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-  }
-
-  .first,
-  .item {
-    border-radius: 8px;
-  }
-
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-
-    .item,
-    .first {
-      grid-column: 1;
-      grid-row: auto;
-    }
-  }
-
-  @media (max-height: 720px) {
-    .first {
-      width: 90%;
-    }
-  }
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  gap: 0.5rem;
 }
