@@ -17,7 +17,7 @@ export default function Categories({ onClickCategory }) {
       <div
         key={category.id}
         role="button"
-        className="cards-border d-flex flex-column "
+        className="card d-flex flex-column"
         onClick={() => {
           getClassByCategory(category.id).then((data) => {
             onClickCategory(data);
@@ -27,7 +27,7 @@ export default function Categories({ onClickCategory }) {
       >
         <div className="d-flex justify-content-center w-100 flex-grow-1">
           <img
-            className="cards-image object-fit-cover"
+            className="cards-image object-fit-cover brightness-effect"
             src={category.url}
             alt={category.nombreCategorias}
           />

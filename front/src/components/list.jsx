@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import UserContext from "../context/user-context";
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import UserContext from '../context/user-context';
 
 export default function List({ data }) {
   const userState = useContext(UserContext);
@@ -10,12 +10,12 @@ export default function List({ data }) {
   const classes = data?.map((eachClass) => {
     return (
       <div key={eachClass.id} className="card mb-3 anchoLista">
-        <div className="row g-0 shadow">
+        <div className="row g-0">
           <div className="col-3">
             <img
               alt=""
               src={eachClass.imagenes[0].url}
-              className="img-fluid rounded-start h-100 object-fit-cover"
+              className="img-fluid rounded-start h-100 object-fit-cover brightness-effect"
             />
           </div>
           <div className="col-9">
@@ -24,7 +24,7 @@ export default function List({ data }) {
                 <div className="mb-2">
                   <div className="d-flex align-items-end">
                     <h6 className="m-0 pe-1 text-muted">
-                      {"Categoría: "}
+                      {'Categoría: '}
                       {eachClass.categorias.map((category) => {
                         return category.nombreCategorias;
                       })}
@@ -38,7 +38,7 @@ export default function List({ data }) {
                     </div> */}
                   </div>
                   <h5 className="card-title">
-                    {"Clase: "}
+                    {'Clase: '}
                     {eachClass.nombreClase}
                   </h5>
                 </div>
@@ -61,16 +61,14 @@ export default function List({ data }) {
                 </div>
               </div>
               <p className="card-text">{eachClass.descripcionClase}</p>
-              <div className="d-grid align-items-end">
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={() => {
-                    navigate(`/details/${eachClass.id}`);
-                  }}
-                >
-                  ver mas
-                </button>
-              </div>
+              <button
+                className="btn btn-outline-primary mt-2"
+                onClick={() => {
+                  navigate(`/details/${eachClass.id}`);
+                }}
+              >
+                ver mas
+              </button>
             </div>
           </div>
         </div>
@@ -81,10 +79,10 @@ export default function List({ data }) {
   return (
     <div className="container py-5">
       <p className="fs-4 fw-bold">
-        {userState.user ? "Clases" : "Recomendados"}
+        {userState.user ? 'Clases' : 'Recomendados'}
       </p>
       <div className="anchoLista">
-        {isEmpty ? "No hay resultados, selecciona una ciudad o fecha" : classes}
+        {isEmpty ? 'No hay resultados, selecciona una ciudad o fecha' : classes}
       </div>
     </div>
   );

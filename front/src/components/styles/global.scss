@@ -39,11 +39,6 @@ $color_fourteary: #dfe4ea;
   gap: 1rem;
 }
 
-.cards-border {
-  box-shadow: 0.5rem 0.5rem 1rem gray;
-  border-radius: 0.5rem;
-}
-
 .cards-image {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -101,4 +96,19 @@ hr {
 
 .object-fit-cover {
   object-fit: cover;
+}
+
+.card {
+  .brightness-effect {
+    filter: brightness(90%);
+    transition: 0.1s filter linear, 0.1s box-shadow linear;
+  }
+
+  &:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+    .brightness-effect {
+      filter: none;
+    }
+  }
 }
