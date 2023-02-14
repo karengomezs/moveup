@@ -13,15 +13,15 @@ export default function Details() {
     });
   }, [id]);
 
-  const missingStartsValue = 5 - data?.calificacion;
-  const starts = Array(data?.calificacion)
+  const quality = data?.calificacion || 0;
+  const missingStartsValue = 5 - quality;
+  const starts = Array(quality)
     .fill()
     .map((_, index) => <i key={`${index}-fill`} className="bi bi-star-fill" />);
   const missingStarts = Array(missingStartsValue || 0)
     .fill()
     .map((_, index) => <i key={`${index}-not-fill`} className="bi bi-star" />);
 
-  const quality = data?.calificacion || 0;
   const qualityIndex = quality * 2 || 0;
   const qualityMessage = {
     1: 'Mu regular',
