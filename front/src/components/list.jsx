@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import UserContext from '../context/user-context';
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import UserContext from "../context/user-context";
 
 export default function List({ data }) {
   const userState = useContext(UserContext);
@@ -14,7 +14,8 @@ export default function List({ data }) {
           <div className="col-3">
             <img
               alt=""
-              src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJhbGV6YSUyMHBhaXNhamV8ZW58MHx8MHx8&w=1000&q=80"
+              src={eachClass.imagenes[0].url}
+              // src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJhbGV6YSUyMHBhaXNhamV8ZW58MHx8MHx8&w=1000&q=80"
               className="img-fluid rounded-start "
             />
           </div>
@@ -24,8 +25,10 @@ export default function List({ data }) {
                 <div className="mb-2">
                   <div className="d-flex align-items-end">
                     <h6 className="m-0 pe-1 text-muted">
-                      {'Categoría: '}
-                      {eachClass.categoria}
+                      {"Categoría: "}
+                      {eachClass.categorias.map((category) => {
+                        return category.nombreCategorias;
+                      })}
                     </h6>
                     {/* <div className="text-primary">
                       <i className="bi bi-star-fill" />
@@ -35,12 +38,15 @@ export default function List({ data }) {
                       <i className="bi bi-star-fill" />
                     </div> */}
                   </div>
-                  <h5 className="card-title">{eachClass.nombreClase}</h5>
+                  <h5 className="card-title">
+                    {"Clase: "}
+                    {eachClass.nombreClase}
+                  </h5>
                 </div>
                 <div className="text-end">
                   {/* <i className="bi bi-8-square-fill fs-3" /> */}
                   <h6 className="text-nowrap">
-                    Calificación: {eachClass.calificación}
+                    Calificación: {eachClass.calificacion}
                   </h6>
                 </div>
               </div>
@@ -76,10 +82,10 @@ export default function List({ data }) {
   return (
     <div className="container py-5">
       <p className="fs-4 fw-bold">
-        {userState.user ? 'Clases' : 'Recomendados'}
+        {userState.user ? "Clases" : "Recomendados"}
       </p>
       <div className="anchoLista">
-        {isEmpty ? 'No hay resultados, selecciona una ciudad o fecha' : classes}
+        {isEmpty ? "No hay resultados, selecciona una ciudad o fecha" : classes}
       </div>
     </div>
   );
