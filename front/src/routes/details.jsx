@@ -21,6 +21,16 @@ export default function Details() {
     .fill()
     .map((_, index) => <i key={`${index}-not-fill`} className="bi bi-star" />);
 
+  const quality = data?.calificacion || 0;
+  const qualityIndex = quality * 2 || 0;
+  const qualityMessage = {
+    1: 'Mu regular',
+    2: 'regular',
+    3: 'Bueno',
+    4: 'Muy bueno',
+    5: 'Excelente',
+  };
+
   return (
     <>
       <div className="bg-light">
@@ -38,14 +48,14 @@ export default function Details() {
           <p className="m-0 fw-semibold ">{data?.ciudad.nombreCiudad}</p>
         </div>
         <div>
-          <span>Muy bueno</span>
+          <span>{qualityMessage[quality]}</span>
           <div className="text-primary">
             {starts}
             {missingStarts}
           </div>
         </div>
         <h4 className="p-2 bg-primary text-white rounded ms-2 px-3">
-          {data?.calificacion * 2 || 0}
+          {qualityIndex}
         </h4>
       </div>
       <div
