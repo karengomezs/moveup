@@ -9,8 +9,8 @@ const Grid = ({ product }) => {
         <Item
           original={product?.imagenes[0].url}
           thumbnail={product?.imagenes[0].url}
-          width="1600"
-          height="1600"
+          width="600"
+          height="800"
           alt="Photo of seashore by Folkert Gorter"
         >
           {({ ref, open }) => (
@@ -31,8 +31,8 @@ const Grid = ({ product }) => {
                 <Item
                   original={image.url}
                   thumbnail={image.url}
-                  width="1600"
-                  height="1068"
+                  width="600"
+                  height="400"
                   alt="Photo of mountain lake by Samuel Rohl"
                 >
                   {({ ref, open }) => (
