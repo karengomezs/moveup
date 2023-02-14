@@ -9,7 +9,6 @@ export default function Details() {
 
   useEffect(() => {
     getClass(id).then((data) => {
-      console.log(data);
       setData(data);
     });
   }, [id]);
