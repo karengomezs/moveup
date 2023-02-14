@@ -14,20 +14,15 @@
     object-fit: cover;
   }
 
-  .third,
   .item {
     cursor: pointer;
     object-fit: cover;
     width: 100%;
     max-height: 100%;
-  }
-
-  .third {
-    grid-column: 2;
+    height: 100%;
   }
 
   .first,
-  .third,
   .item {
     border-radius: 8px;
   }
@@ -37,8 +32,7 @@
     grid-template-rows: auto;
 
     .item,
-    .first,
-    .third {
+    .first {
       grid-column: 1;
       grid-row: auto;
     }
