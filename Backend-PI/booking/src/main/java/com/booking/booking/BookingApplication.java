@@ -44,10 +44,10 @@ public class BookingApplication {
 			ciudadRepository.saveAll(ciudadesData);
 
 			List<Categoria> categoriasData = Arrays.asList(
-					new Categoria("Acuáticas", "Deportes en el agua", "https://alavera.es/wp-content/uploads/2016/06/maxresdefault.jpg"),
-					new Categoria("Artes marciales", "Deportes de contacto", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH4lPBI5RTN8rXBfaYUe5XZh_t6cnmW3j2ng&usqp=CAU"),
-					new Categoria("Aeróbicos", "Movimiento constante", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqpufnR441gjuYvihsvAHQccb63Mg6zmMDug&usqp=CAU"),
-					new Categoria("Trekking", "Caminatas campestres", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIfrmVN5gA7bJhYXGTNkh6G5AsINe-SNi50g&usqp=CAU")
+					new Categoria("Acuáticas", "Deportes en el agua", "https://images.pexels.com/photos/1655822/pexels-photo-1655822.jpeg?auto=compress&cs=tinysrgb&w=600"),
+					new Categoria("Artes marciales", "Deportes de contacto", "https://images.pexels.com/photos/7045379/pexels-photo-7045379.jpeg?auto=compress&cs=tinysrgb&w=600"),
+					new Categoria("Aeróbicos", "Movimiento constante", "https://media.istockphoto.com/id/1170865144/es/foto/clase-de-bailarina-profesional-bailando-en-estudio-de-baile.jpg?s=612x612&w=0&k=20&c=y1obwuTwupm211RqqsxE1sqsD2btKJSGr047PruBSXE="),
+					new Categoria("Trekking", "Caminatas campestres", "https://images.pexels.com/photos/2539363/pexels-photo-2539363.jpeg?auto=compress&cs=tinysrgb&w=600")
 			);
 
 			categoriaRepository.saveAll(categoriasData);
