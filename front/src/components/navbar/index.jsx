@@ -55,13 +55,13 @@ export default function Navbar() {
                 />
               </div>
               <div className="text-center">
-                <h5>Hola {userState?.user?.name}</h5>
+                <h5 className="h5 text-white">Hola {userState?.user?.name}</h5>
                 <button
                   onClick={() => {
                     userState.logOut();
                   }}
                   type="button"
-                  className="btn btn-light"
+                  className="btn btn-light btn-sm"
                 >
                   Cerrar Sesión
                 </button>
