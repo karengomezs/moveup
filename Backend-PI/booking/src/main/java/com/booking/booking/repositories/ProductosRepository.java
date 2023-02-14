@@ -22,4 +22,6 @@ public interface ProductosRepository extends JpaRepository<Producto, Long> {
 
     @Query(value="SELECT p FROM Producto p INNER JOIN Categoria c ON p.id = c.id WHERE c.id = ?1")
     List<Producto> findProductoByCategoria(String categoriaId);
+
+
 }

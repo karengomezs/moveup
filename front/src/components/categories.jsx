@@ -7,6 +7,7 @@ export default function Categories({ onClickCategory }) {
 
   useEffect(() => {
     getCategories().then((data) => {
+      console.log(data);
       setData(data);
     });
   }, []);
@@ -15,7 +16,8 @@ export default function Categories({ onClickCategory }) {
     return (
       <div
         key={category.id}
-        className="cards-border d-flex flex-column"
+        role="button"
+        className="cards-border d-flex flex-column "
         onClick={() => {
           getClassByCategory(category.id).then((data) => {
             onClickCategory(data);

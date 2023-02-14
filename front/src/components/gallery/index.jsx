@@ -1,14 +1,15 @@
-import 'photoswipe/dist/photoswipe.css';
-import styles from './styles.module.scss';
-import { Gallery, Item } from 'react-photoswipe-gallery';
+import "photoswipe/dist/photoswipe.css";
+import styles from "./styles.module.scss";
+import { Gallery, Item } from "react-photoswipe-gallery";
 
-const Grid = () => {
+const Grid = ({ product }) => {
+  // console.log(product?.imagenes);
   return (
     <Gallery>
       <div className={styles.container}>
         <Item
-          original="https://farm4.staticflickr.com/3894/15008518202_c265dfa55f_h.jpg"
-          thumbnail="https://farm4.staticflickr.com/3894/15008518202_b016d7d289_m.jpg"
+          original={product?.imagenes[0].url}
+          thumbnail={product?.imagenes[0].url}
           width="1600"
           height="1600"
           alt="Photo of seashore by Folkert Gorter"
@@ -16,81 +17,37 @@ const Grid = () => {
           {({ ref, open }) => (
             <img
               className={styles.first}
-              src="https://farm4.staticflickr.com/3894/15008518202_b016d7d289_m.jpg"
+              src={product?.imagenes[0].url}
               ref={ref}
               onClick={open}
               alt=""
             />
           )}
         </Item>
-        <Item
-          original="https://farm6.staticflickr.com/5591/15008867125_b61960af01_h.jpg"
-          thumbnail="https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg"
-          width="1600"
-          height="1068"
-          alt="Photo of mountain lake by Samuel Rohl"
-        >
-          {({ ref, open }) => (
-            <img
-              className={styles.item}
-              src="https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_m.jpg"
-              ref={ref}
-              onClick={open}
-              alt=""
-            />
-          )}
-        </Item>
-        <Item
-          original="https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg"
-          thumbnail="https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg"
-          width="1600"
-          height="1066"
-          alt="Photo of fog in the village by Ales Krivec"
-        >
-          {({ ref, open }) => (
-            <img
-              className={styles.item}
-              src="https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_m.jpg"
-              ref={ref}
-              onClick={open}
-              alt=""
-            />
-          )}
-        </Item>
-        <Item
-          original="https://farm6.staticflickr.com/5584/14985868676_b51baa4071_h.jpg"
-          thumbnail="https://farm6.staticflickr.com/5584/14985868676_4b802b932a_m.jpg"
-          width="1600"
-          height="1066"
-          alt="Photo of river sunset by Michael Hull"
-        >
-          {({ ref, open }) => (
-            <img
-              className={styles.third}
-              src="https://farm6.staticflickr.com/5584/14985868676_4b802b932a_m.jpg"
-              ref={ref}
-              onClick={open}
-              alt=""
-            />
-          )}
-        </Item>
-        <Item
-          original="https://farm4.staticflickr.com/3920/15008465772_d50c8f0531_h.jpg"
-          thumbnail="https://farm4.staticflickr.com/3920/15008465772_383e697089_m.jpg"
-          width="1600"
-          height="1066"
-          alt="Photo of bear by Thomas Lefebvre"
-        >
-          {({ ref, open }) => (
-            <img
-              className={styles.item}
-              src="https://farm4.staticflickr.com/3920/15008465772_383e697089_m.jpg"
-              ref={ref}
-              onClick={open}
-              alt=""
-            />
-          )}
-        </Item>
+
+        {product?.imagenes.map((image, i) => {
+          if (i !== 0) {
+            return (
+              <Item
+                original={image.url}
+                thumbnail={image.url}
+                width="1600"
+                height="1068"
+                alt="Photo of mountain lake by Samuel Rohl"
+              >
+                {({ ref, open }) => (
+                  <img
+                    className={styles.item}
+                    src={image.url}
+                    ref={ref}
+                    onClick={open}
+                    alt=""
+                  />
+                )}
+              </Item>
+            );
+          }
+        })}
       </div>
     </Gallery>
   );
