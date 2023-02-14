@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
 export default function Footer() {
   return (
     <footer className="text-white bg-primary">
-      <section className="d-flex justify-content-between container">
+      <section className="d-flex justify-content-between container pt-2 pb-2">
         <div className="d-flex text-lg fw-bold align-items-center">
           <i className="bi bi-c-circle fw-bold fs-4" />
           <span>&nbsp;2023 Digital Booking</span>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { getCategories } from "../api/categories";
-import { getClassByCategory } from "../api/products";
+import React, { useEffect, useState } from 'react';
+import { getCategories } from '../api/categories';
+import { getClassByCategory } from '../api/products';
 
 export default function Categories({ onClickCategory }) {
   const [data, setData] = useState([]);
@@ -32,9 +32,9 @@ export default function Categories({ onClickCategory }) {
             alt={category.nombreCategorias}
           />
         </div>
-        <div>
-          <h5 className="fw-bolder pt-2 px-3">{category.nombreCategorias}</h5>
-          <p className="px-3">{category.descripcionCategorias}</p>
+        <div className="p-3">
+          <h5 className="fw-bolder">{category.nombreCategorias}</h5>
+          <p>{category.descripcionCategorias}</p>
         </div>
       </div>
     );
