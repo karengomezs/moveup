@@ -15,8 +15,7 @@ export default function List({ data }) {
             <img
               alt=""
               src={eachClass.imagenes[0].url}
-              // src="https://images.unsplash.com/photo-1617634667039-8e4cb277ab46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJhbGV6YSUyMHBhaXNhamV8ZW58MHx8MHx8&w=1000&q=80"
-              className="img-fluid rounded-start "
+              className="img-fluid rounded-start h-100 object-fit-cover"
             />
           </div>
           <div className="col-9">

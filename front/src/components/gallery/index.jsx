@@ -3,7 +3,6 @@ import styles from "./styles.module.scss";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
 const Grid = ({ product }) => {
-  // console.log(product?.imagenes);
   return (
     <Gallery>
       <div className={styles.container}>
