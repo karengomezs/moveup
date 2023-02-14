@@ -34,7 +34,7 @@ public class Categoria {
 
     @ManyToMany(mappedBy = "categorias")
     @JsonIgnore
-    private Set<Producto> productoSet=new HashSet<>();
+    private Collection<Producto> productoSet;
 
     public Categoria(String nombreCategorias, String descripcionCategorias, String url) {
         this.nombreCategorias = nombreCategorias;
