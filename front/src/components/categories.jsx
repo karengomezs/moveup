@@ -27,7 +27,7 @@ export default function Categories({ onClickCategory }) {
       >
         <div className="d-flex justify-content-center w-100 flex-grow-1">
           <img
-            className="cards-image object-fit-cover brightness-effect"
+            className="card-img-top object-fit-cover brightness-effect"
             src={category.url}
             alt={category.nombreCategorias}
           />

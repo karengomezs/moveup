@@ -37,8 +37,8 @@ export default function Searcher({ onSearch }) {
           }}
         >
           <div className="container d-flex justify-content-center">
-            <div className="row justify-content-center input-group">
-              <div className="col-sm-12 col-md-5 d-flex">
+            <div className="justify-content-center input-group gap-3">
+              <div className="col col-md-5 d-flex">
                 <select
                   onChange={(e) => {
                     setCity(e.target.value);

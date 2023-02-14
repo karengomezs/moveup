@@ -13,18 +13,41 @@ export default function Details() {
     });
   }, [id]);
 
+  const missingStartsValue = 5 - data?.calificacion;
+  const starts = Array(data?.calificacion)
+    .fill()
+    .map((_, index) => <i key={`${index}-fill`} className="bi bi-star-fill" />);
+  const missingStarts = Array(missingStartsValue || 0)
+    .fill()
+    .map((_, index) => <i key={`${index}-not-fill`} className="bi bi-star" />);
+
   return (
     <>
-      <div className="bg-light p-2">
-        <div className="container d-flex">
-          <p className="col mb-2 mt-2">Clase: {data?.nombreClase}</p>
-          <p className="col mb-2 mt-2">
-            Ubicación: {data?.ciudad.nombreCiudad}
-          </p>
-          <p className="col mb-2 mt-2">Calificación: {data?.calificacion}</p>
+      <div className="bg-light">
+        <div className="container p-2">
+          <div className="col">
+            <span>CLASE</span>
+            <h3 className="h3 fw-bold text-primary m-0">{data?.nombreClase}</h3>
+          </div>
         </div>
       </div>
 
+      <div className="container d-flex p-2">
+        <div className="d-flex align-items-center col">
+          <i className="bi bi-geo-alt text-primary fs-3 me-1"></i>
+          <p className="m-0 fw-semibold ">{data?.ciudad.nombreCiudad}</p>
+        </div>
+        <div>
+          <span>Muy bueno</span>
+          <div className="text-primary">
+            {starts}
+            {missingStarts}
+          </div>
+        </div>
+        <h4 className="p-2 bg-primary text-white rounded ms-2 px-3">
+          {data?.calificacion * 2 || 0}
+        </h4>
+      </div>
       <div
         className="flex-grow-1 d-flex justify-content-center container py-5"
         style={{ height: 1 }}

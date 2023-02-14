@@ -9,7 +9,7 @@ export default function Navbar() {
   const userState = useContext(UserContext);
 
   return (
-    <nav className="navbar navbar-expand-md bg-primary ">
+    <nav className="navbar navbar-expand-md bg-primary">
       <div className="container container-fluid">
         <Link to="/" className="navbar-brand grid text-decoration-none">
           <h1 className={styles.logo}>MoveUp</h1>
