@@ -1,78 +1,24 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import Product from './product';
 import UserContext from '../context/user-context';
 
 export default function List({ data }) {
   const userState = useContext(UserContext);
-  const navigate = useNavigate();
   const isEmpty = data.length === 0;
 
   const classes = data?.map((eachClass) => {
+    console.log({ eachClass });
     return (
-      <div key={eachClass.id} className="card mb-3 anchoLista">
-        <div className="row g-0">
-          <div className="col-3">
-            <img
-              alt=""
-              src={eachClass.imagenes[0].url}
-              className="img-fluid rounded-start h-100 object-fit-cover brightness-effect"
-            />
-          </div>
-          <div className="col-9">
-            <div className="card-body h-100 d-flex flex-column justify-content-between">
-              <div className="d-flex justify-content-between">
-                <div className="mb-2">
-                  <div className="d-flex align-items-end">
-                    <h6 className="m-0 pe-1 text-muted">
-                      {'Categoría: '}
-                      {eachClass.categorias.map((category) => {
-                        return category.nombreCategorias;
-                      })}
-                    </h6>
-                    {/* <div className="text-primary">
-                      <i className="bi bi-star-fill" />
-                      <i className="bi bi-star-fill" />
-                      <i className="bi bi-star-fill" />
-                      <i className="bi bi-star-fill" />
-                      <i className="bi bi-star-fill" />
-                    </div> */}
-                  </div>
-                  <h5 className="card-title">
-                    {'Clase: '}
-                    {eachClass.nombreClase}
-                  </h5>
-                </div>
-                <div className="text-end">
-                  {/* <i className="bi bi-8-square-fill fs-3" /> */}
-                  <h6 className="text-nowrap">
-                    Calificación: {eachClass.calificacion}
-                  </h6>
-                </div>
-              </div>
-              <div className="d-flex justify-content-around">
-                <i className="bi bi-geo-alt-fill fs-3" />
-                <div className="d-flex justify-content-between">
-                  <p className="card-text me-2">
-                    {eachClass.ciudad.nombreCiudad}:
-                  </p>
-                  <a className="text-nowrap" href="/">
-                    Mostrar ubicación
-                  </a>
-                </div>
-              </div>
-              <p className="card-text">{eachClass.descripcionClase}</p>
-              <button
-                className="btn btn-outline-primary mt-2"
-                onClick={() => {
-                  navigate(`/details/${eachClass.id}`);
-                }}
-              >
-                ver mas
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Product
+        key={eachClass.id}
+        categories={eachClass.categorias}
+        name={eachClass.nombreClase}
+        score={eachClass.calificacion}
+        city={eachClass.ciudad.nombreCiudad}
+        id={eachClass.id}
+        description={eachClass.descripcionClase}
+        images={eachClass.imagenes}
+      />
     );
   });
 
