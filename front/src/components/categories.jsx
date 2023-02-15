@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { getCategories } from '../api/categories';
-import { getClassByCategory } from '../api/products';
+import React, { useEffect, useState } from "react";
+import { getCategories } from "../api/categories";
+import { getClassByCategory } from "../api/products";
 
 export default function Categories({ onClickCategory }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     getCategories().then((data) => {
-      console.log(data);
       setData(data);
     });
   }, []);
@@ -21,7 +20,6 @@ export default function Categories({ onClickCategory }) {
         onClick={() => {
           getClassByCategory(category.id).then((data) => {
             onClickCategory(data);
-            console.log(data);
           });
         }}
       >

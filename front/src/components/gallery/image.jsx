@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Item } from 'react-photoswipe-gallery';
+import React, { useEffect, useState } from "react";
+import { Item } from "react-photoswipe-gallery";
 
 const loadImage = (setImageDimensions, imageUrl) => {
   const img = new Image();
@@ -11,11 +11,6 @@ const loadImage = (setImageDimensions, imageUrl) => {
       width: img.width,
     });
   };
-
-  /*   img.onerror = (err) => {
-    console.log('img error');
-    console.error(err);
-  }; */
 };
 
 const ImageGallery = ({ imageUrl, className }) => {

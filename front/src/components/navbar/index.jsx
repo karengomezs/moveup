@@ -10,7 +10,7 @@ export default function Navbar() {
   const userState = useContext(UserContext);
 
   return (
-    <nav className="navbar navbar-expand-md bg-primary">
+    <nav className="navbar navbar-dark navbar-expand-md bg-primary">
       <div className="container container-fluid">
         <Link to="/" className="navbar-brand grid text-decoration-none">
           <h1 className={styles.logo}>MoveUp</h1>
@@ -27,7 +27,7 @@ export default function Navbar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
+          <span className="navbar-toggler-icon text-white" />
         </button>
         <div
           className="collapse navbar-collapse grid gap-4 justify-content-end"
@@ -56,7 +56,9 @@ export default function Navbar() {
                 />
               </div>
               <div className="text-center">
-                <h5 className="h5 text-white">Hola {userState?.user?.name}</h5>
+                <h5 className="h5 text-white fw-bold text-capitalize">
+                  Hola {userState?.user?.name}
+                </h5>
                 <button
                   onClick={() => {
                     userState.logOut();
@@ -88,23 +90,64 @@ export default function Navbar() {
                   />
                 </div>
                 <div className="w-100 d-flex justify-content-end">
-                  <h2 className="text-white h2 m-0 fw-bold">MENÚ</h2>
+                  {!userState.user && (
+                    <h2 className="text-white h2 m-0 fw-bold">MENÚ</h2>
+                  )}
+
+                  {userState.user && (
+                    <div className="d-flex flex-column align-items-end">
+                      <Avatar
+                        nameProp={userState.user.name}
+                        lastNameProp={userState.user.lastName}
+                      />
+                      <h5 className="h5 text-white text-end">Hola,</h5>
+                      <h4 className="h4 text-white fw-bold text-capitalize text-end">
+                        {userState?.user?.name}
+                      </h4>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="modal-body d-flex flex-column justify-content-start align-items-end">
-                <ButtonLink
-                  to="/signup"
-                  className="btn border-0 shadow-none pe-0 my-2"
-                  text="Crear cuenta"
-                />
+                {!userState.user && (
+                  <ButtonLink
+                    to="/signup"
+                    className="btn border-0 shadow-none pe-0 my-2 fw-bold"
+                    text="Crear cuenta"
+                    data-bs-toggle="modal"
+                    data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu"
+                  />
+                )}
+
+                {userState.user && (
+                  <span
+                    className="mt-auto fw-semibold"
+                    role="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu"
+                    onClick={() => {
+                      userState.logOut();
+                    }}
+                  >
+                    ¿Deseas{" "}
+                    <strong className="text-danger">cerrar sesión</strong>?
+                  </span>
+                )}
                 <div className="container p-0">
                   <hr className="border border-dark" />
                 </div>
-                <ButtonLink
-                  to="/login"
-                  className="btn border-0 shadow-none pe-0 my-2"
-                  text="Iniciar Sesion"
-                />
+                {!userState.user && (
+                  <ButtonLink
+                    to="/login"
+                    className="btn border-0 shadow-none pe-0 my-2 fw-bold"
+                    text="Iniciar Sesion"
+                    data-bs-toggle="modal"
+                    data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu"
+                  />
+                )}
               </div>
               <div className="d-flex justify-content-end p-3 gap-5 bg-light">
                 <i className="bi bi-facebook fs-3" />
