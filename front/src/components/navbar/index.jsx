@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import Avatar from '../avatar';
-import UserContext from '../../context/user-context';
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import Avatar from "../avatar";
+import UserContext from "../../context/user-context";
+import ButtonLink from "../button-link";
 
-import styles from './styles.module.scss';
+import styles from "./styles.module.scss";
 
 export default function Navbar() {
   const userState = useContext(UserContext);
@@ -34,16 +35,16 @@ export default function Navbar() {
         >
           {!userState.user && (
             <>
-              <Link to="signup">
-                <button className="btn btn-outline-light px-5 py-2">
-                  Crear cuenta
-                </button>
-              </Link>
-              <Link to="/login">
-                <button className="btn btn-light px-5 py-2">
-                  Iniciar Sesion
-                </button>
-              </Link>
+              <ButtonLink
+                to="/signup"
+                className="btn btn-outline-light px-5 py-2"
+                text="Crear cuenta"
+              />
+              <ButtonLink
+                to="/login"
+                className="btn btn-light px-5 py-2"
+                text="Iniciar Sesion"
+              />
             </>
           )}
           {userState.user && (
@@ -73,34 +74,37 @@ export default function Navbar() {
           className="modal fade"
           id="navbarMenu"
           tabIndex="-1"
-          aria-labelledby="exampleModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-fullscreen">
             <div className="modal-content">
-              <div className="modal-header h-25 bg-modal justify-content-start align-items-start ">
-                <i className="bi bi-x-lg fs-3 text-white" />
+              <div className="modal-header h-25 bg-modal d-flex flex-column">
+                <div className="w-100">
+                  <i
+                    data-bs-toggle="modal"
+                    data-bs-target="#navbarMenu"
+                    aria-controls="navbarMenu"
+                    className="bi bi-x-lg fs-3 text-white p-2"
+                  />
+                </div>
+                <div className="w-100 d-flex justify-content-end">
+                  <h2 className="text-white h2 m-0 fw-bold">MENÚ</h2>
+                </div>
               </div>
               <div className="modal-body d-flex flex-column justify-content-start align-items-end">
-                <Link to="/signup">
-                  <button
-                    className="btn border border-0 shadow-none"
-                    data-bs-dismiss="modal"
-                  >
-                    Crear cuenta
-                  </button>
-                </Link>
-                <div className="container p-0 text-black">
-                  <hr className="border border-dark " />
+                <ButtonLink
+                  to="/signup"
+                  className="btn border-0 shadow-none pe-0 my-2"
+                  text="Crear cuenta"
+                />
+                <div className="container p-0">
+                  <hr className="border border-dark" />
                 </div>
-                <Link to="/login">
-                  <button
-                    className="btn border border-0 shadow-none"
-                    data-bs-dismiss="modal"
-                  >
-                    Iniciar Sesion
-                  </button>
-                </Link>
+                <ButtonLink
+                  to="/login"
+                  className="btn border-0 shadow-none pe-0 my-2"
+                  text="Iniciar Sesion"
+                />
               </div>
               <div className="d-flex justify-content-end p-3 gap-5 bg-light">
                 <i className="bi bi-facebook fs-3" />
