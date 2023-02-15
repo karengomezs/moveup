@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Calendar from './calendar';
 import { geCities } from '../api/city';
+import { CalendarWithInput } from './calendar';
 
 export default function Searcher({ onSearch }) {
   const [dataCities, setDataCities] = useState([]);
@@ -53,7 +53,7 @@ export default function Searcher({ onSearch }) {
                 </select>
               </div>
               <div className="col-sm-12 col-md-5">
-                <Calendar dates={dates} setDates={setDates} />
+                <CalendarWithInput dates={dates} setDates={setDates} />
               </div>
               <div className="col d-flex">
                 <button type="submit" className="btn boton-busqueda w-100">
