@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Gallery from '../components/gallery';
 import { getClass } from '../api/products';
+import Stars from '../components/product/starts';
+import Score from '../components/product/score';
 
 export default function Details() {
   const { id } = useParams();
@@ -14,13 +16,6 @@ export default function Details() {
   }, [id]);
 
   const quality = data?.calificacion || 0;
-  const missingStartsValue = 5 - quality;
-  const starts = Array(quality)
-    .fill()
-    .map((_, index) => <i key={`${index}-fill`} className="bi bi-star-fill" />);
-  const missingStarts = Array(missingStartsValue || 0)
-    .fill()
-    .map((_, index) => <i key={`${index}-not-fill`} className="bi bi-star" />);
 
   const qualityIndex = quality * 2 || 0;
   const qualityMessage = {
@@ -49,14 +44,10 @@ export default function Details() {
         </div>
         <div>
           <span>{qualityMessage[quality]}</span>
-          <div className="text-primary">
-            {starts}
-            {missingStarts}
-          </div>
+
+          <Stars quality={quality} />
         </div>
-        <h4 className="p-2 bg-primary text-white rounded ms-2 px-3">
-          {qualityIndex}
-        </h4>
+        <Score value={quality} className="fs-4" />
       </div>
       <div
         className="flex-grow-1 d-flex justify-content-center container py-5"

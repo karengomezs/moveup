@@ -36,7 +36,7 @@ const Category = ({
                 <h5 className="card-title h5">{name}</h5>
               </div>
               <div className="d-flex flex-column align-items-end">
-                <Score value={score} />
+                <Score value={score} className="fs-6 fw-2 fw-bolder" />
               </div>
             </div>
             <div className="d-flex align-items-center">
@@ -56,7 +56,7 @@ const Category = ({
                 navigate(`/details/${id}`);
               }}
             >
-              Ver mas
+              Ver más
             </button>
           </div>
         </div>

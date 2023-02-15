@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Category from './category';
+import Product from './product';
 import UserContext from '../context/user-context';
 
 export default function List({ data }) {
@@ -9,7 +9,7 @@ export default function List({ data }) {
   const classes = data?.map((eachClass) => {
     console.log({ eachClass });
     return (
-      <Category
+      <Product
         key={eachClass.id}
         categories={eachClass.categorias}
         name={eachClass.nombreClase}
