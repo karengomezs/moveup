@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import CalendarNoInput from '../components/calendar/Calendar';
-import Stars from '../components/product/stars';
+import { useState } from "react";
+import CalendarNoInput from "../components/calendar/Calendar";
+import Stars from "../components/product/stars";
 
 export default function Booking() {
   const [dates, setDates] = useState({});
@@ -109,7 +109,7 @@ export default function Booking() {
 
       {/* ---------------------- */}
       <div className="pt-xl-4 mt-xl-1 col col-xl-4">
-        <div className="card mt-2">
+        <div className="card shadow-sm mt-2">
           <h4 className="h4 fw-semibold p-3 m-0">Detalle de la reserva</h4>
           <img src="https://picsum.photos/200/300" className="h-100" alt="" />
           <div className="card-body d-flex flex-column gap-2">

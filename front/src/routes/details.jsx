@@ -49,15 +49,25 @@ export default function Details() {
         <Score value={quality} className="fs-4" />
       </div>
       <div
-        className="flex-grow-1 d-flex justify-content-center container py-5"
+        className="flex-grow-1 d-flex justify-content-center container py-3"
         style={{ height: 1 }}
       >
         <Gallery product={data} />
       </div>
-      <div className="bg-light">
-        <h5 className="container fw-semibold mb-2 mt-2 ">
-          {data?.descripcionClase}
-        </h5>
+
+      <div className="container my-4">
+        <div className="mb-4">
+          <h5 className="h5 fw-semibold m-0">{data?.descripcionClase}</h5>
+        </div>
+
+        <div className="card shadow-sm p-3 w-50">
+          <h5 className="card-title text-center h5 fw-semibold m-0">
+            Agrega fechas a tus clases para obtener precios exactos
+          </h5>
+          <button className="btn btn-primary mt-3 fw-semibold fs-5">
+            Iniciar reserva
+          </button>
+        </div>
       </div>
     </>
   );
