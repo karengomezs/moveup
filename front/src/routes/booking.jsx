@@ -5,91 +5,110 @@ export default function Booking() {
   const [dates, setDates] = useState({});
 
   return (
-    <div className="container text-center d-flex flex-grow-1 mt-5">
-      <div className="d-flex flex-column gap-5">
-        <div className="card shadow-sm">
-          <div className="d-flex flex-column gap-4 card-body  p-4">
-            <div className="d-flex gap-4">
-              <div className="text-start flex-grow-1">
-                <label htmlFor="name" className="form-label fw-semibold">
-                  Nombre
-                </label>
-                <input
-                  disabled
-                  id="name"
-                  type="text"
-                  className="form-control border-0"
-                />
+    <div className="container  d-flex flex-grow-1 mt-5 gap-5">
+      <div className="d-flex flex-column gap-5 col">
+        {/* 1 div con h3 y el form  */}
+        <div>
+          <h4 className="h4 fw-semibold">Completa tus datos</h4>
+          <div className="card shadow-sm">
+            <div className="d-flex flex-column gap-4 card-body  p-4">
+              <div className="d-flex gap-4">
+                <div className="text-start flex-grow-1">
+                  <label htmlFor="name" className="form-label fw-semibold">
+                    Nombre
+                  </label>
+                  <input
+                    disabled
+                    id="name"
+                    type="text"
+                    className="form-control border-0"
+                  />
+                </div>
+                <div className="text-start flex-grow-1">
+                  <label htmlFor="last-name" className="form-label fw-semibold">
+                    Apellido
+                  </label>
+                  <input
+                    disabled
+                    id="last-name"
+                    type="text"
+                    className="form-control  border-0 "
+                  />
+                </div>
               </div>
-              <div className="text-start flex-grow-1">
-                <label htmlFor="last-name" className="form-label fw-semibold">
-                  Apellido
-                </label>
-                <input
-                  disabled
-                  id="last-name"
-                  type="text"
-                  className="form-control  border-0 "
-                />
-              </div>
-            </div>
 
-            <div className="d-flex gap-4">
-              <div className="text-start flex-grow-1">
-                <label htmlFor="email" className="form-label fw-semibold">
-                  Correo electrónico
-                </label>
-                <input
-                  disabled
-                  id="email"
-                  type="email"
-                  className="form-control border-0 "
-                />
-              </div>
-              <div className="text-start flex-grow-1">
-                <label htmlFor="city" className="form-label fw-semibold">
-                  Ciudad
-                </label>
-                <input
-                  id="city"
-                  type="text"
-                  className="form-control  border-0 bg-light"
-                />
+              <div className="d-flex gap-4">
+                <div className="text-start flex-grow-1">
+                  <label htmlFor="email" className="form-label fw-semibold">
+                    Correo electrónico
+                  </label>
+                  <input
+                    disabled
+                    id="email"
+                    type="email"
+                    className="form-control border-0 "
+                  />
+                </div>
+                <div className="text-start flex-grow-1">
+                  <label htmlFor="city" className="form-label fw-semibold">
+                    Ciudad
+                  </label>
+                  <input
+                    id="city"
+                    type="text"
+                    className="form-control  border-0 bg-light"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-
+        {/* fin form */}
+        {/* ------------------------------------------------------------------------- */}
         {/* 2 contenedor de la izquierda con calendario */}
-        <div className=" card shadow-sm">
-          <CalendarNoInput dates={dates} setDates={setDates} />
+        <div>
+          <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
+          <div className=" card shadow-sm">
+            <CalendarNoInput dates={dates} setDates={setDates} />
+          </div>
         </div>
+        {/* fin calendario */}
+        {/* ------------------------------------------------------------------------- */}
+        {/*    3 contenedor horario de llegada */}
+        <div>
+          <h4 className="h4 fw-semibold">Tu horario de llegada</h4>
+          <div className=" card shadow-sm">
+            <div className="card-body text-start">
+              <h6 className="card-title h6 fw-semibold">
+                <i className="bi bi-check-circle me-2 fs-5" />
+                Tu clase comenzará entre las 10:00 AM y las 11:00 AM
+              </h6>
 
-        <div className=" card shadow-sm">
-          <div className="card-body text-start">
-            <h6 className="card-title h6 fw-semibold">
-              <i className="bi bi-check-circle me-2 fs-5" />
-              Tu clase comenzará entre las 10:00 AM y las 11:00 AM
-            </h6>
+              <div className="mt-4">
+                <label htmlFor="time" className="form-label">
+                  Indica tu horario estimado de llegada
+                </label>
 
-            <div className="mt-4">
-              <label htmlFor="time" className="form-label">
-                Indica tu horario estimado de llegada
-              </label>
-
-              <select class="form-select" id="floatingSelect">
-                <option selected>Selecciona tu hora de llegada</option>
-                <option value="1">10:00 AM</option>
-                <option value="2">11:00 AM</option>
-                <option value="3">12:00 AM</option>
-              </select>
+                <select class="form-select" id="floatingSelect">
+                  <option selected>Selecciona tu hora de llegada</option>
+                  <option value="1">10:00 AM</option>
+                  <option value="2">11:00 AM</option>
+                  <option value="3">12:00 AM</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      {/* fin horario llegada */}
 
-      <div className="container-sm ">
-        <div className="col-xxl bg-info w-auto vh-auto">Level 1: .col-sm-3</div>
+      {/* ---------------------- */}
+
+      <div className="card col-4">
+        <img src="https://picsum.photos/200/300" alt="" />
+        <div className="card-body">
+          <p>adn</p>
+        </div>
       </div>
     </div>
   );
