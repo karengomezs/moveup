@@ -4,6 +4,16 @@ import Stars from "../components/product/stars";
 
 export default function Booking() {
   const [dates, setDates] = useState({});
+  const hours = Array(24)
+    .fill()
+    .map((_, i) => {
+      const hour = i < 10 ? `0${i}:00` : `${i}:00`;
+      return (
+        <option key={`${i}-hour`} value={hour}>
+          {hour}
+        </option>
+      );
+    });
 
   return (
     <div className="container  d-flex flex-grow-1 my-5 gap-5 flex-wrap">
@@ -55,6 +65,7 @@ export default function Booking() {
                     Ciudad
                   </label>
                   <input
+                    required
                     id="city"
                     type="text"
                     className="form-control  border-0 bg-light"
@@ -96,9 +107,7 @@ export default function Booking() {
                   defaultValue="0"
                 >
                   <option value="0">Selecciona tu hora de llegada</option>
-                  <option value="1">10:00 AM</option>
-                  <option value="2">11:00 AM</option>
-                  <option value="3">12:00 AM</option>
+                  {hours}
                 </select>
               </div>
             </div>
