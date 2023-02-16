@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import Gallery from '../components/gallery';
-import { getClass } from '../api/products';
-import Stars from '../components/product/starts';
-import Score from '../components/product/score';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Gallery from "../components/gallery";
+import { getClass } from "../api/products";
+import Stars from "../components/product/starts";
+import Score from "../components/product/score";
 
 export default function Details() {
   const { id } = useParams();
@@ -17,13 +17,12 @@ export default function Details() {
 
   const quality = data?.calificacion || 0;
 
-  const qualityIndex = quality * 2 || 0;
   const qualityMessage = {
-    1: 'Mu regular',
-    2: 'regular',
-    3: 'Bueno',
-    4: 'Muy bueno',
-    5: 'Excelente',
+    1: "Mu regular",
+    2: "regular",
+    3: "Bueno",
+    4: "Muy bueno",
+    5: "Excelente",
   };
 
   return (

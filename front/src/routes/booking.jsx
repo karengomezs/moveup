@@ -1,14 +1,14 @@
-// import { useState } from "react";
-// import CalendarNoInput from "../components/calendar/Calendar";
+import { useState } from "react";
+import CalendarNoInput from "../components/calendar/Calendar";
 
 export default function Booking() {
-  //   const [dates, setDates] = useState({});
+  const [dates, setDates] = useState({});
 
   return (
     <div className="container text-center d-flex flex-grow-1 mt-5">
-      <div className="container-sm column ">
-        <div className="card ">
-          <div className="d-flex flex-column gap-4 card-body shadow-sm p-4">
+      <div className="d-flex flex-column gap-5">
+        <div className="card shadow-sm">
+          <div className="d-flex flex-column gap-4 card-body  p-4">
             <div className="d-flex gap-4">
               <div className="text-start flex-grow-1">
                 <label htmlFor="name" className="form-label fw-semibold">
@@ -42,7 +42,7 @@ export default function Booking() {
                 <input
                   disabled
                   id="email"
-                  type="text"
+                  type="email"
                   className="form-control border-0 "
                 />
               </div>
@@ -61,10 +61,8 @@ export default function Booking() {
         </div>
 
         {/* 2 contenedor de la izquierda con calendario */}
-        <div className=" bg-warning">
-          {/* <div> */}
-          {/* <CalendarNoInput dates={dates} setDates={setDates} /> */}
-          {/* </div> */}
+        <div className=" card shadow-sm">
+          <CalendarNoInput dates={dates} setDates={setDates} />
         </div>
       </div>
 
