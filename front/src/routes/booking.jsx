@@ -1,19 +1,19 @@
-import { format, isValid } from 'date-fns';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Calendar } from '../components/calendar';
-import Stars from '../components/product/stars';
+import { format, isValid } from "date-fns";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Calendar } from "../components/calendar";
+import Stars from "../components/product/stars";
 
 export default function Booking() {
   const [dates, setDates] = useState({});
 
   const startDate = isValid(dates.start)
-    ? format(dates.start, 'MM/dd/yyyy')
-    : '_/_/_';
+    ? format(dates.start, "MM/dd/yyyy")
+    : "_/_/_";
 
   const endDate = isValid(dates.end)
-    ? format(dates.end, 'MM/dd/yyyy')
-    : '_/_/_';
+    ? format(dates.end, "MM/dd/yyyy")
+    : "_/_/_";
 
   const navigate = useNavigate();
   const hours = Array(24)
@@ -34,7 +34,7 @@ export default function Booking() {
         onSubmit={(e) => {
           e.preventDefault();
 
-          navigate('/confirmed-booking');
+          navigate("/confirmed-booking");
         }}
       >
         <div className="d-flex flex-column gap-5 col">
@@ -43,7 +43,7 @@ export default function Booking() {
             <h4 className="h4 fw-semibold">Completa tus datos</h4>
             <div className="card shadow-sm">
               <div className="d-flex flex-column gap-4 card-body  p-4">
-                <div className="d-flex gap-4">
+                <div className="d-flex gap-4 flex-column flex-sm-row">
                   <div className="text-start flex-grow-1">
                     <label htmlFor="name" className="form-label fw-semibold">
                       Nombre
@@ -71,7 +71,7 @@ export default function Booking() {
                   </div>
                 </div>
 
-                <div className="d-flex gap-4">
+                <div className="d-flex gap-4 flex-column flex-sm-row">
                   <div className="text-start flex-grow-1">
                     <label htmlFor="email" className="form-label fw-semibold">
                       Correo electrónico
