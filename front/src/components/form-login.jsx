@@ -1,4 +1,4 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
 import userContext from "../context/user-context";
@@ -9,6 +9,9 @@ export default function FormLogin() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const userState = useContext(userContext);
+  const location = useLocation();
+  const isLoginRequired = location.state?.loginRequired;
+  const prevLocation = location.state?.prevLocation;
 
   return (
     <form
@@ -20,7 +23,11 @@ export default function FormLogin() {
           if (response?.token) {
             userState.setUser(response.user);
 
-            navigate("/");
+            if (isLoginRequired) {
+              navigate(prevLocation);
+            } else {
+              navigate("/");
+            }
           }
         } catch (error) {
           setError(error.message);
