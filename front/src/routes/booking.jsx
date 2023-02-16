@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CalendarNoInput from '../components/calendar/Calendar';
+import { Calendar } from '../components/calendar';
 import Stars from '../components/product/stars';
 
 export default function Booking() {
@@ -94,7 +94,7 @@ export default function Booking() {
           <div>
             <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
             <div className=" card shadow-sm align-items-center">
-              <CalendarNoInput dates={dates} setDates={setDates} />
+              <Calendar dates={dates} setDates={setDates} />
             </div>
           </div>
           {/* fin calendario */}

@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import Stars from "./stars";
-import Score from "./score";
+import { useNavigate } from 'react-router-dom';
+import Stars from './stars';
+import Score from './score';
 
 const Category = ({
   categories,
@@ -36,7 +36,7 @@ const Category = ({
                 <h5 className="card-title h5">{name}</h5>
               </div>
               <div className="d-flex flex-column align-items-end">
-                <Score value={score} className="fs-6 fw-2 fw-bolder" />
+                <Score value={score} className="fs-6 fw-bolder" />
               </div>
             </div>
             <div className="d-flex align-items-center">
