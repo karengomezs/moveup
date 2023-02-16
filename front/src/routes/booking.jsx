@@ -1,9 +1,11 @@
-import { useState } from "react";
-import CalendarNoInput from "../components/calendar/Calendar";
-import Stars from "../components/product/stars";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CalendarNoInput from '../components/calendar/Calendar';
+import Stars from '../components/product/stars';
 
 export default function Booking() {
   const [dates, setDates] = useState({});
+  const navigate = useNavigate();
   const hours = Array(24)
     .fill()
     .map((_, i) => {
@@ -17,7 +19,14 @@ export default function Booking() {
 
   return (
     <>
-      <div className="container  d-flex flex-grow-1 my-5 gap-5 flex-wrap">
+      <form
+        className="container  d-flex flex-grow-1 my-5 gap-5 flex-wrap"
+        onSubmit={(e) => {
+          e.preventDefault();
+
+          navigate('/confirmed-booking');
+        }}
+      >
         <div className="d-flex flex-column gap-5 col">
           {/* 1 div con h3 y el form  */}
           <div>
@@ -146,13 +155,13 @@ export default function Booking() {
               </div>
               <hr />
 
-              <button className="btn btn-primary mt-3">
+              <button type="submit" className="btn btn-primary mt-3">
                 Confirmar reserva
               </button>
             </div>
           </div>
         </div>
-      </div>
+      </form>
 
       <div className="container">
         <h4 className="h4 fw-semibold">Que tienes que saber?</h4>
