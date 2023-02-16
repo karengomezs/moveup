@@ -3,6 +3,7 @@ import Details from "./details";
 import Login from "./login";
 import Main from "./main";
 import Booking from "./booking";
+import ConfirmBooking from "./confirm-booking";
 import { Route, Routes as Router } from "react-router-dom";
 import ProtectedRoute from "../components/protected-route";
 
@@ -22,6 +23,7 @@ export default function Routes() {
             </ProtectedRoute>
           }
         ></Route>
+        <Route path="/confirm-booking" element={<ConfirmBooking />}></Route>
       </Router>
     </>
   );
