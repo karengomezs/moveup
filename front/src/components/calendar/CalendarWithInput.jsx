@@ -159,6 +159,7 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
             value={dates}
             onSelectDate={handleSelectDate}
             months={numberOfMonths}
+            disablePastDates
           >
             <PopoverBody p={0}>
               <CalendarControls>

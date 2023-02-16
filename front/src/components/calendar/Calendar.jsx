@@ -25,6 +25,7 @@ const CalendarNoInput = ({ months = 2, dates, setDates }) => {
         value={dates}
         onSelectDate={handleSelectDate}
         months={numberOfMonths}
+        disablePastDates
       >
         <CalendarControls>
           <CalendarPrevButton />
