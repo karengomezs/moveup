@@ -70,7 +70,7 @@ export default function Details() {
           <button
             className="btn btn-primary mt-3 fw-semibold fs-5"
             onClick={() => {
-              navigate(`/details/:id/booking`);
+              navigate(`/details/${data.id}/booking`);
             }}
           >
             Iniciar reserva
