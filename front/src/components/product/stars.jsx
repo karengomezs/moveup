@@ -1,4 +1,4 @@
-const Stars = ({ quality = 0 }) => {
+const Stars = ({ quality = 0, className }) => {
   const missingStartsValue = 5 - quality;
 
   const stars = Array(quality)
@@ -10,7 +10,7 @@ const Stars = ({ quality = 0 }) => {
     .map((_, index) => <i key={`${index}-not-fill`} className="bi bi-star" />);
 
   return (
-    <div className="text-primary">
+    <div className={`text-primary ${className}`}>
       {stars}
       {missingStarts}
     </div>

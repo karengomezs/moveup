@@ -1,6 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import Stars from './starts';
-import Score from './score';
+import { useNavigate } from "react-router-dom";
+import Stars from "./stars";
+import Score from "./score";
 
 const Category = ({
   categories,

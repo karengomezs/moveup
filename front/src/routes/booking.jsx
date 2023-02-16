@@ -1,11 +1,12 @@
 import { useState } from "react";
 import CalendarNoInput from "../components/calendar/Calendar";
+import Stars from "../components/product/stars";
 
 export default function Booking() {
   const [dates, setDates] = useState({});
 
   return (
-    <div className="container  d-flex flex-grow-1 mt-5 gap-5">
+    <div className="container  d-flex flex-grow-1 my-5 gap-5 flex-wrap">
       <div className="d-flex flex-column gap-5 col">
         {/* 1 div con h3 y el form  */}
         <div>
@@ -68,7 +69,7 @@ export default function Booking() {
         {/* 2 contenedor de la izquierda con calendario */}
         <div>
           <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
-          <div className=" card shadow-sm">
+          <div className=" card shadow-sm align-items-center">
             <CalendarNoInput dates={dates} setDates={setDates} />
           </div>
         </div>
@@ -103,11 +104,33 @@ export default function Booking() {
       {/* fin horario llegada */}
 
       {/* ---------------------- */}
+      <div className="pt-xl-4 mt-xl-1 col col-xl-4">
+        <div className="card mt-2">
+          <h4 className="h4 fw-semibold p-3 m-0">Detalle de la reserva</h4>
+          <img src="https://picsum.photos/200/300" className="h-100" alt="" />
+          <div className="card-body d-flex flex-column gap-2">
+            <span className="text-secondary">CLASE</span>
+            <h4 className="h4">Surf</h4>
+            <Stars quality={5} className="fs-6" />
 
-      <div className="card col-4">
-        <img src="https://picsum.photos/200/300" alt="" />
-        <div className="card-body">
-          <p>adn</p>
+            <p>
+              <i className="bi bi-geo-alt-fill fs-6 text-primary me-2" />
+              Ubicacion de la clase
+            </p>
+            <hr />
+            <div className="d-flex">
+              <p className="fw-semibold flex-grow-1">Inicio de la clase</p>
+              <span>01/05/95</span>
+            </div>
+            <hr />
+            <div className="d-flex">
+              <p className="fw-semibold flex-grow-1">Fin de la clase</p>
+              <span>07/08/22</span>
+            </div>
+            <hr />
+
+            <button className="btn btn-primary mt-3">Confirmar reserva</button>
+          </div>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Gallery from "../components/gallery";
 import { getClass } from "../api/products";
-import Stars from "../components/product/starts";
+import Stars from "../components/product/stars";
 import Score from "../components/product/score";
 
 export default function Details() {
