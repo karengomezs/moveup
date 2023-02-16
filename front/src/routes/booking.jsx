@@ -64,6 +64,28 @@ export default function Booking() {
         <div className=" card shadow-sm">
           <CalendarNoInput dates={dates} setDates={setDates} />
         </div>
+
+        <div className=" card shadow-sm">
+          <div className="card-body text-start">
+            <h6 className="card-title h6 fw-semibold">
+              <i className="bi bi-check-circle me-2 fs-5" />
+              Tu clase comenzará entre las 10:00 AM y las 11:00 AM
+            </h6>
+
+            <div className="mt-4">
+              <label htmlFor="time" className="form-label">
+                Indica tu horario estimado de llegada
+              </label>
+
+              <select class="form-select" id="floatingSelect">
+                <option selected>Selecciona tu hora de llegada</option>
+                <option value="1">10:00 AM</option>
+                <option value="2">11:00 AM</option>
+                <option value="3">12:00 AM</option>
+              </select>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="container-sm ">
