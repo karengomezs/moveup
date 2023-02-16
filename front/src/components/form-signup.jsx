@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import userContext from "../context/user-context";
 import { signApi } from "../api/sign";
 // eslint-disable-next-line
@@ -18,8 +18,11 @@ export default function FormSignup() {
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
 
-  const navigate = useNavigate();
   const userState = useContext(userContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isLoginRequired = location.state?.loginRequired;
+  const prevLocation = location.state?.prevLocation;
 
   /*
 Credenciales válidas: Se simulará que el usuario está logueado. Desaparecerá el formulario de login 
@@ -47,7 +50,12 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
 
           if (response?.token) {
             userState.setUser(response.user);
-            navigate("/");
+
+            if (isLoginRequired) {
+              navigate(prevLocation);
+            } else {
+              navigate("/");
+            }
           }
         } else {
           setNameError(!nameLength || hasWhiteSpace);

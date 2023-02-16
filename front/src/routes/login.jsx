@@ -12,7 +12,7 @@ export default function Login() {
           className="alert alert-danger d-flex align-items-center mb-4"
           role="alert"
         >
-          <i class="bi bi-exclamation-circle-fill me-2"></i>
+          <i className="bi bi-exclamation-circle-fill me-2"></i>
           <span>Para realizar una reserva necesitas estar logueado</span>
         </div>
       )}

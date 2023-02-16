@@ -75,7 +75,13 @@ export default function FormLogin() {
         Ingresar
       </button>
       <p className="text-center">
-        ¿Aún no tienes cuenta? <Link to="/signup"> Registrate</Link>
+        ¿Aún no tienes cuenta?
+        <Link
+          to="/signup"
+          state={{ prevLocation, loginRequired: isLoginRequired }}
+        >
+          Registrate
+        </Link>
       </p>
 
       {error.length > 0 && (
