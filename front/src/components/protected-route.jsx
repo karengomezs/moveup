@@ -7,7 +7,9 @@ export default function ProtectedRoute({ children }) {
   const userState = useContext(userContext);
 
   if (!userState.user) {
-    return <Navigate to="/login" />;
+    return (
+      <Navigate to="/login" replace={true} state={{ loginRequired: true }} />
+    );
   }
 
   return children;

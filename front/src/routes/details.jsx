@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Gallery from "../components/gallery";
 import { getClass } from "../api/products";
@@ -6,6 +7,8 @@ import Stars from "../components/product/stars";
 import Score from "../components/product/score";
 
 export default function Details() {
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [data, setData] = useState();
 
@@ -64,7 +67,12 @@ export default function Details() {
           <h5 className="card-title text-center h5 fw-semibold m-0">
             Agrega fechas a tus clases para obtener precios exactos
           </h5>
-          <button className="btn btn-primary mt-3 fw-semibold fs-5">
+          <button
+            className="btn btn-primary mt-3 fw-semibold fs-5"
+            onClick={() => {
+              navigate(`/details/:id/booking`);
+            }}
+          >
             Iniciar reserva
           </button>
         </div>
