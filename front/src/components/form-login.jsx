@@ -72,7 +72,7 @@ export default function FormLogin() {
       </p>
 
       {error.length > 0 && (
-        <div class="alert alert-danger" role="alert">
+        <div className="alert alert-danger" role="alert">
           {error}
         </div>
       )}

@@ -1,6 +1,6 @@
-import { useState } from "react";
-import CalendarNoInput from "../components/calendar/Calendar";
-import Stars from "../components/product/stars";
+import { useState } from 'react';
+import CalendarNoInput from '../components/calendar/Calendar';
+import Stars from '../components/product/stars';
 
 export default function Booking() {
   const [dates, setDates] = useState({});
@@ -90,8 +90,12 @@ export default function Booking() {
                   Indica tu horario estimado de llegada
                 </label>
 
-                <select class="form-select" id="floatingSelect">
-                  <option selected>Selecciona tu hora de llegada</option>
+                <select
+                  className="form-select"
+                  id="floatingSelect"
+                  defaultValue="0"
+                >
+                  <option value="0">Selecciona tu hora de llegada</option>
                   <option value="1">10:00 AM</option>
                   <option value="2">11:00 AM</option>
                   <option value="3">12:00 AM</option>

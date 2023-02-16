@@ -12,7 +12,7 @@ export default function Routes() {
       <Router>
         <Route path="/" element={<Main />}></Route>
         <Route
-          path="details/:id"
+          path="/details/:id"
           element={
             // <ProtectedRoute>
             <Details />
@@ -21,7 +21,7 @@ export default function Routes() {
         ></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/booking" element={<Booking />}></Route>
+        <Route path="/details/:id/booking" element={<Booking />}></Route>
       </Router>
     </>
   );
