@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import Gallery from "../components/gallery";
-import { getClass } from "../api/products";
-import Stars from "../components/product/stars";
-import Score from "../components/product/score";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import Gallery from '../components/gallery';
+import { getClass } from '../api/products';
+import Stars from '../components/product/stars';
+import Score from '../components/product/score';
 
 export default function Details() {
   const { id } = useParams();
@@ -18,11 +18,11 @@ export default function Details() {
   const quality = data?.calificacion || 0;
 
   const qualityMessage = {
-    1: "Mu regular",
-    2: "regular",
-    3: "Bueno",
-    4: "Muy bueno",
-    5: "Excelente",
+    1: 'Mu regular',
+    2: 'regular',
+    3: 'Bueno',
+    4: 'Muy bueno',
+    5: 'Excelente',
   };
 
   return (
@@ -60,7 +60,7 @@ export default function Details() {
           <h5 className="h5 fw-semibold m-0">{data?.descripcionClase}</h5>
         </div>
 
-        <div className="card shadow-sm p-3 w-50">
+        <div className="card shadow-sm p-3 col col-lg-6">
           <h5 className="card-title text-center h5 fw-semibold m-0">
             Agrega fechas a tus clases para obtener precios exactos
           </h5>
