@@ -1,3 +1,4 @@
+import { format, isValid } from 'date-fns';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Calendar } from '../components/calendar';
@@ -5,6 +6,15 @@ import Stars from '../components/product/stars';
 
 export default function Booking() {
   const [dates, setDates] = useState({});
+
+  const startDate = isValid(dates.start)
+    ? format(dates.start, 'MM/dd/yyyy')
+    : '_/_/_';
+
+  const endDate = isValid(dates.end)
+    ? format(dates.end, 'MM/dd/yyyy')
+    : '_/_/_';
+
   const navigate = useNavigate();
   const hours = Array(24)
     .fill()
@@ -146,12 +156,12 @@ export default function Booking() {
               <hr />
               <div className="d-flex">
                 <p className="fw-semibold flex-grow-1">Inicio de la clase</p>
-                <span>01/05/95</span>
+                <span>{startDate}</span>
               </div>
               <hr />
               <div className="d-flex">
                 <p className="fw-semibold flex-grow-1">Fin de la clase</p>
-                <span>07/08/22</span>
+                <span>{endDate}</span>
               </div>
               <hr />
 
