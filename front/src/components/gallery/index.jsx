@@ -6,12 +6,12 @@ import ImageGallery from './image';
 const Grid = ({ product }) => {
   return (
     <Gallery>
-      <div className="flex-grow-1 w-100 d-flex gap-2">
+      <div className="flex-grow-1 w-100 d-lg-flex gap-2">
         <ImageGallery
-          className="flex-grow-1 object-fit-cover rounded"
+          className="object-fit-cover rounded col w-100 h-100"
           imageUrl={product?.imagenes[0].url}
         />
-        <div className={styles.container}>
+        <div className={`${styles.container} col-6 d-none d-lg-grid`}>
           {product?.imagenes.map((image, i) => {
             if (i !== 0) {
               return (

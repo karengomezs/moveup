@@ -63,7 +63,7 @@ export default function Details() {
           <h5 className="h5 fw-semibold m-0">{data?.descripcionClase}</h5>
         </div>
 
-        <div className="card shadow-sm p-3 w-50">
+        <div className="card shadow-sm p-3 col col-lg-6">
           <h5 className="card-title text-center h5 fw-semibold m-0">
             Agrega fechas a tus clases para obtener precios exactos
           </h5>
