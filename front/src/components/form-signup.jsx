@@ -48,6 +48,7 @@ export default function FormSignup() {
               name: responseData.nombre,
               lastName: responseData.apellido,
               email: responseData.email,
+              city: responseData.ciudad,
               token: responseData.token,
             };
 

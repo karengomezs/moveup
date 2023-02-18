@@ -1,15 +1,24 @@
-export async function loginApi(user, password) {
+import { host } from '../constants';
+export const apiUrl = `${host}/auth/authenticate`;
+
+export async function loginApi(email, password) {
   try {
-    const data = await fakeResponse(user, password);
-    // const response = await fetch();
-    // const data = await response.json()
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        contraseña: password,
+      }),
+    });
+    const data = await response.json();
     return data;
   } catch (error) {
     throw error;
   }
 }
 
-function fakeResponse(user, password) {
+/* function fakeResponse(user, password) {
   const fakeUser = {
     user: {
       id: 1,
@@ -31,4 +40,4 @@ function fakeResponse(user, password) {
       );
     }
   });
-}
+} */
