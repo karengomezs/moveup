@@ -1,17 +1,17 @@
-import { useState, useContext } from 'react';
-import { useNavigate, Link, useLocation } from 'react-router-dom';
-import userContext from '../context/user-context';
-import { signApi } from '../api/sign';
+import { useState, useContext } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import userContext from "../context/user-context";
+import { signApi } from "../api/sign";
 // eslint-disable-next-line
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const nameRegex = /\s/;
 
-export default function FormSignup() {
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+export default function FormSignup({ setErrorRegister }) {
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -57,8 +57,10 @@ export default function FormSignup() {
             if (isLoginRequired) {
               navigate(prevLocation);
             } else {
-              navigate('/');
+              navigate("/");
             }
+          } else {
+            setErrorRegister(true);
           }
         } else {
           setNameError(!nameLength || hasWhiteSpace);
@@ -83,7 +85,7 @@ export default function FormSignup() {
             id="name"
             value={name}
             type="text"
-            className={`form-control ${nameError ? 'is-invalid' : ''}`}
+            className={`form-control ${nameError ? "is-invalid" : ""}`}
             placeholder="Example: Mariam"
           />
 
@@ -119,7 +121,7 @@ export default function FormSignup() {
           }}
           value={email}
           type="email"
-          className={`form-control ${emailError ? 'is-invalid' : ''}`}
+          className={`form-control ${emailError ? "is-invalid" : ""}`}
           id="email"
           placeholder="Example: mariam@gmail.com"
         />
@@ -138,7 +140,7 @@ export default function FormSignup() {
           }}
           value={password}
           type="password"
-          className={`form-control ${passwordError ? 'is-invalid' : ''}`}
+          className={`form-control ${passwordError ? "is-invalid" : ""}`}
           id="password"
         />
         <div className="invalid-feedback">
@@ -156,7 +158,7 @@ export default function FormSignup() {
           }}
           value={confirmPassword}
           type="password"
-          className={`form-control ${confirmPasswordError ? 'is-invalid' : ''}`}
+          className={`form-control ${confirmPasswordError ? "is-invalid" : ""}`}
           id="cofirm-pass"
         />
         <div className="invalid-feedback">Las contraseñas no coinciden</div>
