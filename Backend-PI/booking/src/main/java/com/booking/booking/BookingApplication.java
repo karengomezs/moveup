@@ -8,6 +8,8 @@ import com.booking.booking.repositories.CategoriaRepository;
 import com.booking.booking.repositories.CiudadRepository;
 import com.booking.booking.repositories.ImagenRepository;
 import com.booking.booking.repositories.ProductosRepository;
+import com.booking.booking.security.entities.RegisterRequest;
+import com.booking.booking.security.services.AuthenticationService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +19,6 @@ import org.springframework.context.annotation.Bean;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
@@ -28,7 +29,7 @@ public class BookingApplication {
 	}
 
 	@Bean
-	public CommandLineRunner addTestData(CiudadRepository ciudadRepository, CategoriaRepository categoriaRepository, ProductosRepository productosRepository, ImagenRepository imagenRepository) {
+	public CommandLineRunner addTestData(CiudadRepository ciudadRepository, CategoriaRepository categoriaRepository, ProductosRepository productosRepository, ImagenRepository imagenRepository, AuthenticationService authenticationService) {
 		return (args) -> {
 			List<Ciudad> ciudadesData = Arrays.asList(
 					new Ciudad("Medellin CO", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8BEAuxoN9A2SHN5gHkJwhD_uw1KP7EPsJ6g&usqp=CAU"),
@@ -191,6 +192,16 @@ public class BookingApplication {
 			imagenesData.get(39).setProducto(productosResponse.get(7));
 
 			imagenRepository.saveAll(imagenesData);
+
+
+			RegisterRequest request = new RegisterRequest();
+			request.setNombre("Admin");
+			request.setApellido("General");
+			request.setEmail("admin@gmail.com");
+			request.setCiudad("Medellín");
+			request.setContraseña("123456");
+
+			authenticationService.register(request);
 		};
 	}
 }

@@ -1,6 +1,5 @@
 package com.booking.booking.security.entities;
 
-import com.booking.booking.entities.Ciudad;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

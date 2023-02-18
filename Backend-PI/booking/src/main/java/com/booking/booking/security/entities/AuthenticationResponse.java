@@ -1,6 +1,5 @@
 package com.booking.booking.security.entities;
 
-import com.booking.booking.entities.Ciudad;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
