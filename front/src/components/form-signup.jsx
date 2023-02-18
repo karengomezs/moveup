@@ -1,17 +1,17 @@
-import { useState, useContext } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
-import userContext from "../context/user-context";
-import { signApi } from "../api/sign";
+import { useState, useContext } from 'react';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import userContext from '../context/user-context';
+import { signApi } from '../api/sign';
 // eslint-disable-next-line
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const nameRegex = /\s/;
 
 export default function FormSignup() {
-  const [name, setName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
@@ -23,11 +23,6 @@ export default function FormSignup() {
   const location = useLocation();
   const isLoginRequired = location.state?.loginRequired;
   const prevLocation = location.state?.prevLocation;
-
-  /*
-Credenciales válidas: Se simulará que el usuario está logueado. Desaparecerá el formulario de login 
-volveremos a la Home inicial pero en el header a la derecha, en vez de ver los botones de inicio de sesión y registro veremos: Hola [nombre_de_usuario], un link de cerrar sesión y un avatar circular con las iniciales del usuario.
-  */
 
   return (
     <form
@@ -46,15 +41,22 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
           passwordLength &&
           emailValid
         ) {
-          const response = await signApi(name, lastName, email, password);
+          const responseData = await signApi(name, lastName, email, password);
 
-          if (response?.token) {
-            userState.setUser(response.user);
+          if (responseData?.token) {
+            const userObject = {
+              name: responseData.nombre,
+              lastName: responseData.apellido,
+              email: responseData.email,
+              token: responseData.token,
+            };
+
+            userState.setUser(userObject);
 
             if (isLoginRequired) {
               navigate(prevLocation);
             } else {
-              navigate("/");
+              navigate('/');
             }
           }
         } else {
@@ -80,7 +82,7 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
             id="name"
             value={name}
             type="text"
-            className={`form-control ${nameError ? "is-invalid" : ""}`}
+            className={`form-control ${nameError ? 'is-invalid' : ''}`}
             placeholder="Example: Mariam"
           />
 
@@ -116,7 +118,7 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
           }}
           value={email}
           type="email"
-          className={`form-control ${emailError ? "is-invalid" : ""}`}
+          className={`form-control ${emailError ? 'is-invalid' : ''}`}
           id="email"
           placeholder="Example: mariam@gmail.com"
         />
@@ -135,7 +137,7 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
           }}
           value={password}
           type="password"
-          className={`form-control ${passwordError ? "is-invalid" : ""}`}
+          className={`form-control ${passwordError ? 'is-invalid' : ''}`}
           id="password"
         />
         <div className="invalid-feedback">
@@ -153,7 +155,7 @@ volveremos a la Home inicial pero en el header a la derecha, en vez de ver los b
           }}
           value={confirmPassword}
           type="password"
-          className={`form-control ${confirmPasswordError ? "is-invalid" : ""}`}
+          className={`form-control ${confirmPasswordError ? 'is-invalid' : ''}`}
           id="cofirm-pass"
         />
         <div className="invalid-feedback">Las contraseñas no coinciden</div>
