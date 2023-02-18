@@ -2,15 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Stars from './stars';
 import Score from './score';
 
-const Category = ({
-  categories,
-  name,
-  score,
-  city,
-  id,
-  description,
-  images,
-}) => {
+const Product = ({ category, name, score, city, id, description, images }) => {
   const navigate = useNavigate();
   return (
     <div className="card mb-3">
@@ -29,7 +21,7 @@ const Category = ({
               <div className="mb-2">
                 <div className="d-flex align-items-end">
                   <h6 className="h6 m-0 pe-1 text-muted d-flex gap-1">
-                    {categories.map((category) => category.nombreCategorias)}
+                    {category}
                     <Stars quality={score} />
                   </h6>
                 </div>
@@ -65,4 +57,4 @@ const Category = ({
   );
 };
 
-export default Category;
+export default Product;

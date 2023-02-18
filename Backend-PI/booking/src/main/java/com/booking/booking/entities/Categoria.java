@@ -32,9 +32,9 @@ public class Categoria {
     @Column
     private String url;
 
-    @ManyToMany(mappedBy = "categorias")
+    @OneToMany(mappedBy = "categorias", cascade = CascadeType.ALL)
     @JsonIgnore
-    private Collection<Producto> productoSet;
+    private Collection<Producto> productos;
 
     public Categoria(String nombreCategorias, String descripcionCategorias, String url) {
         this.nombreCategorias = nombreCategorias;

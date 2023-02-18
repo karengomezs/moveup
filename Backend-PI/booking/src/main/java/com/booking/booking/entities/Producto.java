@@ -49,9 +49,8 @@ public class Producto {
     @Column
     private String entrenador;
 
-    @ManyToMany
-    @JoinTable(name = "productoxcategoria", joinColumns = @JoinColumn(name = "producto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
-    private Collection<Categoria> categorias;
+    @ManyToOne
+    private Categoria categorias;
 
     public Producto(Double calificacion, LocalDate fechaDisponible, Date horarioDisponible, String nombreClase, String descripcionClase, String entrenador) {
         this.calificacion = calificacion;
