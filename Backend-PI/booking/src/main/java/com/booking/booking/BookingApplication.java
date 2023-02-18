@@ -67,28 +67,28 @@ public class BookingApplication {
 			);
 
 			productosData.get(0).setCiudad(ciudadesData.get(0));
-			productosData.get(0).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(1))));
+			productosData.get(0).setCategorias(categoriasData.get(1));
 
 			productosData.get(1).setCiudad(ciudadesData.get(1));
-			productosData.get(1).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(2))));
+			productosData.get(1).setCategorias(categoriasData.get(2));
 
 			productosData.get(2).setCiudad(ciudadesData.get(2));
-			productosData.get(2).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(0))));
+			productosData.get(2).setCategorias(categoriasData.get(0));
 
 			productosData.get(3).setCiudad(ciudadesData.get(3));
-			productosData.get(3).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(3))));
+			productosData.get(3).setCategorias(categoriasData.get(3));
 
 			productosData.get(4).setCiudad(ciudadesData.get(4));
-			productosData.get(4).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(0))));
+			productosData.get(4).setCategorias(categoriasData.get(0));
 
 			productosData.get(5).setCiudad(ciudadesData.get(5));
-			productosData.get(5).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(0))));
+			productosData.get(5).setCategorias(categoriasData.get(0));
 
 			productosData.get(6).setCiudad(ciudadesData.get(6));
-			productosData.get(6).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(3))));
+			productosData.get(6).setCategorias(categoriasData.get(3));
 
 			productosData.get(7).setCiudad(ciudadesData.get(7));
-			productosData.get(7).setCategorias(new HashSet<>(Arrays.asList(categoriasData.get(2))));
+			productosData.get(7).setCategorias(categoriasData.get(2));
 
 			List<Producto> productosResponse = productosRepository.saveAll(productosData);
 
