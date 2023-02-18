@@ -41,25 +41,27 @@ export default function FormSignup({ setErrorRegister }) {
           passwordLength &&
           emailValid
         ) {
-          const responseData = await signApi(name, lastName, email, password);
+          try {
+            const responseData = await signApi(name, lastName, email, password);
 
-          if (responseData?.token) {
-            const userObject = {
-              name: responseData.nombre,
-              lastName: responseData.apellido,
-              email: responseData.email,
-              city: responseData.ciudad,
-              token: responseData.token,
-            };
+            if (responseData?.token) {
+              const userObject = {
+                name: responseData.nombre,
+                lastName: responseData.apellido,
+                email: responseData.email,
+                city: responseData.ciudad,
+                token: responseData.token,
+              };
 
-            userState.setUser(userObject);
+              userState.setUser(userObject);
 
-            if (isLoginRequired) {
-              navigate(prevLocation);
-            } else {
-              navigate("/");
+              if (isLoginRequired) {
+                navigate(prevLocation);
+              } else {
+                navigate("/");
+              }
             }
-          } else {
+          } catch (error) {
             setErrorRegister(true);
           }
         } else {

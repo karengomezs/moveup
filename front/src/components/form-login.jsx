@@ -1,12 +1,12 @@
-import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { useState, useContext } from 'react';
-import { loginApi } from '../api/login';
-import userContext from '../context/user-context';
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useState, useContext } from "react";
+import { loginApi } from "../api/login";
+import userContext from "../context/user-context";
 
 export default function FormLogin() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const userState = useContext(userContext);
   const location = useLocation();
@@ -35,11 +35,13 @@ export default function FormLogin() {
             if (isLoginRequired) {
               navigate(prevLocation);
             } else {
-              navigate('/');
+              navigate("/");
             }
           }
         } catch (error) {
-          setError(error.message);
+          setError(
+            "Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde"
+          );
         }
       }}
     >
@@ -52,7 +54,7 @@ export default function FormLogin() {
         <input
           onChange={(e) => {
             setEmail(e.target.value);
-            setError('');
+            setError("");
           }}
           value={email}
           type="email"
@@ -68,7 +70,7 @@ export default function FormLogin() {
         <input
           onChange={(e) => {
             setPassword(e.target.value);
-            setError('');
+            setError("");
           }}
           value={password}
           type="password"

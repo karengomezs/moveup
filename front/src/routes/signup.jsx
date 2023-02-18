@@ -6,6 +6,7 @@ export default function Signup() {
 
   return (
     <div className="container flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+      <FormSignup setErrorRegister={setErrorRegister} />
       {errorRegister && (
         <div
           className="alert alert-danger d-flex align-items-center mb-4"
@@ -18,8 +19,6 @@ export default function Signup() {
           </span>
         </div>
       )}
-
-      <FormSignup setErrorRegister={setErrorRegister} />
     </div>
   );
 }

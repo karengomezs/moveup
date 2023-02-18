@@ -1,11 +1,11 @@
-import { host } from '../constants';
+import { host } from "../constants";
 export const apiUrl = `${host}/auth/register`;
 
 export async function signApi(name, lastName, email, password) {
   try {
     const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         nombre: name,
         apellido: lastName,
@@ -16,7 +16,7 @@ export async function signApi(name, lastName, email, password) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
 }
 
