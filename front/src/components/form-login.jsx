@@ -23,6 +23,7 @@ export default function FormLogin() {
 
           if (responseData?.token) {
             const user = {
+              id: responseData.id,
               name: responseData.nombre,
               lastName: responseData.apellido,
               email: responseData.email,

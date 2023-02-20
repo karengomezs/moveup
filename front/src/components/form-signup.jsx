@@ -45,7 +45,8 @@ export default function FormSignup({ setErrorRegister }) {
             const responseData = await signApi(name, lastName, email, password);
 
             if (responseData?.token) {
-              const userObject = {
+              const user = {
+                id: responseData.id,
                 name: responseData.nombre,
                 lastName: responseData.apellido,
                 email: responseData.email,
@@ -53,7 +54,7 @@ export default function FormSignup({ setErrorRegister }) {
                 token: responseData.token,
               };
 
-              userState.setUser(userObject);
+              userState.setUser(user);
 
               if (isLoginRequired) {
                 navigate(prevLocation);
