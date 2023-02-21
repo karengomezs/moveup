@@ -12,8 +12,6 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/ciudad")
-@CrossOrigin(origins = "http://localhost:3000")
-
 public class CiudadController {
 
     private CiudadService ciudadService;
