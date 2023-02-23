@@ -52,7 +52,8 @@ export async function getFilteredClasses(
 ) {
   const params = new URLSearchParams({
     ciudad,
-    fecha: date.start,
+    fechaInicial: date.start,
+    fechaFinal: date.end,
   }).toString();
 
   const url = `${apiUrl}?${params}`;

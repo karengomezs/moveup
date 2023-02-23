@@ -25,7 +25,7 @@ export default function Booking() {
   });
 
   useEffect(() => {
-    getUnavailableDatesByProductId(id).then((data) => {
+    getUnavailableDatesByProductId(id, userState.user.token).then((data) => {
       const list = data || [];
       const result = list.map((date) => {
         const parsedDate = parse(date, "yyyy-MM-dd", new Date());
@@ -33,7 +33,7 @@ export default function Booking() {
       });
       setDisabledDate(result);
     });
-  }, [id]);
+  }, [id, userState.user.token]);
 
   useEffect(() => {
     getClass(id).then((data) => {

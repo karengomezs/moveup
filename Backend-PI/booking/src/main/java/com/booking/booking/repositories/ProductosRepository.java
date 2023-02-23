@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public interface ProductosRepository extends JpaRepository<Producto, Long> {
-    @Query(value="SELECT p FROM Producto p JOIN p.reservas r WHERE NOT (r.fechaInicial >= ?1 AND r.fechaFinal <= ?2)")
+   @Query(value="SELECT p FROM Producto p LEFT JOIN p.reservas r WHERE NOT (( r.fechaInicial BETWEEN :fechaInicial  AND :fechaFinal) OR (r.fechaFinal BETWEEN :fechaInicial AND :fechaFinal))")
     List<Producto> findProductoByReservas(LocalDate fechaInicial, LocalDate fechaFinal);
 
     @Query(value="SELECT p FROM Producto p LEFT JOIN p.reservas r WHERE p.ciudad.id =:ciudadId AND NOT (( r.fechaInicial BETWEEN :fechaInicial  AND :fechaFinal) OR (r.fechaFinal BETWEEN :fechaInicial AND :fechaFinal))")
