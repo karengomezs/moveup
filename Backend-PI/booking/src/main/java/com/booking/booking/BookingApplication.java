@@ -213,7 +213,6 @@ public class BookingApplication {
 			request.setNombre("Admin");
 			request.setApellido("General");
 			request.setEmail("admin@gmail.com");
-			request.setCiudad("Medellín");
 			request.setContraseña("123456");
 
 			authenticationService.register(request);

@@ -1,11 +1,45 @@
-import { format, isValid } from "date-fns";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { format, isValid, parse, isWithinInterval } from "date-fns";
+import { useState, useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import userContext from "../context/user-context";
 import { Calendar } from "../components/calendar";
 import Stars from "../components/product/stars";
+import { createBooking, getUnavailableDatesByProductId } from "../api/booking";
+import { getClass } from "../api/products";
 
 export default function Booking() {
+  const userState = useContext(userContext);
+  const { id } = useParams();
   const [dates, setDates] = useState({});
+  const [hour, setHour] = useState("");
+  const [city, setCity] = useState(userState.user.city || "");
+  const [showError, setShowError] = useState(false);
+  const [product, setProduct] = useState({});
+  const [disabledDates, setDisabledDate] = useState([]);
+
+  const invalidRange = disabledDates.some((date) => {
+    if (isValid(dates.start) && isValid(dates.end)) {
+      return isWithinInterval(date, dates);
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    getUnavailableDatesByProductId(id).then((data) => {
+      const list = data || [];
+      const result = list.map((date) => {
+        const parsedDate = parse(date, "yyyy-MM-dd", new Date());
+        return parsedDate;
+      });
+      setDisabledDate(result);
+    });
+  }, [id]);
+
+  useEffect(() => {
+    getClass(id).then((data) => {
+      setProduct(data);
+    });
+  }, [id]);
 
   const startDate = isValid(dates.start)
     ? format(dates.start, "MM/dd/yyyy")
@@ -16,6 +50,7 @@ export default function Booking() {
     : "_/_/_";
 
   const navigate = useNavigate();
+
   const hours = Array(24)
     .fill()
     .map((_, i) => {
@@ -31,10 +66,49 @@ export default function Booking() {
     <>
       <form
         className="container  d-flex flex-grow-1 my-5 gap-5 flex-wrap"
-        onSubmit={(e) => {
+        onSubmit={async (e) => {
           e.preventDefault();
 
-          navigate("/confirmed-booking");
+          if (showError) {
+            setShowError(false);
+          }
+
+          if (!isValid(dates.start) || !isValid(dates.end)) {
+            return;
+          }
+
+          if (hour.length === 0) {
+            return;
+          }
+
+          if (invalidRange) {
+            return;
+          }
+
+          const booking = {
+            horaInicio: hour,
+            fechaInicial: format(dates.start, "yyyy-MM-dd"),
+            fechaFinal: format(dates.end, "yyyy-MM-dd"),
+            producto: {
+              id,
+            },
+            usuario: {
+              id: userState.user.id,
+              ciudad: city,
+            },
+          };
+
+          try {
+            const result = await createBooking(booking, userState.user.token);
+            if (!result) {
+              setShowError(true);
+              return;
+            }
+            userState.setUser({ ...userState.user, city });
+            navigate("/confirmed-booking");
+          } catch (error) {
+            setShowError(true);
+          }
         }}
       >
         <div className="d-flex flex-column gap-5 col">
@@ -49,6 +123,8 @@ export default function Booking() {
                       Nombre
                     </label>
                     <input
+                      onChange={() => {}}
+                      value={userState.user.name}
                       disabled
                       id="name"
                       type="text"
@@ -63,6 +139,8 @@ export default function Booking() {
                       Apellido
                     </label>
                     <input
+                      onChange={() => {}}
+                      value={userState.user.lastName}
                       disabled
                       id="last-name"
                       type="text"
@@ -77,7 +155,9 @@ export default function Booking() {
                       Correo electrónico
                     </label>
                     <input
+                      onChange={() => {}}
                       disabled
+                      value={userState.user.email}
                       id="email"
                       type="email"
                       className="form-control border-0 "
@@ -88,6 +168,10 @@ export default function Booking() {
                       Ciudad
                     </label>
                     <input
+                      onChange={(e) => {
+                        setCity(e.target.value);
+                      }}
+                      value={city}
                       required
                       id="city"
                       type="text"
@@ -104,7 +188,11 @@ export default function Booking() {
           <div>
             <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
             <div className=" card shadow-sm align-items-center">
-              <Calendar dates={dates} setDates={setDates} />
+              <Calendar
+                dates={dates}
+                setDates={setDates}
+                disabledDates={disabledDates}
+              />
             </div>
           </div>
           {/* fin calendario */}
@@ -125,9 +213,14 @@ export default function Booking() {
                   </label>
 
                   <select
+                    onChange={(e) => {
+                      const selectHour = e.target.value;
+                      setHour(selectHour);
+                    }}
+                    value={hour}
                     className="form-select"
                     id="floatingSelect"
-                    defaultValue="0"
+                    required
                   >
                     <option value="0">Selecciona tu hora de llegada</option>
                     {hours}
@@ -143,15 +236,20 @@ export default function Booking() {
         <div className="pt-xl-4 mt-xl-1 col col-xl-4">
           <div className="card shadow-sm mt-2">
             <h4 className="h4 fw-semibold p-3 m-0">Detalle de la reserva</h4>
-            <img src="https://picsum.photos/200/300" className="h-100" alt="" />
+
+            <img
+              src={product?.imagenes?.[0].url}
+              className="h-100 object-fit-cover"
+              alt=""
+            />
             <div className="card-body d-flex flex-column gap-2">
               <span className="text-secondary">CLASE</span>
-              <h4 className="h4">Surf</h4>
-              <Stars quality={5} className="fs-6" />
+              <h4 className="h4">{product?.nombreClase}</h4>
+              <Stars quality={product?.calificacion} className="fs-6" />
 
               <p>
                 <i className="bi bi-geo-alt-fill fs-6 text-primary me-2" />
-                Ubicacion de la clase
+                {product?.ciudad?.nombreCiudad}
               </p>
               <hr />
               <div className="d-flex">
@@ -170,6 +268,20 @@ export default function Booking() {
               </button>
             </div>
           </div>
+
+          {showError && (
+            <div
+              className="alert alert-danger d-flex align-items-center mt-4"
+              role="alert"
+            >
+              <i className="bi bi-exclamation-circle-fill me-2"></i>
+
+              <span>
+                Lamentablemente la reserva no ha podido realizarse. Por favor
+                intente más tarde
+              </span>
+            </div>
+          )}
         </div>
       </form>
 

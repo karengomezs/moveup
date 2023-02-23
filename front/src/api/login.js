@@ -5,7 +5,11 @@ export async function loginApi(email, password) {
   try {
     const response = await fetch(apiUrl, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+
+      headers: {
+        "Content-Type": "application/json",
+        // "Access-Control-Allow-Origin": "*",
+      },
       body: JSON.stringify({
         email,
         contraseña: password,

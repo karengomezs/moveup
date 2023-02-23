@@ -24,6 +24,7 @@ public class SecurityConfiguration {
         http
                 .csrf()
                 .disable()
+                .cors().and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**","/api/producto","/api/producto/recomendado",
                         "/api/producto/buscar/entrenador/{nombreEntrenador}","/api/producto?ciudad=&fecha=",

@@ -1,9 +1,6 @@
 package com.booking.booking.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,8 +11,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Data
@@ -46,6 +41,9 @@ public class Producto {
     @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Collection<Imagen> imagenes;
 
+    @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Collection<Reserva> reservas;
+
     @Column
     private String entrenador;
 
@@ -65,6 +63,12 @@ public class Producto {
         this.imagenes = imagenes;
         for (Imagen imagen:imagenes) {
             imagen.setProducto(this);
+        }
+    }
+    public void setReservas(Collection<Reserva> reservas) {
+        this.reservas = reservas;
+        for (Reserva reserva:reservas) {
+            reserva.setProducto(this);
         }
     }
 }

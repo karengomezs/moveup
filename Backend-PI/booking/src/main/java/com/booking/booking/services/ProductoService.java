@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Stream;
 
 @Service
 public class ProductoService {
     private ProductosRepository productosRepository;
 
     @Autowired
-    public ProductoService(ProductosRepository productosRepository){
+    public ProductoService(ProductosRepository productosRepository) {
         this.productosRepository = productosRepository;
     }
 
@@ -36,17 +36,28 @@ public class ProductoService {
         return productosRepository.findProductoByCategoria(categoriaId);
     }
 
-    public List<Producto> getProductosFiltrados(String ciudadId, LocalDate fecha){
-        if(!ciudadId.isEmpty() && fecha != null){
-            return productosRepository.findProductoByCiudad_IdAndFechaDisponible(ciudadId, fecha);
+    public List<Producto> getProductosFiltrados(String ciudadId, LocalDate fechaInicial, LocalDate fechaFinal){
+        Boolean isValidCiudad = !ciudadId.isEmpty();
+        Boolean isValidDates = fechaInicial != null && fechaFinal != null;
+
+        if(isValidCiudad && isValidDates){
+            List<Producto> listUno = productosRepository.findAllByReservasIsNullAndCiudad_Id(ciudadId);
+            List<Producto> listDos = productosRepository.findProductoByReservasAndCiudadId(ciudadId, fechaInicial, fechaFinal);
+            List<Producto> nuevaLista = Stream.concat(listUno.stream(), listDos.stream()).toList();
+
+            return nuevaLista;
         }
 
-        if (!ciudadId.isEmpty()) {
+        if (isValidCiudad) {
             return productosRepository.findProductoByCiudad_Id(ciudadId);
         }
 
-        if (fecha != null) {
-            return productosRepository.findByFechaDisponible(fecha);
+        if (isValidDates) {
+            List<Producto> listUno = productosRepository.findAllByReservasIsNull();
+            List<Producto> listDos = productosRepository.findProductoByReservas(fechaInicial,fechaFinal);
+            List<Producto> nuevaLista = Stream.concat(listUno.stream(), listDos.stream()).toList();
+
+            return nuevaLista;
         }
 
         return List.of();

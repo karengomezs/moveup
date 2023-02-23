@@ -1,6 +1,6 @@
-import theme from './styles';
-import { ChakraProvider } from '@chakra-ui/react';
-import useWindowResize from './useWindowResize';
+import theme from "./styles";
+import { ChakraProvider } from "@chakra-ui/react";
+import useWindowResize from "./useWindowResize";
 import {
   Calendar,
   CalendarControls,
@@ -11,9 +11,9 @@ import {
   CalendarMonthName,
   CalendarWeek,
   CalendarDays,
-} from '@uselessdev/datepicker';
+} from "@uselessdev/datepicker";
 
-const CalendarNoInput = ({ months = 2, dates, setDates }) => {
+const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {
   const sizes = useWindowResize();
   const numberOfMonths = sizes.width < 690 ? 1 : months;
 
@@ -26,6 +26,7 @@ const CalendarNoInput = ({ months = 2, dates, setDates }) => {
         onSelectDate={handleSelectDate}
         months={numberOfMonths}
         disablePastDates
+        disableDates={disabledDates}
       >
         <CalendarControls>
           <CalendarPrevButton />
