@@ -9,6 +9,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -57,5 +59,16 @@ public class AuthenticationService {
                 .email(user.getEmail())
                 .ciudad(user.getCiudad())
                 .build();
+    }
+
+    public boolean updateCity (Long id, String city) {
+        Optional<Usuario> user = repository.findById(id);
+
+        if(user.isPresent()){
+            user.get().setCiudad(city);
+            return true;
+        }
+
+        return false;
     }
 }

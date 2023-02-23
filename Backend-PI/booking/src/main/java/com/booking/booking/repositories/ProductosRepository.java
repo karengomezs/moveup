@@ -9,11 +9,17 @@ import java.util.List;
 
 
 public interface ProductosRepository extends JpaRepository<Producto, Long> {
-    List<Producto> findByFechaDisponible(LocalDate fecha);
+    @Query(value="SELECT p FROM Producto p JOIN p.reservas r WHERE NOT (r.fechaInicial >= ?1 AND r.fechaFinal <= ?2)")
+    List<Producto> findProductoByReservas(LocalDate fechaInicial, LocalDate fechaFinal);
+
+    @Query(value="SELECT p FROM Producto p LEFT JOIN p.reservas r WHERE p.ciudad.id =:ciudadId AND NOT (( r.fechaInicial BETWEEN :fechaInicial  AND :fechaFinal) OR (r.fechaFinal BETWEEN :fechaInicial AND :fechaFinal))")
+    List<Producto> findProductoByReservasAndCiudadId(String ciudadId, LocalDate fechaInicial, LocalDate fechaFinal);
+
+    List<Producto> findAllByReservasIsNull();
+
+    List<Producto> findAllByReservasIsNullAndCiudad_Id(String ciudad);
 
     List<Producto> findProductoByCiudad_Id(String ciudadId);
-
-    List<Producto> findProductoByCiudad_IdAndFechaDisponible(String ciudadId, LocalDate fecha);
 
     List<Producto> findByEntrenador(String nombreEntrenador);
 
@@ -22,6 +28,4 @@ public interface ProductosRepository extends JpaRepository<Producto, Long> {
 
     @Query(value="SELECT p FROM Producto p JOIN p.categorias c WHERE c.id = ?1")
     List<Producto> findProductoByCategoria(String categoriaId);
-
-
 }

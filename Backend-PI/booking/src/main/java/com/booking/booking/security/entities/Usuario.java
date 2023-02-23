@@ -1,5 +1,6 @@
 package com.booking.booking.security.entities;
 
+import com.booking.booking.entities.Reserva;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,10 +37,19 @@ public class Usuario implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Collection<Reserva> reservas;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    public void setReservas(Collection<Reserva> reservas) {
+        this.reservas = reservas;
+        for (Reserva reserva:reservas) {
+            reserva.setUsuario(this);
+        }
     }
 
     @Override

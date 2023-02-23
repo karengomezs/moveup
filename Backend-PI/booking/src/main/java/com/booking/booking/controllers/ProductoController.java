@@ -28,9 +28,9 @@ public class ProductoController {
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping(params = {"ciudad", "fecha"})
-    public ResponseEntity<List<Producto>> getAll(@RequestParam(required = false) String ciudad, @RequestParam(required = false) LocalDate fecha){
-        List<Producto> productoList = productoService.getProductosFiltrados(ciudad, fecha);
+    @GetMapping(params = {"ciudad", "fechaInicial", "fechaFinal"})
+    public ResponseEntity<List<Producto>> getAll(@RequestParam(required = false) String ciudad, @RequestParam(required = false) LocalDate fechaInicial, @RequestParam(required = false) LocalDate fechaFinal){
+        List<Producto> productoList = productoService.getProductosFiltrados(ciudad, fechaInicial, fechaFinal);
         return ResponseEntity.ok(productoList);
     }
 

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function ConfirmedBooking() {
   return (
-    <div className="d-flex flex-grow-1 flex-column align-items-center justify-content-center">
+    <div className="d-flex flex-grow-1 flex-column align-items-center justify-content-center container">
       <div className="card shadow-sm py-3 px-5">
         <div className="card-body d-flex flex-column align-items-center gap-3">
           <i className="bi bi-patch-check-fill fs-1 text-primary"></i>
