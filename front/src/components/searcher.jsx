@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { geCities } from '../api/city';
-import { CalendarWithInput } from './calendar';
+import React, { useState, useEffect } from "react";
+import { geCities } from "../api/city";
+import { CalendarWithInput } from "./calendar";
 
 export default function Searcher({ onSearch }) {
   const [dataCities, setDataCities] = useState([]);
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState("");
   const [dates, setDates] = useState({
-    start: '',
-    end: '',
+    start: "",
+    end: "",
   });
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function Searcher({ onSearch }) {
                   value={city}
                 >
                   <option disabled value="">
-                    ¿A donde vamos ir?
+                    ¿A donde vamos a ir?
                   </option>
                   {cities}
                 </select>
