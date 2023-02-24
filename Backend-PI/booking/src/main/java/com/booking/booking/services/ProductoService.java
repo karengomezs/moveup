@@ -58,7 +58,7 @@ public class ProductoService {
             return resultado;
         }
 
-        return List.of();
+        return getAll();
     }
 
     public List<Producto> getByEntrenador(String nombreEntrenador){
