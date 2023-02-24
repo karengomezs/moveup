@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import Gallery from '../components/gallery';
-import { getClass } from '../api/products';
-import Stars from '../components/product/stars';
-import Score from '../components/product/score';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import Gallery from "../components/gallery";
+import { getClass } from "../api/products";
+import Stars from "../components/product/stars";
+import Score from "../components/product/score";
 
 export default function Details() {
   const navigate = useNavigate();
@@ -21,11 +21,11 @@ export default function Details() {
   const quality = data?.calificacion || 0;
 
   const qualityMessage = {
-    1: 'Mu regular',
-    2: 'regular',
-    3: 'Bueno',
-    4: 'Muy bueno',
-    5: 'Excelente',
+    1: "Mu regular",
+    2: "regular",
+    3: "Bueno",
+    4: "Muy bueno",
+    5: "Excelente",
   };
 
   return (
@@ -53,7 +53,7 @@ export default function Details() {
       </div>
       <div
         className="flex-grow-1 d-flex justify-content-center container py-3"
-        style={{ height: 1 }}
+        style={{ height: 1, minHeight: 400 }}
       >
         <Gallery product={data} />
       </div>
