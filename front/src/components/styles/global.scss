@@ -36,3 +36,9 @@ body {
 .width-max-content {
   width: max-content;
 }
+
+.booking__height-image {
+  @include media-breakpoint-up(xl) {
+    max-height: 403px;
+  }
+}

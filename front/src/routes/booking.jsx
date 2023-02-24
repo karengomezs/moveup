@@ -239,7 +239,7 @@ export default function Booking() {
 
             <img
               src={product?.imagenes?.[0].url}
-              className="h-100 object-fit-cover"
+              className="h-100 object-fit-cover booking__height-image"
               alt=""
             />
             <div className="card-body d-flex flex-column gap-2">
