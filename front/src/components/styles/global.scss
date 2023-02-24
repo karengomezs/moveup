@@ -4,12 +4,7 @@
 @import "./buttons";
 @import "./text";
 @import "./background";
-
-/* Scroll */
-
-::-webkit-scrollbar {
-  display: none;
-}
+@import "./cards";
 
 /* Typigrafia */
 
@@ -24,64 +19,18 @@ body {
   --bs-primary-rgb: rgba(240, 87, 45, 1);
 }
 
-/* Colores */
-$orange: #f0572d;
-$color_secondary: #31363f;
-$color_terceary: #191b1d;
-$color_fourteary: #dfe4ea;
-
-.cards {
-  display: grid;
-  grid-auto-flow: dense;
-  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-  gap: 1rem;
-}
-
-.cards-image {
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
-  width: 100%;
-}
-
-@media screen and (max-width: 991px) {
-  .cards {
-    grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
-  }
-}
-
 .list-width {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 1rem;
-}
 
-@media screen and (max-width: 540px) {
-  .list-width {
+  @media screen and (max-width: 540px) {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }
 
-.bg-search {
-  background-color: $color_secondary;
-}
-
 .object-fit-cover {
   object-fit: cover;
-}
-
-.card {
-  .brightness-effect {
-    filter: brightness(90%);
-    transition: 0.1s filter linear, 0.1s box-shadow linear;
-  }
-
-  &:hover {
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-
-    .brightness-effect {
-      filter: none;
-    }
-  }
 }
 
 .width-max-content {

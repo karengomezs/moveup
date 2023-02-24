@@ -1,0 +1,25 @@
+.card {
+  .brightness-effect {
+    filter: brightness(90%);
+    transition: 0.1s filter linear, 0.1s box-shadow linear;
+  }
+
+  &:hover {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+    .brightness-effect {
+      filter: none;
+    }
+  }
+}
+
+.cards {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+
+  @media screen and (max-width: 991px) {
+    grid-template-columns: repeat(auto-fit, minmax(19.5rem, 1fr));
+  }
+}
