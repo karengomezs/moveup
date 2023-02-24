@@ -26,7 +26,7 @@ export default function Searcher({ onSearch }) {
 
   return (
     <>
-      <div className="bg-buscador py-4">
+      <div className="bg-search py-4">
         <div className="d-flex justify-content-center">
           <h1 className="fs-2 fw-bold text-light mb-3">Busca tu clase</h1>
         </div>
@@ -54,7 +54,7 @@ export default function Searcher({ onSearch }) {
                 <CalendarWithInput dates={dates} setDates={setDates} />
               </div>
               <div className="col d-flex">
-                <button type="submit" className="btn boton-busqueda w-100">
+                <button type="submit" className="btn btn-primary w-100">
                   Buscar
                 </button>
               </div>

@@ -1,9 +1,9 @@
-@import '../../../node_modules/bootstrap/scss/bootstrap';
-@import '../../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
-@import './colors';
-@import './buttons';
-@import './text';
-@import './background';
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+@import "./colors";
+@import "./buttons";
+@import "./text";
+@import "./background";
 
 /* Scroll */
 
@@ -13,12 +13,12 @@
 
 /* Typigrafia */
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
 
 body {
-  --bs-body-font-family: 'Quicksand';
+  --bs-body-font-family: "Quicksand";
   --bs-link-color: var(--primary);
   --bs-link-hover-color: var(--primary-dark);
   --bs-primary-rgb: rgba(240, 87, 45, 1);
@@ -29,8 +29,6 @@ $orange: #f0572d;
 $color_secondary: #31363f;
 $color_terceary: #191b1d;
 $color_fourteary: #dfe4ea;
-
-/* Tarjetas */
 
 .cards {
   display: grid;
@@ -51,47 +49,20 @@ $color_fourteary: #dfe4ea;
   }
 }
 
-/* Modal */
-
-.bg-modal {
-  background-color: $orange;
-}
-
-hr {
-  border: 1px solid black;
-}
-
-/* Listado */
-
-.anchoLista {
+.list-width {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
   gap: 1rem;
 }
 
 @media screen and (max-width: 540px) {
-  .anchoLista {
+  .list-width {
     grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   }
 }
 
-.color-estrellas {
-  color: $orange;
-}
-
-/* buscador*/
-
-.bg-buscador {
+.bg-search {
   background-color: $color_secondary;
-}
-
-.boton-busqueda {
-  color: aliceblue;
-  background-color: $orange;
-}
-
-.boton-busqueda:hover {
-  background-color: aliceblue;
 }
 
 .object-fit-cover {

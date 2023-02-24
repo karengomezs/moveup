@@ -80,7 +80,7 @@ export default function Navbar() {
         >
           <div className="modal-dialog modal-fullscreen">
             <div className="modal-content">
-              <div className="modal-header h-25 bg-modal d-flex flex-column">
+              <div className="modal-header h-25 bg-primary d-flex flex-column">
                 <div className="w-100">
                   <i
                     data-bs-toggle="modal"
