@@ -9,13 +9,18 @@ import java.util.List;
 
 
 public interface ProductosRepository extends JpaRepository<Producto, Long> {
-   @Query(value="SELECT p FROM Producto p LEFT JOIN p.reservas r WHERE NOT (( r.fechaInicial BETWEEN :fechaInicial  AND :fechaFinal) OR (r.fechaFinal BETWEEN :fechaInicial AND :fechaFinal))")
-    List<Producto> findProductoByReservas(LocalDate fechaInicial, LocalDate fechaFinal);
+   @Query(value = "FROM Producto p WHERE NOT EXISTS "
+           + "(SELECT b FROM Reserva b "
+           + "WHERE b.producto = p AND "
+           + "(b.fechaInicial <= :endDate AND b.fechaFinal >= :startDate))")
+    List<Producto> findProductoByFechasDisponibles(LocalDate startDate, LocalDate endDate);
 
-    @Query(value="SELECT p FROM Producto p LEFT JOIN p.reservas r WHERE p.ciudad.id =:ciudadId AND NOT (( r.fechaInicial BETWEEN :fechaInicial  AND :fechaFinal) OR (r.fechaFinal BETWEEN :fechaInicial AND :fechaFinal))")
-    List<Producto> findProductoByReservasAndCiudadId(String ciudadId, LocalDate fechaInicial, LocalDate fechaFinal);
+    @Query(value = "FROM Producto p WHERE p.ciudad.id = :ciudadId AND NOT EXISTS "
+            + "(SELECT b FROM Reserva b "
+            + "WHERE b.producto = p AND "
+            + "(b.fechaInicial <= :endDate AND b.fechaFinal >= :startDate))")
+    List<Producto> findProductoByFechasDisponiblesAndCiudad(LocalDate startDate, LocalDate endDate, String ciudadId);
 
-    List<Producto> findAllByReservasIsNull();
 
     List<Producto> findAllByReservasIsNullAndCiudad_Id(String ciudad);
 

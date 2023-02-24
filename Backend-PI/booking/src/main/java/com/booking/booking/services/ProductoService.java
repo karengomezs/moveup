@@ -42,10 +42,10 @@ public class ProductoService {
 
         if(isValidCiudad && isValidDates){
             List<Producto> listUno = productosRepository.findAllByReservasIsNullAndCiudad_Id(ciudadId);
-            List<Producto> listDos = productosRepository.findProductoByReservasAndCiudadId(ciudadId, fechaInicial, fechaFinal);
-            List<Producto> nuevaLista = Stream.concat(listUno.stream(), listDos.stream()).toList();
+            List<Producto> listDos = productosRepository.findProductoByFechasDisponiblesAndCiudad(fechaInicial, fechaFinal, ciudadId);
+            List<Producto> resultado = Stream.concat(listUno.stream(), listDos.stream()).toList();
 
-            return nuevaLista;
+            return resultado;
         }
 
         if (isValidCiudad) {
@@ -53,11 +53,9 @@ public class ProductoService {
         }
 
         if (isValidDates) {
-            List<Producto> listUno = productosRepository.findAllByReservasIsNull();
-            List<Producto> listDos = productosRepository.findProductoByReservas(fechaInicial,fechaFinal);
-            List<Producto> nuevaLista = Stream.concat(listUno.stream(), listDos.stream()).toList();
+            List<Producto> resultado = productosRepository.findProductoByFechasDisponibles(fechaInicial, fechaFinal);
 
-            return nuevaLista;
+            return resultado;
         }
 
         return List.of();
