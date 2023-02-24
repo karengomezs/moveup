@@ -34,7 +34,8 @@ public class ReservaService {
     public void delete(Long id){
         reservaRepository.deleteById(id);}
     public List<LocalDate> getFechasByProducto(String productoId){
-        List<Reserva> reservas = reservaRepository.findReservaByProducto_IdAndFechaInicialIsAfterOrFechaFinalIsAfter(productoId, LocalDate.now(),LocalDate.now());
+        List<Reserva> reservas = reservaRepository.findReservaByProducto_Id(productoId, LocalDate.now(),LocalDate.now());
+
         List<LocalDate> fechas = new ArrayList<>();
 
         for (Reserva reserva : reservas) {
