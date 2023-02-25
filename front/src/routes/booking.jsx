@@ -17,6 +17,7 @@ export default function Booking() {
   const [product, setProduct] = useState({});
   const [disabledDates, setDisabledDate] = useState([]);
   const [cityError, setCityError] = useState(false);
+  const [datesError, setDatesError] = useState(false);
 
   const invalidRange = disabledDates.some((date) => {
     if (isValid(dates.start) && isValid(dates.end)) {
@@ -106,6 +107,7 @@ export default function Booking() {
             }
           } else {
             setCityError(!validCity);
+            setDatesError(!validDates);
           }
         }}
       >
@@ -187,7 +189,11 @@ export default function Booking() {
           {/* 2 contenedor de la izquierda con calendario */}
           <div>
             <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
-            <div className=" card shadow-sm align-items-center">
+            <div
+              className={`card shadow-sm align-items-center ${
+                datesError ? "border-danger" : ""
+              }`}
+            >
               <Calendar
                 dates={dates}
                 setDates={setDates}
