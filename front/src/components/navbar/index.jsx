@@ -12,7 +12,10 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-dark navbar-expand-md bg-primary">
       <div className="container container-fluid">
-        <Link to="/" className="navbar-brand grid text-decoration-none">
+        <Link
+          to="/"
+          className={`navbar-brand grid text-decoration-none ${styles.underline}`}
+        >
           <h1 className={styles.logo}>MoveUp</h1>
           <span className="align-bottom fst-italic fs-5 text-white">
             Un desafio para cada dia
