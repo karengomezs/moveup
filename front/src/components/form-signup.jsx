@@ -28,7 +28,7 @@ export default function FormSignup({ setErrorRegister }) {
     <form
       onSubmit={async (e) => {
         e.preventDefault();
-        const nameLength = name.length > 4;
+        const nameLength = name.length > 2;
         const hasWhiteSpace = nameRegex.test(name);
         const passwordLength = password.length > 5;
         const emailValid = emailRegex.test(email);

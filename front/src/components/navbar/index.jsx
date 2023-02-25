@@ -18,7 +18,7 @@ export default function Navbar() {
         >
           <h1 className={styles.logo}>MoveUp</h1>
           <span className="align-bottom fst-italic fs-5 text-white">
-            Un desafio para cada dia
+            Un desafío para cada día
           </span>
         </Link>
         <button
@@ -145,7 +145,7 @@ export default function Navbar() {
                   <ButtonLink
                     to="/login"
                     className="btn border-0 shadow-none pe-0 my-2 fw-bold"
-                    text="Iniciar Sesion"
+                    text="Iniciar Sesión"
                     data-bs-toggle="modal"
                     data-bs-target="#navbarMenu"
                     aria-controls="navbarMenu"

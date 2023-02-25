@@ -64,7 +64,7 @@ export default function Details() {
         </div>
 
         <div className="card shadow-sm p-3 col col-lg-6">
-          <h5 className="card-title h5 fw-semibold my-3 ">
+          <h5 className="card-title h5 my-3 ">
             Agrega fechas a tus clases para obtener precios exactos
           </h5>
           <button

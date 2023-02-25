@@ -326,7 +326,7 @@ export default function Booking() {
       </form>
 
       <div className="container">
-        <h4 className="h4 fw-semibold">Que tienes que saber?</h4>
+        <h4 className="h4 fw-semibold">¿Qué tienes que saber?</h4>
         <hr />
         <div className="d-flex flex-column gap-4 flex-sm-row py-3">
           <div className="col">

@@ -46,7 +46,7 @@ export default function Searcher({ onSearch }) {
                   className="form-select border border-0 shadow-none"
                   value={city}
                 >
-                  <option value="">¿A donde vamos a ir?</option>
+                  <option value="">¿A dónde vamos a ir?</option>
                   {cities}
                 </select>
               </div>
