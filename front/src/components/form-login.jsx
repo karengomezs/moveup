@@ -43,7 +43,7 @@ export default function FormLogin() {
               userState.setUser(user);
 
               if (isLoginRequired) {
-                navigate(prevLocation);
+                navigate(prevLocation, { replace: true });
               } else {
                 navigate("/");
               }
