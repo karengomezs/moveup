@@ -19,6 +19,7 @@ export default function FormLogin() {
 
   return (
     <form
+      className="col-sm-6 col-lg-4"
       onSubmit={async (e) => {
         e.preventDefault();
 
@@ -58,10 +59,10 @@ export default function FormLogin() {
         }
       }}
     >
-      <h2 className="text-center">Iniciar Sesión</h2>
+      <h2 className="text-center mb-4">Iniciar Sesión</h2>
 
-      <div className="mb-3">
-        <label htmlFor="email" className="form-label">
+      <div className="mb-4">
+        <label htmlFor="email" className="form-label mb-2">
           Correo electrónico
         </label>
         <input
@@ -74,11 +75,11 @@ export default function FormLogin() {
           type="email"
           className={`form-control ${emailError ? "is-invalid" : ""}`}
           id="email"
-          placeholder="Example: mariam@gmail.com"
+          placeholder="ejemplo@gmail.com"
         />
       </div>
-      <div className="mb-3">
-        <label htmlFor="password" className="form-label">
+      <div className="mb-4">
+        <label htmlFor="password" className="form-label mb-2">
           Contraseña
         </label>
         <input
@@ -96,19 +97,20 @@ export default function FormLogin() {
 
       <button
         type="submit"
-        className="btn btn-outline-primary mx-auto d-block mb-3"
+        className="btn btn-outline-primary mx-auto d-block mb-3 w-50"
       >
         Ingresar
       </button>
-      <p className="text-center">
-        ¿Aún no tienes cuenta?
-        <Link
-          to="/signup"
-          state={{ prevLocation, loginRequired: isLoginRequired }}
-        >
-          Registrate
-        </Link>
-      </p>
+
+      <Link
+        className="ms-2 mt-3 "
+        to="/signup"
+        state={{ prevLocation, loginRequired: isLoginRequired }}
+      >
+        <p className="text-center">
+          ¿Aún no tienes cuenta? <strong> Registrate</strong>
+        </p>
+      </Link>
 
       {error.length > 0 && (
         <div className="alert alert-danger" role="alert">

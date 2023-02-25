@@ -126,7 +126,7 @@ export default function FormSignup({ setErrorRegister }) {
           type="email"
           className={`form-control ${emailError ? "is-invalid" : ""}`}
           id="email"
-          placeholder="Example: mariam@gmail.com"
+          placeholder="ejemplo@gmail.com"
         />
         <div className="invalid-feedback">
           Por favor ingrese un correo válido
