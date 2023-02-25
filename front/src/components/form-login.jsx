@@ -103,12 +103,12 @@ export default function FormLogin() {
       </button>
 
       <Link
-        className="ms-2 mt-3 "
+        className="mt-3 "
         to="/signup"
         state={{ prevLocation, loginRequired: isLoginRequired }}
       >
         <p className="text-center">
-          ¿Aún no tienes cuenta? <strong> Registrate</strong>
+          ¿Aún no tienes cuenta? <strong>Registrate</strong>
         </p>
       </Link>
 

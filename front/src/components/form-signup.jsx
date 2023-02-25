@@ -73,10 +73,10 @@ export default function FormSignup({ setErrorRegister }) {
         }
       }}
     >
-      <h2 className="text-center">Crear Cuenta</h2>
+      <h2 className="text-center mb-4">Crear Cuenta</h2>
 
-      <div className="row">
-        <div className="col mb-3">
+      <div className="d-sm-flex gap-3">
+        <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Nombre
           </label>
@@ -89,14 +89,14 @@ export default function FormSignup({ setErrorRegister }) {
             value={name}
             type="text"
             className={`form-control ${nameError ? "is-invalid" : ""}`}
-            placeholder="Example: Mariam"
+            placeholder="Ejemplo: Mariam"
           />
 
           <div className="invalid-feedback">
             Por favor ingrese más de 4 caracteres, no agregue espacios en blanco
           </div>
         </div>
-        <div className="col mb-3">
+        <div className="mb-3">
           <label htmlFor="last-name" className="form-label">
             Apellido
           </label>
@@ -108,7 +108,7 @@ export default function FormSignup({ setErrorRegister }) {
             value={lastName}
             type="text"
             className="form-control"
-            placeholder="Example: Torres"
+            placeholder="Ejemplo: Torres"
           />
         </div>
       </div>
@@ -150,7 +150,7 @@ export default function FormSignup({ setErrorRegister }) {
           Por favor ingrese más de 5 caracteres
         </div>
       </div>
-      <div className="mb-3">
+      <div className="mb-4">
         <label htmlFor="confirm-pass" className="form-label">
           Confirmar contraseña
         </label>
@@ -169,13 +169,16 @@ export default function FormSignup({ setErrorRegister }) {
 
       <button
         type="submit"
-        className="btn btn-outline-primary mx-auto d-block mb-3"
+        className="btn btn-outline-primary mx-auto d-block mb-3 w-50"
       >
         Crear Cuenta
       </button>
-      <p className="text-center">
-        ¿Ya tienes una cuenta?<Link to="/login"> Iniciar Sesión</Link>
-      </p>
+
+      <Link className="mt-3 " to="/login">
+        <p className="text-center">
+          ¿Ya tienes una cuenta? <strong>Iniciar Sesión</strong>
+        </p>
+      </Link>
     </form>
   );
 }
