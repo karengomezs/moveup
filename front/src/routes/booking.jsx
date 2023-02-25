@@ -183,6 +183,9 @@ export default function Booking() {
                 </div>
               </div>
             </div>
+            {cityError && (
+              <p className="text-danger mt-2">Por favor ingresa una ciudad</p>
+            )}
           </div>
           {/* fin form */}
           {/* ------------------------------------------------------------------------- */}
@@ -191,7 +194,7 @@ export default function Booking() {
             <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
             <div
               className={`card shadow-sm align-items-center ${
-                datesError ? "border-danger" : ""
+                datesError || invalidRange ? "border-danger" : ""
               }`}
             >
               <Calendar
@@ -200,6 +203,18 @@ export default function Booking() {
                 disabledDates={disabledDates}
               />
             </div>
+            {datesError && (
+              <p className="text-danger mt-2">
+                Por favor seleccione una <strong>fecha de inicio</strong> y una
+                <strong> fecha final</strong>
+              </p>
+            )}
+            {invalidRange && (
+              <p className="text-danger mt-2">
+                Rango de fecha inválido, ya existen reservas en los días
+                seleccionados
+              </p>
+            )}
           </div>
           {/* fin calendario */}
           {/* ------------------------------------------------------------------------- */}
