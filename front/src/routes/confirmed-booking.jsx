@@ -1,6 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 
 export default function ConfirmedBooking() {
+  const location = useLocation();
+  const isBookingSuccess = location.state === "booking-success";
+
+  if (!isBookingSuccess) {
+    return <Navigate to="/" replace={true} />;
+  }
+
   return (
     <div className="d-flex flex-grow-1 flex-column align-items-center justify-content-center container">
       <div className="card shadow-sm py-3 px-5">
@@ -10,7 +17,7 @@ export default function ConfirmedBooking() {
           <p className="fs-4 fw-semibold">
             Su reserva se ha realizado con éxito
           </p>
-          <Link className="w-50" to="/">
+          <Link className="w-50" to="/" replace>
             <button className="btn btn-primary w-100 fs-5 fw-semibold">
               Ok
             </button>

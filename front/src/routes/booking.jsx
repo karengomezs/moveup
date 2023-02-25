@@ -103,7 +103,7 @@ export default function Booking() {
                 return;
               }
               userState.setUser({ ...userState.user, city });
-              navigate("/confirmed-booking");
+              navigate("/confirmed-booking", { state: "booking-success" });
             } catch (error) {
               setShowError(true);
             }
