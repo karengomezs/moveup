@@ -46,7 +46,7 @@ export default function Navbar() {
               <ButtonLink
                 to="/login"
                 className="btn btn-light px-5 py-2"
-                text="Iniciar Sesion"
+                text="Iniciar Sesión"
               />
             </>
           )}
