@@ -1,4 +1,5 @@
 import { format, isValid, parse, isWithinInterval } from "date-fns";
+import { toast } from "react-toastify";
 import { useState, useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import userContext from "../context/user-context";
@@ -110,6 +111,17 @@ export default function Booking() {
             setCityError(!validCity);
             setDatesError(!validDates);
             setHourError(!validHour);
+            if (!validCity) {
+              toast.error("No olvides ingresar una ciudad");
+            }
+
+            if (!validDates) {
+              toast.error("Verifica las fechas seleccionadas");
+            }
+
+            if (!validHour) {
+              toast.error("No olvides seleccionar una hora");
+            }
           }
         }}
       >
