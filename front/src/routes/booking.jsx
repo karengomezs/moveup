@@ -18,6 +18,7 @@ export default function Booking() {
   const [disabledDates, setDisabledDate] = useState([]);
   const [cityError, setCityError] = useState(false);
   const [datesError, setDatesError] = useState(false);
+  const [hourError, setHourError] = useState(false);
 
   const invalidRange = disabledDates.some((date) => {
     if (isValid(dates.start) && isValid(dates.end)) {
@@ -108,6 +109,7 @@ export default function Booking() {
           } else {
             setCityError(!validCity);
             setDatesError(!validDates);
+            setHourError(!validHour);
           }
         }}
       >
@@ -221,7 +223,7 @@ export default function Booking() {
           {/*    3 contenedor horario de llegada */}
           <div>
             <h4 className="h4 fw-semibold">Tu horario de llegada</h4>
-            <div className=" card shadow-sm">
+            <div className="card shadow-sm">
               <div className="card-body text-start">
                 <h6 className="card-title h6 fw-semibold">
                   <i className="bi bi-check-circle me-2 fs-5" />
@@ -239,7 +241,7 @@ export default function Booking() {
                       setHour(selectHour);
                     }}
                     value={hour}
-                    className="form-select"
+                    className={`form-select ${hourError ? "is-invalid" : ""}`}
                     id="floatingSelect"
                     required
                   >
@@ -249,6 +251,11 @@ export default function Booking() {
                 </div>
               </div>
             </div>
+            {hourError && (
+              <p className="text-danger mt-2">
+                Por favor ingresa una hora de llegada
+              </p>
+            )}
           </div>
         </div>
         {/* fin horario llegada */}
