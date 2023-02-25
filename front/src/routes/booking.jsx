@@ -16,6 +16,7 @@ export default function Booking() {
   const [showError, setShowError] = useState(false);
   const [product, setProduct] = useState({});
   const [disabledDates, setDisabledDate] = useState([]);
+  const [cityError, setCityError] = useState(false);
 
   const invalidRange = disabledDates.some((date) => {
     if (isValid(dates.start) && isValid(dates.end)) {
@@ -73,41 +74,38 @@ export default function Booking() {
             setShowError(false);
           }
 
-          if (!isValid(dates.start) || !isValid(dates.end)) {
-            return;
-          }
+          const validCity = city.length > 0;
 
-          if (hour.length === 0) {
-            return;
-          }
+          const validDates = isValid(dates.start) && isValid(dates.end);
+          const validHour = hour.length > 0;
+          const validRange = !invalidRange;
 
-          if (invalidRange) {
-            return;
-          }
-
-          const booking = {
-            horaInicio: hour,
-            fechaInicial: format(dates.start, "yyyy-MM-dd"),
-            fechaFinal: format(dates.end, "yyyy-MM-dd"),
-            producto: {
-              id,
-            },
-            usuario: {
-              id: userState.user.id,
-              ciudad: city,
-            },
-          };
-
-          try {
-            const result = await createBooking(booking, userState.user.token);
-            if (!result) {
+          if (validCity && validDates && validHour && validRange) {
+            try {
+              const booking = {
+                horaInicio: hour,
+                fechaInicial: format(dates.start, "yyyy-MM-dd"),
+                fechaFinal: format(dates.end, "yyyy-MM-dd"),
+                producto: {
+                  id,
+                },
+                usuario: {
+                  id: userState.user.id,
+                  ciudad: city,
+                },
+              };
+              const result = await createBooking(booking, userState.user.token);
+              if (!result) {
+                setShowError(true);
+                return;
+              }
+              userState.setUser({ ...userState.user, city });
+              navigate("/confirmed-booking");
+            } catch (error) {
               setShowError(true);
-              return;
             }
-            userState.setUser({ ...userState.user, city });
-            navigate("/confirmed-booking");
-          } catch (error) {
-            setShowError(true);
+          } else {
+            setCityError(!validCity);
           }
         }}
       >
@@ -170,12 +168,14 @@ export default function Booking() {
                     <input
                       onChange={(e) => {
                         setCity(e.target.value);
+                        setCityError(false);
                       }}
                       value={city}
-                      required
                       id="city"
                       type="text"
-                      className="form-control  border-0 bg-light"
+                      className={`form-control border-1 bg-light ${
+                        cityError ? "is-invalid" : ""
+                      }`}
                     />
                   </div>
                 </div>
