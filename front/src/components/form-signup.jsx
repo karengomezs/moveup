@@ -2,8 +2,8 @@ import { useState, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import userContext from "../context/user-context";
 import { signApi } from "../api/sign";
+import { emailRegex } from "../constants";
 // eslint-disable-next-line
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const nameRegex = /\s/;
 
 export default function FormSignup({ setErrorRegister }) {
