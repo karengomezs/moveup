@@ -85,8 +85,8 @@ export default function Navbar() {
             <i
               className={`bi text-white ${
                 themeState.theme
-                  ? "bi-brightness-high-fill fs-3"
-                  : "bi-moon-fill"
+                  ? "bi-cloud-sun-fill fs-3"
+                  : "bi-cloud-moon-fill fs-3"
               }`}
             ></i>
           </button>
