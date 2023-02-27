@@ -5,11 +5,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import userContext from "../context/user-context";
 import { Calendar } from "../components/calendar";
 import Stars from "../components/product/stars";
+import ThemeContext from "../context/context-theme";
 import { createBooking, getUnavailableDatesByProductId } from "../api/booking";
 import { getClass } from "../api/products";
 
 export default function Booking() {
   const userState = useContext(userContext);
+  const themeState = useContext(ThemeContext);
   const { id } = useParams();
   const [dates, setDates] = useState({});
   const [hour, setHour] = useState("");
@@ -128,7 +130,13 @@ export default function Booking() {
         <div className="d-flex flex-column gap-5 col">
           {/* 1 div con h3 y el form  */}
           <div>
-            <h4 className="h4 fw-semibold">Completa tus datos</h4>
+            <h4
+              className={`h4 fw-semibold ${
+                themeState.theme ? "text-white" : ""
+              }`}
+            >
+              Completa tus datos
+            </h4>
             <div className="card shadow-sm">
               <div className="d-flex flex-column gap-4 card-body  p-4">
                 <div className="d-flex gap-4 flex-column flex-sm-row">
