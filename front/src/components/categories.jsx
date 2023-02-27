@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import ThemeContext from "../context/context-theme";
+
 import { getCategories } from "../api/categories";
 import { getClassByCategory } from "../api/products";
 
 export default function Categories({ onClickCategory }) {
   const [data, setData] = useState([]);
+  const themeState = useContext(ThemeContext);
 
   useEffect(() => {
     getCategories().then((data) => {
@@ -16,7 +19,9 @@ export default function Categories({ onClickCategory }) {
       <div
         key={category.id}
         role="button"
-        className="card d-flex flex-column"
+        className={`card d-flex flex-column ${
+          themeState.theme ? "border-secondary text-bg-dark" : ""
+        }`}
         onClick={() => {
           getClassByCategory(category.id).then((data) => {
             onClickCategory(data);

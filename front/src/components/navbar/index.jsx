@@ -2,15 +2,17 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../avatar";
 import UserContext from "../../context/user-context";
+import ThemeContext from "../../context/context-theme";
 import ButtonLink from "../button-link";
 
 import styles from "./styles.module.scss";
 
 export default function Navbar() {
   const userState = useContext(UserContext);
+  const themeState = useContext(ThemeContext);
 
   return (
-    <nav className="navbar navbar-dark navbar-expand-md bg-primary">
+    <nav className="navbar navbar-expand-md bg-primary ">
       <div className="container container-fluid">
         <Link
           to="/"
@@ -74,7 +76,23 @@ export default function Navbar() {
               </div>
             </div>
           )}
+          <button
+            className="min-width-theme"
+            onClick={() => {
+              themeState.setTheme(!themeState.theme);
+            }}
+          >
+            <i
+              className={`bi text-white ${
+                themeState.theme
+                  ? "bi-brightness-high-fill fs-3"
+                  : "bi-moon-fill"
+              }`}
+            ></i>
+          </button>
         </div>
+
+        {/* MOBILEEEEEEE */}
         <div
           className="modal fade"
           id="navbarMenu"
