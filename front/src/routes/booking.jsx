@@ -223,7 +223,13 @@ export default function Booking() {
           {/* ------------------------------------------------------------------------- */}
           {/* 2 contenedor de la izquierda con calendario */}
           <div>
-            <h4 className="h4 fw-semibold">Selecciona tu fecha de reserva</h4>
+            <h4
+              className={`h4 fw-semibold ${
+                themeState.theme ? "text-white" : ""
+              }`}
+            >
+              Selecciona tu fecha de reserva
+            </h4>
             <div
               className={`card shadow-sm align-items-center ${
                 datesError || invalidRange ? "border-danger" : ""
@@ -252,7 +258,13 @@ export default function Booking() {
           {/* ------------------------------------------------------------------------- */}
           {/*    3 contenedor horario de llegada */}
           <div>
-            <h4 className="h4 fw-semibold">Tu horario de llegada</h4>
+            <h4
+              className={`h4 fw-semibold ${
+                themeState.theme ? "text-white" : ""
+              }`}
+            >
+              Tu horario de llegada
+            </h4>
             <div className="card shadow-sm">
               <div className="card-body text-start">
                 <h6 className="card-title h6 fw-semibold">
@@ -344,17 +356,33 @@ export default function Booking() {
       </form>
 
       <div className="container">
-        <h4 className="h4 fw-semibold">¿Qué tienes que saber?</h4>
-        <hr />
+        <h4
+          className={`h4 fw-semibold ${themeState.theme ? "text-white" : ""}`}
+        >
+          ¿Qué tienes que saber?
+        </h4>
+        <hr className={`${themeState.theme ? "text-white" : ""}`} />
         <div className="d-flex flex-column gap-4 flex-sm-row py-3">
           <div className="col">
-            <p className="fw-semibold">Normas de la clase</p>
+            <p
+              className={`fw-semibold ${themeState.theme ? "text-white" : ""}`}
+            >
+              Normas de la clase
+            </p>
           </div>
           <div className="col">
-            <p className="fw-semibold">Salud y seguridad</p>
+            <p
+              className={`fw-semibold ${themeState.theme ? "text-white" : ""}`}
+            >
+              Salud y seguridad
+            </p>
           </div>
           <div className="col">
-            <p className="fw-semibold">Política de cancelación</p>
+            <p
+              className={`fw-semibold ${themeState.theme ? "text-white" : ""}`}
+            >
+              Política de cancelación
+            </p>
           </div>
         </div>
       </div>
