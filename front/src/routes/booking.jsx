@@ -112,15 +112,15 @@ export default function Booking() {
             setDatesError(!validDates);
             setHourError(!validHour);
             if (!validCity) {
-              toast.error("No olvides ingresar una ciudad");
+              toast.warning("No olvides ingresar una ciudad");
             }
 
             if (!validDates) {
-              toast.error("Verifica las fechas seleccionadas");
+              toast.warning("Verifica las fechas seleccionadas");
             }
 
             if (!validHour) {
-              toast.error("No olvides seleccionar una hora");
+              toast.warning("No olvides seleccionar una hora");
             }
           }
         }}

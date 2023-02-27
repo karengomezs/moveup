@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Gallery from "../components/gallery";
+import { toast } from "react-toastify";
 import { getClass } from "../api/products";
 import Stars from "../components/product/stars";
 import Score from "../components/product/score";
@@ -31,10 +32,37 @@ export default function Details() {
   return (
     <>
       <div className="bg-light">
-        <div className="container p-2">
+        <div className="container p-2 d-flex">
           <div className="col">
             <span>CLASE</span>
             <h3 className="h3 fw-bold text-primary m-0">{data?.nombreClase}</h3>
+          </div>
+          <div>
+            <button
+              onClick={async () => {
+                const shareData = {
+                  title: "MoveUp",
+                  text: `¿Te gustaría tomar esta clase de ${
+                    data?.nombreClase || "MoveUp"
+                  }?`,
+                  url: window.location.href,
+                };
+                if (navigator.share) {
+                  try {
+                    await navigator.share(shareData);
+                  } catch (err) {
+                    console.log(err);
+                  }
+                } else {
+                  // toast.error("Por favor revisa los permisos de tu navegador");
+
+                  toast.warning(
+                    "Por favor revisa los permisos de tu navegador"
+                  );
+                }
+              }}
+              className="btn btn-outline-secondary border-0 bi bi-share fs-5"
+            />
           </div>
         </div>
       </div>
