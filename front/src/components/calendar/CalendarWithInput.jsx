@@ -1,7 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
-import { format, isValid, isAfter, isBefore } from 'date-fns';
-import useWindowResize from './useWindowResize';
-import theme from './styles';
+import { useState, useRef, useEffect, useContext } from "react";
+import { format, isValid, isAfter, isBefore } from "date-fns";
+import ThemeContext from "../../context/context-theme";
+import useWindowResize from "./useWindowResize";
+import theme from "./styles";
 import {
   ChakraProvider,
   useDisclosure,
@@ -12,7 +13,7 @@ import {
   Popover,
   PopoverTrigger,
   Flex,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 import {
   Calendar,
   CalendarControls,
@@ -23,14 +24,15 @@ import {
   CalendarMonthName,
   CalendarWeek,
   CalendarDays,
-} from '@uselessdev/datepicker';
+} from "@uselessdev/datepicker";
 
-const dateFormat = 'MM/dd/yyyy';
+const dateFormat = "MM/dd/yyyy";
 
 export default function MultipleCalendar({ dates, setDates, months = 2 }) {
+  const themeState = useContext(ThemeContext);
   const [values, setValues] = useState({
-    start: '',
-    end: '',
+    start: "",
+    end: "",
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,8 +48,8 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
   const handleSelectDate = (dates) => {
     setDates(dates);
     setValues({
-      start: isValid(dates.start) ? format(dates.start, dateFormat) : '',
-      end: isValid(dates.end) ? format(dates.end, dateFormat) : '',
+      start: isValid(dates.start) ? format(dates.start, dateFormat) : "",
+      end: isValid(dates.end) ? format(dates.end, dateFormat) : "",
     });
 
     if (dates.end) {
@@ -63,7 +65,7 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
       [target.name]: target.value,
     });
 
-    if (target.name === 'start' && match(target.value) && endInputRef.current) {
+    if (target.name === "start" && match(target.value) && endInputRef.current) {
       endInputRef.current.focus();
     }
   };
@@ -81,7 +83,7 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
       const isAfterEndDate = dates.end && isAfter(startDate, dates.end);
 
       if (isValidStartDate && isAfterEndDate) {
-        setValues({ ...values, end: '' });
+        setValues({ ...values, end: "" });
         return setDates({ end: undefined, start: startDate });
       }
 
@@ -97,7 +99,7 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
       const isBeforeStartDate = dates.start && isBefore(endDate, dates.start);
 
       if (isValidEndDate && isBeforeStartDate) {
-        setValues({ ...values, start: '' });
+        setValues({ ...values, start: "" });
 
         startInputRef.current?.focus();
 
@@ -111,7 +113,7 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
   }, [values.end]);
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={theme(themeState.theme)}>
       <Popover
         placement="auto-start"
         isOpen={isOpen}
@@ -126,7 +128,8 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
             p={2}
             onClick={onOpen}
             ref={initialRef}
-            bgColor="white"
+            bgColor={themeState.theme ? "#212529" : "white"}
+            color={themeState.theme ? "white" : ""}
           >
             <Input
               variant="unstyled"
@@ -152,7 +155,7 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
           w="min-content"
           border="none"
           outline="none"
-          _focus={{ boxShadow: 'none' }}
+          _focus={{ boxShadow: "none" }}
           ref={calendarRef}
         >
           <Calendar

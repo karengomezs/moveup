@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import theme from "./styles";
 import { ChakraProvider } from "@chakra-ui/react";
 import useWindowResize from "./useWindowResize";
+import ThemeContext from "../../context/context-theme";
 import {
   Calendar,
   CalendarControls,
@@ -14,13 +16,14 @@ import {
 } from "@uselessdev/datepicker";
 
 const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {
+  const themeState = useContext(ThemeContext);
   const sizes = useWindowResize();
   const numberOfMonths = sizes.width < 690 ? 1 : months;
 
   const handleSelectDate = (dates) => setDates(dates);
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider theme={theme(themeState.theme)}>
       <Calendar
         value={dates}
         onSelectDate={handleSelectDate}
@@ -33,7 +36,10 @@ const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {
           <CalendarNextButton />
         </CalendarControls>
 
-        <CalendarMonths bgColor="white">
+        <CalendarMonths
+          bgColor={themeState.theme ? "#212529" : "white"}
+          color={themeState.theme ? "white" : ""}
+        >
           {[...Array(numberOfMonths).keys()].map((m) => (
             <CalendarMonth key={m} month={m}>
               <CalendarMonthName />
