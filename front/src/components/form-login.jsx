@@ -2,9 +2,12 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
 import userContext from "../context/user-context";
+import ThemeContext from "../context/context-theme";
 import { emailRegex } from "../constants";
 
 export default function FormLogin() {
+  const themeState = useContext(ThemeContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -73,7 +76,9 @@ export default function FormLogin() {
           }}
           value={email}
           type="email"
-          className={`form-control ${emailError ? "is-invalid" : ""}`}
+          className={`form-control ${emailError ? "is-invalid" : ""}  ${
+            themeState.theme ? "text-bg-dark" : ""
+          }`}
           id="email"
           placeholder="ejemplo@gmail.com"
         />
@@ -90,20 +95,24 @@ export default function FormLogin() {
           }}
           value={password}
           type="password"
-          className={`form-control ${passwordError ? "is-invalid" : ""}`}
+          className={`form-control ${passwordError ? "is-invalid" : ""} ${
+            themeState.theme ? "text-bg-dark" : ""
+          }`}
           id="password"
         />
       </div>
 
       <button
         type="submit"
-        className="btn btn-outline-primary mx-auto d-block mb-3 w-50"
+        className={`btn btn-outline-primary mx-auto d-block mb-3 w-50 ${
+          themeState.theme ? "btn-primary text-white" : ""
+        }`}
       >
         Ingresar
       </button>
 
       <Link
-        className="mt-3 "
+        className={`mt-3 ${themeState.theme ? "text-white " : ""}`}
         to="/signup"
         state={{ prevLocation, loginRequired: isLoginRequired }}
       >
