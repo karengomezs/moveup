@@ -137,7 +137,11 @@ export default function Booking() {
             >
               Completa tus datos
             </h4>
-            <div className="card shadow-sm">
+            <div
+              className={`card shadow-sm ${
+                themeState.theme ? "border-secondary text-bg-dark" : ""
+              }`}
+            >
               <div className="d-flex flex-column gap-4 card-body  p-4">
                 <div className="d-flex gap-4 flex-column flex-sm-row">
                   <div className="text-start flex-grow-1">
@@ -150,7 +154,9 @@ export default function Booking() {
                       disabled
                       id="name"
                       type="text"
-                      className="form-control border-0"
+                      className={`form-control border-0 ${
+                        themeState.theme ? "text-bg-secondary" : ""
+                      }`}
                     />
                   </div>
                   <div className="text-start flex-grow-1">
@@ -166,7 +172,9 @@ export default function Booking() {
                       disabled
                       id="last-name"
                       type="text"
-                      className="form-control  border-0 "
+                      className={`form-control border-0 ${
+                        themeState.theme ? "text-bg-secondary" : ""
+                      }`}
                     />
                   </div>
                 </div>
@@ -182,7 +190,9 @@ export default function Booking() {
                       value={userState.user.email}
                       id="email"
                       type="email"
-                      className="form-control border-0 "
+                      className={`form-control border-0 ${
+                        themeState.theme ? "text-bg-secondary" : ""
+                      }`}
                     />
                   </div>
                   <div className="text-start flex-grow-1">
@@ -199,7 +209,7 @@ export default function Booking() {
                       type="text"
                       className={`form-control border-1 bg-light ${
                         cityError ? "is-invalid" : ""
-                      }`}
+                      } `}
                     />
                   </div>
                 </div>
