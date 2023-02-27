@@ -45,7 +45,9 @@ export default function Categories({ onClickCategory }) {
 
   return (
     <div className="container pt-5">
-      <p className="fs-4 fw-bold">Buscar por tipo de clase</p>
+      <p className={`fs-4 fw-bold ${themeState.theme ? "text-white" : ""}`}>
+        Buscar por tipo de clase
+      </p>
       <div className="cards">{eachCategory}</div>
     </div>
   );

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
+import ThemeContext from "../context/context-theme";
 import Product from "./product";
 import UserContext from "../context/user-context";
 
 export default function List({ data }) {
   const userState = useContext(UserContext);
+  const themeState = useContext(ThemeContext);
   const isEmpty = data.length === 0;
 
   const classes = data?.map((eachClass) => {
@@ -23,7 +25,7 @@ export default function List({ data }) {
 
   return (
     <div className="container py-5">
-      <p className="fs-4 fw-bold">
+      <p className={`fs-4 fw-bold ${themeState.theme ? "text-white" : ""}`}>
         {userState.user ? "Clases" : "Recomendados"}
       </p>
       <div className="list-width">
