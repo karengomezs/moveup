@@ -1,12 +1,15 @@
 import { useState, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import userContext from "../context/user-context";
+import ThemeContext from "../context/context-theme";
 import { signApi } from "../api/sign";
 import { emailRegex } from "../constants";
 // eslint-disable-next-line
 const nameRegex = /\s/;
 
 export default function FormSignup({ setErrorRegister }) {
+  const themeState = useContext(ThemeContext);
+
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -88,7 +91,9 @@ export default function FormSignup({ setErrorRegister }) {
             id="name"
             value={name}
             type="text"
-            className={`form-control ${nameError ? "is-invalid" : ""}`}
+            className={`form-control ${nameError ? "is-invalid" : ""} ${
+              themeState.theme ? "text-bg-dark" : ""
+            }`}
             placeholder="Ejemplo: Mariam"
           />
 
@@ -107,7 +112,7 @@ export default function FormSignup({ setErrorRegister }) {
             id="last-name"
             value={lastName}
             type="text"
-            className="form-control"
+            className={`form-control ${themeState.theme ? "text-bg-dark" : ""}`}
             placeholder="Ejemplo: Torres"
           />
         </div>
@@ -124,7 +129,9 @@ export default function FormSignup({ setErrorRegister }) {
           }}
           value={email}
           type="email"
-          className={`form-control ${emailError ? "is-invalid" : ""}`}
+          className={`form-control ${emailError ? "is-invalid" : ""} ${
+            themeState.theme ? "text-bg-dark" : ""
+          }`}
           id="email"
           placeholder="ejemplo@gmail.com"
         />
@@ -143,7 +150,9 @@ export default function FormSignup({ setErrorRegister }) {
           }}
           value={password}
           type="password"
-          className={`form-control ${passwordError ? "is-invalid" : ""}`}
+          className={`form-control ${passwordError ? "is-invalid" : ""} ${
+            themeState.theme ? "text-bg-dark" : ""
+          }`}
           id="password"
         />
         <div className="invalid-feedback">
@@ -161,7 +170,9 @@ export default function FormSignup({ setErrorRegister }) {
           }}
           value={confirmPassword}
           type="password"
-          className={`form-control ${confirmPasswordError ? "is-invalid" : ""}`}
+          className={`form-control ${
+            confirmPasswordError ? "is-invalid" : ""
+          } ${themeState.theme ? "text-bg-dark" : ""}`}
           id="cofirm-pass"
         />
         <div className="invalid-feedback">Las contraseñas no coinciden</div>
@@ -169,12 +180,17 @@ export default function FormSignup({ setErrorRegister }) {
 
       <button
         type="submit"
-        className="btn btn-outline-primary mx-auto d-block mb-3 w-50"
+        className={`btn btn-outline-primary mx-auto d-block mb-3 w-50 ${
+          themeState.theme ? "btn-primary text-white" : ""
+        }`}
       >
         Crear Cuenta
       </button>
 
-      <Link className="mt-3 " to="/login">
+      <Link
+        className={`mt-3 ${themeState.theme ? "text-white " : ""}`}
+        to="/login"
+      >
         <p className="text-center">
           ¿Ya tienes una cuenta? <strong>Iniciar Sesión</strong>
         </p>
