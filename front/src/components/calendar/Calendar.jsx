@@ -23,7 +23,7 @@ const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {
   const handleSelectDate = (dates) => setDates(dates);
 
   return (
-    <ChakraProvider theme={theme(themeState.theme)}>
+    <ChakraProvider theme={theme(themeState.theme, false)}>
       <Calendar
         value={dates}
         onSelectDate={handleSelectDate}

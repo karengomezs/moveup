@@ -233,7 +233,7 @@ export default function Booking() {
             <div
               className={`card shadow-sm align-items-center ${
                 datesError || invalidRange ? "border-danger" : ""
-              }`}
+              } ${themeState.theme ? "border-secondary text-bg-dark" : ""}`}
             >
               <Calendar
                 dates={dates}

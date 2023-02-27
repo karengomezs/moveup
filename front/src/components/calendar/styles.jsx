@@ -8,7 +8,17 @@ const oranges = {
   400: "#f0572d",
 };
 
-const theme = (isDark = false) => {
+const theme = (isDark = false, useBorder = true) => {
+  let border = "";
+
+  if (isDark) {
+    border = "white";
+
+    if (!useBorder) {
+      border = "#212529";
+    }
+  }
+
   return extendTheme(CalendarDefaultTheme, {
     components: {
       Calendar: {
@@ -16,8 +26,8 @@ const theme = (isDark = false) => {
 
         baseStyle: {
           calendar: {
-            bgColor: isDark ? "#212529" : " white",
-            borderColor: "white",
+            bgColor: isDark ? "#212529" : "white",
+            borderColor: border,
             shadow: "none",
           },
         },
