@@ -77,7 +77,7 @@ export default function Navbar() {
             </div>
           )}
           <button
-            className="min-width-theme"
+            className="min-width-theme btn border-0"
             onClick={() => {
               themeState.setTheme(!themeState.theme);
             }}

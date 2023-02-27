@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Gallery from "../components/gallery";
 import { toast } from "react-toastify";
+import ThemeContext from "../context/context-theme";
 import { getClass } from "../api/products";
 import Stars from "../components/product/stars";
 import Score from "../components/product/score";
 
 export default function Details() {
   const navigate = useNavigate();
-
+  const themeState = useContext(ThemeContext);
   const { id } = useParams();
   const [data, setData] = useState();
 
@@ -31,10 +32,12 @@ export default function Details() {
 
   return (
     <>
-      <div className="bg-light">
+      <div className={`${themeState.theme ? "bg-search" : "bg-light"}`}>
         <div className="container p-2 d-flex">
           <div className="col">
-            <span>CLASE</span>
+            <span className={`${themeState.theme ? "text-white" : ""}`}>
+              CLASE
+            </span>
             <h3 className="h3 fw-bold text-primary m-0">{data?.nombreClase}</h3>
           </div>
           <div>
@@ -70,10 +73,18 @@ export default function Details() {
       <div className="container d-flex p-2">
         <div className="d-flex align-items-center col">
           <i className="bi bi-geo-alt text-primary fs-3 me-1"></i>
-          <p className="m-0 fw-semibold ">{data?.ciudad.nombreCiudad}</p>
+          <p
+            className={`m-0 fw-semibold ${
+              themeState.theme ? "text-white" : ""
+            } `}
+          >
+            {data?.ciudad.nombreCiudad}
+          </p>
         </div>
         <div>
-          <span>{qualityMessage[quality]}</span>
+          <span className={themeState.theme ? "text-white" : ""}>
+            {qualityMessage[quality]}
+          </span>
 
           <Stars quality={quality} />
         </div>
@@ -88,10 +99,20 @@ export default function Details() {
 
       <div className="container my-4">
         <div className="mb-4">
-          <h5 className="h5 fw-semibold m-0">{data?.descripcionClase}</h5>
+          <h5
+            className={`h5 fw-semibold m-0 ${
+              themeState.theme ? "text-white" : ""
+            }`}
+          >
+            {data?.descripcionClase}
+          </h5>
         </div>
 
-        <div className="card shadow-sm p-3 col col-lg-6">
+        <div
+          className={`card shadow-sm p-3 col col-lg-6 ${
+            themeState.theme ? "border-secondary text-bg-dark" : ""
+          }`}
+        >
           <h5 className="card-title h5 my-3 ">
             Agrega fechas a tus clases para obtener precios exactos
           </h5>

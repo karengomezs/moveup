@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
 import ThemeContext from "../context/context-theme";
-
 import { getCategories } from "../api/categories";
 import { getClassByCategory } from "../api/products";
 
