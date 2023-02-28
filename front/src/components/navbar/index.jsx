@@ -100,7 +100,11 @@ export default function Navbar() {
           aria-hidden="true"
         >
           <div className="modal-dialog modal-fullscreen">
-            <div className="modal-content">
+            <div
+              className={`modal-content ${
+                themeState.theme ? "text-bg-dark" : ""
+              }`}
+            >
               <div className="modal-header h-25 bg-primary d-flex flex-column">
                 <div className="w-100">
                   <i
@@ -133,7 +137,9 @@ export default function Navbar() {
                 {!userState.user && (
                   <ButtonLink
                     to="/signup"
-                    className="btn border-0 shadow-none pe-0 my-2 fw-bold"
+                    className={`btn border-0 shadow-none pe-0 my-2 fw-bold ${
+                      themeState.theme ? "text-white" : ""
+                    }`}
                     text="Crear cuenta"
                     data-bs-toggle="modal"
                     data-bs-target="#navbarMenu"
@@ -157,12 +163,18 @@ export default function Navbar() {
                   </span>
                 )}
                 <div className="container p-0">
-                  <hr className="border border-dark" />
+                  <hr
+                    className={`border ${
+                      themeState.theme ? "border-light" : "border-dark"
+                    }`}
+                  />
                 </div>
                 {!userState.user && (
                   <ButtonLink
                     to="/login"
-                    className="btn border-0 shadow-none pe-0 my-2 fw-bold"
+                    className={`btn border-0 shadow-none pe-0 my-2 fw-bold ${
+                      themeState.theme ? "text-white" : ""
+                    }`}
                     text="Iniciar Sesión"
                     data-bs-toggle="modal"
                     data-bs-target="#navbarMenu"
@@ -170,7 +182,11 @@ export default function Navbar() {
                   />
                 )}
               </div>
-              <div className="d-flex justify-content-end p-3 gap-5 bg-light">
+              <div
+                className={`d-flex justify-content-end p-3 gap-5 bg-light ${
+                  themeState.theme ? "bg-primary" : ""
+                }`}
+              >
                 <i className="bi bi-facebook fs-3" />
                 <i className="bi bi-linkedin fs-3" />
                 <i className="bi bi-twitter fs-3" />
