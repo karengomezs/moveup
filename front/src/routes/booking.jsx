@@ -265,14 +265,13 @@ export default function Booking() {
             >
               Tu horario de llegada
             </h4>
-            <div className="card shadow-sm">
+            <div
+              className={`card shadow-sm ${
+                themeState.theme ? "border-secondary text-bg-dark" : ""
+              }`}
+            >
               <div className="card-body text-start">
-                <h6 className="card-title h6 fw-semibold">
-                  <i className="bi bi-check-circle me-2 fs-5" />
-                  Tu clase comenzará entre las 10:00 AM y las 11:00 AM
-                </h6>
-
-                <div className="mt-4">
+                <div className="">
                   <label htmlFor="time" className="form-label">
                     Indica tu horario estimado de llegada
                   </label>
@@ -283,7 +282,11 @@ export default function Booking() {
                       setHour(selectHour);
                     }}
                     value={hour}
-                    className={`form-select ${hourError ? "is-invalid" : ""}`}
+                    className={`form-select ${hourError ? "is-invalid" : ""} ${
+                      themeState.theme
+                        ? "text-bg-dark dark-select"
+                        : " border border-0"
+                    }`}
                     id="floatingSelect"
                     required
                   >
@@ -291,6 +294,13 @@ export default function Booking() {
                     {hours}
                   </select>
                 </div>
+
+                {hour && (
+                  <h6 className="card-title h6 fw-semibold mt-4">
+                    <i className="bi bi-check-circle me-2 fs-5" />
+                    Tu clase comenzará a las: {hour}
+                  </h6>
+                )}
               </div>
             </div>
             {hourError && (

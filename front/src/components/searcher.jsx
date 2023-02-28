@@ -46,9 +46,10 @@ export default function Searcher({ onSearch }) {
                     setCity(e.target.value);
                   }}
                   className={`form-select shadow-none ${
-                    themeState.theme ? "text-bg-dark dark-select" : " border border-0"
+                    themeState.theme
+                      ? "text-bg-dark dark-select"
+                      : " border border-0"
                   }`}
-                  data-bs-theme="dark"
                   value={city}
                 >
                   <option value="">¿A dónde vamos a ir?</option>
