@@ -1,18 +1,16 @@
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
 import userContext from "../context/user-context";
-import ThemeContext from "../context/context-theme";
 import H2 from "../components/common/h2";
 import LABEL from "../components/common/label";
 import INPUT from "../components/common/input";
 import P from "../components/common/p";
-import ButtonOutlinePirmary from "../components/common/button-outline-primary";
+import LINK from "./common/link";
+import ButtonOutlinePirmary from "./common/button-outline-primary";
 import { emailRegex } from "../constants";
 
 export default function FormLogin() {
-  const themeState = useContext(ThemeContext);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -107,15 +105,14 @@ export default function FormLogin() {
         Ingresar
       </ButtonOutlinePirmary>
 
-      <Link
-        className={` ${themeState.theme ? "text-white " : ""}`}
+      <LINK
         to="/signup"
         state={{ prevLocation, loginRequired: isLoginRequired }}
       >
         <P className="text-center">
           ¿Aún no tienes cuenta? <strong>Registrate</strong>
         </P>
-      </Link>
+      </LINK>
 
       {error.length > 0 && (
         <div className="alert alert-danger" role="alert">

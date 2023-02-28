@@ -1,15 +1,17 @@
 import { useState, useContext } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import userContext from "../context/user-context";
-import ThemeContext from "../context/context-theme";
 import { signApi } from "../api/sign";
 import { emailRegex } from "../constants";
-// eslint-disable-next-line
+import H2 from "./common/h2";
+import LABEL from "./common/label";
+import INPUT from "./common/input";
+import LINK from "./common/link";
+import ButtonOutlinePrimary from "./common/button-outline-primary";
+
 const nameRegex = /\s/;
 
 export default function FormSignup({ setErrorRegister }) {
-  const themeState = useContext(ThemeContext);
-
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -82,21 +84,12 @@ export default function FormSignup({ setErrorRegister }) {
         }
       }}
     >
-      <h2
-        className={`text-center my-4 ${themeState.theme ? "text-white" : ""}`}
-      >
-        Crear Cuenta
-      </h2>
+      <H2 className="text-center my-4">Crear Cuenta</H2>
 
       <div className="d-sm-flex gap-3">
         <div className="mb-3">
-          <label
-            htmlFor="name"
-            className={`form-label ${themeState.theme ? "text-white" : ""}`}
-          >
-            Nombre
-          </label>
-          <input
+          <LABEL htmlFor="name">Nombre</LABEL>
+          <INPUT
             onChange={(e) => {
               setName(e.target.value);
               setNameError(false);
@@ -104,9 +97,7 @@ export default function FormSignup({ setErrorRegister }) {
             id="name"
             value={name}
             type="text"
-            className={`form-control ${nameError ? "is-invalid" : ""} ${
-              themeState.theme ? "text-bg-dark" : ""
-            }`}
+            className={`form-control ${nameError ? "is-invalid" : ""}`}
             placeholder="Ejemplo: Mariam"
           />
 
@@ -115,22 +106,15 @@ export default function FormSignup({ setErrorRegister }) {
           </div>
         </div>
         <div className="mb-3">
-          <label
-            htmlFor="last-name"
-            className={`form-label ${themeState.theme ? "text-white" : ""}`}
-          >
-            Apellido
-          </label>
-          <input
+          <LABEL htmlFor="last-name">Apellido</LABEL>
+          <INPUT
             onChange={(e) => {
               setLastName(e.target.value);
             }}
             id="last-name"
             value={lastName}
             type="text"
-            className={`form-control ${lastNameError ? "is-invalid" : ""} ${
-              themeState.theme ? "text-bg-dark" : ""
-            }`}
+            className={`form-control ${lastNameError ? "is-invalid" : ""}`}
             placeholder="Ejemplo: Torres"
           />
           <div className="invalid-feedback">Por favor ingrese su apellido</div>
@@ -138,22 +122,15 @@ export default function FormSignup({ setErrorRegister }) {
       </div>
 
       <div className="mb-3">
-        <label
-          htmlFor="email"
-          className={`form-label ${themeState.theme ? "text-white" : ""}`}
-        >
-          Correo electrónico
-        </label>
-        <input
+        <LABEL htmlFor="email">Correo electrónico</LABEL>
+        <INPUT
           onChange={(e) => {
             setEmail(e.target.value);
             setEmailError(false);
           }}
           value={email}
           type="email"
-          className={`form-control ${emailError ? "is-invalid" : ""} ${
-            themeState.theme ? "text-bg-dark" : ""
-          }`}
+          className={`form-control ${emailError ? "is-invalid" : ""}`}
           id="email"
           placeholder="ejemplo@gmail.com"
         />
@@ -162,22 +139,15 @@ export default function FormSignup({ setErrorRegister }) {
         </div>
       </div>
       <div className="mb-3">
-        <label
-          htmlFor="password"
-          className={`form-label ${themeState.theme ? "text-white" : ""}`}
-        >
-          Contraseña
-        </label>
-        <input
+        <LABEL htmlFor="password">Contraseña</LABEL>
+        <INPUT
           onChange={(e) => {
             setPassword(e.target.value);
             setPasswordError(false);
           }}
           value={password}
           type="password"
-          className={`form-control ${passwordError ? "is-invalid" : ""} ${
-            themeState.theme ? "text-bg-dark" : ""
-          }`}
+          className={`form-control ${passwordError ? "is-invalid" : ""}`}
           id="password"
         />
         <div className="invalid-feedback">
@@ -185,44 +155,29 @@ export default function FormSignup({ setErrorRegister }) {
         </div>
       </div>
       <div className="mb-4">
-        <label
-          htmlFor="confirm-pass"
-          className={`form-label ${themeState.theme ? "text-white" : ""}`}
-        >
-          Confirmar contraseña
-        </label>
-        <input
+        <LABEL htmlFor="confirm-pass">Confirmar contraseña</LABEL>
+        <INPUT
           onChange={(e) => {
             setConfirmPassword(e.target.value);
             setConfirmPasswordError(false);
           }}
           value={confirmPassword}
           type="password"
-          className={`form-control ${
-            confirmPasswordError ? "is-invalid" : ""
-          } ${themeState.theme ? "text-bg-dark" : ""}`}
+          className={`form-control ${confirmPasswordError ? "is-invalid" : ""}`}
           id="cofirm-pass"
         />
         <div className="invalid-feedback">Las contraseñas no coinciden</div>
       </div>
 
-      <button
-        type="submit"
-        className={`btn btn-outline-primary mx-auto d-block mb-3 w-50 ${
-          themeState.theme ? "btn-primary text-white" : ""
-        }`}
-      >
+      <ButtonOutlinePrimary type="submit" className="mx-auto d-block mb-3 w-50">
         Crear Cuenta
-      </button>
+      </ButtonOutlinePrimary>
 
-      <Link
-        className={`mt-3 ${themeState.theme ? "text-white " : ""}`}
-        to="/login"
-      >
+      <LINK className="mt-3" to="/login">
         <p className="text-center">
           ¿Ya tienes una cuenta? <strong>Iniciar Sesión</strong>
         </p>
-      </Link>
+      </LINK>
     </form>
   );
 }
