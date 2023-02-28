@@ -1,11 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
-import ThemeContext from "../context/context-theme";
+import React, { useEffect, useState } from "react";
+import Card from "../components/common/card";
+import P from "../components/common/p";
+import H5 from "../components/common/h5";
 import { getCategories } from "../api/categories";
 import { getClassByCategory } from "../api/products";
 
 export default function Categories({ onClickCategory }) {
   const [data, setData] = useState([]);
-  const themeState = useContext(ThemeContext);
 
   useEffect(() => {
     getCategories().then((data) => {
@@ -15,12 +16,10 @@ export default function Categories({ onClickCategory }) {
 
   const eachCategory = data.map((category) => {
     return (
-      <div
+      <Card
         key={category.id}
         role="button"
-        className={`card d-flex flex-column ${
-          themeState.theme ? "border-secondary text-bg-dark" : ""
-        }`}
+        className="d-flex flex-column"
         onClick={() => {
           getClassByCategory(category.id).then((data) => {
             onClickCategory(data);
@@ -35,18 +34,16 @@ export default function Categories({ onClickCategory }) {
           />
         </div>
         <div className="p-3">
-          <h5 className="fw-bolder">{category.nombreCategorias}</h5>
-          <p>{category.descripcionCategorias}</p>
+          <H5 className="fw-bolder">{category.nombreCategorias}</H5>
+          <P>{category.descripcionCategorias}</P>
         </div>
-      </div>
+      </Card>
     );
   });
 
   return (
     <div className="container mt-4">
-      <p className={`fs-4 fw-bold ${themeState.theme ? "text-white" : ""}`}>
-        Buscar por tipo de clase
-      </p>
+      <P className="fs-4 fw-bold">Buscar por tipo de clase</P>
       <div className="cards">{eachCategory}</div>
     </div>
   );

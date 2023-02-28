@@ -3,6 +3,8 @@ import { useState, useContext } from "react";
 import { loginApi } from "../api/login";
 import userContext from "../context/user-context";
 import ThemeContext from "../context/context-theme";
+import H2 from "../components/common/h2";
+import LABEL from "../components/common/label";
 import { emailRegex } from "../constants";
 
 export default function FormLogin() {
@@ -62,19 +64,12 @@ export default function FormLogin() {
         }
       }}
     >
-      <h2
-        className={`text-center mb-4 ${themeState.theme ? "text-white" : ""}`}
-      >
-        Iniciar Sesión
-      </h2>
+      <H2 className="text-center mb-4">Iniciar Sesión</H2>
 
       <div className="mb-4">
-        <label
-          htmlFor="email"
-          className={`form-label mb-2 ${themeState.theme ? "text-white" : ""}`}
-        >
+        <LABEL htmlFor="email" className="mb-2">
           Correo electrónico
-        </label>
+        </LABEL>
         <input
           onChange={(e) => {
             setEmail(e.target.value);

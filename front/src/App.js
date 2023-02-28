@@ -13,7 +13,7 @@ function App() {
 
   return (
     <UserProvider>
-      <div
+      <main
         className={`min-vh-100 d-flex flex-column ${
           themeState.theme ? "bg-dark" : "bg-white"
         }`}
@@ -21,7 +21,7 @@ function App() {
         <Navbar />
         <Routes />
         <Footer />
-      </div>
+      </main>
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
