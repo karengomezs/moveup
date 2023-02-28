@@ -105,7 +105,7 @@ export default function Navbar() {
                 themeState.theme ? "text-bg-dark" : ""
               }`}
             >
-              <div className="modal-header h-25 bg-primary d-flex flex-column">
+              <div className="modal-header bg-primary d-flex flex-column">
                 <div className="w-100">
                   <i
                     data-bs-toggle="modal"
@@ -114,7 +114,7 @@ export default function Navbar() {
                     className="bi bi-x-lg fs-3 text-white p-2"
                   />
                 </div>
-                <div className="w-100 d-flex justify-content-end">
+                <div className="w-100 d-flex flex-column align-items-end">
                   {!userState.user && (
                     <h2 className="text-white h2 m-0 fw-bold">MENÚ</h2>
                   )}
@@ -131,6 +131,16 @@ export default function Navbar() {
                       </h4>
                     </div>
                   )}
+                  <button
+                    className={`bi min-width-theme btn border-0 text-white ${
+                      themeState.theme
+                        ? "bi-cloud-sun-fill fs-3"
+                        : "bi-cloud-moon-fill fs-3"
+                    }`}
+                    onClick={() => {
+                      themeState.setTheme(!themeState.theme);
+                    }}
+                  />
                 </div>
               </div>
               <div className="modal-body d-flex flex-column justify-content-start align-items-end">
