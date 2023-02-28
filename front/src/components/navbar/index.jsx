@@ -12,7 +12,7 @@ export default function Navbar() {
   const themeState = useContext(ThemeContext);
 
   return (
-    <nav className="navbar navbar-expand-md bg-primary ">
+    <nav className="navbar navbar-dark navbar-expand-md bg-primary ">
       <div className="container container-fluid">
         <Link
           to="/"

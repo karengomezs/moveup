@@ -24,7 +24,7 @@ export default function List({ data }) {
   });
 
   return (
-    <div className="container py-5">
+    <div className="container mt-4">
       <p className={`fs-4 fw-bold ${themeState.theme ? "text-white" : ""}`}>
         {userState.user ? "Clases" : "Recomendados"}
       </p>
