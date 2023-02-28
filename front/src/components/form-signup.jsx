@@ -17,6 +17,7 @@ export default function FormSignup({ setErrorRegister }) {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const [nameError, setNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
@@ -32,15 +33,19 @@ export default function FormSignup({ setErrorRegister }) {
       onSubmit={async (e) => {
         e.preventDefault();
         const nameLength = name.length > 2;
-        const hasWhiteSpace = nameRegex.test(name);
+        const lastNameLength = lastName.length > 0;
+        const nameHasWhiteSpace = nameRegex.test(name);
         const passwordLength = password.length > 5;
+        const lastNameHasWhiteSpace = nameRegex.test(lastName);
         const emailValid = emailRegex.test(email);
         const isSamePassword = password === confirmPassword;
 
         if (
           isSamePassword &&
           nameLength &&
-          !hasWhiteSpace &&
+          lastNameLength &&
+          !nameHasWhiteSpace &&
+          !lastNameHasWhiteSpace &&
           passwordLength &&
           emailValid
         ) {
@@ -69,7 +74,8 @@ export default function FormSignup({ setErrorRegister }) {
             setErrorRegister(true);
           }
         } else {
-          setNameError(!nameLength || hasWhiteSpace);
+          setNameError(!nameLength || nameHasWhiteSpace);
+          setLastNameError(!lastNameLength || lastNameHasWhiteSpace);
           setEmailError(!emailValid);
           setPasswordError(!passwordLength);
           setConfirmPasswordError(!isSamePassword);
@@ -122,9 +128,12 @@ export default function FormSignup({ setErrorRegister }) {
             id="last-name"
             value={lastName}
             type="text"
-            className={`form-control ${themeState.theme ? "text-bg-dark" : ""}`}
+            className={`form-control ${lastNameError ? "is-invalid" : ""} ${
+              themeState.theme ? "text-bg-dark" : ""
+            }`}
             placeholder="Ejemplo: Torres"
           />
+          <div className="invalid-feedback">Por favor ingrese su apellido</div>
         </div>
       </div>
 
