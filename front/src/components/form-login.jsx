@@ -5,6 +5,9 @@ import userContext from "../context/user-context";
 import ThemeContext from "../context/context-theme";
 import H2 from "../components/common/h2";
 import LABEL from "../components/common/label";
+import INPUT from "../components/common/input";
+import P from "../components/common/p";
+import ButtonOutlinePirmary from "../components/common/button-outline-primary";
 import { emailRegex } from "../constants";
 
 export default function FormLogin() {
@@ -70,7 +73,7 @@ export default function FormLogin() {
         <LABEL htmlFor="email" className="mb-2">
           Correo electrónico
         </LABEL>
-        <input
+        <INPUT
           onChange={(e) => {
             setEmail(e.target.value);
             setError("");
@@ -78,21 +81,16 @@ export default function FormLogin() {
           }}
           value={email}
           type="email"
-          className={`form-control ${emailError ? "is-invalid" : ""}  ${
-            themeState.theme ? "text-bg-dark" : ""
-          }`}
+          className={`form-control ${emailError ? "is-invalid" : ""}`}
           id="email"
           placeholder="ejemplo@gmail.com"
         />
       </div>
       <div className="mb-4">
-        <label
-          htmlFor="password"
-          className={`form-label mb-2 ${themeState.theme ? "text-white" : ""}`}
-        >
+        <LABEL htmlFor="password" className="mb-2">
           Contraseña
-        </label>
-        <input
+        </LABEL>
+        <INPUT
           onChange={(e) => {
             setPassword(e.target.value);
             setError("");
@@ -100,30 +98,23 @@ export default function FormLogin() {
           }}
           value={password}
           type="password"
-          className={`form-control ${passwordError ? "is-invalid" : ""} ${
-            themeState.theme ? "text-bg-dark" : ""
-          }`}
+          className={`form-control ${passwordError ? "is-invalid" : ""}`}
           id="password"
         />
       </div>
 
-      <button
-        type="submit"
-        className={`btn btn-outline-primary mx-auto d-block mb-3 w-50 ${
-          themeState.theme ? "btn-primary text-white" : ""
-        }`}
-      >
+      <ButtonOutlinePirmary type="submit" className="mx-auto d-block mb-3 w-50">
         Ingresar
-      </button>
+      </ButtonOutlinePirmary>
 
       <Link
-        className={`mt-3 ${themeState.theme ? "text-white " : ""}`}
+        className={` ${themeState.theme ? "text-white " : ""}`}
         to="/signup"
         state={{ prevLocation, loginRequired: isLoginRequired }}
       >
-        <p className="text-center">
+        <P className="text-center">
           ¿Aún no tienes cuenta? <strong>Registrate</strong>
-        </p>
+        </P>
       </Link>
 
       {error.length > 0 && (

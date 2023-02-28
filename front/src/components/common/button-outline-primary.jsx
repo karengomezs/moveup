@@ -1,19 +1,19 @@
 import { useContext } from "react";
 import ThemeContext from "../../context/context-theme";
 
-const LABEL = ({ className, children, ...props }) => {
+const Card = ({ className, children, ...props }) => {
   const themeState = useContext(ThemeContext);
 
   return (
-    <label
-      className={`form-label ${
-        themeState.theme ? "text-white" : ""
+    <button
+      className={`btn btn-outline-primary ${
+        themeState.theme ? "btn-primary text-white" : ""
       } ${className}`}
       {...props}
     >
       {children}
-    </label>
+    </button>
   );
 };
 
-export default LABEL;
+export default Card;
