@@ -76,11 +76,18 @@ export default function FormSignup({ setErrorRegister }) {
         }
       }}
     >
-      <h2 className="text-center mb-4">Crear Cuenta</h2>
+      <h2
+        className={`text-center my-4 ${themeState.theme ? "text-white" : ""}`}
+      >
+        Crear Cuenta
+      </h2>
 
       <div className="d-sm-flex gap-3">
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
+          <label
+            htmlFor="name"
+            className={`form-label ${themeState.theme ? "text-white" : ""}`}
+          >
             Nombre
           </label>
           <input
@@ -102,7 +109,10 @@ export default function FormSignup({ setErrorRegister }) {
           </div>
         </div>
         <div className="mb-3">
-          <label htmlFor="last-name" className="form-label">
+          <label
+            htmlFor="last-name"
+            className={`form-label ${themeState.theme ? "text-white" : ""}`}
+          >
             Apellido
           </label>
           <input
@@ -119,7 +129,10 @@ export default function FormSignup({ setErrorRegister }) {
       </div>
 
       <div className="mb-3">
-        <label htmlFor="email" className="form-label">
+        <label
+          htmlFor="email"
+          className={`form-label ${themeState.theme ? "text-white" : ""}`}
+        >
           Correo electrónico
         </label>
         <input
@@ -140,7 +153,10 @@ export default function FormSignup({ setErrorRegister }) {
         </div>
       </div>
       <div className="mb-3">
-        <label htmlFor="password" className="form-label">
+        <label
+          htmlFor="password"
+          className={`form-label ${themeState.theme ? "text-white" : ""}`}
+        >
           Contraseña
         </label>
         <input
@@ -160,7 +176,10 @@ export default function FormSignup({ setErrorRegister }) {
         </div>
       </div>
       <div className="mb-4">
-        <label htmlFor="confirm-pass" className="form-label">
+        <label
+          htmlFor="confirm-pass"
+          className={`form-label ${themeState.theme ? "text-white" : ""}`}
+        >
           Confirmar contraseña
         </label>
         <input

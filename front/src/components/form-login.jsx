@@ -62,10 +62,17 @@ export default function FormLogin() {
         }
       }}
     >
-      <h2 className="text-center mb-4">Iniciar Sesión</h2>
+      <h2
+        className={`text-center mb-4 ${themeState.theme ? "text-white" : ""}`}
+      >
+        Iniciar Sesión
+      </h2>
 
       <div className="mb-4">
-        <label htmlFor="email" className="form-label mb-2">
+        <label
+          htmlFor="email"
+          className={`form-label mb-2 ${themeState.theme ? "text-white" : ""}`}
+        >
           Correo electrónico
         </label>
         <input
@@ -84,7 +91,10 @@ export default function FormLogin() {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="password" className="form-label mb-2">
+        <label
+          htmlFor="password"
+          className={`form-label mb-2 ${themeState.theme ? "text-white" : ""}`}
+        >
           Contraseña
         </label>
         <input
