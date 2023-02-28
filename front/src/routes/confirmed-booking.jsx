@@ -1,9 +1,8 @@
 import { Link, useLocation, Navigate } from "react-router-dom";
-import React, { useContext } from "react";
-import ThemeContext from "../context/context-theme";
+import React from "react";
+import CARD from "../components/common/card";
 
 export default function ConfirmedBooking() {
-  const themeState = useContext(ThemeContext);
   const location = useLocation();
   const isBookingSuccess = location.state === "booking-success";
 
@@ -13,11 +12,7 @@ export default function ConfirmedBooking() {
 
   return (
     <div className="d-flex flex-grow-1 flex-column align-items-center justify-content-center container">
-      <div
-        className={`card shadow-sm py-3 px-5 ${
-          themeState.theme ? "border-secondary text-bg-dark" : ""
-        }`}
-      >
+      <CARD className="shadow-sm py-3 px-5 ">
         <div className="card-body d-flex flex-column align-items-center gap-3">
           <i className="bi bi-patch-check-fill fs-1 text-primary"></i>
           <h1 className="h1 fw-bolder text-primary">¡Muchas gracias!</h1>
@@ -30,7 +25,7 @@ export default function ConfirmedBooking() {
             </button>
           </Link>
         </div>
-      </div>
+      </CARD>
     </div>
   );
 }

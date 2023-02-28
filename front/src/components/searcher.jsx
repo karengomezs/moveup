@@ -1,10 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { geCities } from "../api/city";
-import ThemeContext from "../context/context-theme";
 import { CalendarWithInput } from "./calendar";
+import SELECT from "./common/select";
 
 export default function Searcher({ onSearch }) {
-  const themeState = useContext(ThemeContext);
   const [dataCities, setDataCities] = useState([]);
   const [city, setCity] = useState("");
   const [dates, setDates] = useState({
@@ -41,20 +40,15 @@ export default function Searcher({ onSearch }) {
           <div className="container d-flex justify-content-center">
             <div className="justify-content-center input-group gap-3">
               <div className="col col-md-5 d-flex">
-                <select
+                <SELECT
                   onChange={(e) => {
                     setCity(e.target.value);
                   }}
-                  className={`form-select shadow-none ${
-                    themeState.theme
-                      ? "text-bg-dark dark-select"
-                      : "border border-0"
-                  }`}
                   value={city}
                 >
                   <option value="">¿A dónde vamos a ir?</option>
                   {cities}
-                </select>
+                </SELECT>
               </div>
               <div className="col-sm-12 col-md-5">
                 <CalendarWithInput dates={dates} setDates={setDates} />

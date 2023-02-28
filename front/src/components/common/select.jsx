@@ -7,7 +7,7 @@ const SELECT = ({ className, children, ...props }) => {
   return (
     <select
       className={`form-select ${
-        themeState.theme ? "text-bg-dark dark-select" : "border border-0"
+        themeState.theme ? "text-bg-dark dark-select" : ""
       } ${className}`}
       {...props}
     >
