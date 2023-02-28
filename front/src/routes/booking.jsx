@@ -207,9 +207,9 @@ export default function Booking() {
                       value={city}
                       id="city"
                       type="text"
-                      className={`form-control border-1 bg-light ${
+                      className={`form-control border-1 ${
                         cityError ? "is-invalid" : ""
-                      } `}
+                      } ${themeState.theme ? "text-bg-dark" : ""}`}
                     />
                   </div>
                 </div>
@@ -304,7 +304,11 @@ export default function Booking() {
 
         {/* ---------------------- */}
         <div className="pt-xl-4 mt-xl-1 col col-xl-4">
-          <div className="card shadow-sm mt-2">
+          <div
+            className={`card shadow-sm mt-2 ${
+              themeState.theme ? "border-secondary text-bg-dark" : ""
+            }`}
+          >
             <h4 className="h4 fw-semibold p-3 m-0">Detalle de la reserva</h4>
 
             <img
