@@ -48,7 +48,7 @@ export default function Searcher({ onSearch }) {
                   className={`form-select shadow-none ${
                     themeState.theme
                       ? "text-bg-dark dark-select"
-                      : " border border-0"
+                      : "border border-0"
                   }`}
                   value={city}
                 >
