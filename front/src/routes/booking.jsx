@@ -7,6 +7,9 @@ import { Calendar } from "../components/calendar";
 import Stars from "../components/product/stars";
 import ThemeContext from "../context/context-theme";
 import { createBooking, getUnavailableDatesByProductId } from "../api/booking";
+import H4 from "../components/common/h4";
+import CARD from "../components/common/card";
+import INPUT from "../components/common/input";
 import { getClass } from "../api/products";
 
 export default function Booking() {
@@ -130,33 +133,21 @@ export default function Booking() {
         <div className="d-flex flex-column gap-5 col">
           {/* 1 div con h3 y el form  */}
           <div>
-            <h4
-              className={`h4 fw-semibold ${
-                themeState.theme ? "text-white" : ""
-              }`}
-            >
-              Completa tus datos
-            </h4>
-            <div
-              className={`card shadow-sm ${
-                themeState.theme ? "border-secondary text-bg-dark" : ""
-              }`}
-            >
+            <H4 className="fw-semibold">Completa tus datos</H4>
+            <CARD>
               <div className="d-flex flex-column gap-4 card-body  p-4">
                 <div className="d-flex gap-4 flex-column flex-sm-row">
                   <div className="text-start flex-grow-1">
                     <label htmlFor="name" className="form-label fw-semibold">
                       Nombre
                     </label>
-                    <input
+                    <INPUT
                       onChange={() => {}}
                       value={userState.user.name}
                       disabled
                       id="name"
                       type="text"
-                      className={`form-control border-0 ${
-                        themeState.theme ? "text-bg-secondary" : ""
-                      }`}
+                      className="form-control"
                     />
                   </div>
                   <div className="text-start flex-grow-1">
@@ -166,15 +157,13 @@ export default function Booking() {
                     >
                       Apellido
                     </label>
-                    <input
+                    <INPUT
                       onChange={() => {}}
                       value={userState.user.lastName}
                       disabled
                       id="last-name"
                       type="text"
-                      className={`form-control border-0 ${
-                        themeState.theme ? "text-bg-secondary" : ""
-                      }`}
+                      className="form-control"
                     />
                   </div>
                 </div>
@@ -184,22 +173,20 @@ export default function Booking() {
                     <label htmlFor="email" className="form-label fw-semibold">
                       Correo electrónico
                     </label>
-                    <input
+                    <INPUT
                       onChange={() => {}}
                       disabled
                       value={userState.user.email}
                       id="email"
                       type="email"
-                      className={`form-control border-0 ${
-                        themeState.theme ? "text-bg-secondary" : ""
-                      }`}
+                      className="form-control"
                     />
                   </div>
                   <div className="text-start flex-grow-1">
                     <label htmlFor="city" className="form-label fw-semibold">
                       Ciudad
                     </label>
-                    <input
+                    <INPUT
                       onChange={(e) => {
                         setCity(e.target.value);
                         setCityError(false);
@@ -207,14 +194,14 @@ export default function Booking() {
                       value={city}
                       id="city"
                       type="text"
-                      className={`form-control border-1 ${
+                      className={`form-control ${
                         cityError ? "is-invalid" : ""
-                      } ${themeState.theme ? "text-bg-dark" : ""}`}
+                      }`}
                     />
                   </div>
                 </div>
               </div>
-            </div>
+            </CARD>
             {cityError && (
               <p className="text-danger mt-2">Por favor ingresa una ciudad</p>
             )}
@@ -223,24 +210,18 @@ export default function Booking() {
           {/* ------------------------------------------------------------------------- */}
           {/* 2 contenedor de la izquierda con calendario */}
           <div>
-            <h4
-              className={`h4 fw-semibold ${
-                themeState.theme ? "text-white" : ""
-              }`}
-            >
-              Selecciona tu fecha de reserva
-            </h4>
-            <div
-              className={`card shadow-sm align-items-center ${
+            <H4 className="fw-semibold">Selecciona tu fecha de reserva</H4>
+            <CARD
+              className={`align-items-center ${
                 datesError || invalidRange ? "border-danger" : ""
-              } ${themeState.theme ? "border-secondary text-bg-dark" : ""}`}
+              }`}
             >
               <Calendar
                 dates={dates}
                 setDates={setDates}
                 disabledDates={disabledDates}
               />
-            </div>
+            </CARD>
             {datesError && (
               <p className="text-danger mt-2">
                 Por favor seleccione una <strong>fecha de inicio</strong> y una
@@ -258,18 +239,8 @@ export default function Booking() {
           {/* ------------------------------------------------------------------------- */}
           {/*    3 contenedor horario de llegada */}
           <div>
-            <h4
-              className={`h4 fw-semibold ${
-                themeState.theme ? "text-white" : ""
-              }`}
-            >
-              Tu horario de llegada
-            </h4>
-            <div
-              className={`card shadow-sm ${
-                themeState.theme ? "border-secondary text-bg-dark" : ""
-              }`}
-            >
+            <H4 className="fw-semibold">Tu horario de llegada</H4>
+            <CARD>
               <div className="card-body text-start">
                 <div className="">
                   <label htmlFor="time" className="form-label">
@@ -299,7 +270,7 @@ export default function Booking() {
                   </h6>
                 )}
               </div>
-            </div>
+            </CARD>
             {hourError && (
               <p className="text-danger mt-2">
                 Por favor ingresa una hora de llegada
