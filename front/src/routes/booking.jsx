@@ -379,24 +379,162 @@ export default function Booking() {
         <div className="d-flex flex-column gap-4 flex-sm-row py-3">
           <div className="col">
             <p
-              className={`fw-semibold ${themeState.theme ? "text-white" : ""}`}
+              className={`fw-semibold mb-2 ${
+                themeState.theme ? "text-white" : ""
+              }`}
             >
               Normas de la clase
             </p>
+
+            <ul className="list-group list-group-numbered">
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Llegar a tiempo
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Ropa y calzado adecuado
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Respetar al instructor
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                No interrumpir la clase
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Utilizar el equipo correctamente
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Respetar a los demás participantes
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Seguir las instrucciones
+              </li>
+            </ul>
           </div>
           <div className="col">
             <p
-              className={`fw-semibold ${themeState.theme ? "text-white" : ""}`}
+              className={`fw-semibold mb-2 ${
+                themeState.theme ? "text-white" : ""
+              }`}
             >
               Salud y seguridad
             </p>
+            <ul className="list-group list-group-numbered">
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Realizar un calentamiento previo
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Hidratación
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Respetar pausas y descansos
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Evitar la sobreexigencia física
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Informar al instructor de cualquier lesión o problema de salud
+              </li>
+            </ul>
           </div>
           <div className="col">
             <p
-              className={`fw-semibold ${themeState.theme ? "text-white" : ""}`}
+              className={`fw-semibold mb-2 ${
+                themeState.theme ? "text-white" : ""
+              }`}
             >
               Política de cancelación
             </p>
+            <ul className="list-group list-group-numbered">
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Aviso previo de cancelación: Es importante avisar al instructor
+                o al centro deportivo con anticipación si se necesita cancelar
+                la clase. El plazo de aviso suele variar, pero en general se
+                recomienda avisar con al menos 24 horas de anticipación.
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Reembolso: Si se ha pagado por adelantado la clase y se cancela
+                con el plazo suficiente de aviso, es posible que se pueda
+                solicitar un reembolso o que se permita reprogramar la clase
+                para una fecha posterior.
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Cancelación por parte del instructor o centro deportivo: En caso
+                de que el instructor o el centro deportivo deba cancelar la
+                clase por algún motivo (como enfermedad o problemas técnicos),
+                se suele ofrecer la posibilidad de reprogramar la clase o de
+                recibir un reembolso.
+              </li>
+              <li
+                className={`list-group-item ${
+                  themeState.theme ? "list-group-item-dark" : ""
+                }`}
+              >
+                Ausencia sin aviso previo: Si el participante no avisa de la
+                cancelación y simplemente no se presenta a la clase, es posible
+                que se pierda el derecho a recibir un reembolso o a reprogramar
+                la clase.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
