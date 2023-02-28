@@ -283,14 +283,11 @@ export default function Booking() {
                     }}
                     value={hour}
                     className={`form-select ${hourError ? "is-invalid" : ""} ${
-                      themeState.theme
-                        ? "text-bg-dark dark-select"
-                        : " border border-0"
+                      themeState.theme ? "text-bg-dark dark-select" : ""
                     }`}
                     id="floatingSelect"
-                    required
                   >
-                    <option value="0">Selecciona tu hora de llegada</option>
+                    <option value="">Selecciona tu hora de llegada</option>
                     {hours}
                   </select>
                 </div>

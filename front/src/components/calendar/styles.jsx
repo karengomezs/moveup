@@ -17,6 +17,10 @@ const theme = (isDark = false, useBorder = true) => {
     if (!useBorder) {
       border = "#212529";
     }
+  } else {
+    if (!useBorder) {
+      border = "white";
+    }
   }
 
   return extendTheme(CalendarDefaultTheme, {
