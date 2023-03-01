@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import ThemeContext from "../../context/context-theme";
 
-const P = ({ className, children, ...props }) => {
+const P = ({ className, children, ...otherProps }) => {
   const themeState = useContext(ThemeContext);
 
   return (
     <p
       className={`${themeState.theme ? "text-white" : ""} ${className}`}
-      {...props}
+      {...otherProps}
     >
       {children}
     </p>
