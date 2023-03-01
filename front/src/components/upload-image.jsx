@@ -2,7 +2,7 @@ import { useState, useRef, useContext } from "react";
 import { uploadImage } from "../api/aws";
 import ThemeContext from "../context/context-theme";
 
-const InputImage = ({ onLoaded, disabledButton }) => {
+const InputImage = ({ onLoaded, disabledButton, invalid }) => {
   const [loading, setLoading] = useState(false);
   const ref = useRef();
   const [file, setFile] = useState(null);
@@ -36,15 +36,20 @@ const InputImage = ({ onLoaded, disabledButton }) => {
 
   return (
     <div className="d-flex gap-3 mt-2 align-items-end">
-      <input
-        className={`form-control ${color}`}
-        type="file"
-        id="formFile"
-        onChange={handleFileSelect}
-        accept="image/*"
-        ref={ref}
-        disabled={disabledButton}
-      />
+      <div className="w-100">
+        <input
+          className={`form-control ${color} ${invalid ? "is-invalid" : ""}`}
+          type="file"
+          id="formFile"
+          onChange={handleFileSelect}
+          accept="image/*"
+          ref={ref}
+          disabled={disabledButton}
+        />
+        <div className="invalid-feedback">
+          Por favor cargar <strong>5</strong> imagenes
+        </div>
+      </div>
       {loading && <div class="spinner-border" role="status"></div>}
       {file && !loading && (
         <button className="btn btn-primary" type="button" onClick={uploadToS3}>

@@ -27,6 +27,7 @@ export default function Administrator() {
   const [addressError, setAdressError] = useState(false);
   const [cityError, setCityError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
+  const [imagesError, setImagesError] = useState(false);
 
   const [errorPostProduct, setErrorPostProduct] = useState(false);
 
@@ -81,13 +82,15 @@ export default function Administrator() {
               const isAdressValid = address.length > 3;
               const isCityValid = city.length > 0;
               const isDescriptionValid = description.length > 5;
+              const isImagesValid = description.length > 4;
 
               if (
                 isNameValid &&
                 isCategoryValid &&
                 isAdressValid &&
                 isCityValid &&
-                isDescriptionValid
+                isDescriptionValid &&
+                isImagesValid
               ) {
                 try {
                   // acá va la consulta del response
@@ -100,6 +103,7 @@ export default function Administrator() {
                 setAdressError(!isAdressValid);
                 setCityError(!isCityValid);
                 setDescriptionError(!isDescriptionValid);
+                setImagesError(!isImagesValid);
               }
             }}
           >
@@ -220,6 +224,7 @@ export default function Administrator() {
                   setImages((currentImages) => [...currentImages, newImage]);
                 }}
                 disabledButton={images.length > 4}
+                invalid={imagesError}
               />
             </div>
             <div className="d-flex gap-3 mt-3">
