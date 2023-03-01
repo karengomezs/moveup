@@ -6,14 +6,25 @@ import P from "../components/common/p";
 import LABEL from "../components/common/label";
 import INPUT from "../components/common/input";
 import SELECT from "../components/common/select";
-import Categories from "../components/categories";
+import ButtonOutlinePrimary from "../components/common/button-outline-primary";
 
 export default function Administrator() {
-  /*    const [city, setCity] = useState("");
-        const [category, setCategory] = useState("");
-   */
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState("");
+  const [adress, setAdress] = useState("");
+  const [city, setCity] = useState("");
+  const [description, setDescription] = useState("");
+
   const [citiesData, setCitiesData] = useState([]);
   const [categoriesData, setCategoriesData] = useState([]);
+
+  const [nameError, setNameError] = useState(false);
+  const [categoryError, setCategoryError] = useState(false);
+  const [adressError, setAdressError] = useState(false);
+  const [cityError, setCityError] = useState(false);
+  const [descriptionError, setDescriptionError] = useState(false);
+
+  const [errorPostProduct, setErrorPostProduct] = useState(false);
 
   useEffect(() => {
     getCategories().then((data) => {
@@ -47,15 +58,44 @@ export default function Administrator() {
     <div className="container flex-grow-1">
       <P className=" fs-4 fw-bold mt-5">Crear Clase</P>
       <CARD className="container d-flex flex-column mb-5">
-        <form className="card-body" action="">
+        <form
+          className="card-body"
+          onSubmit={(e) => {
+            e.preventDefault();
+            // console.log(city, category, name, description, adress);
+
+            const isNameValid = name.length > 3;
+            const isCategoryValid = category.length > 0;
+            const isAdressValid = adress.length > 3;
+            const isCityValid = city.length > 0;
+            const isDescriptionValid = description.length > 5;
+
+            if (
+              isNameValid &&
+              isCategoryValid &&
+              isAdressValid &&
+              isCityValid &&
+              isDescriptionValid
+            ) {
+              try {
+                // acá va la consulta del response
+              } catch (error) {
+                setErrorPostProduct(true);
+              }
+            }
+          }}
+        >
           {/*1. DIV PRIMEROS DOS INPUTS */}
           <div className="d-sm-flex gap-3">
-            <div className="mb-3 flex-grow-1">
+            <div className="mb-3 w-50">
               <LABEL className="fw-semibold" htmlFor="name">
                 Nombre de la clase
               </LABEL>
               <INPUT
-                onChange={(e) => {}}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                value={name}
                 id="name"
                 type="text"
                 className="form-control"
@@ -67,16 +107,15 @@ export default function Administrator() {
                 blanco
               </div> */}
             </div>
-            <div className="mb-3 flex-grow-1">
+            <div className="mb-3 w-50">
               <LABEL className="fw-semibold" htmlFor="last-name">
                 Categoría
               </LABEL>
               <SELECT
-                className="flex-grow-1"
-                /*  onChange={(e) => {
-                  setCity(e.target.value);
+                onChange={(e) => {
+                  setCategory(e.target.value);
                 }}
-                value={city} */
+                value={category}
               >
                 <option value="">Elige una categoría</option>
                 {categories}
@@ -89,12 +128,15 @@ export default function Administrator() {
           {/* 1. FIN */}
           {/*2.  DIV SEGUNDOS DOS INPUTS  */}
           <div className="d-sm-flex gap-3">
-            <div className="mb-3 flex-grow-1">
+            <div className="mb-3 w-50">
               <LABEL className="fw-semibold" htmlFor="name">
                 Dirección
               </LABEL>
               <INPUT
-                onChange={(e) => {}}
+                onChange={(e) => {
+                  setAdress(e.target.value);
+                }}
+                value={adress}
                 id="name"
                 type="text"
                 className="form-control"
@@ -106,15 +148,15 @@ export default function Administrator() {
                 blanco
               </div> */}
             </div>
-            <div className="mb-3 flex-grow-1">
+            <div className="mb-3 w-50">
               <LABEL className="fw-semibold" htmlFor="last-name">
                 Ciudad
               </LABEL>
               <SELECT
-              /*  onChange={(e) => {
+                onChange={(e) => {
                   setCity(e.target.value);
                 }}
-                value={city} */
+                value={city}
               >
                 <option value="">Elige una ciudad</option>
                 {cities}
@@ -131,7 +173,10 @@ export default function Administrator() {
               Descripción
             </LABEL>
             <textarea
-              onChange={(e) => {}}
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
+              value={description}
               id="name"
               type="text-area"
               className="form-control"
@@ -140,9 +185,27 @@ export default function Administrator() {
           </div>
           {/* 3. FIN TEXT AREA */}
           {/*           <P className="fw-bold mt-3">Agregar atributos</P>
-           */}{" "}
+           */}
+          <ButtonOutlinePrimary
+            type="submit"
+            className="mx-auto d-block mb-3 mt-5 w-50"
+          >
+            Crear Producto
+          </ButtonOutlinePrimary>
         </form>
       </CARD>
+      {!errorPostProduct && (
+        <div
+          className="alert alert-danger d-flex align-items-center mb-4"
+          role="alert"
+        >
+          <i className="bi bi-exclamation-circle-fill me-2"></i>
+          <span>
+            Lamentablemente, el producto no ha podido crearse. Por favor,
+            intente más tarde
+          </span>
+        </div>
+      )}
     </div>
   );
 }
