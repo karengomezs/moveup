@@ -3,17 +3,14 @@ import React, { useContext } from "react";
 import ThemeContext from "../../context/context-theme";
 import Stars from "./stars";
 import Score from "./score";
+import CARD from "../common/card";
 
 const Product = ({ category, name, score, city, id, description, images }) => {
   const navigate = useNavigate();
   const themeState = useContext(ThemeContext);
 
   return (
-    <div
-      className={`card mb-3 ${
-        themeState.theme ? "border-secondary text-bg-dark" : ""
-      }`}
-    >
+    <CARD className="mb-3">
       <div className="row g-0 h-100">
         <div className="col-3">
           <img
@@ -63,7 +60,7 @@ const Product = ({ category, name, score, city, id, description, images }) => {
           </div>
         </div>
       </div>
-    </div>
+    </CARD>
   );
 };
 
