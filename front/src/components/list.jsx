@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
-import ThemeContext from "../context/context-theme";
 import Product from "./product";
 import UserContext from "../context/user-context";
 import P from "./common/p";
 
 export default function List({ data }) {
   const userState = useContext(UserContext);
-  const themeState = useContext(ThemeContext);
   const isEmpty = data.length === 0;
 
   const classes = data?.map((eachClass) => {
