@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import AWS from "aws-sdk";
 import { geCities } from "../api/city";
 import { getCategories } from "../api/categories";
 import ThemeContext from "../context/context-theme";
@@ -9,7 +10,17 @@ import INPUT from "../components/common/input";
 import SELECT from "../components/common/select";
 import ButtonOutlinePrimary from "../components/common/button-outline-primary";
 
+AWS.config.update({
+  accessKeyId: process.env.REACT_APP_AWS_KEY,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET,
+  region: process.env.REACT_APP_REGION,
+  signatureVersion: "v4",
+});
+
 export default function Administrator() {
+  const s3 = new AWS.S3();
+  const [imageUrl, setImageUrl] = useState(null);
+  const [file, setFile] = useState(null);
   const themeState = useContext(ThemeContext);
 
   const [name, setName] = useState("");
@@ -28,6 +39,28 @@ export default function Administrator() {
   const [descriptionError, setDescriptionError] = useState(false);
 
   const [errorPostProduct, setErrorPostProduct] = useState(false);
+
+  const handleFileSelect = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const uploadToS3 = async () => {
+    if (!file) {
+      return;
+    }
+    const params = {
+      Bucket: "grupo03dh/IMAGENES",
+      Key: `${Date.now()}.${file.name}`,
+      Body: file,
+    };
+    try {
+      const { Location } = await s3.upload(params).promise();
+      setImageUrl(Location);
+      console.log("uploading to s3", Location);
+    } catch (error) {
+      console.log({ error });
+    }
+  };
 
   useEffect(() => {
     getCategories().then((data) => {
@@ -59,6 +92,20 @@ export default function Administrator() {
 
   return (
     <>
+      <div>
+        <h1>Test Image Upload</h1>
+        <input type="file" onChange={handleFileSelect} />
+        {file && (
+          <div style={{ marginTop: "10px" }}>
+            <button onClick={uploadToS3}>Upload</button>
+          </div>
+        )}
+        {imageUrl && (
+          <div style={{ marginTop: "10px" }}>
+            <img src={imageUrl} alt="uploaded" />
+          </div>
+        )}
+      </div>
       <div
         className={`w-100 p-2 ${themeState.theme ? "bg-search" : "bg-light"}`}
       >
