@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from "react";
-import AWS from "aws-sdk";
 import { geCities } from "../api/city";
 import { getCategories } from "../api/categories";
 import ThemeContext from "../context/context-theme";
@@ -8,24 +7,15 @@ import P from "../components/common/p";
 import LABEL from "../components/common/label";
 import INPUT from "../components/common/input";
 import SELECT from "../components/common/select";
+import InputImage from "../components/upload-image";
 import ButtonOutlinePrimary from "../components/common/button-outline-primary";
 
-AWS.config.update({
-  accessKeyId: process.env.REACT_APP_AWS_KEY,
-  secretAccessKey: process.env.REACT_APP_AWS_SECRET,
-  region: process.env.REACT_APP_REGION,
-  signatureVersion: "v4",
-});
-
 export default function Administrator() {
-  const s3 = new AWS.S3();
-  const [imageUrl, setImageUrl] = useState(null);
-  const [file, setFile] = useState(null);
   const themeState = useContext(ThemeContext);
-
+  const [images, setImages] = useState([]);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAdress] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
 
@@ -34,33 +24,11 @@ export default function Administrator() {
 
   const [nameError, setNameError] = useState(false);
   const [categoryError, setCategoryError] = useState(false);
-  const [adressError, setAdressError] = useState(false);
+  const [addressError, setAdressError] = useState(false);
   const [cityError, setCityError] = useState(false);
   const [descriptionError, setDescriptionError] = useState(false);
 
   const [errorPostProduct, setErrorPostProduct] = useState(false);
-
-  const handleFileSelect = (e) => {
-    setFile(e.target.files[0]);
-  };
-
-  const uploadToS3 = async () => {
-    if (!file) {
-      return;
-    }
-    const params = {
-      Bucket: "grupo03dh/IMAGENES",
-      Key: `${Date.now()}.${file.name}`,
-      Body: file,
-    };
-    try {
-      const { Location } = await s3.upload(params).promise();
-      setImageUrl(Location);
-      console.log("uploading to s3", Location);
-    } catch (error) {
-      console.log({ error });
-    }
-  };
 
   useEffect(() => {
     getCategories().then((data) => {
@@ -92,20 +60,6 @@ export default function Administrator() {
 
   return (
     <>
-      <div>
-        <h1>Test Image Upload</h1>
-        <input type="file" onChange={handleFileSelect} />
-        {file && (
-          <div style={{ marginTop: "10px" }}>
-            <button onClick={uploadToS3}>Upload</button>
-          </div>
-        )}
-        {imageUrl && (
-          <div style={{ marginTop: "10px" }}>
-            <img src={imageUrl} alt="uploaded" />
-          </div>
-        )}
-      </div>
       <div
         className={`w-100 p-2 ${themeState.theme ? "bg-search" : "bg-light"}`}
       >
@@ -124,7 +78,7 @@ export default function Administrator() {
 
               const isNameValid = name.length > 3;
               const isCategoryValid = category.length > 0;
-              const isAdressValid = adress.length > 3;
+              const isAdressValid = address.length > 3;
               const isCityValid = city.length > 0;
               const isDescriptionValid = description.length > 5;
 
@@ -204,10 +158,10 @@ export default function Administrator() {
                   onChange={(e) => {
                     setAdress(e.target.value);
                   }}
-                  value={adress}
+                  value={address}
                   id="name"
                   type="text"
-                  className={`form-control ${adressError ? "is-invalid" : ""}`}
+                  className={`form-control ${addressError ? "is-invalid" : ""}`}
                   placeholder="Ejemplo: cll 43 # 34-56"
                 />
 
@@ -259,6 +213,23 @@ export default function Administrator() {
               <div className="invalid-feedback">
                 Por favor ingrese más de 5 caracteres
               </div>
+            </div>
+            <div className="mt-3">
+              <InputImage
+                onLoaded={(newImage) => {
+                  setImages((currentImages) => [...currentImages, newImage]);
+                }}
+              />
+            </div>
+            <div className="d-flex gap-3 mt-3">
+              {images.map((image, index) => (
+                <img
+                  key={`image-${index}`}
+                  src={image}
+                  alt=""
+                  style={{ maxHeight: 150, width: "auto" }}
+                />
+              ))}
             </div>
             {/* 3. FIN TEXT AREA */}
             {/*           <P className="fw-bold mt-3">Agregar atributos</P>
