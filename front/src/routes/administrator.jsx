@@ -235,7 +235,7 @@ export default function Administrator() {
                   src={image}
                   alt=""
                   style={{ maxHeight: 150, width: "auto" }}
-                  className="rounded"
+                  className="rounded border"
                 />
               ))}
             </div>
