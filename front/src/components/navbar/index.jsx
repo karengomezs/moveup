@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Avatar from "../avatar";
 import UserContext from "../../context/user-context";

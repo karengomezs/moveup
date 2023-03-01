@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import { format, isValid } from "date-fns";
 import Categories from "../components/categories";
 import List from "../components/list";

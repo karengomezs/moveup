@@ -1,5 +1,4 @@
 import { Link, useLocation, Navigate } from "react-router-dom";
-import React from "react";
 import CARD from "../components/common/card";
 
 export default function ConfirmedBooking() {

@@ -1,13 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
-import ThemeContext from "../../context/context-theme";
 import Stars from "./stars";
 import Score from "./score";
 import CARD from "../common/card";
+import ButtonOutlinePrimary from "../common/button-outline-primary";
 
 const Product = ({ category, name, score, city, id, description, images }) => {
   const navigate = useNavigate();
-  const themeState = useContext(ThemeContext);
 
   return (
     <CARD className="mb-3">
@@ -47,16 +45,14 @@ const Product = ({ category, name, score, city, id, description, images }) => {
               </a>
             </div>
             <p className="card-text mt-2">{description}</p>
-            <button
-              className={`btn btn-outline-primary mt-auto ${
-                themeState.theme ? "btn-primary text-white" : ""
-              } `}
+            <ButtonOutlinePrimary
+              className="mt-auto"
               onClick={() => {
                 navigate(`/details/${id}`);
               }}
             >
               Ver más
-            </button>
+            </ButtonOutlinePrimary>
           </div>
         </div>
       </div>

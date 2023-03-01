@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Item } from "react-photoswipe-gallery";
 
 const loadImage = (setImageDimensions, imageUrl) => {
