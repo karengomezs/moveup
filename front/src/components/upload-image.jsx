@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { uploadImage } from "../api/aws";
+import ThemeContext from "../context/context-theme";
 
 const InputImage = ({ onLoaded, disabledButton }) => {
   const [loading, setLoading] = useState(false);
@@ -22,10 +23,21 @@ const InputImage = ({ onLoaded, disabledButton }) => {
     }
   };
 
+  const themeState = useContext(ThemeContext);
+  let color = "";
+
+  if (themeState.theme) {
+    color = "text-bg-dark";
+
+    if (disabledButton) {
+      color = "text-bg-secondary border-0";
+    }
+  }
+
   return (
     <div className="d-flex gap-3 mt-2 align-items-end">
       <input
-        class="form-control"
+        className={`form-control ${color}`}
         type="file"
         id="formFile"
         onChange={handleFileSelect}
