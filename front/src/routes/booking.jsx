@@ -10,6 +10,9 @@ import { createBooking, getUnavailableDatesByProductId } from "../api/booking";
 import H4 from "../components/common/h4";
 import CARD from "../components/common/card";
 import INPUT from "../components/common/input";
+import SELECT from "../components/common/select";
+import P from "../components/common/p";
+import LI from "../components/common/li";
 import { getClass } from "../api/products";
 
 export default function Booking() {
@@ -247,20 +250,18 @@ export default function Booking() {
                     Indica tu horario estimado de llegada
                   </label>
 
-                  <select
+                  <SELECT
                     onChange={(e) => {
                       const selectHour = e.target.value;
                       setHour(selectHour);
                     }}
                     value={hour}
-                    className={`form-select ${hourError ? "is-invalid" : ""} ${
-                      themeState.theme ? "text-bg-dark dark-select" : ""
-                    }`}
+                    className={`${hourError ? "is-invalid" : ""} `}
                     id="floatingSelect"
                   >
                     <option value="">Selecciona tu hora de llegada</option>
                     {hours}
-                  </select>
+                  </SELECT>
                 </div>
 
                 {hour && (
@@ -282,11 +283,7 @@ export default function Booking() {
 
         {/* ---------------------- */}
         <div className="pt-xl-4 mt-xl-1 col col-xl-4">
-          <div
-            className={`card shadow-sm mt-2 ${
-              themeState.theme ? "border-secondary text-bg-dark" : ""
-            }`}
-          >
+          <CARD className="shadow-sm mt-2">
             <h4 className="h4 fw-semibold p-3 m-0">Detalle de la reserva</h4>
 
             <img
@@ -319,7 +316,7 @@ export default function Booking() {
                 Confirmar reserva
               </button>
             </div>
-          </div>
+          </CARD>
 
           {showError && (
             <div
@@ -338,170 +335,63 @@ export default function Booking() {
       </form>
 
       <div className="container">
-        <h4
-          className={`h4 fw-semibold ${themeState.theme ? "text-white" : ""}`}
-        >
-          ¿Qué tienes que saber?
-        </h4>
+        <H4 className="fw-semibold">¿Qué tienes que saber?</H4>
         <hr className={`${themeState.theme ? "text-white" : ""}`} />
         <div className="d-flex flex-column gap-4 flex-sm-row py-3">
           <div className="col">
-            <p
-              className={`fw-semibold mb-2 ${
-                themeState.theme ? "text-white" : ""
-              }`}
-            >
-              Normas de la clase
-            </p>
+            <P className="fw-semibold mb-2">Normas de la clase</P>
 
             <ul className="list-group list-group-numbered">
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Llegar a tiempo
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Ropa y calzado adecuado
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Respetar al instructor
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                No interrumpir la clase
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Utilizar el equipo correctamente
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Respetar a los demás participantes
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Seguir las instrucciones
-              </li>
+              <LI>Llegar a tiempo</LI>
+              <LI>Ropa y calzado adecuado</LI>
+              <LI>Respetar al instructor</LI>
+              <LI>No interrumpir la clase</LI>
+              <LI>Utilizar el equipo correctamente</LI>
+              <LI>Respetar a los demás participantes</LI>
+              <LI>Seguir las instrucciones</LI>
             </ul>
           </div>
           <div className="col">
-            <p
-              className={`fw-semibold mb-2 ${
-                themeState.theme ? "text-white" : ""
-              }`}
-            >
-              Salud y seguridad
-            </p>
+            <P className="fw-semibold mb-2">Salud y seguridad</P>
             <ul className="list-group list-group-numbered">
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Realizar un calentamiento previo
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Hidratación
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Respetar pausas y descansos
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
-                Evitar la sobreexigencia física
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
+              <LI>Realizar un calentamiento previo</LI>
+              <LI>Hidratación</LI>
+              <LI>Respetar pausas y descansos</LI>
+              <LI>Evitar la sobreexigencia física</LI>
+              <LI>
                 Informar al instructor de cualquier lesión o problema de salud
-              </li>
+              </LI>
             </ul>
           </div>
           <div className="col">
-            <p
-              className={`fw-semibold mb-2 ${
-                themeState.theme ? "text-white" : ""
-              }`}
-            >
-              Política de cancelación
-            </p>
+            <P className="fw-semibold mb-2">Política de cancelación</P>
+
             <ul className="list-group list-group-numbered">
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
+              <LI>
                 Aviso previo de cancelación: Es importante avisar al instructor
                 o al centro deportivo con anticipación si se necesita cancelar
                 la clase. El plazo de aviso suele variar, pero en general se
                 recomienda avisar con al menos 24 horas de anticipación.
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
+              </LI>
+              <LI>
                 Reembolso: Si se ha pagado por adelantado la clase y se cancela
                 con el plazo suficiente de aviso, es posible que se pueda
                 solicitar un reembolso o que se permita reprogramar la clase
                 para una fecha posterior.
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
+              </LI>
+              <LI>
                 Cancelación por parte del instructor o centro deportivo: En caso
                 de que el instructor o el centro deportivo deba cancelar la
                 clase por algún motivo (como enfermedad o problemas técnicos),
                 se suele ofrecer la posibilidad de reprogramar la clase o de
                 recibir un reembolso.
-              </li>
-              <li
-                className={`list-group-item ${
-                  themeState.theme ? "list-group-item-dark" : ""
-                }`}
-              >
+              </LI>
+              <LI>
                 Ausencia sin aviso previo: Si el participante no avisa de la
                 cancelación y simplemente no se presenta a la clase, es posible
                 que se pierda el derecho a recibir un reembolso o a reprogramar
                 la clase.
-              </li>
+              </LI>
             </ul>
           </div>
         </div>
