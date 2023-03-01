@@ -8,7 +8,6 @@ import LABEL from "../components/common/label";
 import INPUT from "../components/common/input";
 import SELECT from "../components/common/select";
 import InputImage from "../components/upload-image";
-import ButtonOutlinePrimary from "../components/common/button-outline-primary";
 
 export default function Administrator() {
   const themeState = useContext(ThemeContext);
@@ -242,12 +241,12 @@ export default function Administrator() {
             {/* 3. FIN TEXT AREA */}
             {/*           <P className="fw-bold mt-3">Agregar atributos</P>
              */}
-            <ButtonOutlinePrimary
+            <button
               type="submit"
-              className="mx-auto d-block mb-3 mt-5 w-50"
+              className="btn btn-primary m-auto d-block mb-3 mt-5 w-50"
             >
               Crear Producto
-            </ButtonOutlinePrimary>
+            </button>
           </form>
         </CARD>
         {errorPostProduct && (
