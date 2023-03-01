@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { uploadImage } from "../api/aws";
 
-const InputImage = ({ onLoaded }) => {
+const InputImage = ({ onLoaded, disabledButton }) => {
+  const [loading, setLoading] = useState(false);
   const ref = useRef();
   const [file, setFile] = useState(null);
 
@@ -11,11 +12,13 @@ const InputImage = ({ onLoaded }) => {
 
   const uploadToS3 = async () => {
     if (file) {
+      setLoading(true);
       const url = await uploadImage(file);
 
       onLoaded(url);
       setFile(null);
       ref.current.value = "";
+      setLoading(false);
     }
   };
 
@@ -28,9 +31,10 @@ const InputImage = ({ onLoaded }) => {
         onChange={handleFileSelect}
         accept="image/*"
         ref={ref}
+        disabled={disabledButton}
       />
-
-      {file && (
+      {loading && <div class="spinner-border" role="status"></div>}
+      {file && !loading && (
         <button className="btn btn-primary" type="button" onClick={uploadToS3}>
           Upload
         </button>

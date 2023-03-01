@@ -219,6 +219,7 @@ export default function Administrator() {
                 onLoaded={(newImage) => {
                   setImages((currentImages) => [...currentImages, newImage]);
                 }}
+                disabledButton={images.length > 4}
               />
             </div>
             <div className="d-flex gap-3 mt-3">
@@ -228,6 +229,7 @@ export default function Administrator() {
                   src={image}
                   alt=""
                   style={{ maxHeight: 150, width: "auto" }}
+                  className="rounded"
                 />
               ))}
             </div>
