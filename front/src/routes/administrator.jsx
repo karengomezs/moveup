@@ -223,6 +223,7 @@ export default function Administrator() {
                 onLoaded={(newImage) => {
                   setImages((currentImages) => [...currentImages, newImage]);
                 }}
+                onSelect={() => setImagesError(false)}
                 disabledButton={images.length > 4}
                 invalid={imagesError}
               />

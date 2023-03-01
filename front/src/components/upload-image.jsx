@@ -2,12 +2,13 @@ import { useState, useRef, useContext } from "react";
 import { uploadImage } from "../api/aws";
 import ThemeContext from "../context/context-theme";
 
-const InputImage = ({ onLoaded, disabledButton, invalid }) => {
+const InputImage = ({ onLoaded, disabledButton, invalid, onSelect }) => {
   const [loading, setLoading] = useState(false);
   const ref = useRef();
   const [file, setFile] = useState(null);
 
   const handleFileSelect = (e) => {
+    onSelect(false);
     setFile(e.target.files[0]);
   };
 
@@ -35,7 +36,7 @@ const InputImage = ({ onLoaded, disabledButton, invalid }) => {
   }
 
   return (
-    <div className="d-flex gap-3 mt-2 align-items-end">
+    <div className="d-flex gap-3 mt-2 align-items-start">
       <div className="w-100">
         <input
           className={`form-control ${color} ${invalid ? "is-invalid" : ""}`}
