@@ -194,7 +194,7 @@ export default function Administrator() {
                 )}
               </div>
             </div>
-            {/* 1. FIN */}
+            {/* 2. FIN */}
             {/* 3. DIV TEXT AREA */}
             <div>
               <LABEL className="fw-semibold" htmlFor="last-name">
