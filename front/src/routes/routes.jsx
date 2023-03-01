@@ -5,6 +5,7 @@ import Main from "./main";
 import Booking from "./booking";
 import Administrator from "./administrator";
 import ConfirmedBooking from "./confirmed-booking";
+import ConfirmedCreate from "./confirmed-create";
 import { Route, Routes as Router } from "react-router-dom";
 import ProtectedRoute from "../components/protected-route";
 
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="administrator" element={<Administrator />}></Route>
+        <Route path="/confirmed-create" element={<ConfirmedCreate />}></Route>
         <Route
           path="/details/:id/booking"
           element={
