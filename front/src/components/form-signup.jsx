@@ -62,6 +62,7 @@ export default function FormSignup({ setErrorRegister }) {
                 email: responseData.email,
                 city: responseData.ciudad,
                 token: responseData.token,
+                role: responseData.role,
               };
 
               userState.setUser(user);
@@ -69,7 +70,7 @@ export default function FormSignup({ setErrorRegister }) {
               if (isLoginRequired) {
                 navigate(prevLocation, { replace: true });
               } else {
-                navigate("/");
+                navigate("/", { replace: true });
               }
             }
           } catch (error) {

@@ -45,17 +45,6 @@ public class ProductoController {
         return ResponseEntity.ok(productList);
     }
 
-    @GetMapping("/buscar/entrenador/{nombreEntrenador}")
-    public ResponseEntity<List<Producto>> getByNombreEntrenador(@PathVariable String nombreEntrenador){
-        List<Producto> productoList=productoService.getByEntrenador(nombreEntrenador);
-
-        if(productoList.isEmpty()){
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.ok(productoList);
-    }
-
     @GetMapping("/buscar/categoria/{categoriaId}")
     public ResponseEntity<List<Producto>> getByCategoria(@PathVariable String categoriaId){
         List<Producto> productList=productoService.getByCategoria(categoriaId);
@@ -78,9 +67,9 @@ public class ProductoController {
         return ResponseEntity.notFound().build();
     }
 
-    @PostMapping
+    @PostMapping("/new/product")
     public ResponseEntity<Producto> post(@RequestBody Producto producto){
-        if(producto.getNombreClase() != null && producto.getEntrenador() != null  && producto.getFechaDisponible() != null){
+        if(producto.getNombreClase() != null){
             productoService.post(producto);{
                 return ResponseEntity.status(201).body(producto);
             }

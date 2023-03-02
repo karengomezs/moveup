@@ -26,8 +26,6 @@ public interface ProductosRepository extends JpaRepository<Producto, Long> {
 
     List<Producto> findProductoByCiudad_Id(String ciudadId);
 
-    List<Producto> findByEntrenador(String nombreEntrenador);
-
     @Query(value = "SELECT p FROM Producto p ORDER BY RAND()")
     List<Producto> findRandomProducto();
 

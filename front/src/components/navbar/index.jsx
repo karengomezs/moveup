@@ -4,6 +4,7 @@ import Avatar from "../avatar";
 import UserContext from "../../context/user-context";
 import ThemeContext from "../../context/context-theme";
 import ButtonLink from "../button-link";
+import SPAN from "../common/span";
 
 import styles from "./styles.module.scss";
 
@@ -53,7 +54,13 @@ export default function Navbar() {
             </>
           )}
           {userState.user && (
-            <div className="container d-flex justify-content-end gap-4">
+            <div className="container d-flex justify-content-end gap-4 align-items-center">
+              {userState.user.role === "ROLE_ADMIN" && (
+                <Link className="text-decoration-none" to="/administrator">
+                  <span className="text-white fs-4">Administrador</span>
+                </Link>
+              )}
+
               <div className="d-flex column align-items-center">
                 <Avatar
                   nameProp={userState.user.name}
@@ -158,19 +165,29 @@ export default function Navbar() {
                 )}
 
                 {userState.user && (
-                  <span
-                    className="mt-auto fw-semibold"
-                    role="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#navbarMenu"
-                    aria-controls="navbarMenu"
-                    onClick={() => {
-                      userState.logOut();
-                    }}
-                  >
-                    ¿Deseas{" "}
-                    <strong className="text-danger">cerrar sesión</strong>?
-                  </span>
+                  <>
+                    {userState.user.role === "ROLE_ADMIN" && (
+                      <Link
+                        className="text-decoration-none"
+                        to="/administrator"
+                      >
+                        <SPAN className="fs-4">Administrador</SPAN>
+                      </Link>
+                    )}
+                    <span
+                      className="mt-auto fw-semibold"
+                      role="button"
+                      data-bs-toggle="modal"
+                      data-bs-target="#navbarMenu"
+                      aria-controls="navbarMenu"
+                      onClick={() => {
+                        userState.logOut();
+                      }}
+                    >
+                      ¿Deseas{" "}
+                      <strong className="text-danger">cerrar sesión</strong>?
+                    </span>
+                  </>
                 )}
                 <div className="container p-0">
                   <hr

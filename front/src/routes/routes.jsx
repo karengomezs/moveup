@@ -5,9 +5,10 @@ import Main from "./main";
 import Booking from "./booking";
 import Administrator from "./administrator";
 import ConfirmedBooking from "./confirmed-booking";
-import ConfirmedCreate from "./confirmed-create";
+import ConfirmedProduct from "./confirmed-product";
 import { Route, Routes as Router } from "react-router-dom";
 import ProtectedRoute from "../components/protected-route";
+import ProtectedAdminRoute from "../components/protected-admin-route";
 
 export default function Routes() {
   return (
@@ -17,8 +18,15 @@ export default function Routes() {
         <Route path="/details/:id" element={<Details />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="administrator" element={<Administrator />}></Route>
-        <Route path="/confirmed-create" element={<ConfirmedCreate />}></Route>
+        <Route
+          path="/administrator"
+          element={
+            <ProtectedAdminRoute>
+              <Administrator />
+            </ProtectedAdminRoute>
+          }
+        ></Route>
+        <Route path="/confirmed-product" element={<ConfirmedProduct />}></Route>
         <Route
           path="/details/:id/booking"
           element={
@@ -27,6 +35,7 @@ export default function Routes() {
             </ProtectedRoute>
           }
         ></Route>
+
         <Route path="/confirmed-booking" element={<ConfirmedBooking />}></Route>
       </Router>
     </>

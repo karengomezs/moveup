@@ -44,6 +44,7 @@ export default function FormLogin() {
                 email: responseData.email,
                 city: responseData.ciudad,
                 token: responseData.token,
+                role: responseData.role,
               };
 
               userState.setUser(user);
@@ -51,7 +52,7 @@ export default function FormLogin() {
               if (isLoginRequired) {
                 navigate(prevLocation, { replace: true });
               } else {
-                navigate("/");
+                navigate("/", { replace: true });
               }
             }
           } catch (error) {
@@ -108,6 +109,7 @@ export default function FormLogin() {
       <LINK
         to="/signup"
         state={{ prevLocation, loginRequired: isLoginRequired }}
+        replace={true}
       >
         <P className="text-center">
           ¿Aún no tienes cuenta? <strong>Registrate</strong>

@@ -41,10 +41,7 @@ public class ProductoService {
         Boolean isValidDates = fechaInicial != null && fechaFinal != null;
 
         if(isValidCiudad && isValidDates){
-            List<Producto> listUno = productosRepository.findAllByReservasIsNullAndCiudad_Id(ciudadId);
-            List<Producto> listDos = productosRepository.findProductoByFechasDisponiblesAndCiudad(fechaInicial, fechaFinal, ciudadId);
-            List<Producto> resultado = Stream.concat(listUno.stream(), listDos.stream()).toList();
-
+            List<Producto> resultado = productosRepository.findProductoByFechasDisponiblesAndCiudad(fechaInicial, fechaFinal, ciudadId);
             return resultado;
         }
 
@@ -59,10 +56,6 @@ public class ProductoService {
         }
 
         return getAll();
-    }
-
-    public List<Producto> getByEntrenador(String nombreEntrenador){
-        return productosRepository.findByEntrenador(nombreEntrenador);
     }
 
     public List<Producto> getByRandom(){

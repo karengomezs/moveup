@@ -11,11 +11,13 @@ const Product = ({ category, name, score, city, id, description, images }) => {
     <CARD className="mb-3">
       <div className="row g-0 h-100">
         <div className="col-3">
-          <img
-            alt=""
-            src={images[0].url}
-            className="img-fluid rounded-start h-100 object-fit-cover brightness-effect"
-          />
+          {images?.[0]?.url && (
+            <img
+              alt=""
+              src={images?.[0].url}
+              className="img-fluid rounded-start h-100 object-fit-cover brightness-effect"
+            />
+          )}
         </div>
 
         <div className="col-9">

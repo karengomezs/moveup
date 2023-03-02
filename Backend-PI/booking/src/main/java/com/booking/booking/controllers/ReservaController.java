@@ -35,6 +35,16 @@ public class ReservaController {
         }
     }
 
+    @GetMapping(params = {"usuarioId"})
+    public ResponseEntity<List<Reserva>> getReservasUsuarioId(@RequestParam(required = false) String usuarioId){
+        List<Reserva> reservaList = reservaService.getReservasUsuario(usuarioId);
+        if(reservaList.isEmpty()){
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.ok(reservaList);
+        }
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Reserva> getOne(@PathVariable Long id){
         Optional<Reserva> reserva = reservaService.getOne(id);

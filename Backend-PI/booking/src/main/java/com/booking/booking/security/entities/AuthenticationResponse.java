@@ -17,4 +17,5 @@ public class AuthenticationResponse {
     private String apellido;
     private String email;
     private String ciudad;
+    private Role role;
 }

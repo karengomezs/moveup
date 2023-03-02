@@ -39,6 +39,20 @@ public class AuthenticationController {
 
     }
 
+    @PostMapping("/register/admin")
+    public ResponseEntity<AuthenticationResponse> registerAdmin(
+            @RequestBody RegisterRequest request
+    ){
+        Optional<Usuario> user=repository.findByEmail(request.getEmail());
+
+        if (user.isPresent()){
+            return ResponseEntity.notFound().build();
+        }else {
+            return ResponseEntity.ok(service.registerAdmin(request));
+        }
+
+    }
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request

@@ -1,13 +1,13 @@
 import { Link, useLocation, Navigate } from "react-router-dom";
 import CARD from "../components/common/card";
 
-export default function ConfirmedCreate() {
+export default function ConfirmedProduct() {
   const location = useLocation();
-  //   const isBookingSuccess = location.state === "booking-success";
+  const isConfirmedProduct = location.state === "confirmed-product";
 
-  //   if (!isBookingSuccess) {
-  //     return <Navigate to="/" replace={true} />;
-  //   }
+  if (!isConfirmedProduct) {
+    return <Navigate to="/" replace={true} />;
+  }
 
   return (
     <div className="d-flex flex-grow-1 flex-column align-items-center justify-content-center container">

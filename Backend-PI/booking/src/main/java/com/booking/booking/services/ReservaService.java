@@ -56,4 +56,8 @@ public class ReservaService {
     public Optional<Reserva> getReservasFechas(LocalDate fechaInicial, LocalDate fechaFinal){
         return reservaRepository.findReservaByFechaInicialAndFechaFinal(fechaInicial, fechaFinal);
     }
+
+    public List<Reserva> getReservasUsuario(String usuarioId){
+        return reservaRepository.findReservaByUsuario_Id(usuarioId);
+    }
 }

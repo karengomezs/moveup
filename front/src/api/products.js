@@ -1,6 +1,24 @@
 import { host } from "../constants";
 export const apiUrl = `${host}/producto`;
 
+export async function createProduct(product, token) {
+  const url = `${apiUrl}/new/product`;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(product),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export async function getClass(id) {
   const url = `${apiUrl}/${id}`;
 
