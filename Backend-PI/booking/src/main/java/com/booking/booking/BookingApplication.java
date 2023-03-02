@@ -71,14 +71,14 @@ public class BookingApplication {
 			SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
 
 			List<Producto> productosData = Arrays.asList(
-					new Producto(4.0, LocalDate.of(2023,02,8),formatter.parse("04:12"), "Tekondo", "Deporte de defensa personal", "Damian"),
-					new Producto(5.0, LocalDate.of(2023,02,8),formatter.parse("04:15"), "Rumba", "Rumba aeróbica y entrenamiento de cardio", "Karen"),
-					new Producto(5.0, LocalDate.of(2023,02,8),formatter.parse("03:15"), "Surf", "Ve al ritmo de las olas del mar", "Jean"),
-					new Producto(3.0, LocalDate.of(2023,02,18),formatter.parse("02:00"), "Rumbo a la montaña", "Camina por los valles del cocora con nuestra guía", "Camila"),
-					new Producto(3.0, LocalDate.of(2023,02,12),formatter.parse("02:00"), "Buceo", "Ven y bucea con especies diferentes bajo el mar", "Juan"),
-					new Producto(4.0, LocalDate.of(2023,02,15),formatter.parse("08:00"), "Remo", "Rema con tus compañeros mientras estás rodeado de naturaleza", "Jose"),
-					new Producto(5.0, LocalDate.of(2023,02,11),formatter.parse("10:00"), "Explorando jardin", "Camina por las montañas y nacimientos hídricos en Jardin", "Catalina"),
-					new Producto(3.0, LocalDate.of(2023,02,12),formatter.parse("06:00"), "GAP", "Entrenamiento funcional y clases aeróbicas", "Diana")
+					new Producto(4.0, "Tekondo", "", "Deporte de defensa personal"),
+					new Producto(5.0, "Rumba", "","Rumba aeróbica y entrenamiento de cardio"),
+					new Producto(5.0, "Surf", "","Ve al ritmo de las olas del mar"),
+					new Producto(3.0, "Rumbo a la montaña", "","Camina por los valles del cocora con nuestra guía"),
+					new Producto(3.0, "Buceo", "","Ven y bucea con especies diferentes bajo el mar"),
+					new Producto(4.0, "Remo", "","Rema con tus compañeros mientras estás rodeado de naturaleza"),
+					new Producto(5.0, "Explorando jardin", "","Camina por las montañas y nacimientos hídricos en Jardin"),
+					new Producto(3.0, "GAP", "","Entrenamiento funcional y clases aeróbicas")
 			);
 
 			productosData.get(0).setCiudad(ciudadesData.get(0));
@@ -207,14 +207,13 @@ public class BookingApplication {
 
 			imagenRepository.saveAll(imagenesData);
 
-
 			RegisterRequest request = new RegisterRequest();
 			request.setNombre("Admin");
 			request.setApellido("General");
 			request.setEmail("admin@gmail.com");
 			request.setContraseña("123456");
 
-			authenticationService.register(request);
+			authenticationService.registerAdmin(request);
 		};
 	}
 }

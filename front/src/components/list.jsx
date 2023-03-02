@@ -17,7 +17,7 @@ export default function List({ data }) {
         city={eachClass.ciudad.nombreCiudad}
         id={eachClass.id}
         description={eachClass.descripcionClase}
-        images={eachClass.imagenes}
+        images={eachClass?.imagenes || []}
       />
     );
   });

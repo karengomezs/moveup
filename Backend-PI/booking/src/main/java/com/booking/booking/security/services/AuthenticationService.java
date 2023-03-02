@@ -27,7 +27,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .ciudad(request.getCiudad())
                 .contraseña(passwordEncoder.encode(request.getContraseña()))
-                .role(Role.USER)
+                .role(Role.ROLE_USER)
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);
@@ -38,6 +38,29 @@ public class AuthenticationService {
                 .apellido(user.getApellido())
                 .email(user.getEmail())
                 .ciudad(user.getCiudad())
+                .role(user.getRole())
+                .build();
+    }
+
+    public AuthenticationResponse registerAdmin(RegisterRequest request) {
+        var user = Usuario.builder()
+                .nombre(request.getNombre())
+                .apellido(request.getApellido())
+                .email(request.getEmail())
+                .ciudad(request.getCiudad())
+                .contraseña(passwordEncoder.encode(request.getContraseña()))
+                .role(Role.ROLE_ADMIN)
+                .build();
+        repository.save(user);
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .id(user.getId())
+                .token(jwtToken)
+                .nombre(user.getNombre())
+                .apellido(user.getApellido())
+                .email(user.getEmail())
+                .ciudad(user.getCiudad())
+                .role(user.getRole())
                 .build();
     }
 
@@ -58,6 +81,7 @@ public class AuthenticationService {
                 .apellido(user.getApellido())
                 .email(user.getEmail())
                 .ciudad(user.getCiudad())
+                .role(user.getRole())
                 .build();
     }
 

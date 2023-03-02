@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, forwardRef } from "react";
 import ThemeContext from "../../context/context-theme";
 
-const INPUT = ({ className, ...props }) => {
+const INPUT = forwardRef(({ className, ...props }, ref) => {
   const themeState = useContext(ThemeContext);
   let color = "";
 
@@ -19,8 +19,9 @@ const INPUT = ({ className, ...props }) => {
       ${color}
       ${className}`}
       {...props}
+      ref={ref}
     />
   );
-};
+});
 
 export default INPUT;

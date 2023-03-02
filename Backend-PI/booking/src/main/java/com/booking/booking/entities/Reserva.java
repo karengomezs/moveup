@@ -32,8 +32,7 @@ public class Reserva {
     @Column
     private LocalDate fechaFinal;
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "producto_id")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Producto producto;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

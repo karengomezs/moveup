@@ -29,8 +29,12 @@ public class SecurityConfiguration {
                 .requestMatchers("/api/auth/**","/api/producto","/api/producto/recomendado",
                         "/api/producto/buscar/entrenador/{nombreEntrenador}","/api/producto?ciudad=&fecha=",
                         "/api/producto/buscar/categoria/{categoriaId}","/api/producto/{id}","/v2/api-docs/**",
-                        "/swagger-ui/**","/api-docs/swagger-config","/api-docs/**", "/api/ciudad/**", "/api/categorias/**", "/api/imagenes/**", "/api/auth/register/**", "/api/auth/authenticate/**")
+                        "/swagger-ui/**","/api-docs/swagger-config","/api-docs/**", "/api/ciudad/**", "/api/categorias/**",
+                        "/api/imagenes/**", "/api/auth/register/**", "/api/auth/authenticate/**", "/api/auth/register/admin/**")
                 .permitAll()
+                .and()
+                .authorizeHttpRequests()
+                .requestMatchers("/api/producto/new/product/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()

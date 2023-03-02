@@ -1,17 +1,20 @@
 import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { geCities } from "../api/city";
 import { getCategories } from "../api/categories";
+import { createProduct } from "../api/products";
 import ThemeContext from "../context/context-theme";
+import UserContext from "../context/user-context";
 import CARD from "../components/common/card";
 import P from "../components/common/p";
 import LABEL from "../components/common/label";
 import INPUT from "../components/common/input";
 import SELECT from "../components/common/select";
-import InputImage from "../components/upload-image";
+import InputImage from "../components/input-image";
 
 export default function Administrator() {
   const themeState = useContext(ThemeContext);
-  const [images, setImages] = useState([]);
+  const userState = useContext(UserContext);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [address, setAdress] = useState("");
@@ -30,6 +33,10 @@ export default function Administrator() {
 
   const [errorPostProduct, setErrorPostProduct] = useState(false);
 
+  const [arrayImages, setArrayImages] = useState([]);
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     getCategories().then((data) => {
       setCategoriesData(data);
@@ -44,7 +51,7 @@ export default function Administrator() {
 
   const categories = categoriesData.map((category) => {
     return (
-      <option key={category.id} value={category.nombreCategorias}>
+      <option key={category.id} value={category.id}>
         {category.nombreCategorias}
       </option>
     );
@@ -58,13 +65,25 @@ export default function Administrator() {
     );
   });
 
+  const images = arrayImages.map((image) => {
+    return (
+      <img
+        style={{ width: 130, maxHeight: 200 }}
+        className="border rounded object-fit-cover"
+        key={image.key}
+        src={image.url}
+        alt=""
+      />
+    );
+  });
+
   return (
     <>
       <div
         className={`w-100 p-2 ${themeState.theme ? "bg-search" : "bg-light"}`}
       >
         <P className="container fs-4 fw-bold text-primary my-auto">
-          Administración
+          Administración de productos
         </P>
       </div>
       <div className="container flex-grow-1">
@@ -72,34 +91,54 @@ export default function Administrator() {
         <CARD className="container d-flex flex-column mb-5">
           <form
             className="card-body"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              // console.log(city, category, name, description, adress);
+
+              if (errorPostProduct) {
+                setErrorPostProduct(false);
+              }
 
               const isNameValid = name.length > 3;
               const isCategoryValid = category.length > 0;
-              const isAdressValid = address.length > 3;
+              const isAddressValid = address.length > 3;
               const isCityValid = city.length > 0;
               const isDescriptionValid = description.length > 5;
-              const isImagesValid = description.length > 4;
+              const isImagesValid = arrayImages.length === 5;
 
               if (
                 isNameValid &&
                 isCategoryValid &&
-                isAdressValid &&
+                isAddressValid &&
                 isCityValid &&
                 isDescriptionValid &&
                 isImagesValid
               ) {
                 try {
-                  // acá va la consulta del response
+                  const product = {
+                    calificacion: 0.0,
+                    nombreClase: name,
+                    direccion: address,
+                    descripcionClase: description,
+                    ciudad: {
+                      id: city,
+                    },
+                    imagenes: arrayImages,
+                    categorias: {
+                      id: category,
+                    },
+                  };
+
+                  await createProduct(product, userState.user?.token);
+                  navigate("/confirmed-product", {
+                    state: "confirmed-product",
+                  });
                 } catch (error) {
                   setErrorPostProduct(true);
                 }
               } else {
                 setNameError(!isNameValid);
                 setCategoryError(!isCategoryValid);
-                setAdressError(!isAdressValid);
+                setAdressError(!isAddressValid);
                 setCityError(!isCityValid);
                 setDescriptionError(!isDescriptionValid);
                 setImagesError(!isImagesValid);
@@ -160,6 +199,7 @@ export default function Administrator() {
                 <INPUT
                   onChange={(e) => {
                     setAdress(e.target.value);
+                    setAdressError(false);
                   }}
                   value={address}
                   id="name"
@@ -217,33 +257,24 @@ export default function Administrator() {
                 Por favor ingrese más de 5 caracteres
               </div>
             </div>
-            <div className="mt-3">
-              <InputImage
-                onLoaded={(newImage) => {
-                  setImages((currentImages) => [...currentImages, newImage]);
-                }}
-                onSelect={() => setImagesError(false)}
-                disabledButton={images.length > 4}
-                invalid={imagesError}
-              />
-            </div>
-            <div className="d-flex gap-3 mt-3">
-              {images.map((image, index) => (
-                <img
-                  key={`image-${index}`}
-                  src={image}
-                  alt=""
-                  style={{ maxHeight: 150, width: "auto" }}
-                  className="rounded border"
-                />
-              ))}
-            </div>
             {/* 3. FIN TEXT AREA */}
             {/*           <P className="fw-bold mt-3">Agregar atributos</P>
              */}
+            {/* 4. INICIO INPUT FILE*/}
+
+            <InputImage
+              setArrayImages={setArrayImages}
+              arrayImages={arrayImages}
+              imagesError={imagesError}
+              setImagesError={setImagesError}
+            ></InputImage>
+            <div className="d-flex gap-4"> {images}</div>
+
+            {/* 4.FINAL INPUT FILE */}
+
             <button
               type="submit"
-              className="btn btn-primary m-auto d-block mb-3 mt-5 w-50"
+              className="btn btn-primary m-auto d-block mb-3 mt-5 w-50 fw-bold"
             >
               Crear Producto
             </button>

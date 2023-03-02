@@ -7,17 +7,24 @@ AWS.config.update({
   signatureVersion: "v4",
 });
 
-export const uploadImage = async (file) => {
+export default async function postImages(file) {
   const s3 = new AWS.S3();
   const params = {
     Bucket: "grupo03dh/IMAGENES",
-    Key: `${Date.now()}.${file.name}`,
+    Key: `.${file.name}.${Date.now()}`,
     Body: file,
   };
+
   try {
-    const { Location } = await s3.upload(params).promise();
-    return Location;
+    const response = await s3.upload(params).promise();
+    const image = {
+      key: response.Key,
+      url: response.Location,
+      nombre: file.name,
+      descripcion: file.name,
+    };
+    return image;
   } catch (error) {
-    console.log({ error });
+    console.log(error);
   }
-};
+}
