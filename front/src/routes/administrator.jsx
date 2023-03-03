@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { geCities } from "../api/city";
 import { getCategories } from "../api/categories";
 import { createProduct } from "../api/products";
+import { deleteImage } from "../api/aws";
 import ThemeContext from "../context/context-theme";
 import UserContext from "../context/user-context";
 import CARD from "../components/common/card";
@@ -67,13 +68,28 @@ export default function Administrator() {
 
   const images = arrayImages.map((image) => {
     return (
-      <img
-        style={{ width: 130, maxHeight: 200 }}
-        className="border rounded object-fit-cover"
-        key={image.key}
-        src={image.url}
-        alt=""
-      />
+      <div key={image.key} className="position-relative">
+        <img
+          style={{ width: 130, maxHeight: 200 }}
+          className="border rounded object-fit-cover"
+          src={image.url}
+          alt=""
+        />
+        <i
+          className="position-absolute bi bi-x-circle-fill fs-3 text-white x-button opacity-25 py-2 px-4"
+          onClick={async () => {
+            try {
+              await deleteImage(image.key);
+              const newArray = arrayImages.filter((img) => {
+                return img.key !== image.key;
+              });
+              setArrayImages(newArray);
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        ></i>
+      </div>
     );
   });
 

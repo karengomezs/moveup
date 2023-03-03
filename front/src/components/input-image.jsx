@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import INPUT from "./common/input";
-import postImages from "../api/aws";
+import { postImages } from "../api/aws";
 
 function InputImage({
   setArrayImages,
@@ -20,7 +20,7 @@ function InputImage({
       <div className="d-flex gap-3 w-100 align-items-start">
         <div className="w-100">
           <INPUT
-            disabled={arrayImages.length > 4}
+            disabled={arrayImages.length > 4 || loading}
             ref={clearInput}
             onChange={(e) => {
               setFile(e.target.files[0]);

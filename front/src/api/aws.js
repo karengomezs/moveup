@@ -7,7 +7,7 @@ AWS.config.update({
   signatureVersion: "v4",
 });
 
-export default async function postImages(file) {
+export async function postImages(file) {
   const s3 = new AWS.S3();
   const params = {
     Bucket: "grupo03dh/IMAGENES",
@@ -26,5 +26,19 @@ export default async function postImages(file) {
     return image;
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function deleteImage(Key) {
+  const s3 = new AWS.S3();
+  const params = {
+    Bucket: "grupo03dh",
+    Key,
+  };
+
+  try {
+    return await s3.deleteObject(params).promise();
+  } catch (error) {
+    throw error;
   }
 }
