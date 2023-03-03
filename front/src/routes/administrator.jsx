@@ -50,6 +50,19 @@ export default function Administrator() {
     });
   }, []);
 
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = "Hey, tus cambios podrian no estar guardados!";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   const categories = categoriesData.map((category) => {
     return (
       <option key={category.id} value={category.id}>
@@ -80,10 +93,10 @@ export default function Administrator() {
           onClick={async () => {
             try {
               await deleteImage(image.key);
-              const newArray = arrayImages.filter((img) => {
+              const newArrayAfterDelete = arrayImages.filter((img) => {
                 return img.key !== image.key;
               });
-              setArrayImages(newArray);
+              setArrayImages(newArrayAfterDelete);
             } catch (error) {
               console.log(error);
             }

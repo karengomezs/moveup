@@ -21,6 +21,7 @@ export default function FormLogin() {
   const userState = useContext(userContext);
   const location = useLocation();
   const isLoginRequired = location.state?.loginRequired;
+  const isLoginAdminRequired = location.state?.loginAdminRequired;
   const prevLocation = location.state?.prevLocation;
 
   return (
@@ -49,7 +50,7 @@ export default function FormLogin() {
 
               userState.setUser(user);
 
-              if (isLoginRequired) {
+              if (isLoginRequired || isLoginAdminRequired) {
                 navigate(prevLocation, { replace: true });
               } else {
                 navigate("/", { replace: true });
