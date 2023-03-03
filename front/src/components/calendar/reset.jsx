@@ -29,8 +29,6 @@ export const CSSPolyfill = () => <Global styles={vhPolyfill} />;
 export const CSSReset = () => (
   <Global
     styles={`
-
-
       *,
       *::before,
       *::after {
@@ -50,14 +48,6 @@ export const CSSReset = () => (
         overflow: visible;
       }
 
-      pre,
-      code,
-      kbd,
-      samp {
-        font-family: SFMono-Regular,  Menlo, Monaco, Consolas, monospace;
-        font-size: 1em;
-      }
-
       a {
         background-color: transparent;
         color: inherit;
@@ -71,23 +61,6 @@ export const CSSReset = () => (
         text-decoration: underline dotted;
       }
 
-      b,
-      strong {
-        font-weight: bold;
-      }
-
-      small {
-        font-size: 80%;
-      }
-
-      sub,
-      sup {
-        font-size: 75%;
-        line-height: 0;
-        position: relative;
-        vertical-align: baseline;
-      }
-
       sub {
         bottom: -0.25em;
       }
@@ -98,17 +71,6 @@ export const CSSReset = () => (
 
       img {
         border-style: none;
-      }
-
-      button,
-      input,
-      optgroup,
-      select,
-      textarea {
-        font-family: inherit;
-        font-size: 100%;
-        line-height: 1.15;
-        margin: 0;
       }
 
       button,
@@ -243,16 +205,6 @@ export const CSSReset = () => (
 
       table {
         border-collapse: collapse;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-size: inherit;
-        font-weight: inherit;
       }
 
       button,
