@@ -16,9 +16,9 @@ export default function Administrator() {
   const themeState = useContext(ThemeContext);
   const userState = useContext(UserContext);
   const [name, setName] = useState("");
-  const [category, setCategory] = useState("");
+  const [categoryId, setCategoryId] = useState("");
   const [address, setAdress] = useState("");
-  const [city, setCity] = useState("");
+  const [cityId, setCityId] = useState("");
   const [description, setDescription] = useState("");
 
   const [citiesData, setCitiesData] = useState([]);
@@ -99,9 +99,9 @@ export default function Administrator() {
               }
 
               const isNameValid = name.length > 3;
-              const isCategoryValid = category.length > 0;
+              const isCategoryValid = categoryId.length > 0;
               const isAddressValid = address.length > 3;
-              const isCityValid = city.length > 0;
+              const isCityValid = cityId.length > 0;
               const isDescriptionValid = description.length > 5;
               const isImagesValid = arrayImages.length === 5;
 
@@ -120,11 +120,11 @@ export default function Administrator() {
                     direccion: address,
                     descripcionClase: description,
                     ciudad: {
-                      id: city,
+                      id: cityId,
                     },
                     imagenes: arrayImages,
                     categorias: {
-                      id: category,
+                      id: categoryId,
                     },
                   };
 
@@ -173,10 +173,11 @@ export default function Administrator() {
                 </LABEL>
                 <SELECT
                   onChange={(e) => {
-                    setCategory(e.target.value);
+                    setCategoryId(e.target.value);
+
                     setCategoryError(false);
                   }}
-                  value={category}
+                  value={categoryId}
                   className={`${categoryError ? "is-invalid" : ""} `}
                 >
                   <option value="">Elige una categoría</option>
@@ -218,10 +219,10 @@ export default function Administrator() {
                 </LABEL>
                 <SELECT
                   onChange={(e) => {
-                    setCity(e.target.value);
+                    setCityId(e.target.value);
                     setCityError(false);
                   }}
-                  value={city}
+                  value={cityId}
                   className={`${cityError ? "is-invalid" : ""}  `}
                 >
                   <option value="">Elige una ciudad</option>
