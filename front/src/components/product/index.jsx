@@ -46,7 +46,7 @@ const Product = ({ category, name, score, city, id, description, images }) => {
                 Mostrar ubicación
               </a>
             </div>
-            <p className="card-text mt-2">{description}</p>
+            <p className="card-text my-2">{description}</p>
             <ButtonOutlinePrimary
               className="mt-auto"
               onClick={() => {

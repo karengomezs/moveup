@@ -24,6 +24,9 @@ const theme = (isDark = false, useBorder = true) => {
   }
 
   return extendTheme(CalendarDefaultTheme, {
+    styles: {
+      global: null,
+    },
     components: {
       Calendar: {
         parts: ["calendar"],

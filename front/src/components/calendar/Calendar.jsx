@@ -14,6 +14,7 @@ import {
   CalendarWeek,
   CalendarDays,
 } from "@uselessdev/datepicker";
+import Reset from "./reset";
 
 const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {
   const themeState = useContext(ThemeContext);
@@ -23,32 +24,35 @@ const CalendarNoInput = ({ months = 2, dates, setDates, disabledDates }) => {
   const handleSelectDate = (dates) => setDates(dates);
 
   return (
-    <ChakraProvider theme={theme(themeState.theme, false)}>
-      <Calendar
-        value={dates}
-        onSelectDate={handleSelectDate}
-        months={numberOfMonths}
-        disablePastDates
-        disableDates={disabledDates}
-      >
-        <CalendarControls>
-          <CalendarPrevButton />
-          <CalendarNextButton />
-        </CalendarControls>
-
-        <CalendarMonths
-          bgColor={themeState.theme ? "#212529" : "white"}
-          color={themeState.theme ? "white" : ""}
+    <ChakraProvider theme={theme(themeState.theme, false)} resetCSS={false}>
+      <>
+        <Reset />
+        <Calendar
+          value={dates}
+          onSelectDate={handleSelectDate}
+          months={numberOfMonths}
+          disablePastDates
+          disableDates={disabledDates}
         >
-          {[...Array(numberOfMonths).keys()].map((m) => (
-            <CalendarMonth key={m} month={m}>
-              <CalendarMonthName />
-              <CalendarWeek />
-              <CalendarDays />
-            </CalendarMonth>
-          ))}
-        </CalendarMonths>
-      </Calendar>
+          <CalendarControls>
+            <CalendarPrevButton />
+            <CalendarNextButton />
+          </CalendarControls>
+
+          <CalendarMonths
+            bgColor={themeState.theme ? "#212529" : "white"}
+            color={themeState.theme ? "white" : ""}
+          >
+            {[...Array(numberOfMonths).keys()].map((m) => (
+              <CalendarMonth key={m} month={m}>
+                <CalendarMonthName />
+                <CalendarWeek />
+                <CalendarDays />
+              </CalendarMonth>
+            ))}
+          </CalendarMonths>
+        </Calendar>
+      </>
     </ChakraProvider>
   );
 };

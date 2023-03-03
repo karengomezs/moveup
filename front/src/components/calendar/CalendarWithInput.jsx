@@ -14,6 +14,7 @@ import {
   PopoverTrigger,
   Flex,
 } from "@chakra-ui/react";
+import Reset from "./reset";
 import {
   Calendar,
   CalendarControls,
@@ -113,76 +114,79 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
   }, [values.end]);
 
   return (
-    <ChakraProvider theme={theme(themeState.theme)}>
-      <Popover
-        placement="auto-start"
-        isOpen={isOpen}
-        onClose={onClose}
-        initialFocusRef={initialRef}
-        isLazy
-      >
-        <PopoverTrigger>
-          <Flex
-            borderWidth={1}
-            rounded="md"
-            p={2}
-            onClick={onOpen}
-            ref={initialRef}
-            bgColor={themeState.theme ? "#212529" : "white"}
-            color={themeState.theme ? "white" : ""}
-          >
-            <Input
-              variant="unstyled"
-              name="start"
-              placeholder={dateFormat}
-              value={values.start}
-              onChange={handleInputChange}
-              ref={startInputRef}
-            />
-            <Input
-              variant="unstyled"
-              name="end"
-              placeholder={dateFormat}
-              value={values.end}
-              onChange={handleInputChange}
-              ref={endInputRef}
-            />
-          </Flex>
-        </PopoverTrigger>
-
-        <PopoverContent
-          p={0}
-          w="min-content"
-          border="none"
-          outline="none"
-          _focus={{ boxShadow: "none" }}
-          ref={calendarRef}
+    <ChakraProvider theme={theme(themeState.theme)} resetCSS={false}>
+      <>
+        <Reset />
+        <Popover
+          placement="auto-start"
+          isOpen={isOpen}
+          onClose={onClose}
+          initialFocusRef={initialRef}
+          isLazy
         >
-          <Calendar
-            value={dates}
-            onSelectDate={handleSelectDate}
-            months={numberOfMonths}
-            disablePastDates
-          >
-            <PopoverBody p={0}>
-              <CalendarControls>
-                <CalendarPrevButton />
-                <CalendarNextButton />
-              </CalendarControls>
+          <PopoverTrigger>
+            <Flex
+              borderWidth={1}
+              rounded="md"
+              p={2}
+              onClick={onOpen}
+              ref={initialRef}
+              bgColor={themeState.theme ? "#212529" : "white"}
+              color={themeState.theme ? "white" : ""}
+            >
+              <Input
+                variant="unstyled"
+                name="start"
+                placeholder={dateFormat}
+                value={values.start}
+                onChange={handleInputChange}
+                ref={startInputRef}
+              />
+              <Input
+                variant="unstyled"
+                name="end"
+                placeholder={dateFormat}
+                value={values.end}
+                onChange={handleInputChange}
+                ref={endInputRef}
+              />
+            </Flex>
+          </PopoverTrigger>
 
-              <CalendarMonths>
-                {[...Array(numberOfMonths).keys()].map((m) => (
-                  <CalendarMonth key={m} month={m}>
-                    <CalendarMonthName />
-                    <CalendarWeek />
-                    <CalendarDays />
-                  </CalendarMonth>
-                ))}
-              </CalendarMonths>
-            </PopoverBody>
-          </Calendar>
-        </PopoverContent>
-      </Popover>
+          <PopoverContent
+            p={0}
+            w="min-content"
+            border="none"
+            outline="none"
+            _focus={{ boxShadow: "none" }}
+            ref={calendarRef}
+          >
+            <Calendar
+              value={dates}
+              onSelectDate={handleSelectDate}
+              months={numberOfMonths}
+              disablePastDates
+            >
+              <PopoverBody p={0}>
+                <CalendarControls>
+                  <CalendarPrevButton />
+                  <CalendarNextButton />
+                </CalendarControls>
+
+                <CalendarMonths>
+                  {[...Array(numberOfMonths).keys()].map((m) => (
+                    <CalendarMonth key={m} month={m}>
+                      <CalendarMonthName />
+                      <CalendarWeek />
+                      <CalendarDays />
+                    </CalendarMonth>
+                  ))}
+                </CalendarMonths>
+              </PopoverBody>
+            </Calendar>
+          </PopoverContent>
+        </Popover>
+      </>
     </ChakraProvider>
   );
 }
