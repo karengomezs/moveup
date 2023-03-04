@@ -65,7 +65,9 @@ export default function Details() {
                   );
                 }
               }}
-              className="btn btn-outline-secondary border-0 bi bi-share fs-5"
+              className={`btn border-0 bi bi-share fs-5 ${
+                themeState.theme ? "btn-outline-light" : "btn-outline-secondary"
+              }`}
             />
           </div>
         </div>
