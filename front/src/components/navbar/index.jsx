@@ -200,11 +200,11 @@ export default function Navbar() {
                   <>
                     {userState.user.role === "ROLE_ADMIN" && (
                       <Link
-                        className="text-decoration-none"
+                        className="text-decoration-none mb-4"
                         to="/administrator"
                       >
                         <SPAN
-                          className="fs-5 mb-4"
+                          className="fs-5"
                           role="button"
                           data-bs-toggle="modal"
                           data-bs-target="#navbarMenu"
