@@ -14,7 +14,7 @@ export default function Login() {
           role="alert"
         >
           <i className="bi bi-exclamation-circle-fill me-2"></i>
-          <span>Para realizar una reserva necesitas estar logueado</span>
+          <span>Para ver esta página necesitas estar logueado</span>
         </div>
       )}
 

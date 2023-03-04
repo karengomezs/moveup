@@ -20,7 +20,14 @@ export default function Routes() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/confirmed-product" element={<ConfirmedProduct />}></Route>
-        <Route path="/:id/bookings" element={<MyBookings />}></Route>
+        <Route
+          path="/:id/bookings"
+          element={
+            <ProtectedRoute>
+              <MyBookings />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route
           path="/administrator"
           element={

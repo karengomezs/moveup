@@ -47,8 +47,7 @@ export default function MyBookings() {
         </P>
       </div>
       <div className="container mt-4">
-        <P className="fs-4 fw-bold">Aquí puedes ver tus reservas</P>
-        <div className="container">
+        <div>
           {isEmpty
             ? "No hay resultados, selecciona una ciudad o fecha"
             : bookings}
