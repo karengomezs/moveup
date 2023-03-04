@@ -3,6 +3,7 @@ const Score = ({ value, className }) => {
   return (
     <span
       className={`p-2 bg-primary text-white rounded ms-2 px-3 width-max-content ${className}`}
+      style={{ height: "fit-content" }}
     >
       {result}
     </span>

@@ -9,7 +9,6 @@ import Stars from "../components/product/stars";
 import Score from "../components/product/score";
 import SPAN from "../components/common/span";
 import P from "../components/common/p";
-import H5 from "../components/common/h5";
 import CARD from "../components/common/card";
 
 export default function Details() {
@@ -73,14 +72,18 @@ export default function Details() {
       </div>
 
       <div className="container d-flex p-2">
-        <div className="d-flex align-items-center col">
-          <i className="bi bi-geo-alt text-primary fs-3 me-1"></i>
-          <P className="m-0 fw-semibold">{data?.ciudad.nombreCiudad}</P>
+        <i className="bi bi-geo-alt-fill text-primary fs-3 me-1 mt-1"></i>
+        <div className="d-flex align-items-center col flex-wrap">
+          <P className="m-0 me-2">
+            {data?.ciudad.nombreCiudad}
+            {data?.direccion && ", "}
+          </P>
+          <P className="m-0 pe-3">{data?.direccion}</P>
         </div>
         <div>
           <SPAN>{qualityMessage[quality]}</SPAN>
 
-          <Stars quality={quality} />
+          <Stars className="fs-5" quality={quality} />
         </div>
         <Score value={quality} className="fs-4" />
       </div>
@@ -93,15 +96,15 @@ export default function Details() {
 
       <div className="container my-4">
         <div className="mb-4">
-          <H5 className="fw-semibold m-0">{data?.descripcionClase}</H5>
+          <P>{data?.descripcionClase}</P>
         </div>
 
         <CARD className="p-3 col col-lg-6">
-          <h5 className="card-title h5 my-3 ">
+          <p className="card-title my-3">
             Agrega fechas a tus clases para obtener precios exactos
-          </h5>
+          </p>
           <button
-            className="btn btn-primary mt-3 fw-semibold fs-5"
+            className="btn btn-primary"
             onClick={() => {
               navigate(`/details/${data.id}/booking`);
             }}
