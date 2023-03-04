@@ -25,6 +25,11 @@ export default function Searcher({ onSearch }) {
     );
   });
 
+  const clearInputs = () => {
+    setDates({ start: "", end: "" });
+    setCity("");
+  };
+
   return (
     <>
       <div className="bg-search py-4">
@@ -39,7 +44,7 @@ export default function Searcher({ onSearch }) {
         >
           <div className="container d-flex justify-content-center">
             <div className="justify-content-center input-group gap-3">
-              <div className="col col-md-5 d-flex">
+              <div className="col col-md-4 d-flex">
                 <SELECT
                   onChange={(e) => {
                     setCity(e.target.value);
@@ -50,12 +55,21 @@ export default function Searcher({ onSearch }) {
                   {cities}
                 </SELECT>
               </div>
-              <div className="col-sm-12 col-md-5">
+              <div className="col-sm-12 col-md-4">
                 <CalendarWithInput dates={dates} setDates={setDates} />
               </div>
               <div className="col d-flex">
                 <button type="submit" className="btn btn-primary w-100">
                   Buscar
+                </button>
+              </div>
+              <div className="col d-flex">
+                <button
+                  className="btn btn-secondary w-100"
+                  onClick={clearInputs}
+                  type="submit"
+                >
+                  Ver todo
                 </button>
               </div>
             </div>
