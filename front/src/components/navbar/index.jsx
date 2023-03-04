@@ -84,10 +84,13 @@ export default function Navbar() {
                     </Link>
                   </li>
                   <li>
-                    <button class="dropdown-item">
+                    <Link
+                      className="dropdown-item"
+                      to={`/${userState.user.id}/bookings`}
+                    >
                       <i className="bi me-2 bi-calendar2-event-fill fs-5 text-primary" />
                       Mis reservas
-                    </button>
+                    </Link>
                   </li>
                   <li>
                     <button
@@ -197,9 +200,31 @@ export default function Navbar() {
                         className="text-decoration-none"
                         to="/administrator"
                       >
-                        <SPAN className="fs-4">Administrador</SPAN>
+                        <SPAN
+                          className="fs-5 mb-4"
+                          role="button"
+                          data-bs-toggle="modal"
+                          data-bs-target="#navbarMenu"
+                          aria-controls="navbarMenu"
+                        >
+                          Crear producto
+                        </SPAN>
                       </Link>
                     )}
+                    <Link
+                      className="text-decoration-none"
+                      to={`/${userState.user.id}/bookings`}
+                    >
+                      <SPAN
+                        className="fs-5"
+                        role="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#navbarMenu"
+                        aria-controls="navbarMenu"
+                      >
+                        Mis reservas
+                      </SPAN>
+                    </Link>
                     <span
                       className="mt-auto fw-semibold"
                       role="button"
