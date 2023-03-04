@@ -22,7 +22,6 @@ export default function MyBookings() {
   const bookings = arrayBookings.map((booking) => {
     return (
       <BookProduct
-        className="col col-md-8 col-lg-6 col-xl-5"
         key={booking.id}
         category={booking?.producto?.categorias?.nombreCategorias}
         name={booking?.producto?.nombreClase}
@@ -49,7 +48,7 @@ export default function MyBookings() {
         </P>
       </div>
       <div className="container mt-4">
-        <div>
+        <div className="list-width">
           {isEmpty
             ? "No hay resultados, selecciona una ciudad o fecha"
             : bookings}

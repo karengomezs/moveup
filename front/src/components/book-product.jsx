@@ -35,7 +35,7 @@ const BookProduct = ({
         </div>
 
         <div className="col-9">
-          <div className="card-body h-100 d-flex flex-column gap-1">
+          <div className="card-body h-100 d-flex flex-column gap-2">
             <div className="d-flex justify-content-between">
               <div className="mb-2">
                 <div className="d-flex align-items-end">
@@ -44,13 +44,13 @@ const BookProduct = ({
                     <Stars quality={score} />
                   </h6>
                 </div>
-                <h5 className="card-title h5">{name}</h5>
+                <h5 className="card-title h5 mt-2">{name}</h5>
               </div>
               <div className="d-flex flex-column align-items-end">
                 <Score value={score} className="fs-6 fw-bolder" />
               </div>
             </div>
-            <div className="d-flex align-items-center mb-2">
+            <div className="d-flex mb-2">
               <i className="bi bi-geo-alt-fill fs-5 text-primary me-2" />
               <div>
                 <p className="card-text flex-grow-1 m-0">{city}</p>
@@ -58,9 +58,12 @@ const BookProduct = ({
               </div>
             </div>
 
-            <div className="d-flex align-items-center text-capitalize">
+            <div className="d-flex text-capitalize">
               <i class="bi bi-calendar2-week-fill text-primary me-2"></i>
-              {convertDate(startDate)} - {convertDate(endDate)}
+              <div className="d-flex gap-1 flex-wrap">
+                <span>{convertDate(startDate)}</span> <span>-</span>
+                <span>{convertDate(endDate)}</span>
+              </div>
             </div>
             <div className="d-flex align-items-center">
               <i class="bi bi-clock-fill text-primary me-2"></i>
