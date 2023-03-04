@@ -44,7 +44,7 @@ export default function Searcher({ onSearch }) {
         >
           <div className="container d-flex justify-content-center">
             <div className="justify-content-center input-group gap-3">
-              <div className="col col-md-4 d-flex">
+              <div className="col d-flex">
                 <SELECT
                   onChange={(e) => {
                     setCity(e.target.value);
@@ -58,18 +58,19 @@ export default function Searcher({ onSearch }) {
               <div className="col-sm-12 col-md-4">
                 <CalendarWithInput dates={dates} setDates={setDates} />
               </div>
-              <div className="col d-flex">
+              <div className="d-flex col-12 col-md-2">
                 <button type="submit" className="btn btn-primary w-100">
                   Buscar
                 </button>
               </div>
-              <div className="col d-flex">
+              <div className="col col-md-2 d-flex">
                 <button
                   className="btn btn-secondary w-100"
                   onClick={clearInputs}
                   type="submit"
                 >
-                  Ver todo
+                  Todo
+                  <i class="ms-2 bi bi-globe-americas"></i>
                 </button>
               </div>
             </div>
