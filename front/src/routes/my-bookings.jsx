@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import ThemeContext from "../context/context-theme";
 import UserContext from "../context/user-context";
 import P from "../components/common/p";
-import Product from "../components/product";
+import BookProduct from "../components/book-product";
 import { getBookingsByUserId } from "../api/booking";
 
 export default function MyBookings() {
@@ -21,17 +21,19 @@ export default function MyBookings() {
 
   const bookings = arrayBookings.map((booking) => {
     return (
-      <Product
+      <BookProduct
         className="col col-md-8 col-lg-6 col-xl-5"
         key={booking.id}
         category={booking?.producto?.categorias?.nombreCategorias}
         name={booking?.producto?.nombreClase}
         score={booking?.producto?.calificacion}
         city={booking?.producto?.ciudad?.nombreCiudad}
-        id={booking?.producto?.id}
-        description={booking?.producto?.descripcionClase}
+        address={booking?.producto?.direccion}
+        startDate={booking?.fechaInicial}
+        endDate={booking?.fechaFinal}
+        hour={booking?.horaInicio}
         images={booking?.producto?.imagenes}
-      ></Product>
+      />
     );
   });
 
