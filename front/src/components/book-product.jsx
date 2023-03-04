@@ -59,14 +59,14 @@ const BookProduct = ({
             </div>
 
             <div className="d-flex text-capitalize">
-              <i class="bi bi-calendar2-week-fill text-primary me-2"></i>
+              <i className="bi bi-calendar2-week-fill text-primary me-2"></i>
               <div className="d-flex gap-1 flex-wrap">
                 <span>{convertDate(startDate)}</span> <span>-</span>
                 <span>{convertDate(endDate)}</span>
               </div>
             </div>
             <div className="d-flex align-items-center">
-              <i class="bi bi-clock-fill text-primary me-2"></i>
+              <i className="bi bi-clock-fill text-primary me-2"></i>
               {hour}
             </div>
           </div>

@@ -8,7 +8,7 @@ export default function NotFound() {
       <h1 className="h1 text-primary fw-bold">404</h1>
       <H2>
         <strong>Oh no,</strong> no hay nada por acá!{" "}
-        <i class="bi bi-search"></i>
+        <i className="bi bi-search"></i>
       </H2>
       <P className="mt-3">Regresa a la página principal</P>
       <Link to="/">

@@ -266,7 +266,9 @@ export default function Navbar() {
                   />
                 </div>
                 <button
-                  className="d-flex align-items-end border-0 bg-transparent btn pe-0"
+                  className={`d-flex align-items-end border-0 bg-transparent btn pe-0 ${
+                    themeState.theme ? "text-bg-dark" : ""
+                  }`}
                   onClick={() => {
                     themeState.setTheme(!themeState.theme);
                   }}
