@@ -6,8 +6,9 @@ import Booking from "./booking";
 import Administrator from "./administrator";
 import ConfirmedBooking from "./confirmed-booking";
 import ConfirmedProduct from "./confirmed-product";
+import NotFound from "./not-found";
 import MyBookings from "./my-bookings";
-import { Route, Routes as Router } from "react-router-dom";
+import { Route, Routes as Router, Navigate } from "react-router-dom";
 import ProtectedRoute from "../components/protected-route";
 import ProtectedAdminRoute from "../components/protected-admin-route";
 
@@ -36,7 +37,6 @@ export default function Routes() {
             </ProtectedAdminRoute>
           }
         ></Route>
-
         <Route
           path="/details/:id/booking"
           element={
@@ -45,8 +45,9 @@ export default function Routes() {
             </ProtectedRoute>
           }
         ></Route>
-
         <Route path="/confirmed-booking" element={<ConfirmedBooking />}></Route>
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Router>
     </>
   );
