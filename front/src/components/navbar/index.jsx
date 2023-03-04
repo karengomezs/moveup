@@ -54,49 +54,75 @@ export default function Navbar() {
             </>
           )}
           {userState.user && (
-            <div className="container d-flex justify-content-end gap-4 align-items-center">
+            <div className="container d-flex justify-content-end gap-2 align-items-center">
               {userState.user.role === "ROLE_ADMIN" && (
-                <Link className="text-decoration-none" to="/administrator">
-                  <span className="text-white fs-4">Administrador</span>
-                </Link>
+                <span className="text-white fs-4 me-3">Administrador</span>
               )}
-
               <div className="d-flex column align-items-center">
                 <Avatar
                   nameProp={userState.user.name}
                   lastNameProp={userState.user.lastName}
                 />
               </div>
-              <div className="text-center">
-                <h5 className="h5 text-white fw-bold text-capitalize">
-                  Hola {userState?.user?.name}
-                </h5>
-                <button
-                  onClick={() => {
-                    userState.logOut();
-                  }}
-                  type="button"
-                  className="btn btn-light btn-sm"
+              <div class="nav-item dropdown">
+                <h6 className="h6 text-white text-start text-capitalize">
+                  Hola,
+                </h6>
+                <h5
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  className="h5 text-white fw-bold text-capitalize dropdown-toggle"
                 >
-                  Cerrar Sesión
-                </button>
+                  {userState?.user?.name}
+                </h5>
+                <ul class="dropdown-menu">
+                  <li>
+                    <Link className="dropdown-item" to="/administrator">
+                      <i className="bi me-2 bi-file-earmark-plus-fill fs-5 text-primary" />
+                      Crear producto
+                    </Link>
+                  </li>
+                  <li>
+                    <button class="dropdown-item">
+                      <i className="bi me-2 bi-calendar2-event-fill fs-5 text-primary" />
+                      Mis reservas
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      className="dropdown-item"
+                      onClick={() => {
+                        themeState.setTheme(!themeState.theme);
+                      }}
+                    >
+                      <i
+                        className={`bi me-1 text-primary ${
+                          themeState.theme
+                            ? "bi-cloud-sun-fill fs-4"
+                            : "bi-cloud-moon-fill fs-4"
+                        }`}
+                      ></i>
+                      Tema
+                    </button>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <button
+                      class="dropdown-item text-danger"
+                      onClick={() => {
+                        userState.logOut();
+                      }}
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </li>
+                </ul>
               </div>
             </div>
           )}
-          <button
-            className="min-width-theme btn border-0"
-            onClick={() => {
-              themeState.setTheme(!themeState.theme);
-            }}
-          >
-            <i
-              className={`bi text-white ${
-                themeState.theme
-                  ? "bi-cloud-sun-fill fs-3"
-                  : "bi-cloud-moon-fill fs-3"
-              }`}
-            ></i>
-          </button>
         </div>
 
         {/* MOBILEEEEEEE */}
