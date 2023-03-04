@@ -2,6 +2,7 @@ import { useEffect, useContext, useState } from "react";
 import ThemeContext from "../context/context-theme";
 import UserContext from "../context/user-context";
 import P from "../components/common/p";
+import AlertWarning from "../components/common/alert-warning";
 import BookProduct from "../components/book-product";
 import { getBookingsByUserId } from "../api/booking";
 
@@ -49,9 +50,14 @@ export default function MyBookings() {
       </div>
       <div className="container mt-4">
         <div className="list-width">
-          {isEmpty
-            ? "No hay resultados, selecciona una ciudad o fecha"
-            : bookings}
+          {isEmpty ? (
+            <AlertWarning>
+              <i className="bi bi-search fs-4 me-2"></i>
+              Aún no tienes reservas.
+            </AlertWarning>
+          ) : (
+            bookings
+          )}
         </div>
       </div>
     </div>

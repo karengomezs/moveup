@@ -1,4 +1,5 @@
 import Product from "./product";
+import AlertWarning from "../components/common/alert-warning";
 
 export default function List({ data }) {
   const isEmpty = data.length === 0;
@@ -20,7 +21,16 @@ export default function List({ data }) {
 
   return (
     <div className="list-width">
-      {isEmpty ? "No hay resultados, selecciona una ciudad o fecha" : classes}
+      {isEmpty ? (
+        <>
+          <AlertWarning>
+            <i className="bi bi-search fs-4 me-2"></i>
+            No hay resultados para esta busqueda.
+          </AlertWarning>
+        </>
+      ) : (
+        classes
+      )}
     </div>
   );
 }
