@@ -174,7 +174,7 @@ export default function Navbar() {
                         nameProp={userState.user.name}
                         lastNameProp={userState.user.lastName}
                       />
-                      <h5 className="h5 text-white text-end">Hola,</h5>
+                      <h5 className="h5 text-white text-end mt-2">Hola,</h5>
                       <h4 className="h4 text-white fw-bold text-capitalize text-end">
                         {userState?.user?.name}
                       </h4>
