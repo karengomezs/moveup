@@ -6,6 +6,7 @@ import Booking from "./booking";
 import Administrator from "./administrator";
 import ConfirmedBooking from "./confirmed-booking";
 import ConfirmedProduct from "./confirmed-product";
+import MyBookings from "./my-bookings";
 import { Route, Routes as Router } from "react-router-dom";
 import ProtectedRoute from "../components/protected-route";
 import ProtectedAdminRoute from "../components/protected-admin-route";
@@ -18,6 +19,8 @@ export default function Routes() {
         <Route path="/details/:id" element={<Details />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/confirmed-product" element={<ConfirmedProduct />}></Route>
+        <Route path="/my-bookings" element={<MyBookings />}></Route>
         <Route
           path="/administrator"
           element={
@@ -26,7 +29,7 @@ export default function Routes() {
             </ProtectedAdminRoute>
           }
         ></Route>
-        <Route path="/confirmed-product" element={<ConfirmedProduct />}></Route>
+
         <Route
           path="/details/:id/booking"
           element={
