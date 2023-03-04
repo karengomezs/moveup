@@ -22,7 +22,7 @@ export default function Categories({ onClickCategory }) {
         className="d-flex flex-column"
         onClick={() => {
           getClassByCategory(category.id).then((data) => {
-            onClickCategory(data);
+            onClickCategory(data, category.nombreCategorias);
           });
         }}
       >

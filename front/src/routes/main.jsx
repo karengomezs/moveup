@@ -14,6 +14,7 @@ import P from "../components/common/p";
 export default function Main() {
   const userState = useContext(UserContext);
   const [data, setData] = useState([]);
+  const [title, setTitle] = useState("");
 
   const userIsLog = Boolean(userState.user);
 
@@ -21,19 +22,15 @@ export default function Main() {
     if (userIsLog) {
       getClasses().then((data) => {
         setData(data);
+        setTitle("Clases");
       });
     } else {
       getRecommended().then((data) => {
         setData(data);
+        setTitle("Recomendados");
       });
     }
   }, [userIsLog]);
-
-  let titleMessage = "Recomendados";
-
-  if (userState.user) {
-    titleMessage = "Clases";
-  }
 
   return (
     <div className="min-vh-100">
@@ -50,11 +47,18 @@ export default function Main() {
           getFilteredClasses(city, { start, end }).then((data) => {
             setData(data);
           });
+
+          setTitle("Resultado de la búsqueda:");
         }}
       />
-      <Categories onClickCategory={setData} />
+      <Categories
+        onClickCategory={(data, categoryName) => {
+          setData(data);
+          setTitle("Filtrado por categoría: " + categoryName);
+        }}
+      />
       <div className="container mt-4">
-        <P className="fs-4 fw-bold">{titleMessage}</P>
+        <P className="fs-4 fw-bold mb-2">{title}</P>
         <List data={data} />
       </div>
     </div>
