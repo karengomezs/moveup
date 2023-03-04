@@ -9,6 +9,7 @@ import {
   getFilteredClasses,
 } from "../api/products";
 import UserContext from "../context/user-context";
+import P from "../components/common/p";
 
 export default function Main() {
   const userState = useContext(UserContext);
@@ -28,6 +29,12 @@ export default function Main() {
     }
   }, [userIsLog]);
 
+  let titleMessage = "Recomendados";
+
+  if (userState.user) {
+    titleMessage = "Clases";
+  }
+
   return (
     <div className="min-vh-100">
       <Searcher
@@ -46,7 +53,10 @@ export default function Main() {
         }}
       />
       <Categories onClickCategory={setData} />
-      <List data={data} />
+      <div className="container mt-4">
+        <P className="fs-4 fw-bold">{titleMessage}</P>
+        <List data={data} />
+      </div>
     </div>
   );
 }

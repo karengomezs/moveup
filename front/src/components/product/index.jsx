@@ -17,7 +17,7 @@ const Product = ({
   const navigate = useNavigate();
 
   return (
-    <CARD className="mb-3">
+    <CARD className={`mb-3 p-0 ${className}`}>
       <div className="row g-0 h-100">
         <div className="col-3">
           {images?.[0]?.url && (
@@ -48,12 +48,6 @@ const Product = ({
             <div className="d-flex align-items-center">
               <i className="bi bi-geo-alt-fill fs-5 text-primary" />
               <p className="card-text flex-grow-1">{city}</p>
-              <a
-                className="text-nowrap text-primary text-decoration-underline"
-                href="/#"
-              >
-                Mostrar ubicación
-              </a>
             </div>
             <p className="card-text my-2">{description}</p>
             <ButtonOutlinePrimary

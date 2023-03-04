@@ -70,7 +70,7 @@ export default function Searcher({ onSearch }) {
                   type="submit"
                 >
                   Todo
-                  <i class="ms-2 bi bi-globe-americas"></i>
+                  <i className="ms-2 bi bi-globe-americas"></i>
                 </button>
               </div>
             </div>

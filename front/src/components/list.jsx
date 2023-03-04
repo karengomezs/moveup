@@ -1,10 +1,6 @@
-import { useContext } from "react";
 import Product from "./product";
-import UserContext from "../context/user-context";
-import P from "./common/p";
 
 export default function List({ data }) {
-  const userState = useContext(UserContext);
   const isEmpty = data.length === 0;
 
   const classes = data?.map((eachClass) => {
@@ -23,13 +19,8 @@ export default function List({ data }) {
   });
 
   return (
-    <div className="container mt-4">
-      <P className="fs-4 fw-bold">
-        {userState.user ? "Clases" : "Recomendados"}
-      </P>
-      <div className="list-width">
-        {isEmpty ? "No hay resultados, selecciona una ciudad o fecha" : classes}
-      </div>
+    <div className="list-width">
+      {isEmpty ? "No hay resultados, selecciona una ciudad o fecha" : classes}
     </div>
   );
 }

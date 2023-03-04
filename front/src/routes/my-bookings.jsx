@@ -20,10 +20,9 @@ export default function MyBookings() {
   }, [userId, userToken]);
 
   const bookings = arrayBookings.map((booking) => {
-    console.log(booking?.producto?.imagenes[0].url);
     return (
       <Product
-        className=""
+        className="col col-md-8 col-lg-6 col-xl-5"
         key={booking.id}
         category={booking?.producto?.categorias?.nombreCategorias}
         name={booking?.producto?.nombreClase}
@@ -35,10 +34,11 @@ export default function MyBookings() {
       ></Product>
     );
   });
-  console.log(bookings);
+
+  const isEmpty = arrayBookings.length === 0;
 
   return (
-    <>
+    <div className="flex-grow-1">
       <div
         className={`w-100 p-2 ${themeState.theme ? "bg-search" : "bg-light"}`}
       >
@@ -46,16 +46,14 @@ export default function MyBookings() {
           Mis reservas
         </P>
       </div>
-
-      <div className="container mt-4 ">
+      <div className="container mt-4">
         <P className="fs-4 fw-bold">Aquí puedes ver tus reservas</P>
-        <div className="row ">
-          {bookings}
-          {/* {isEmpty
+        <div className="container">
+          {isEmpty
             ? "No hay resultados, selecciona una ciudad o fecha"
-            : classes} */}
+            : bookings}
         </div>
       </div>
-    </>
+    </div>
   );
 }
