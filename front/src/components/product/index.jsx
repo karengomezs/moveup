@@ -4,7 +4,16 @@ import Score from "./score";
 import CARD from "../common/card";
 import ButtonOutlinePrimary from "../common/button-outline-primary";
 
-const Product = ({ category, name, score, city, id, description, images }) => {
+const Product = ({
+  className,
+  category,
+  name,
+  score,
+  city,
+  id,
+  description,
+  images,
+}) => {
   const navigate = useNavigate();
 
   return (

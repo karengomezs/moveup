@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import ThemeContext from "../context/context-theme";
 import UserContext from "../context/user-context";
 import P from "../components/common/p";
@@ -8,15 +8,34 @@ import { getBookingsByUserId } from "../api/booking";
 export default function MyBookings() {
   const themeState = useContext(ThemeContext);
   const userState = useContext(UserContext);
+  const [arrayBookings, setArrayBookings] = useState([]);
+
   const userId = userState?.user?.id;
   const userToken = userState?.user?.token;
-  console.log(userId);
 
   useEffect(() => {
     getBookingsByUserId(userId, userToken).then((data) => {
-      console.log(data);
+      setArrayBookings(data);
     });
-  }, []);
+  }, [userId, userToken]);
+
+  const bookings = arrayBookings.map((booking) => {
+    console.log(booking?.producto?.imagenes[0].url);
+    return (
+      <Product
+        className=""
+        key={booking.id}
+        category={booking?.producto?.categorias?.nombreCategorias}
+        name={booking?.producto?.nombreClase}
+        score={booking?.producto?.calificacion}
+        city={booking?.producto?.ciudad?.nombreCiudad}
+        id={booking?.producto?.id}
+        description={booking?.producto?.descripcionClase}
+        images={booking?.producto?.imagenes}
+      ></Product>
+    );
+  });
+  console.log(bookings);
 
   return (
     <>
@@ -27,8 +46,15 @@ export default function MyBookings() {
           Mis reservas
         </P>
       </div>
-      <div className="d-flex flex-grow-1">
-        <p>hola!</p>
+
+      <div className="container mt-4 ">
+        <P className="fs-4 fw-bold">Aquí puedes ver tus reservas</P>
+        <div className="row ">
+          {bookings}
+          {/* {isEmpty
+            ? "No hay resultados, selecciona una ciudad o fecha"
+            : classes} */}
+        </div>
       </div>
     </>
   );
