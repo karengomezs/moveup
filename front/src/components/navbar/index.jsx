@@ -77,12 +77,15 @@ export default function Navbar() {
                   {userState?.user?.name}
                 </h5>
                 <ul class="dropdown-menu">
-                  <li>
-                    <Link className="dropdown-item" to="/administrator">
-                      <i className="bi me-2 bi-file-earmark-plus-fill fs-5 text-primary" />
-                      Crear producto
-                    </Link>
-                  </li>
+                  {userState.user.role === "ROLE_ADMIN" && (
+                    <li>
+                      <Link className="dropdown-item" to="/administrator">
+                        <i className="bi me-2 bi-file-earmark-plus-fill fs-5 text-primary" />
+                        Crear producto
+                      </Link>
+                    </li>
+                  )}
+
                   <li>
                     <Link
                       className="dropdown-item"
