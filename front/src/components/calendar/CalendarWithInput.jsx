@@ -113,6 +113,13 @@ export default function MultipleCalendar({ dates, setDates, months = 2 }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.end]);
 
+  // Limpia los inputs del calendar cuando se presoina  VER TODO en la página.
+  useEffect(() => {
+    if (dates.start === "" && dates.end === "") {
+      setValues({ start: "", end: "" });
+    }
+  }, [dates]);
+
   return (
     <ChakraProvider theme={theme(themeState.theme)} resetCSS={false}>
       <>
