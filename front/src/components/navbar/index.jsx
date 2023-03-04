@@ -64,7 +64,7 @@ export default function Navbar() {
                   lastNameProp={userState.user.lastName}
                 />
               </div>
-              <div class="nav-item dropdown">
+              <div className="nav-item dropdown">
                 <h6 className="h6 text-white text-start text-capitalize">
                   Hola,
                 </h6>
@@ -76,7 +76,7 @@ export default function Navbar() {
                 >
                   {userState?.user?.name}
                 </h5>
-                <ul class="dropdown-menu">
+                <ul className="dropdown-menu">
                   {userState.user.role === "ROLE_ADMIN" && (
                     <li>
                       <Link className="dropdown-item" to="/administrator">
@@ -113,11 +113,11 @@ export default function Navbar() {
                     </button>
                   </li>
                   <li>
-                    <hr class="dropdown-divider" />
+                    <hr className="dropdown-divider" />
                   </li>
                   <li>
                     <button
-                      class="dropdown-item text-danger"
+                      className="dropdown-item text-danger"
                       onClick={() => {
                         userState.logOut();
                       }}
