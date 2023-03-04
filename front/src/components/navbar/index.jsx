@@ -51,6 +51,16 @@ export default function Navbar() {
                 className="btn btn-light px-5 py-2"
                 text="Iniciar Sesión"
               />
+              <button
+                className={`bi min-width-theme btn border-0 text-white ${
+                  themeState.theme
+                    ? "bi-cloud-sun-fill fs-3"
+                    : "bi-cloud-moon-fill fs-3"
+                }`}
+                onClick={() => {
+                  themeState.setTheme(!themeState.theme);
+                }}
+              />
             </>
           )}
           {userState.user && (
@@ -170,26 +180,16 @@ export default function Navbar() {
                       </h4>
                     </div>
                   )}
-                  <button
-                    className={`bi min-width-theme btn border-0 text-white ${
-                      themeState.theme
-                        ? "bi-cloud-sun-fill fs-3"
-                        : "bi-cloud-moon-fill fs-3"
-                    }`}
-                    onClick={() => {
-                      themeState.setTheme(!themeState.theme);
-                    }}
-                  />
                 </div>
               </div>
               <div className="modal-body d-flex flex-column justify-content-start align-items-end">
                 {!userState.user && (
                   <ButtonLink
-                    to="/signup"
-                    className={`btn border-0 shadow-none pe-0 my-2 fw-bold ${
+                    to="/login"
+                    className={`btn border-0 shadow-none pe-0 ${
                       themeState.theme ? "text-white" : ""
                     }`}
-                    text="Crear cuenta"
+                    text="Iniciar Sesión"
                     data-bs-toggle="modal"
                     data-bs-target="#navbarMenu"
                     aria-controls="navbarMenu"
@@ -200,11 +200,11 @@ export default function Navbar() {
                   <>
                     {userState.user.role === "ROLE_ADMIN" && (
                       <Link
-                        className="text-decoration-none mb-4"
+                        className="text-decoration-none mb-3"
                         to="/administrator"
                       >
                         <SPAN
-                          className="fs-5"
+                          className=""
                           role="button"
                           data-bs-toggle="modal"
                           data-bs-target="#navbarMenu"
@@ -214,12 +214,18 @@ export default function Navbar() {
                         </SPAN>
                       </Link>
                     )}
+                    <div className="container p-0 mb-3">
+                      <hr
+                        className={`border ${
+                          themeState.theme ? "border-light" : "border-dark"
+                        }`}
+                      />
+                    </div>
                     <Link
-                      className="text-decoration-none"
+                      className="text-decoration-none mb-3"
                       to={`/${userState.user.id}/bookings`}
                     >
                       <SPAN
-                        className="fs-5"
                         role="button"
                         data-bs-toggle="modal"
                         data-bs-target="#navbarMenu"
@@ -228,39 +234,66 @@ export default function Navbar() {
                         Mis reservas
                       </SPAN>
                     </Link>
-                    <span
-                      className="mt-auto fw-semibold"
-                      role="button"
+                  </>
+                )}
+
+                {!userState.user && (
+                  <>
+                    <div className="container p-0">
+                      <hr
+                        className={`border ${
+                          themeState.theme ? "border-light" : "border-dark"
+                        }`}
+                      />
+                    </div>
+                    <ButtonLink
+                      to="/signup"
+                      className={`btn border-0 shadow-none pe-0 ${
+                        themeState.theme ? "text-white" : ""
+                      }`}
+                      text="Crear cuenta"
                       data-bs-toggle="modal"
                       data-bs-target="#navbarMenu"
                       aria-controls="navbarMenu"
-                      onClick={() => {
-                        userState.logOut();
-                      }}
-                    >
-                      ¿Deseas{" "}
-                      <strong className="text-danger">cerrar sesión</strong>?
-                    </span>
+                    />
                   </>
                 )}
-                <div className="container p-0">
+                <div className="container p-0 mb-2">
                   <hr
                     className={`border ${
                       themeState.theme ? "border-light" : "border-dark"
                     }`}
                   />
                 </div>
-                {!userState.user && (
-                  <ButtonLink
-                    to="/login"
-                    className={`btn border-0 shadow-none pe-0 my-2 fw-bold ${
-                      themeState.theme ? "text-white" : ""
+                <button
+                  className="d-flex align-items-end border-0 bg-transparent"
+                  onClick={() => {
+                    themeState.setTheme(!themeState.theme);
+                  }}
+                >
+                  Tema
+                  <i
+                    className={`bi min-width-theme ${
+                      themeState.theme
+                        ? "bi-cloud-sun-fill fs-3"
+                        : "bi-cloud-moon-fill fs-3"
                     }`}
-                    text="Iniciar Sesión"
+                  ></i>
+                </button>
+                {userState.user && (
+                  <span
+                    className="mt-auto fw-semibold"
+                    role="button"
                     data-bs-toggle="modal"
                     data-bs-target="#navbarMenu"
                     aria-controls="navbarMenu"
-                  />
+                    onClick={() => {
+                      userState.logOut();
+                    }}
+                  >
+                    ¿Deseas{" "}
+                    <strong className="text-danger">cerrar sesión</strong>?
+                  </span>
                 )}
               </div>
               <div

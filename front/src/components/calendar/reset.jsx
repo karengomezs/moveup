@@ -41,13 +41,6 @@ export const CSSReset = () => (
         display: block;
       }
 
-      hr {
-        border-top-width: 1px;
-        box-sizing: content-box;
-        height: 0;
-        overflow: visible;
-      }
-
       a {
         background-color: transparent;
         color: inherit;
@@ -167,16 +160,10 @@ export const CSSReset = () => (
       h4,
       h5,
       h6,
-      hr,
       figure,
       p,
       pre {
         margin: 0;
-      }
-
-      button {
-        background: transparent;
-        padding: 0;
       }
 
       fieldset {
