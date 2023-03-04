@@ -107,7 +107,7 @@ export default function Navbar() {
                   </li>
                   <li>
                     <button
-                      className="dropdown-item"
+                      className="dropdown-item btn"
                       onClick={() => {
                         themeState.setTheme(!themeState.theme);
                       }}
@@ -200,7 +200,7 @@ export default function Navbar() {
                   <>
                     {userState.user.role === "ROLE_ADMIN" && (
                       <Link
-                        className="text-decoration-none mb-3"
+                        className="text-decoration-none btn pe-0"
                         to="/administrator"
                       >
                         <SPAN
@@ -214,7 +214,7 @@ export default function Navbar() {
                         </SPAN>
                       </Link>
                     )}
-                    <div className="container p-0 mb-3">
+                    <div className="container p-0">
                       <hr
                         className={`border ${
                           themeState.theme ? "border-light" : "border-dark"
@@ -222,7 +222,7 @@ export default function Navbar() {
                       />
                     </div>
                     <Link
-                      className="text-decoration-none mb-3"
+                      className="text-decoration-none btn pe-0"
                       to={`/${userState.user.id}/bookings`}
                     >
                       <SPAN
@@ -258,7 +258,7 @@ export default function Navbar() {
                     />
                   </>
                 )}
-                <div className="container p-0 mb-2">
+                <div className="container p-0">
                   <hr
                     className={`border ${
                       themeState.theme ? "border-light" : "border-dark"
@@ -266,7 +266,7 @@ export default function Navbar() {
                   />
                 </div>
                 <button
-                  className="d-flex align-items-end border-0 bg-transparent"
+                  className="d-flex align-items-end border-0 bg-transparent btn pe-0"
                   onClick={() => {
                     themeState.setTheme(!themeState.theme);
                   }}
