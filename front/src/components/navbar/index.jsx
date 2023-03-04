@@ -13,7 +13,7 @@ export default function Navbar() {
   const themeState = useContext(ThemeContext);
 
   return (
-    <nav className="navbar navbar-dark navbar-expand-md bg-primary ">
+    <nav className="navbar navbar-dark navbar-expand-md bg-primary">
       <div className="container container-fluid">
         <Link
           to="/"
@@ -43,12 +43,12 @@ export default function Navbar() {
             <>
               <ButtonLink
                 to="/signup"
-                className="btn btn-outline-light px-5 py-2"
+                className="btn btn-outline-light px-4 py-2"
                 text="Crear cuenta"
               />
               <ButtonLink
                 to="/login"
-                className="btn btn-light px-5 py-2"
+                className="btn btn-light px-4 py-2"
                 text="Iniciar Sesión"
               />
               <button
