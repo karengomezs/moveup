@@ -1,4 +1,5 @@
 import { useEffect, useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import ThemeContext from "../context/context-theme";
 import UserContext from "../context/user-context";
 import P from "../components/common/p";
@@ -51,10 +52,15 @@ export default function MyBookings() {
       <div className="container mt-4">
         <div className="list-width">
           {isEmpty ? (
-            <AlertWarning>
-              <i className="bi bi-search fs-4 me-2"></i>
-              Aún no tienes reservas.
-            </AlertWarning>
+            <div>
+              <AlertWarning>
+                <i className="bi bi-search fs-4 me-2"></i>
+                Aún no tienes reservas.
+              </AlertWarning>
+              <Link to="/">
+                <button className="btn btn-primary">Ir al Inicio</button>
+              </Link>
+            </div>
           ) : (
             bookings
           )}
