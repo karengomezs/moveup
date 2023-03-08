@@ -11,7 +11,7 @@ export async function postImages(file) {
   const s3 = new AWS.S3();
   const params = {
     Bucket: "grupo03dh/IMAGENES",
-    Key: `${file.name}.${Date.now()}`,
+    Key: `${Date.now()}.${file.name}`,
     Body: file,
   };
 

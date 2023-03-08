@@ -11,7 +11,7 @@ export default function ConfirmedProduct() {
 
   return (
     <div className="d-flex flex-grow-1 flex-column align-items-center justify-content-center container">
-      <CARD className="shadow-sm py-3 px-5 ">
+      <CARD className="shadow-sm py-3 px-5">
         <div className="card-body d-flex flex-column align-items-center gap-3">
           <i className="bi bi-patch-check-fill fs-1 text-primary"></i>
           <p className="fs-4 fw-semibold">Su producto se ha creado con éxito</p>
