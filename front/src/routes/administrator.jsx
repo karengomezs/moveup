@@ -127,7 +127,7 @@ export default function Administrator() {
                 setErrorPostProduct(false);
               }
 
-              const isNameValid = name.length > 5;
+              const isNameValid = name.length > 3;
               const isCategoryValid = categoryId.length > 0;
               const isAddressValid = address.length > 5;
               const isCityValid = cityId.length > 0;
