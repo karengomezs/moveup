@@ -221,7 +221,10 @@ export default function Booking() {
             >
               <Calendar
                 dates={dates}
-                setDates={setDates}
+                setDates={(result) => {
+                  setDates(result);
+                  setDatesError(false);
+                }}
                 disabledDates={disabledDates}
               />
             </CARD>
@@ -254,6 +257,7 @@ export default function Booking() {
                     onChange={(e) => {
                       const selectHour = e.target.value;
                       setHour(selectHour);
+                      setHourError(false);
                     }}
                     value={hour}
                     className={`${hourError ? "is-invalid" : ""} `}

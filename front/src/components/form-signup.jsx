@@ -111,6 +111,7 @@ export default function FormSignup({ setErrorRegister }) {
           <INPUT
             onChange={(e) => {
               setLastName(e.target.value);
+              setLastNameError(false);
             }}
             id="last-name"
             value={lastName}
