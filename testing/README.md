@@ -9,11 +9,11 @@ https://documenter.getpostman.com/view/992114/2s93JoxRFE
 -->
 
 <!-- TESTING MANUAL
-* casos de prueba, smoke, regresión, caja blanca, exploratorio, reporte defectos
+* casos de prueba, smoke, regresión, caja blanca, exploratorio, reporte defectos, selenium
 https://docs.google.com/spreadsheets/d/11Bw_6NxlhShZL4GYmNp-sPVLowqMoggT-1ZjIXkPYa8/edit#gid=0
  -->
 
-REPORTE FINAL DE TESTING
+REPORTE TESTING
 
 Cantidad de casos de prueba creados por funcionalidad/historia de usuario tanto manuales como automáticos:
 
