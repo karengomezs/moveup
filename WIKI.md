@@ -173,6 +173,10 @@ constants.js: Contiene las variables que son compartidas en todo en proyecto
 Index.js: Contiene la configuración de react-router y el provider que maneja el cambio de tema. En este archivo se importa App.  
 .env.local: Contiene la configuración de las variables de ambiente.
 
+Link del proyecto desplegado: http://moveup-frontend.s3-website.us-east-2.amazonaws.com/
+Link del swagger: http://ec2-3-141-164-5.us-east-2.compute.amazonaws.com:8080/swagger-ui/index.html#/authentication-controller/registerAdmin
+¿Cómo crear un usuario administrador?: Ingresar al swagger disponible, ir a la sección authentication-controller y usar el endpoint con el método post /api/auth/register/admin
+
 BACKEND:
 Descargar el repo de la siguiente url: https://gitlab.ctd.academy/ctd/proyecto-integrador-0123/0522-ft/grupo-03.git
 
